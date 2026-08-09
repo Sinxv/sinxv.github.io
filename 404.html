@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Redirect /slug to /guides?guide=slug
+        const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+        if (path) {
+            window.location.href = '/guides?guide=' + path;
+        } else {
+            window.location.href = '/guides';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to guide...</p>
+</body>
+</html>

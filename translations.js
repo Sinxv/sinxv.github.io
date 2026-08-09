@@ -293,7 +293,7 @@ class TranslationManager {
         return result;
     }
 
-    renderRichText(value) {
+    renderRichText(value, container = null) {
         if (value === null || value === undefined) {
             return '';
         }
@@ -311,17 +311,18 @@ class TranslationManager {
                 parts.push('');
             } else {
                 const lower = token.toLowerCase();
-                if (['concept', 'np', 'mech', 'forced mech', 'forced', 'forced mech,', 'derivated from', 'derived from'].includes(lower)) {
-                    parts.push('');
+                if (['concept', 'np', 'mech', 'forced mech', 'forced', 'forced mech,', 'derivated from', 'derived from', 'attribute'].includes(lower)) {
+                    parts.push(token); // Just the word without brackets
                 } else if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(token)) {
                     parts.push(match);
                 } else {
                     const label = token.replace(/^derivated from\s+/i, '').replace(/^derived from\s+/i, '').trim();
                     const id = this.getMechAnchor(label);
                     if (id && document.getElementById(id)) {
-                        parts.push(`<a href="#${id}" class="mech-reference" style="color:${this.getPrimaryColor()};">${label}</a>`);
+                        parts.push(`<a href="#${id}" class="mech-reference" data-mech-anchor="${id}" style="color:${this.getPrimaryColor()};">${label}</a>`);
                     } else {
-                        parts.push(label);
+                        // Use HTML entities to preserve <> for resolveMechReferences
+                        parts.push(`&lt;${token}&gt;`);
                     }
                 }
             }
@@ -340,54 +341,21 @@ class TranslationManager {
         return color || '#8b5cf6';
     }
 
-    getMechAnchor(label) {
-        const normalized = label.toLowerCase();
-        const anchors = {
-            'jump rope': 'jump-rope',
-            'altar connection': 'altar-connection',
-            'create vortex': 'create-vortex',
-            'spider web mark': 'spider-web-mark',
-            'mark of silence': 'mark-of-silence',
-            'slam down': 'slam-down',
-            'jump and drop': 'jump-and-drop',
-            'abyss gate': 'abyss-gate',
-            'blackout': 'blackout',
-            'spider web explosion': 'spider-web-explosion',
-            'space connection': 'space-connection',
-            'energy concentration': 'energy-concentration',
-            'current adaptation': 'current-adaptation',
-            'starlight explosion': 'starlight-explosion',
-            'targeted laser': 'abyss-targeted-laser',
-            'red target': 'red-target',
-            'blue target': 'blue-target',
-            'create current': 'create-current',
-            'nightmare prison': 'nightmare-prison',
-            'nightmare orb': 'nightmare-orb',
-            'dream eater': 'dream-eater',
-            'dark vortex': 'dark-vortex',
-            'shape link': 'shape-link',
-            'darkness swipe': 'darkness-swipe',
-            'orb barrage': 'orb-barrage',
-            'meteor': 'meteor',
-            'berserk': 'abyss-berserk',
-            'release of unstable power': 'release-of-unstable-power',
-            'devour': 'devour',
-            'find the space': 'find-the-space',
-            'connection of strong power': 'connection-of-strong-power',
-            'infusion of strong power': 'infusion-of-strong-power',
-            'reverse gravity': 'reverse-gravity',
-            'continuous attack': 'continuous-attack',
-            'gravity field': 'gravity-field',
-            'flames of abyss': 'flames-of-abyss',
-            'pierce': 'pierce',
-            'attribute': 'shadow-abyss-attribute',
-            'falling orbs' : 'falling-orbs',
-            'instant kill laser' : 'instant-kill-laser',
-            'absorb' : 'abyss-absorb',
-            'space shift' : 'space-shift'
-        };
-
-        return anchors[normalized] || null;
+    getMechAnchor(label, container = null) {
+        const id = label.toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '');
+        
+        // Check in specific container first, then fall back to document
+        if (container) {
+            if (container.querySelector(`#${id}`) || container.id === id) {
+                return id;
+            }
+        }
+        if (document.getElementById(id)) {
+            return id;
+        }
+        return null;
     }
 
     translateElements(context = document) {
@@ -458,5 +426,24 @@ document.addEventListener('DOMContentLoaded', () => {
         langSelect.addEventListener('change', (e) => {
             translationManager.switchLanguage(e.target.value);
         });
+    }
+});
+
+document.body.addEventListener('click', (event) => {
+    const link = event.target.closest('.mech-reference[data-mech-anchor]');
+    if (!link) return;
+    
+    const modal = link.closest('.guide-modal');
+    if (!modal) return; // Not in a modal, let normal anchor behavior work
+    
+    event.preventDefault();
+    const targetId = link.getAttribute('data-mech-anchor');
+    const target = modal.querySelector(`#${targetId}`);
+    if (target) {
+        const scrollContainer = modal.querySelector('.guide-modal-scroll');
+        if (scrollContainer) {
+            const targetTop = target.getBoundingClientRect().top - scrollContainer.getBoundingClientRect().top + scrollContainer.scrollTop - 20;
+            scrollContainer.scrollTo({ top: targetTop, behavior: 'smooth' });
+        }
     }
 });

@@ -104,10 +104,10 @@ function createElement(tag, attributes = {}, children = []) {
     return element;
 }
 
-function getRenderedText(text) {
+function getRenderedText(text, container = null) {
     const raw = String(text === null || text === undefined ? '' : text);
     if (window.translationManager?.renderRichText) {
-        return window.translationManager.renderRichText(raw);
+        return window.translationManager.renderRichText(raw, container);
     }
     return raw;
 }
@@ -118,11 +118,11 @@ function createFragmentFromHtml(html) {
     return document.importNode(template.content, true);
 }
 
-function renderParagraphElements(value) {
+function renderParagraphElements(value, container = null) {
     const resolved = getLocalizedValue(value);
     const lines = Array.isArray(resolved) ? resolved : [resolved];
     return lines.flatMap(line => {
-        const rendered = getRenderedText(line);
+        const rendered = getRenderedText(line, container);
         if (!rendered) {
             return [];
         }
@@ -141,7 +141,7 @@ function renderGroupTitle(title) {
     return createElement('div', { class: 'guide-group-title' }, [title]);
 }
 
-const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt']);
+const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'variants','separation']);
 const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description']);
 
 function isLangLeaf(value) {
@@ -154,14 +154,20 @@ function isLangLeaf(value) {
 function renderMechanicEntry(item) {
     const wrapper = createElement('div', { class: 'mech' }, []);
 
-    // Name with status icons
     const nameText = getLocalizedValue(item.name);
     if (nameText) {
+        const anchorId = nameText.toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '');
+        wrapper.id = anchorId;
+        
         const nameWrapper = createElement('div', { class: 'mechname-wrapper' }, []);
-        const nameEl = createElement('div', { class: 'mechname' }, [nameText]);
+        const renderedName = window.translationManager?.renderRichText 
+            ? window.translationManager.renderRichText(nameText) 
+            : nameText;
+        const nameEl = createElement('div', { class: 'mechname', html: renderedName }, []);
         nameWrapper.appendChild(nameEl);
         
-        // Add status icons right after the name
         const statusIcons = renderStatusIcons(item, true);
         statusIcons.forEach(icon => nameWrapper.appendChild(icon));
         
@@ -181,6 +187,12 @@ function renderMechanicEntry(item) {
     if (item.variants) {
         const variantsSection = renderVariantsSection(item.variants);
         if (variantsSection) wrapper.appendChild(variantsSection);
+    }
+
+    if (item.img) {
+        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+        renderGenericValue(mechImgWrapper, 'img', item.img);
+        wrapper.appendChild(mechImgWrapper);
     }
 
     if (item.note) {
@@ -223,20 +235,61 @@ function renderMechanicEntry(item) {
     }
 
     Object.entries(item).forEach(([key, value]) => {
-        // Skip known keys, variants, and status keys
-        if (MECH_KNOWN_KEYS.has(key) || key === 'variants' || MECH_STATUS_CONFIG[key] || !value || typeof value !== 'object') {
-            return;
-        }
+    if (MECH_KNOWN_KEYS.has(key) || key === 'variants' || MECH_STATUS_CONFIG[key] || !value || typeof value !== 'object') {
+        return;
+    }
 
-        if (isLangLeaf(value)) {
-            renderParagraphElements(value).forEach(el => wrapper.appendChild(el));
-        } else {
-            const derivedWrapper = createElement('div', { class: 'concept' }, []);
-            derivedWrapper.appendChild(renderMechanicEntry(value));
-            wrapper.appendChild(derivedWrapper);
+    if (isLangLeaf(value)) {
+        renderParagraphElements(value).forEach(el => wrapper.appendChild(el));
+    } else if (value.name && !value.description && !value.forcedat) {
+        // Simple nested object with just a name - treat as concept
+        const derivedWrapper = createElement('div', { class: 'concept' }, []);
+        derivedWrapper.appendChild(renderMechanicEntry(value));
+        wrapper.appendChild(derivedWrapper);
+    } else {
+        // Has name + description/forcedat - render as styled sub-mech
+        const subWrapper = createElement('div', { class: 'concept sub-mech' }, []);
+        
+        // Add the name as a ctitle
+        const nameText = getLocalizedValue(value.name);
+        if (nameText) {
+            subWrapper.appendChild(createElement('div', { class: 'ctitle' }, [nameText]));
         }
-    });
-
+        
+        // Add forcedat if present
+        if (value.forcedat) {
+            subWrapper.appendChild(createElement('div', { class: 'mechforcedat' }, [getLocalizedValue(value.forcedat)]));
+        }
+        
+        // Add description
+        if (value.description) {
+            renderParagraphElements(value.description).forEach(el => subWrapper.appendChild(el));
+        }
+        
+        // Add img if present
+        if (value.img) {
+            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(mechImgWrapper, 'img', value.img);
+            subWrapper.appendChild(mechImgWrapper);
+        }
+        
+        // Add note if present
+        if (value.note) {
+            renderParagraphElements(value.note).forEach(el => {
+                el.classList.add('mechnote');
+                subWrapper.appendChild(el);
+            });
+        }
+        
+        // Add variants if present
+        if (value.variants) {
+            const variantsSection = renderVariantsSection(value.variants);
+            if (variantsSection) subWrapper.appendChild(variantsSection);
+        }
+        
+        wrapper.appendChild(subWrapper);
+    }
+});
     return wrapper;
 }
 
@@ -296,8 +349,21 @@ function renderMechanicGroup(label, mechanics) {
     const group = createElement('div', { class: 'mechanic-group' }, []);
     group.appendChild(createElement('div', { class: 'mechanic-group-title' }, [label]));
 
-    Object.values(mechanics).forEach(item => {
-        group.appendChild(renderMechanicEntry(item));
+    const entries = Object.entries(mechanics);
+    
+    entries.forEach(([key, item]) => {
+        if (item && typeof item === 'object' && item.separation !== undefined) {
+            const sepText = getLocalizedValue(item.separation);
+            if (sepText) {
+                // Run through renderRichText if available, otherwise use as-is
+                const renderedText = window.translationManager?.renderRichText 
+                    ? window.translationManager.renderRichText(sepText) 
+                    : sepText;
+                group.appendChild(createElement('div', { class: 'mech-separation', html: renderedText }, []));
+            }
+        } else {
+            group.appendChild(renderMechanicEntry(item));
+        }
     });
 
     return group;
@@ -849,7 +915,7 @@ function renderGenericSection(sectionKey, providedSection) {
     return sectionWrapper;
 }
 
-function renderGuideContent(entry) {
+function renderGuideContent(entry, container = null) {
     const contentWrapper = createElement('div', { class: 'guide-content' }, []);
 
     if (entry.introKey) {
@@ -931,12 +997,13 @@ function renderVariantBlock(variantData, variantKey) {
     
     const wrapper = createElement('div', { class: `variant-block ${config.cssClass}` }, []);
     
-    // Variant header
     const headerText = getLocalizedValue(variantData.name) || config.defaultName;
-    const header = createElement('div', { class: `variant-header ${config.headerClass}` }, [headerText]);
+    const renderedHeader = window.translationManager?.renderRichText 
+        ? window.translationManager.renderRichText(headerText) 
+        : headerText;
+    const header = createElement('div', { class: `variant-header ${config.headerClass}`, html: renderedHeader }, []);
     wrapper.appendChild(header);
     
-    // Variant description
     if (variantData.description) {
         renderParagraphElements(variantData.description).forEach(el => {
             el.classList.add('variant-content');
@@ -1038,18 +1105,11 @@ function createGuideModal(entry) {
         }
     });
 
-    // Debug: Check if variant blocks exist in scrollContent
-    console.log('Variant blocks in scrollContent:');
-    console.log('  diff3:', scrollContent.querySelector('.variant-block-diff3'));
-    console.log('  solo:', scrollContent.querySelector('.variant-block-solo'));
-    console.log('  any variant-block:', scrollContent.querySelectorAll('.variant-block').length);
-    console.log('  variants-container:', scrollContent.querySelector('.variants-container'));
+    // Now that the modal is in the DOM, resolve mech references
+    resolveMechReferences(scrollContent);
 
-    // Use a small delay to ensure DOM is ready
     setTimeout(() => {
-        console.log('After timeout - variant blocks:', scrollContent.querySelectorAll('.variant-block').length);
         const controlPanel = createControlPanel(scrollContent);
-        console.log('Control panel created:', controlPanel);
         if (controlPanel) {
             modal.appendChild(controlPanel);
             setupControlPanelListeners(controlPanel, modal);
@@ -1065,28 +1125,43 @@ function createGuideModal(entry) {
 const MECH_STATUS_CONFIG = {
     unavoidable: {
         icon: 'images/unavoidable.png',
-        info: 'Resurrection titles do not work during this mechanic.',
+        info: 'Resurrection titles and effects do not work during this mechanic.',
         class: 'mech-status-unavoidable'
     },
     iframe: {
         icon: 'images/iframe.png',
-        info: 'This mechanic bypasses invincibility frames.',
+        info: 'Invincibility frames are bypassed by this mechanic.',
         class: 'mech-status-iframe'
     },
     groggy: {
         icon: 'images/groggy.png',
-        info: 'After mechanic is completed successfully, the boss enters groggy state.',
+        info: 'The boss enters groggy state after mechanic completion.',
         class: 'mech-status-groggy'
     },
     heal: {
         icon: 'images/heal.png',
-        info: 'Failing to meet the condition results in boss healing.',
+        info: 'Failing to fulfill the mechanic clear condition results in boss healing.',
         class: 'mech-status-heal'
     },
     timed: {
         icon: 'images/timed.png',
-        info: 'This mechanic has a time limit before failure.',
+        info: 'This mech has a time limit until mechanic ends in failure if the clear condition is not fulfilled.',
         class: 'mech-status-timed'
+    },
+    deathtimed: {
+        icon: 'images/timed.png',
+        info: 'This mech has a time limit until mechanic ends in death if the clear condition is not fulfilled.',
+        class: 'mech-status-deathtimed'
+    },
+    magneticfield: {
+        icon: 'images/magneticfield.png',
+        info: 'This attack increases magnetic field size.',
+        class: 'mech-status-magneticfield'
+    },
+    superarmor: {
+        icon: 'images/superarmor.png',
+        info: 'Super Armor is bypassed by this mechanic.',
+        class: 'mech-status-superarmor'
     }
 };
 
@@ -1159,6 +1234,201 @@ function renderStatusIcons(item, showText = false) {
     return icons;
 }
 
+function resolveMechReferences(container) {
+    if (!window.translationManager?.renderRichText) return;
+    
+    // Find all mech names in the container
+    const mechNames = new Set();
+    container.querySelectorAll('.mechname').forEach(el => {
+        const text = el.textContent.trim();
+        if (text) mechNames.add(text);
+    });
+    
+    container.querySelectorAll('.variant-header, .ctitle').forEach(el => {
+        const text = el.textContent.trim();
+        if (text) mechNames.add(text);
+    });
+    
+    console.log('resolveMechReferences - Found mech names:', Array.from(mechNames));
+    
+    if (mechNames.size === 0) return;
+    
+    const anchorMap = new Map();
+    mechNames.forEach(name => {
+        const anchor = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        anchorMap.set(anchor, name);
+    });
+    
+    console.log('resolveMechReferences - Anchor map:', Array.from(anchorMap.entries()));
+    
+    // Walk ALL text nodes (not just ones with <>)
+    const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_TEXT,
+        {
+            acceptNode: function(node) {
+                if (node.parentElement.tagName === 'SCRIPT' || 
+                    node.parentElement.tagName === 'STYLE' ||
+                    node.parentElement.closest('.mechname') ||
+                    node.parentElement.closest('.mech-reference') ||
+                    node.parentElement.closest('a') ||
+                    node.parentElement.closest('.glossary-term')) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        }
+    );
+    
+    const nodesToReplace = [];
+    let node;
+    while (node = walker.nextNode()) {
+        const text = node.textContent || '';
+        // Accept any node that contains < or could match a mech name
+        if (/</.test(text) || Array.from(anchorMap.keys()).some(k => text.toLowerCase().includes(k))) {
+            nodesToReplace.push(node);
+        }
+    }
+    
+    console.log('resolveMechReferences - Text nodes to process:', nodesToReplace.length);
+
+    console.log('resolveMechReferences - container HTML snippet:', container.innerHTML.substring(0, 500));
+    
+    nodesToReplace.forEach(node => {
+        const parent = node.parentElement;
+        const text = node.textContent;
+        
+        console.log('Processing text:', text.substring(0, 100));
+        
+        // Process <> patterns
+        let processed = text.replace(/<([^>]+)>/g, (match, token) => {
+            const trimmed = token.trim();
+            if (!trimmed) return '';
+            
+            // Skip HTML tags
+            if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
+                return match;
+            }
+            
+            const anchor = trimmed.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            console.log('  Checking token:', trimmed, '-> anchor:', anchor, 'exists:', anchorMap.has(anchor));
+            
+            if (anchorMap.has(anchor)) {
+                const color = window.translationManager?.getPrimaryColor?.() || '#ffe066';
+                return `<a class="mech-reference" data-mech-anchor="${anchor}" style="color:${color};cursor:pointer;">${trimmed}</a>`;
+            }
+            
+            // Not a mech - return the text without brackets
+            return trimmed;
+        });
+        
+        if (processed !== text) {
+            console.log('  Replacing node with processed HTML');
+            const span = document.createElement('span');
+            span.innerHTML = processed;
+            parent.replaceChild(span, node);
+        }
+    });
+}
+
+function processMechTokens(text, mechNames) {
+    return text.replace(/<([^>]+)>/g, (match, token) => {
+        const trimmed = token.trim();
+        if (!trimmed) return '';
+        
+        if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
+            return match;
+        }
+        
+        const anchorId = trimmed.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        const found = Array.from(mechNames).some(name => {
+            const nameAnchor = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            return nameAnchor === anchorId;
+        });
+        
+        if (found) {
+            return `<a class="mech-reference" data-mech-anchor="${anchorId}">${trimmed}</a>`;
+        }
+        
+        return trimmed;
+    });
+}
+
+// ============================================================
+// URL ROUTING & DEEP LINKING
+// ============================================================
+
+function updateUrlForGuide(guideId) {
+    const entry = guideData.find(item => item.id === guideId);
+    if (!entry) return;
+    
+    // Use hash-based URL: /guides.html#cop
+    const newUrl = `${window.location.origin}${window.location.pathname}#${entry.id}`;
+    window.history.pushState({ guideId: guideId }, '', newUrl);
+    
+    if (entry.meta) {
+        updateMetaTags(entry);
+    }
+}
+
+function updateMetaTags(entry) {
+    if (!entry.meta) return;
+    
+    const title = getLocalizedValue(entry.meta.title) || '';
+    const description = getLocalizedValue(entry.meta.description) || '';
+    const image = entry.meta.image || '';
+    const url = `${window.location.origin}${window.location.pathname}#${entry.id}`;
+    
+    document.title = title || document.title;
+    
+    updateMetaTag('og:title', title);
+    updateMetaTag('og:description', description);
+    updateMetaTag('og:image', image);
+    updateMetaTag('og:url', url);
+    updateMetaTag('twitter:title', title);
+    updateMetaTag('twitter:description', description);
+    updateMetaTag('twitter:image', image);
+    updateMetaTag('description', description);
+}
+
+function updateMetaTag(property, content) {
+    if (!content) return;
+    let meta = document.querySelector(`meta[property="${property}"]`) ||
+               document.querySelector(`meta[name="${property}"]`);
+    if (meta) meta.setAttribute('content', content);
+}
+
+function handlePopState(event) {
+    if (event.state && event.state.guideId) {
+        openGuide(event.state.guideId);
+    } else {
+        closeGuide();
+    }
+}
+
+// Also handle hash changes (for when someone navigates via hash directly)
+function handleHashChange() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const entry = guideData.find(item => item.id === hash);
+        if (entry) {
+            openGuide(entry.id);
+        }
+    }
+}
+
+function checkUrlForGuide() {
+    // Check hash on page load
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const entry = guideData.find(item => item.id === hash);
+        if (entry) {
+            setTimeout(() => openGuide(entry.id), 100);
+        }
+    }
+}
+
+// Update openGuide
 function openGuide(guideId) {
     const entry = guideData.find(item => item.id === guideId);
     if (!entry) {
@@ -1171,7 +1441,8 @@ function openGuide(guideId) {
     const overlay = createGuideModal(entry);
     document.body.appendChild(overlay);
     
-    // Use requestAnimationFrame to ensure DOM is ready
+    updateUrlForGuide(guideId);
+    
     requestAnimationFrame(() => {
         initConceptTriggers(overlay);
         initTableNotes(overlay);
@@ -1186,6 +1457,7 @@ function openGuide(guideId) {
     document.body.classList.add('guide-modal-open');
 }
 
+// Update closeGuide
 function closeGuide() {
     const overlay = document.getElementById(GUIDE_OVERLAY_ID);
     if (overlay) {
@@ -1195,7 +1467,11 @@ function closeGuide() {
         }, { once: true });
     }
     document.body.classList.remove('guide-modal-open');
+    
+    // Clear hash
+    window.history.pushState({}, '', window.location.pathname);
 }
+
 
 function getCategoryLabel(category) {
     const label = getTranslation(`general.guide_sections.${category}`);
@@ -1287,6 +1563,193 @@ function initializeGuideManager() {
 
     document.body.addEventListener('click', handleGuideLinkClick);
     document.addEventListener('keydown', handleEscapeKey);
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Handle mech reference clicks inside guide modal
+    setupMechReferenceHandler();
+    
+    checkUrlForGuide();
+}
+
+function setupMechReferenceHandler() {
+    document.body.addEventListener('click', (event) => {
+        const link = event.target.closest('.mech-reference[data-mech-anchor]');
+        if (!link) return;
+        
+        const modal = link.closest('.guide-modal');
+        if (!modal) return;
+        
+        event.preventDefault();
+        
+        const targetId = link.getAttribute('data-mech-anchor');
+        console.log('Looking for mech target:', targetId);
+        
+        // Try finding by ID first
+        let target = modal.querySelector(`#${CSS.escape(targetId)}`);
+        
+        // If not found, try finding by mechname text content
+        if (!target) {
+            const allMechs = modal.querySelectorAll('.mech[id]');
+            for (const mech of allMechs) {
+                if (mech.id === targetId) {
+                    target = mech;
+                    break;
+                }
+            }
+        }
+        
+        if (!target) {
+            console.warn('Mech target not found:', targetId);
+            return;
+        }
+        
+        console.log('Found target:', target, 'Scrolling...');
+        
+        const scrollContainer = modal.querySelector('.guide-modal-scroll');
+        if (!scrollContainer) return;
+        
+        // Save current scroll position
+        const previousScroll = scrollContainer.scrollTop;
+        
+        // Calculate position to center the target
+        const containerHeight = scrollContainer.clientHeight;
+        const targetHeight = target.offsetHeight;
+        const targetOffsetTop = target.offsetTop;
+        
+        let scrollTarget = targetOffsetTop - (containerHeight / 2) + (targetHeight / 2);
+        scrollTarget = Math.max(0, scrollTarget);
+        
+        // Scroll to target
+        scrollContainer.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+        
+        // Highlight the target after scroll completes
+        setTimeout(() => {
+            highlightMechTarget(target, scrollContainer);
+        }, 400); // Wait for smooth scroll
+        
+        // Show back button
+        showMechBackButton(modal, scrollContainer, previousScroll, target);
+    });
+}
+
+function highlightMechTarget(target, scrollContainer) {
+    // Remove any existing highlight
+    const existing = document.querySelector('.mech-highlight');
+    if (existing) existing.classList.remove('mech-highlight');
+    
+    // Add highlight
+    target.classList.add('mech-highlight');
+    
+    // Remove highlight when scrolling away or clicking back
+    const removeHighlight = () => {
+        target.classList.remove('mech-highlight');
+        scrollContainer.removeEventListener('scroll', scrollCheck);
+    };
+    
+    const scrollCheck = () => {
+        const targetRect = target.getBoundingClientRect();
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const isVisible = targetRect.bottom > containerRect.top && targetRect.top < containerRect.bottom;
+        
+        if (!isVisible) {
+            removeHighlight();
+        }
+    };
+    
+    scrollContainer.addEventListener('scroll', scrollCheck, { once: false });
+    
+    // Store cleanup function on the target
+    target._removeHighlight = removeHighlight;
+    
+    // Auto-remove after 8 seconds
+    target._highlightTimeout = setTimeout(removeHighlight, 8000);
+}
+
+function showMechBackButton(modal, scrollContainer, previousScroll, target) {
+    // Remove any existing back button
+    const existing = modal.querySelector('.mech-back-button');
+    if (existing) {
+        clearTimeout(existing._timeout);
+        existing.remove();
+    }
+    
+    // Remove highlight on previous target
+    const prevHighlight = document.querySelector('.mech-highlight');
+    if (prevHighlight && prevHighlight._removeHighlight) {
+        clearTimeout(prevHighlight._highlightTimeout);
+        prevHighlight._removeHighlight();
+    }
+    
+    const backBtn = document.createElement('button');
+    backBtn.className = 'mech-back-button';
+    backBtn.textContent = '← Back';
+    backBtn.addEventListener('click', () => {
+        scrollContainer.scrollTo({ top: previousScroll, behavior: 'smooth' });
+        backBtn.classList.remove('is-visible');
+        
+        // Remove highlight when clicking back
+        if (target._removeHighlight) {
+            clearTimeout(target._highlightTimeout);
+            target._removeHighlight();
+        }
+        
+        setTimeout(() => backBtn.remove(), 300);
+    });
+    
+    modal.appendChild(backBtn);
+    
+    // Small delay to trigger transition
+    requestAnimationFrame(() => {
+        backBtn.classList.add('is-visible');
+    });
+    
+    // Hide back button when target scrolls out of view
+    const scrollHandler = () => {
+        const targetRect = target.getBoundingClientRect();
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const isVisible = targetRect.bottom > containerRect.top && targetRect.top < containerRect.bottom;
+        
+        if (!isVisible) {
+            backBtn.classList.remove('is-visible');
+            setTimeout(() => {
+                if (!backBtn.classList.contains('is-visible')) {
+                    backBtn.remove();
+                }
+            }, 300);
+        } else {
+            backBtn.classList.add('is-visible');
+        }
+    };
+    
+    scrollContainer.addEventListener('scroll', scrollHandler, { once: false });
+    
+    // Clean up when modal closes
+    const observer = new MutationObserver(() => {
+        if (!document.contains(modal)) {
+            backBtn.remove();
+            scrollContainer.removeEventListener('scroll', scrollHandler);
+            observer.disconnect();
+        }
+    });
+    observer.observe(document.body, { childList: true });
+    
+    // Auto-hide after 10 seconds
+    const hideAfterDelay = setTimeout(() => {
+        backBtn.classList.remove('is-visible');
+        setTimeout(() => backBtn.remove(), 300);
+    }, 10000);
+    
+    backBtn._timeout = hideAfterDelay;
+    
+    // Reset timeout on interaction
+    backBtn.addEventListener('mouseenter', () => {
+        clearTimeout(backBtn._timeout);
+        backBtn._timeout = setTimeout(() => {
+            backBtn.classList.remove('is-visible');
+            setTimeout(() => backBtn.remove(), 300);
+        }, 5000);
+    });
 }
 
 window.openGuide = openGuide;

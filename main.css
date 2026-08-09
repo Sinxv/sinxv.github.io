@@ -676,6 +676,14 @@ a {
 .mech-reference {
     font-weight: 700;
     text-decoration: none;
+    color: var(--primary-light);
+    cursor: pointer;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.mech-reference:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 
 .glossary-term {
@@ -714,47 +722,55 @@ a {
     width: 100%;
 }
 
-.anchor-return-button {
+.mech-back-button {
     position: fixed;
     left: 50%;
-    bottom: 0px;
+    bottom: 80px;
     transform: translateX(-50%) translateY(120%);
-    z-index: 1000;
-    border: none;
-    padding: 5px 18px;
-    background: var(--primary-color);
-    color: white;
+    z-index: 1300;
+    border: 1px solid var(--primary-color);
+    padding: 8px 20px;
+    background: var(--card-bg);
+    color: var(--primary-color);
     font-weight: 700;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    font-size: 13px;
+    font-family: inherit;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
-    height: 25px;
-    width: 50%;
 }
 
-.anchor-return-button.is-top {
-    top: 60px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    bottom: auto;
-}
-
-.anchor-return-button.is-bottom {
-    top: auto;
-    bottom: 0px;
-        border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-}
-
-.anchor-return-button.is-visible {
+.mech-back-button.is-visible {
     opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
 }
 
+.mech-back-button:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
 
+.mech-highlight {
+    animation: mechHighlightPulse 2s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.mech-highlight::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 8px;
+    background: rgba(255, 224, 102, 0.08);
+    border: 1px solid rgba(255, 224, 102, 0.2);
+    z-index: -1;
+    animation: highlightGlow 0.6s ease-out;
+    pointer-events: none;
+}
 
 /* ============================================================
    7. GUIDE CONTENT: HEADINGS
@@ -1527,7 +1543,7 @@ input:checked + .slider:before {
 .guide-modal {
     position: relative;
     width: min(1200px, 100%);
-    max-height: min(98vh, 1000px);
+    max-height: min(97vh, 1100px);
     background: var(--card-bg);
     color: var(--text-color);
     border: 1px solid var(--border-color);
@@ -1951,11 +1967,25 @@ body.guide-modal-open {
 .mech-status-unavoidable img {
     filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1352%) hue-rotate(330deg) brightness(101%) contrast(101%);
 }
+
+.mech-status-deathtimed img {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1352%) hue-rotate(330deg) brightness(91%) contrast(101%);
+}
+
 .mech-status-iframe img {
     filter: brightness(0) saturate(100%) invert(60%) sepia(72%) saturate(320%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
+
+.mech-status-superarmor img {
+    filter: brightness(0) saturate(90%) invert(60%) sepia(72%) saturate(270%) hue-rotate(170deg) brightness(90%) contrast(80%);
+}
+
 .mech-status-groggy img {
     filter: brightness(0) saturate(100%) invert(80%) sepia(60%) saturate(500%) hue-rotate(360deg) brightness(105%) contrast(100%);
+}
+
+.mech-status-magneticfield img {
+    filter: brightness(0) saturate(100%) invert(80%) sepia(60%) saturate(600%) hue-rotate(360deg) brightness(125%) contrast(100%);
 }
 
 .mech-status-heal img {
@@ -1966,10 +1996,75 @@ body.guide-modal-open {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%);
 }
 
-.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed {
+.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed, .mech-status-deathtimed, .mech-status-magneticfield, .mech-status-superarmor {
     overflow-y: hidden;
     align-self:flex-end;
     bottom: 10px;
+}
+
+.mech-separation {
+    margin: 20px 0;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mech-separation::before,
+.mech-separation::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+}
+
+.mech-separation::before {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-color)
+    );
+}
+
+.mech-separation::after {
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        transparent
+    );
+}
+
+.sub-mech {
+    margin: 12px 0 12px 16px;
+    padding: 12px 16px;
+    border-left: 2px solid var(--border-color);
+    border-radius: 0 6px 6px 0;
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.sub-mech .ctitle {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.sub-mech .mechforcedat {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.sub-mech p {
+    font-size: 0.95rem;
 }
 
 /* ============================================================
@@ -2176,6 +2271,43 @@ body.lightbox-open {
     overflow: hidden;
 }
 
+.mech-image-wrapper {
+    margin: 16px 0;
+    width: 100%;
+}
+
+.mech-image-wrapper .guide-image-group {
+    margin: 0;
+    width: 100%;
+}
+
+.mech-image-wrapper .image-layer {
+    width: 100%;
+}
+
+.mech-image-wrapper .guide-image-figure {
+    width: 100%;
+    max-width: 100%;
+}
+
+.mech-image-wrapper .guide-image-figure img {
+    width: 95%;
+    max-width: 100%;
+}
+
+.mech-image-wrapper .guide-image {
+    display: block;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.mech-image-wrapper .guide-image-caption {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    width: 100%;
+}
+
 /* ============================================================
    18. ANIMATIONS
    ============================================================ */
@@ -2224,6 +2356,17 @@ body.lightbox-open {
 @keyframes zoomIn {
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes mechHighlightPulse {
+    0% { background-color: rgba(255, 224, 102, 0); }
+    20% { background-color: rgba(255, 224, 102, 0.12); }
+    100% { background-color: rgba(255, 224, 102, 0.04); }
+}
+
+@keyframes highlightGlow {
+    0% { opacity: 0; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 /* ============================================================
@@ -2448,7 +2591,8 @@ h2, h3,
         width: fit-content;
     }
     .mechforcedat, .mechfollowup {
-        padding-left: 10px;
+        color: var(--primary-light);
+        font-size: 16px;
         width: fit-content;
     }
 }

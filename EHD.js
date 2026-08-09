@@ -2521,6 +2521,9 @@ export const data = {
             LastHope: {
                 en: "Increases attack power by 50% and cooldown acceleration by 1.5x",
             },
+            LightOfFanaticism: {
+                en: "Increases damage taken by 2% each stack. Lasts 2 seconds.",
+            },
             Groggy: {
                 en: "State where a boss/enemy is completely stopped in place and takes increased damage."
             },
@@ -4000,25 +4003,32 @@ export const data = {
                             np: {
                                 swingincenseburner: {
                                     name: { en: "Swing Incense Burner", es: "Balanceo del Incensario", kr: "향로 휘두르기", jp: "香炉振り回し", br: "Balançar o Incensário" },
-                                    description: { en: ["The Abyss Worshipper swings the incense burner it's holding twice. This is a basic attack pattern that ignores iframes but doesn't deal significant damage. However, it ignores Super Armor and pushes back slightly."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    superarmor: true,
+                                    description: { en: ["The Abyss Worshipper swings the incense burner it's holding twice. Doesn't deal significant damage."], es: "", kr: "", jp: "", br: "" }
                                 }
                             },
                             mechs: {
                                 altarconnection: {
                                     name: { en: "Altar Connection", es: "Conexión del Altar", kr: "제단 연결", jp: "祭壇接続", br: "Conexão do Altar" },
-                                    description: { en: ["The Abyss Worshipper randomly targets one altar and fires a laser at it. If the laser hits the altar, the altar's gauge fills up rapidly. Players can block the laser by taking the hit instead. The laser ignores iframes and deals moderate damage. If one person blocks the laser for too long, the stacks of the <Light of Fanaticism> debuff, which increases damage taken, will accumulate. When the boss's HP gets low, it will target two altars simultaneously. The <Light of Fanaticism> debuff lasts for 2 seconds."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Worshipper randomly targets one altar and fires a laser at it. If the laser hits the altar, the altar's gauge fills up rapidly. Players can block the laser by taking the hit instead. The laser deals moderate damage. If one person blocks the laser for too long, the stacks of the Light of Fanaticism debuff will accumulate. When the boss's HP gets low, it will target two altars simultaneously."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 placeincenseburner: {
                                     name: { en: "Place Incense Burner", es: "Colocar Incensario", kr: "향로 설치", jp: "香炉設置", br: "Colocar Incensário" },
-                                    description: { en: ["The Abyss Worshipper places an incense burner near the player. If you attack the boss while facing the burner, your HP and MP will decrease rapidly, ignoring iframes. You are not affected if your back is turned to the burner."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Worshipper places an incense burner near the player. If you attack the boss while facing the burner, your HP and MP will decrease rapidly. You are not affected if your back is turned to the burner."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 createvortex: {
                                     name: { en: "Create Vortex", es: "Crear Vórtice", kr: "소용돌이 생성", jp: "渦生成", br: "Criar Vórtice" },
-                                    description: { en: ["The Abyss Worshipper shoots something into the air, and a dark purple vortex appears on the ground at a random location. If the Abyss Worshipper stands in the vortex, it recovers HP. Touching the vortex ignores iframes but doesn't deal high damage. If a player stands in the vortex, it gradually shrinks and disappears; otherwise, it continues to grow. If you have any skills on cooldown while inside the vortex, their cooldown time increases. This can overlap with patterns like the laser; other synergy dealers might step on it as needed. However, the higher the DPS, the more likely it is to ignore it unless it's summoned directly next to the boss. Additionally, if it spawns near an altar, it will rapidly fill the altar's gauge, so it's best to step on and remove it quickly."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Worshipper shoots something into the air, and a dark purple vortex appears on the ground at a random location. If the Abyss Worshipper stands in the vortex, it recovers HP. Touching the vortex doesn't deal high damage. If a player stands in the vortex, it gradually shrinks and disappears; otherwise, it continues to grow. If you have any skills on cooldown while inside the vortex, their cooldown time increases. This can overlap with patterns like the laser; other synergy dealers might step on it as needed. However, the higher the DPS, the more likely it is to ignore it unless it's summoned directly next to the boss. Additionally, if it spawns near an altar, it will rapidly fill the altar's gauge, so it's best to step on and remove it quickly."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 jumprope: {
                                     name: { en: "Jump Rope", es: "Saltar la Cuerda", kr: "줄넘기", jp: "縄跳び", br: "Pular Corda" },
-                                    description: { en: ["The Abyss Worshipper forcibly moves all players to the center, Fixes MP to 0 and makes them jump rope. The damage is proportional to HP and ignores iframes. To prevent players from using tricks like staying in the air for too long, jumping too high or going too low will result in being forcibly summoned back to the center. Recovering HP or MP with potions is impossible during this pattern, and all resurrection effects are ignored. However, HP recovery itself is not blocked, so using effects like Honey Honey Waffles, Light Orbs, or Fever Effect to recover HP can make it a bit easier. Without such means, a player with 100% HP can survive up to 2 hits and will die on the 3rd hit."], es: "", kr: "", jp: "", br: "" }
+                                    unavoidable: true,
+                                    iframe: true,
+                                    description: { en: ["MP is fixed to 0 during this mechanic.","The Abyss Worshipper forcibly moves all players to the center and makes them jump rope. The damage is proportional to HP. To prevent players from using tricks like staying in the air for too long, jumping too high or going down will result in being forcibly summoned back to the center and stunned for some seconds. However, HP recovery itself is not blocked, so using effects like Honey Honey Waffles, Light Orbs, or Fever Effect to recover HP can make it a bit easier. Without such means, a player with 100% HP can survive up to 2 hits and will die on the 3rd hit."], es: "", kr: "", jp: "", br: "" }
                                 }
                             }
                         },
@@ -4032,7 +4042,8 @@ export const data = {
                                 },
                                 markofsilence: {
                                     name: { en: "Mark of Silence", es: "Marca del Silencio", kr: "침묵의 표식", jp: "沈黙のマーク", br: "Marca do Silêncio" },
-                                    description: { en: ["The Abyss Follower marks the player with a diamond-shaped mark and creates a diamond-shaped projectile that tracks down his position. Its size is similar to the Spider Web Mark, which can be confusing, but the mark itself is larger, so it becomes easier to distinguish with practice. Getting hit deals fatal damage to the marked target, ignoring iframes. If they survive, they are silenced. If the marked target looks in the direction of projectile for about 4-5 seconds, it disappears."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Follower marks the player with a diamond-shaped mark and creates a diamond-shaped projectile that tracks down his position. Its size is similar to the Spider Web Mark, which can be confusing, but the mark itself is larger, so it becomes easier to distinguish with practice. Getting hit deals lethal damage to the marked target and if they survive, they are silenced. If the marked target looks in the direction of projectile for about 4-5 seconds, it disappears."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 abyssgate: {
                                     name: { en: "Abyss Gate", es: "Puerta del Abismo", kr: "심연의 문", jp: "深淵の門", br: "Portão do Abismo" },
@@ -4049,21 +4060,28 @@ export const data = {
                                 },
                                 blackout: {
                                     name: { en: "Blackout", es: "Oscurecimiento", kr: "암전", jp: "暗転", br: "Blecaute" },
-                                    description: { en: ["The boss room turns dark, 1 incense burner is placed around the area and it must be destroyed using command attacks or active skills. Using any other skill results in a stun, after which the Abyss Follower approaches and instantly kills the player, ignoring all resurrection effects and iframes. If the incense burner isn't destroyed within the time limit, the area around the character also turns dark, leading to an instant kill that ignores resurrection and iframes. Usually, normal attacks or active skills are used, but the instant kill condition only applies to skills used during the blackout; skills cast before it are safe. Therefore, using long duration skills before the blackout can instantly destroy the burner when it spawns."], es: "", kr: "", jp: "", br: "" }
+                                    unavoidable: true,
+                                    iframe: true,
+                                    deathtimed: true,
+                                    description: { en: ["The boss room turns dark, 1 incense burner is placed around the area and it must be destroyed using command attacks or active skills. Using any other skill results in a stun, after which the Abyss Follower approaches and instantly kills the player. Usually, normal attacks or active skills are used, but the instant kill condition only applies to special active skills used during the blackout; the ones cast before it are safe. Therefore, using long duration skills before the blackout can instantly destroy the burner when it spawns."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 spiderwebexplosion: {
                                     name: { en: "Spider Web Explosion", es: "Explosión de Telaraña", kr: "거미줄 폭발", jp: "蜘蛛の巣爆発", br: "Explosão de Teia de Aranha" },
-                                    description: { en: ["The Abyss Follower moves to the center of the room and deploys a massive spider web. It shows several warnings where one of the four directions (up (w), down(s), left(a), right(d)) lights up sequentially. After the warnings, explosions occur in that order. Touching an explosion deals fatal damage that ignores iframes but not resurrection effects. Areas that did not light up are safe, so players must move there. The pattern starts with 4 explosions, but the number increases by 2 each time it's cast, up to a maximum of 8. Type the safe directions in chat (e.g., wasd (up then left then down then right)). Unlike other major patterns, there's no resurrection restriction here, so if reaching the safe zone seems impossible, using resurrection effects to survive is an option."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Follower moves to the center of the room and deploys a massive spider web. It shows several warnings where one of the four directions (up (w), down(s), left(a), right(d)) lights up sequentially. After the warnings, explosions occur in that order. Touching an explosion deals lethal damage. Areas that did not light up are safe, so players must move there. The pattern starts with 4 explosions, but the number increases by 2 each time it's cast, up to a maximum of 8. Type the safe directions in chat (e.g., wasd (up then left then down then right))."], es: "", kr: "", jp: "", br: "" }
                                 }
                             },
                             np: {
                                 slamdown: {
                                     name: { en: "Slam Down", es: "Azote", kr: "내려찍기", jp: "叩きつけ", br: "Esmagar" },
-                                    description: { en: ["The Abyss Follower raises its front legs, slams them down, and then lifts and pushes players away. This is a basic attack pattern that ignores iframes and Super Armor. It deals surprisingly high damage. The action of raising the front legs and the slam are separate and occasionally it might turn around and slam, so don't be careless just because you're behind the boss."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    superarmor: true,
+                                    description: { en: ["The Abyss Follower raises its front legs, slams them down, and then lifts and pushes players away. It deals surprisingly high damage. The action of raising the front legs and the slam are separate and occasionally it might turn around and slam, so don't be careless just because you're behind the boss."], es: "", kr: "", jp: "", br: "" }
                                 },
                                 jumpanddrop: {
                                     name: { en: "Jump and Drop", es: "Salto y Caída", kr: "점프 후 낙하", jp: "ジャンプ＆ドロップ", br: "Pular e Cair" },
-                                    description: { en: ["The Abyss Follower jumps very high and then drops down onto a random party member. The damage is high for a basic attack and ignores iframes, so if your HP is low or you've just returned from the purple room of the Abyss Gate, you might die. This pattern triggers when the player is far from the Abyss Follower for an extended period and has almost no internal cooldown, so sticking close to the boss while DPS-ing will prevent it."], es: "", kr: "", jp: "", br: "" }
+                                    iframe: true,
+                                    description: { en: ["The Abyss Follower jumps very high and then drops down onto a random party member. The damage is high for a basic attack, so if your HP is low or you've just returned from the purple room of the Abyss Gate, you might die. This pattern triggers when the player is far from the Abyss Follower for an extended period and has almost no internal cooldown, so sticking close to the boss while DPS-ing will prevent it."], es: "", kr: "", jp: "", br: "" }
                                 }
                             }
                         }
@@ -4425,27 +4443,40 @@ export const data = {
                                     forcedat: { en: "After all <Meteor>s are destroyed" },
                                     description: { en: ["The King of Abyss acts as if letting out a huge roar. After a moment, the screen darkens, and the area shifts to the back part of the map. Then, it randomly uses one of the ultimate patterns seen from previous raid bosses (Dungeons 1~3). All these patterns ignore iframes and all resurrection effects."], es: "", kr: "", jp: "", br: "" },
                                     jumprope: {
-                                        name: { en: "Abyss Worshipper's <Jump Rope>", es: "Saltar la Cuerda del Adorador del Abismo", kr: "심연 숭배자의 줄넘기", jp: "深淵崇拝者の縄跳び", br: "Pular Corda do Adorador do Abismo" },
+                                        name: { en: "Abyss Worshipper's Jump Rope", es: "Saltar la Cuerda del Adorador del Abismo", kr: "심연 숭배자의 줄넘기", jp: "深淵崇拝者の縄跳び", br: "Pular Corda do Adorador do Abismo" },
+                                        unavoidable: true,
+                                        iframe: true,
                                         description: { en: ["The jump rope pattern from Sunken Holy Ground Phase 1. The speed and timing are somewhat different, and there's a hole in the center."], es: "", kr: "", jp: "", br: "" }
                                     },
                                     spiderwebexplosion: {
-                                        name: { en: "Abyss Follower's <Spider Web Explosion>", es: "Explosión de Telaraña del Seguidor del Abismo", kr: "심연 추종자의 거미줄 폭발", jp: "深淵の追従者の蜘蛛の巣爆発", br: "Explosão de Teia de Aranha do Seguidor do Abismo" },
+                                        name: { en: "Abyss Follower's Spider Web Explosion", es: "Explosión de Telaraña del Seguidor del Abismo", kr: "심연 추종자의 거미줄 폭발", jp: "深淵の追従者の蜘蛛の巣爆発", br: "Explosão de Teia de Aranha do Seguidor do Abismo" },
+                                        unavoidable: true,
+                                        iframe: true,
                                         description: { en: ["The spider web explosion pattern from Sunken Holy Ground Phase 2. It shows a total of 8 positions before the explosion pattern occurs. The safe zones are narrower than the original, and the upper platform is particularly difficult, making it hard for low-mobility characters."], es: "", kr: "", jp: "", br: "" }
                                     },
                                     instantkilllaser: {
-                                        name: { en: "Dreaming Hatchling's <Instant Kill Laser>", es: "Láser de Muerte Instantánea de la Cría Soñadora", kr: "꿈꾸는 새끼의 즉사 레이저", jp: "夢見る幼生の即死レーザー", br: "Laser de Morte Instantânea do Filhote Sonhador" },
+                                        name: { en: "Dreaming Hatchling's Instant Kill Laser", es: "Láser de Muerte Instantánea de la Cría Soñadora", kr: "꿈꾸는 새끼의 즉사 레이저", jp: "夢見る幼生の即死レーザー", br: "Laser de Morte Instantânea do Filhote Sonhador" },
+                                        unavoidable: true,
+                                        iframe: true,
                                         description: { en: ["The laser pattern from Blooming Mineral Field Phase 1. Used once. As in the original, it first shows the laser trajectories, then fires, so quickly move to the safe zone."], es: "", kr: "", jp: "", br: "" }
                                     },
                                     starlightexplosion: {
-                                        name: { en: "Awakened Myuriconus' <Starlight Explosion>", es: "Explosión de Luz Estelar de Myuriconus Despertado", kr: "각성한 뮤리코누스의 별빛 폭발", jp: "覚醒したミュリコヌスの星明かり爆発", br: "Explosão de Luz Estelar do Myuriconus Despertado" },
+                                        name: { en: "Awakened Myuriconus' Starlight Explosion", es: "Explosión de Luz Estelar de Myuriconus Despertado", kr: "각성한 뮤리코누스의 별빛 폭발", jp: "覚醒したミュリコヌスの星明かり爆発", br: "Explosão de Luz Estelar do Myuriconus Despertado" },
+                                        unavoidable: true,
+                                        iframe: true,
+                                        deathtimed: true,
                                         description: { en: ["The starlight explosion pattern from Blooming Mineral Field Phase 2."], es: "", kr: "", jp: "", br: "" }
                                     },
                                     darknessswipe: {
-                                        name: { en: "Dream Eater's <Darkness Swipe>", es: "Zarpazo de Oscuridad del Devorador de Sueños", kr: "드림 이터의 어둠의 스와이프", jp: "ドリームイーターの闇のスワイプ", br: "Golpe das Trevas do Devorador de Sonhos" },
+                                        name: { en: "Dream Eater's Darkness Swipe", es: "Zarpazo de Oscuridad del Devorador de Sueños", kr: "드림 이터의 어둠의 스와이프", jp: "ドリームイーターの闇のスワイプ", br: "Golpe das Trevas do Devorador de Sonhos" },
+                                        unavoidable: true,
+                                        iframe: true,
                                         description: { en: ["The darkness swipe pattern from Nightmare's Crib Phase 1. As in the original, it shows the trajectory of the swipes before executing. The number of swipes increases from 1-2 to 4."], es: "", kr: "", jp: "", br: "" }
                                     },
                                     fallingorbs: {
-                                        name: { en: "Nightmare Keeper's <Falling Orbs>", es: "Caída de Orbes del Guardián de la Pesadilla", kr: "악몽의 수호자의 낙하 오브", jp: "悪夢の守護者の落下オーブ", br: "Queda de Orbes do Guardião do Pesadelo" },
+                                        name: { en: "Nightmare Keeper's Falling Orbs", es: "Caída de Orbes del Guardián de la Pesadilla", kr: "악몽의 수호자의 낙하 오브", jp: "悪夢の守護者の落下オーブ", br: "Queda de Orbes do Guardião do Pesadelo" },
+                                        unavoidable: true,
+                                        iframe: true,
                                         description: { en: ["The pattern from Nightmare's Crib Phase 2. It drops orbs as in the original. The number of orbs is significantly increased; it occurs 3 times, each dropping 5 lines of orbs."], es: "", kr: "", jp: "", br: "" }
                                     }
                                 },
@@ -6721,30 +6752,31 @@ export const data = {
                             }
                         }
                     },
-                    concepts: {
-                        magneticfield: {
-                            name: { en: "Magnetic Field"},
-                            description: { en: ["Plus & Minus Charge Magnetic Field: at the beginning of the phase, all players will get an electron charge that will last through the entire phase. 3 random players get blue (positive / +) charge, and the remaining 3 get red (negative / -) charge. Same charges repel and stun players that contact, it’s recommended to be aware of where players with the same charge are, since moving carelessly can be lethal."]}
-                        },
-                        efz: {
-                            name: { en: "Electric Field Zone"},
-                            description: { en: ["The Electric Field Zone is the ceiling of the map/arena, touching it equals to instant death. Players can bypass the damage with 'Fully Charged' buff. Inside the Field, there are 4 Lightning rods positioned horizontally that can be shut down if they’re lit (they can only light up during forced mechanics)."]}
-                        }
-                    },
                     num: { en: "4th Dungeon", es: "4ta Mazmorra", kr: "네 번째 던전", jp: "4番目のダンジョン", br: "4ª Masmorra" },
                     name: { en: "- Wilting Tower: Flight -", es: "- Torre Marchita: Vuelo -", kr: "- 시들어가는 탑: 비행 -", jp: "- しおれた塔：飛行 -", br: "- Torre Murcha: Voo -"},
                     content: {
                         phase1: {
                             phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
                             phasebname: { en: "Dragon Jabberwock"},
+                            concepts: {
+                                magneticfield: {
+                                    name: { en: "Magnetic Field"},
+                                    description: { en: ["At the beginning of the phase, players will be afflicted with either a Positive Ion or a Negative Ion debuff, indicating their Polarity. 3 random players get blue (positive / +) charge, and the remaining 3 get red (negative / -) charge. Same charges repel and stun players that contact, it’s recommended to be aware of where players with the same charge are, since moving carelessly can be lethal.","Certain attacks can increase the size of the polarity, size goes down to normal after 20 seconds or after using a hyperactive skill."]}
+                                },
+                                efz: {
+                                    name: { en: "Electric Field Zone"},
+                                    description: { en: ["The Electric Field Zone is the ceiling of the map/arena, touching it equals to instant death. Players can bypass the damage with 'Fully Charged' buff. Inside the Field, there are 4 Lightning rods positioned horizontally that can be shut down if they’re lit (they can only light up during certain mechanics)."]}
+                                }
+                            },
                             np: {
                                 sweep: {
                                     name: { en: "Sweep"},
-                                    description: { en: ["Jabberwock swipes with its claw, dealing high damage to player hit by it. This attack does not increase magnetic field size."]}
+                                    description: { en: ["Jabberwock swipes with its claw, dealing high damage to player hit by it."]}
                                 },
                                 bite: {
                                     name: { en: "Bite"},
-                                    description: { en: ["Jabberwock bites and provokes an explosion. This attack increases magnetic field size."]}
+                                    magneticfield: true,
+                                    description: { en: ["Jabberwock bites and provokes an explosion."]}
                                 },
                             },
                             mechs: {
@@ -6759,44 +6791,58 @@ export const data = {
                                 },
                                 breath: {
                                     name: { en: "Breath"},
-                                    description: { en: ["Jabberwock leans back and aims to either left or right, the direction it faces at determinates the direction at which he will cast fire breath at, then will slowly move towards the other side, meaning the safe zone is the opposite direction at which Jabberwock faces. Players hit by Jabberwock’s breath receive lethal damage."]}
+                                    iframe: true,
+                                    magneticfield: true,
+                                    description: { en: ["Jabberwock pulls back and slowly breathes fire from one end of the arena to the other, player should move to the opposite direction from which Jabberwock faces."]}
                                 },
                                 laseremission: {
                                     name: { en: "Laser Emission"},
-                                    description: { en: ["6 lasers fire from Jabberwock’s back, then target random players. Before lasers reach the arena, players will be able to see a prediction of where they will hit. It’s recommended that once lasers fire, everyone moves to the lowest part of the area to avoid lasers covering the entire area. Each hit received from these lasers increases magnetic field size and inflicts lethal damage. This attack will be warned by the dungeon seconds before it happens."]}
+                                    iframe: true,
+                                    magneticfield: true,
+                                    description: { en: ["6 lasers fire from Jabberwock’s wings, three from each side of the arena, and then targets them to 1 player. Before lasers reach the arena, players will be able to see a warning zone where they will hit. It’s recommended that once lasers come out from Jabberwock's wings, everyone moves to the lowest part of the area until they lock target to avoid lasers from potentially covering the entire arena."]}
                                 },
                                 chargeneutralization: {
-                                    name: { en: "Charge Neuralization"},
+                                    name: { en: "Charge Neutralization"},
                                     description: { en: ["Jabberwock fires a large charge into the air, after some seconds, the charge will position itself on top of Jabberwock’s head. Players of any polarity can interact with this charge. Upon interaction, the charge will be divided into 2 smaller charges of a random polarity, players of the opposite polarity must touch the charges to neutralize them. Once again, upon contact, the charges are divided into 2 smaller ones of random polarity, and players of the opposite polarity must neutralize them, though this time they don’t become smaller anymore. Failing to neutralize all charges in 20s makes remaining charges create a map-wide explosion (can potentially wipe). "]}
                                 }
                             },
                             forcedmechs: {
                                 chargeinterference: {
                                     name: { en: "Charge Interference"},
-                                    forcedat: { en: "@ 270, 225, 90 or 45 bars"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    timed: true,
+                                    forcedat: { en: "Forced at 270/225/90/45 bars"},
                                     description: { en: ["2 to 4 big mana bombs of random polarity will spawn on the middle platform. Each bomb will have a shield with their opposite polarity. All players will be given a Deployable Mana Bomb. Mana Bombs with opposite polarity of the shield placed next to the shield can break it. After the shield is broken, the big mana bomb explosion sequence will start, and players hit by them will be given Fully Charged Buff. Players need to position themselves on top of the big bomb to pass through the Electric Field, once they go through, they need to shut down the Lightning rods that are lit (only rods that have a shielded bomb below them are lit). After all lit rods are shut down, Jabberwock will enter groggy state."]}
                                 },
-                                mfbh: {
-                                    name: { en: "Magnetic Field Black Hole"},
-                                    forcedat: { en: "@ 225, 90 or 45 bars"},
+                                polarityfield: {
+                                    name: { en: "Polarity Field"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    timed: true,
+                                    forcedat: { en: "Forced at 225/90/45 bars"},
                                     description: { en: ["2 big magnetic fields appear in the sides of the arena, players of the opposite polarity need to enter this magnetic field but stay far enough, so that all 3 players can fit without being pushed off. After some time, Jabberwock will trigger an explosion that kills anyone who isn’t inside these magnetic fields. Magnetic fields slowly pull players towards the middle, so players should be careful and walk back to their original position."]}
                                 },
-                                ss: {
+                                simonsays: {
                                     name: { en: "Simon Says"},
-                                    forcedat: { en: "@ 150 & 0.5 bars"},
-                                    description: { en: ["4 players are given special mana bombs that give Fully Charged Buff, they should place the bomb on the middle platform, below lightning rods, then position themselves on top of the bomb to go up, then move to where the lightning rods platforms are (only 1 player per rod). After all, 4 players are positioned, Jabberwock will send power to random rods, lighting them up. Players need to shut down the lit rods but leave rods that didn’t lit untouched. Failing to shut down lit rods or interacting with rods that didn’t light up twice will trigger a party wipe. Jabberwock will repeat this process 6 times. If done correctly: At 150 bars, Jabberwock will cast breath in the entire area and move all players to a smaller arena. At 0.5 bars, Jabberwock will fly off the map and end the phase."]}
+                                    unavoidable: true,
+                                    iframe: true,
+                                    timed: true,
+                                    forcedat: { en: "Forced at 150 and 0.5 bars"},
+                                    description: { en: ["4 players are given special mana bombs that give Fully Charged Buff, they should place the bomb on the middle platform, below lightning rods, then position themselves on top of the bomb to go up, then move to where the lightning rods platforms are (only 1 player per rod). Regardless of if 4 players are positioned or not, Jabberwock will send power to random rods, lighting them up. Players need to shut down the lit rods but leave rods that didn’t lit untouched, lit rods will shut down automatically if not manually shut down after some seconds or interacting with a rod that did not lit both count as a mistake. making 2 mistakes will trigger a party wipe. Jabberwock will repeat this process multiple times.","If done correctly:","At 150 bars: Jabberwock will cast breath in the entire area and move all players to a smaller arena.","At 0.5 bars: Jabberwock will fly off the map and end the phase."]}
                                 },
                             }
                         },
                         phase2: {
                             concepts: {
                                     chilldebuff: {
-                                        name: { en: "<Chill Debuff>"},
+                                        name: { en: "Chill Debuff"},
                                         description: { en: ["Same as the Cornerstone of Prophecy version: Stacks from frost attacks. Once buff reaches 10 stacks, the player gets frozen, freeze debuff doesn’t expire until another player uses command skill in the frozen player."]}
                                     },
                                     feardebuff: {
-                                        name: { en: "<Fear Debuff>"},
-                                        description: { en: ["Same as the Cornerstone of Prophecy version: Stacks from necromancy attacks. Reaching 3 stacks cause instant death."]}
+                                        name: { en: "Fear Debuff"},
+                                        description: { en: ["Same as the Cornerstone of Prophecy version: Stacks from necromancy attacks. Reaching 3 stacks causes instant death."]}
                                     }
                             },
                             phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
@@ -6804,69 +6850,97 @@ export const data = {
                             np: {
                                 frostexplosion: {
                                         name: { en: "Frost Explosion", es: "Explosión de Escarcha", kr: "서리 폭발", jp: "フロストエクスプロージョン", br: "Explosão de Geada" },
+                                        iframe: true,
                                         description: { en: ["Barkat attacks with both wings stabbing them into the ground causing explosions near them. Stab attack petrifies for a short period. Explosions increase Chill Debuff stacks."]},
                                     },
                                     frostbreath: {
                                         name: { en: "Frost Breath", es: "Aliento de Escarcha", kr: "서리 숨결", jp: "フロストブレス", br: "Sopro de Geada" },
+                                        iframe: true,
                                         description: { en: ["Barkat attacks with claws twice then releases a long frost breath in the direction of a random player, differently to the Cornerstore of Prophecy version of this attack, the direction can be redirected even after the attack starts. Getting hit by it rapidly stacks Chill Debuff."]},
                                     }
                             },
                             mechs: {
                                 medusa: {
-                                    name: { en: ["Medusa"]},
+                                    name: { en: "Medusa"},
+                                    iframe: true,
                                     description: {en: ["All players receive an Eye-like debuff, which can be open or closed, the state of the eye will be different for every player. They're also shown an Eye Icon above their head tht matches the state of the debuff. Players need to face towards (If eye is open) or away (If eye is closed) from Barkat. Failure causes high damage and Specter's Hands appear under all playesr, following them for a short period of time before locking position."]},
                                 },
                                 fallingrocks: {
                                     name: { en: "Falling Rocks"},
-                                    followup: { en: "Before <Forced Mechanics/Collapse>"},
+                                    iframe: true,
                                     description: { en: ["Jabberwock hits the ground and makes a rock fall on the position of a random player. Players hit by the rock receive lethal damage (only one player can be hit by each rock)."]}
+                                },
+                                _sep1:{
+                                    separation: { en: " - After <Collapse> - "}
                                 },
                                 magicaura: {
                                     name: { en: "Magic Aura"},
-                                    followup: { en: "After <Forced Mechanics/Collapse>"},
                                     description: { en: ["3 random players are given Frost Aura (mint color) and the remaining 3 are given Specter Aura (black color), these last until phase end."]}
                                 },
                                 magicexplosion: {
                                     name: { en: "Magic Explosion"},
-                                    followup: { en: "After <Forced Mechanics/Collapse>"},
+                                    iframe: true,
                                     description: { en: ["Big circles spawn on the floor, after some time, they cast a barrage of explosion that extends vertically. Players with the same aura color as the circle in the floor do not receive damage."]}
                                 },
                                 auracrown: {
                                     name: { en: "Aura Crown"},
-                                    followup: { en: "After <Forced Mechanics/Collapse>"},
+                                    iframe: true,
                                     description: { en: ["Colored crowns spawn in random platforms. Players with the same aura color as the crown can dispel the crowns by standing on them. Crowns that are not dispelled before certain time will explode causing lethal damage."]}
                                 },
                                 fallingrocksalt: {
                                     name: { en: "Falling Rocks"},
-                                    followup: { en: "After <Forced Mechanics/Collapse>"},
+                                    iframe: true,
                                     description: { en: ["The falling rock has a designated color. Players with the same aura color as the rock can destroy it after touching it. If the rock hits the ground, it will explode dealing lethal damage. This has limited range, around half the arena."]}
                                 },
                             },
                             forcedmechs: {
                                 spaceseparation: {
                                     name: { en: "Space Separation"},
-                                    forcedat: { en: "@ 405 bars, appears every 60s after first appearance."},
+                                    iframe: true,
+                                    forcedat: { en: "Forced at 405 bars. Appears every 60s after first appearance."},
                                     description: { en: ["Shadow Hands divide the area horizontally or vertically. A random number of players are given eye debuff like the ones from medusa. An open eye has a value of +1, while closed has a value of -1. Players need to arrange people with eyed buffs in a way that makes both sides have equal values. Failing to make both sides have the same value triggers an explosion that deals lethal damage.","ej. If 2 players have open eyes, they should split to make both sides have a value of +1. If both are on the same side, one side will have a value of +2 and the other has a 0, which would trigger the explosion."]}
                                 },
                                 deathzone: {
                                     name: { en: "Death Zone"},
-                                    forcedat: { en: "@ 315 bars, appears every 2 minutes after first appearance."},
-                                    description: { en: ["Barkat hides, at the same time, the edges of the map become lethal. Players need to group at the center of the map, otherwise they will receive lethal damage from the shadows. At the same time, the middle part of the arena will be filled by Specter's Hands or Frost Lasers for 3 rounds (only one type appears per round, both can’t spawn at the same time).","All players receive a buff that looks like a hand and has a color with it (red/purple).","Different to the <Cornerstone of Prophecy> version of this mech, this time when in contact with the laser/hand, some give the hand buff and others don’t (the number of lasers/hands that give hand buff is random). If the round spawns Specter’s Hands, if you get the hand buff, then it’s a safe zone. Otherwise, if the round spawns Frost Lasers, if you get the hand buff, then it’s not safe.","After a couple of seconds lasers/hands will attack everywhere but the safe zones. Once they disappear, after a couple of seconds the hands/lasers will attack the remaining zones (players must move to the position that was originally attacked since safe zones will be attacked next)."]}
+                                    iframe: true,
+                                    forcedat: { en: "Forced at 315 bars. Appears every 2 minutes after first appearance."},
+                                    description: { en: ["Barkat hides, at the same time, the edges of the map are filled with a shadowy mist that inflicts Fear debuff. Players need to group at the center of the map. At the same time, the middle part of the arena will be filled by either Specter's Hands or Frost Lasers for a total of 3 rounds (only one type appears per round, both can’t spawn at the same time).","All players receive either a buff that looks like a hand and has a color with it (red/purple).","If the round spawns Specter’s Hands, if you get the hand buff, then it’s a safe zone. Otherwise, if the round spawns Frost Lasers, if you get the hand buff, then it’s not safe.","After a couple of seconds, lasers/hands will attack everywhere but the safe zones. Once they disappear, they will double down and attack the previous safe zones, so players must move to a position that was already attacked."]}
                                 },
                                 collapse: {
                                     name: { en: "Collapse"},
-                                    forcedat: { en: "@ 225 bars"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    deathtimed: true,
+                                    forcedat: { en: "Forced at 225 bars"},
                                     description: { en: ["Barkat goes to the middle and protects herself with a shield, when she lets her guard down, the shield will disappear. Using Dungeon Function Key when the interaction text is displayed will spawn a safe zone in a random platform. Using Dungeon Function Key before the interaction text is displayed, or after it disappears will result in Barkat casting an explosion that deals lethal damage. This process can only be done once per player, so players who fail are prevented from trying again. Barkat will let her guard down 12 times before mech ends, any player that is not in a safe zone before mech ends will die. All alive players will be led to a new area."]}
                                 },
-                                rnmc: {
-                                    name: { en: "Roman Numeral Magic Circle"},
-                                    forcedat: { en: "@ 112.5 bars, can appear @ 0.5 bars"},
-                                    description: { en: ["Two random players are given a Medusa Eye buff, which can be either a Closed Eye or an Open Eye. Simultaneously, six magic circles appear on the elevated top platforms and another six appear on the ground floor. To reveal the hidden Roman numeral on each circle, a player without a Medusa Eye must stand on it. The two players with Medusa Eyes will then see the revealed numbers, but each of them sees only a portion of the total numbers, their views are complementary and do not overlap. The recommended method is for four players without buff to stand on the top platforms first, revealing all six upper circles.","The two Medusa Eye players then write their partial view of these top numbers in party chat using the format: 'xxx xxx' (e.g., Player 1: '74x xx2', Player 2: 'xx7 27x').","After sharing, the group moves to the ground floor to repeat the process for the bottom six circles, with the Medusa Eye players sharing their partial views again.","A designated player should then merge all the partial numbers into a single full map, using the format: 'xxx xxx // xxx xxx' (e.g., '747 872 // 327 775').","Once the full Roman numeral map is known, players must determine the safe spots based on the Medusa Eye type: If the eye is Closed, then circles whose Roman numeral appear exactly 6 times total across all 12 circles are dangerous (all other circles are safe). If the eye is Open, then circles whose Roman numeral appears exactly 6 times are the safe spots. All players must move to and stand alone in a safe circle before the 40-second timer expires; if two or more players occupy the same circle, it fails to protect anyone. Any player who is not in a safe circle when time runs out dies. If at any point during this mechanic the number of alive players falls below 4, it triggers an immediate party wipe. This entire process repeats three times, with the Medusa Eye buff being given to two different random players each repetition."]}
+                                romannumeral: {
+                                    name: { en: "Roman Numeral"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    deathtimed: "0:40",
+                                    forcedat: { en: "Forced at 112.5 bars | Can appear at 0.5 bars"},
+                                    description: { en: ["2 players are given Medusa Eye in either closed or open state. Simultaneously, six magic circles appear on the top platforms and another six appear on the floor.","To reveal the hidden Roman numeral on a circle, a player without the Medusa Eye must stand on it.Once revealed, the two players with Medusa Eyes must work together to read the number. Each sees a different, non-overlapping part of the numeral, making their views complementary.","The recommended method is for four players without Medusa Eyes to stand on the top platforms first, revealing all six upper circles.","The two Medusa Eye players then write their partial view of these top numbers in party chat using the format: 'xxx xxx' (e.g., Player 1: '74x xx2', Player 2: 'xx7 27x').","After sharing, the group moves to the ground floor to repeat the process for the bottom six circles, with the Medusa Eye players sharing their partial views again.","A designated player should then merge all the partial numbers into a single full map, using the format: 'xxx xxx // xxx xxx' (e.g., '747 872 // 327 775').","Once the full Roman numeral map is known, players must determine the safe spots based on the Medusa Eye type:","If the eye is Closed, then circles whose Roman numeral appear exactly 6 times total across all 12 circles are dangerous (all other circles are safe).","If the eye is Open, then circles whose Roman numeral appears exactly 6 times are the safe spots. All players must move to and stand alone in a safe circle before timer ends; if two or more players occupy the same circle, it deactivates. Any player who is not in a safe circle dies."]},
+                                    img:{
+                                        primary: [ 
+                                            { src: "/images/mechs/2142mech12.png", alt:"How this mech looks in-game from the perspective of someone with Medusa Eyes."}
+                                        ]
+                                    },
+                                    note: {
+                                        en: ["- If at any point during this mechanic the number of alive players falls below 4, the mechanic will forcedfully end in failure."," - This entire process repeats three times, with Medusa Eye being given to two different random players each repetition."]
+                                    }
                                 },
                                 prophecy: {
                                     name: { en: "Prophecy"},
-                                    forcedat: { en: "@ 22.5 bars, can appear @ 0.5 bars"},
-                                    description: { en: ["All players screens will be darkened, while darkened all players can see 6 roman numerals, of which 5 will be unrecognizable. Every player must write the numeral in the position shown from left to right (ej. xxxx7x). Once all 6 numbers are provided, one player should merge them all since it’s easier to keep track of when in a single message. Numerals will appear, one on each platform, from 1 to 8, then, a player will receive medusa eye buff. At the same time, the same player will be whispered one of the following prophecies:","‘This is a single point. A lonely solitude, but a complete pillar of beginning.’ (Equals to 1)","‘Light and Dark, self and others, right and wrong. All conflict sprouts from two forks in the path.’ (Equals to 2)","‘Aaaa… This is the trinity, the ultimate perfection. The beginning of multi-dimensions and the start of ALL.’ (Equals to 3)","‘The quadrilateral number of stability and security that will open the road to harmonic completion.’ (Equals to 4)","‘The shining star, the five horns. Those who seek power must be wary of corruption.’ (Equals to 5)","‘The highest number on a dice, also known as a demonic number. I wonder where the fate would take you?’ (Equals to 6)","Based on what the given prophecy equals to, players need to stand in the numeral of the number whose position equals to the value of the prophecy (ej. 728431, Prophecy equals to 1, player should stand in number 7, since it’s the number on position 1). After players stand on all 6 positions, mech ends and Barkat enters groggy state. Standing on a wrong number kills the player, if the alive player count goes below 4, or the prophecy is failed twice, a party wipe will be triggered."]}
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    deathtimed: true,
+                                    forcedat: { en: "Forced at 22.5 bars | can appear at 0.5 bars"},
+                                    description: { en: ["All players' screens will darken. While darkened, each player can see only one specific Roman numeral and its position. The other five numbers will be hidden. Players must communicate and combine their information to identify all six numbers.","Every player must write the shown numeral in the position shown from left to right (ej. xxxx7x). Once all 6 numbers are provided, one player should merge them all since it’s easier to keep track of when in a single message.","Numerals will appear, one on each platform, from 1 to 8, then, a player will receive Medusa Eye and a chat whisper with one of the following prophecies:","‘This is a single point. A lonely solitude, but a complete pillar of beginning.’ (Equals to 1)","‘Light and Dark, self and others, right and wrong. All conflict sprouts from two forks in the path.’ (Equals to 2)","‘Aaaa… This is the trinity, the ultimate perfection. The beginning of multi-dimensions and the start of ALL.’ (Equals to 3)","‘The quadrilateral number of stability and security that will open the road to harmonic completion.’ (Equals to 4)","‘The shining star, the five horns. Those who seek power must be wary of corruption.’ (Equals to 5)","‘The highest number on a dice, also known as a demonic number. I wonder where the fate would take you?’ (Equals to 6)","Based on what the given prophecy equals to, players need to stand in the numeral of the number whose position equals to the value of the prophecy (ej. 728431, Prophecy equals to 1, player should stand in number 7, since it’s the number on position 1)."]},
+                                    note: {
+                                        en: ["- if the alive player count goes below 4, or the prophecy is failed twice, death timer will automatically expire.","- Standing on a wrong number kills the player"]
+                                    }
                                 },
                             }
                         }                        
