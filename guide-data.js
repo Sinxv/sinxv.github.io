@@ -158,7 +158,7 @@ export const guideData = [
         titleKey: 'stage7.content_wtfl',
         raidKeys: ['stage7.sections.wtfl'],
         meta : {
-            title: { en: "Wilting Tower: Flight Guide"},
+            title: { en: "Hedgyhelper - Wilting Tower: Flight Guide"},
             description: {en: "In-depth guide of Doom Aporia's 4th raid dungeon."},
             image: "images/wtfl1.png"
         },
