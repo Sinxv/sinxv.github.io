@@ -156,15 +156,17 @@ function renderMechanicEntry(item) {
 
     const nameText = getLocalizedValue(item.name);
     if (nameText) {
-        const anchorId = nameText.toLowerCase()
+        // Ensure nameText is a string before calling toLowerCase
+        const nameStr = Array.isArray(nameText) ? nameText.join(' ') : String(nameText);
+        const anchorId = nameStr.toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/^-|-$/g, '');
         wrapper.id = anchorId;
         
         const nameWrapper = createElement('div', { class: 'mechname-wrapper' }, []);
         const renderedName = window.translationManager?.renderRichText 
-            ? window.translationManager.renderRichText(nameText) 
-            : nameText;
+            ? window.translationManager.renderRichText(nameStr) 
+            : nameStr;
         const nameEl = createElement('div', { class: 'mechname', html: renderedName }, []);
         nameWrapper.appendChild(nameEl);
         
