@@ -152,7 +152,7 @@ export const guideData = [
         raidKeys: ['stage7.sections.qth']
     },
     {
-        id: 'wtfl',
+        id: 'wt_fl',
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_wtfl',
@@ -164,7 +164,7 @@ export const guideData = [
         },
     },
     {
-        id: 'wtfa',
+        id: 'wt_fa',
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_wtfa',
