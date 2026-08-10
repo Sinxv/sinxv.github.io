@@ -142,7 +142,7 @@ function renderGroupTitle(title) {
 }
 
 const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'variants','separation']);
-const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description']);
+const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img']);
 
 function isLangLeaf(value) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -307,6 +307,13 @@ function renderConceptEntry(concept) {
         renderParagraphElements(concept.description).forEach(el => wrapper.appendChild(el));
     }
 
+    // Handle img inside concepts
+    if (concept.img) {
+        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+        renderGenericValue(mechImgWrapper, 'img', concept.img);
+        wrapper.appendChild(mechImgWrapper);
+    }
+
     // Variants inside concepts
     if (concept.variants) {
         const variantsSection = renderVariantsSection(concept.variants);
@@ -314,7 +321,7 @@ function renderConceptEntry(concept) {
     }
 
     Object.entries(concept).forEach(([key, value]) => {
-        if (CONCEPT_KNOWN_KEYS.has(key) || key === 'variants' || !value || typeof value !== 'object') {
+        if (CONCEPT_KNOWN_KEYS.has(key) || key === 'variants' || key === 'img' || !value || typeof value !== 'object') {
             return;
         }
 
@@ -408,6 +415,12 @@ function renderRaidSection(sectionKey, guideId) {
         if (phaseData.concepts) {
             const conceptsSection = renderConceptsSection(phaseData.concepts);
             if (conceptsSection) phaseWrapper.appendChild(conceptsSection);
+        }
+
+        if (phaseData.img) {
+            const phaseImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(phaseImgWrapper, 'img', phaseData.img);
+            phaseWrapper.appendChild(phaseImgWrapper);
         }
 
         if (phaseData.description) {
@@ -1147,13 +1160,18 @@ const MECH_STATUS_CONFIG = {
     },
     timed: {
         icon: 'images/timed.png',
-        info: 'This mech has a time limit until mechanic ends in failure if the clear condition is not fulfilled.',
+        info: 'This mech has a time limit until mechanic ends in failure if its condition is not fulfilled.',
         class: 'mech-status-timed'
     },
     deathtimed: {
         icon: 'images/timed.png',
-        info: 'This mech has a time limit until mechanic ends in death if the clear condition is not fulfilled.',
+        info: 'This mech has a time limit until mechanic ends in death if its condition is not fulfilled.',
         class: 'mech-status-deathtimed'
+    },
+    wipetimed: {
+        icon: 'images/timed.png',
+        info: 'This mech has a time limit until mechanic ends in party wipe if its condition is not fulfilled.',
+        class: 'mech-status-wipetimed'
     },
     magneticfield: {
         icon: 'images/magneticfield.png',

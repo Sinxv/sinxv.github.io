@@ -2524,6 +2524,9 @@ export const data = {
             LightOfFanaticism: {
                 en: "Increases damage taken by 2% each stack. Lasts 2 seconds.",
             },
+            Ravage: {
+                en: "Defense decreased by 30% for 30s. Cannot be cleansed."
+            },
             Groggy: {
                 en: "State where a boss/enemy is completely stopped in place and takes increased damage."
             },
@@ -6267,59 +6270,67 @@ export const data = {
                     content: {
                         phase1: {phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
                                  phasebname: { en: "Type-E Echidna", es: "Tipo-E Equidna", kr: "E형 에키드나", jp: "タイプEエキドナ", br: "Tipo-E Equidna" },
-                                 np: {
-                                    headbutt: {
-                                        name: { en: ["Headbutt"]},
-                                        description: {en: ["All 6 players position themselves in the platforms to direct an electricity beam that comes from the upper platform’s right side, into a receptor that is on the below right part of the arena, there are 3 electricity rods in the platforms between, one per platform. The electricity beam needs to go through all the rods before reaching the receptor. The beam is intercepted by players standing in it’s path, if you face the direction the beam is coming from, the beam will go down, if you look at the side opposite from where the beam is coming from, the beam will go up."]}
+                                 concepts: {
+                                    gatecharge:{
+                                        name: { en: "Gate Charge", es: "Carga de Puerta", kr: "게이트 차지", jp: "ゲートチャージ", br: "Carga do Portão" },
+                                        description: { en: ["At the beginning of the fase, all 6 players position themselves in the platforms to direct an electricity beam that comes from the upper platform’s right side, into a receptor that is on the below right part of the arena, there are 3 electricity rods in the platforms between, one per platform. The electricity beam needs to go through all the rods before reaching the receptor. The beam is intercepted by players standing in it’s path, if you face the direction the beam is coming from, the beam will go down, if you look at the side opposite from where the beam is coming from, the beam will go up. This process will be repeated 3 times before the gate is opened. Theres a 1 minute time limit that refreshes every time the beam reaches the receptor. Failing to reach the receptor before time limit results in party wipe."]},
+                                        variants: {
+                                            solo: {
+                                                name: {en: "Solo Mode Variation:"},
+                                                description: {en: ["- The beam will already be redirected through all the conductors and downward to the bottom platform. The player will only need to direct the beam toward the receptor. This only needs to be done once before proceeding onto the main phase."]}
+                                            },
+                                        }
                                     },
+                                 },
+                                 np: {
                                     approachingwave:{
                                         name: { en: "Approaching Wave", es: "Ola Acercándose", kr: "다가오는 파도", jp: "接近する波", br: "Onda se Aproximando" },
-                                        description: { en: ["Concentric circular waves that close in. Use iframes to avoid damage."]}
+                                        description: { en: ["3 rounds of circular waves that close in, recommended to iframe."]}
                                     },
-                                    eightdirectionlaser:{
-                                        name: { en: "8-Direction Laser", es: "Láser de 8 Direcciones", kr: "8방향 레이저", jp: "8方向レーザー", br: "Laser de 8 Direções" },
-                                        description: {en: ["Shoots lasers in 8 directions from Echidna's position. Players can either stay close to Echidna or use an skill with iframes to avoid damage, not recommended to stay far away since this attack is mildly hard to i-frame."]}
+                                    eightdirectionallaser:{
+                                        name: { en: "8-Directional Laser", es: "Láser de 8 Direcciones", kr: "8방향 레이저", jp: "8方向レーザー", br: "Laser de 8 Direções" },
+                                        description: {en: ["Shoots lasers in 8 directions from Echidna's position, not recommended to stay far away since this attack is mildly hard to iframe."]}
                                     }
                                  },          
                                  mechs: {
-                                    gatecharge:{
-                                        name: { en: "Gate Charge", es: "Carga de Puerta", kr: "게이트 차지", jp: "ゲートチャージ", br: "Carga do Portão" },
-                                        description: { en: ["All 6 players position themselves in the platforms to direct an electricity beam that comes from the upper platform’s right side, into a receptor that is on the below right part of the arena, there are 3 electricity rods in the platforms between, one per platform. The electricity beam needs to go through all the rods before reaching the receptor. The beam is intercepted by players standing in it’s path, if you face the direction the beam is coming from, the beam will go down, if you look at the side opposite from where the beam is coming from, the beam will go up. This process will be repeated 3 times before the gate is opened. Theres a 1 minute time limit that refreshes every time the beam reaches the receptor. Failing to reach the receptor before time limit results in party wipe."]}
-                                    },
                                     guardlevel:{
                                         name: { en: "Guard Level System", es: "", kr: "", jp: "", br: "" },
-                                        description: { en: ["Getting hit by '8-Direction Laser' and 'Approaching Wave' fills the Guard Level gauge. Guard Level gauge has 5 Levels, Each level increases the amount of <Stealth Combat Doll> and <Gaze Laser> threats and triggers the <Charge Interference> pattern."]},
-                                        derivated_mechs: {
-                                            stealthcombatdoll:{
-                                                name: { en: "Stealth Combat Doll", es: "Muñeca de Combate Sigilosa", kr: "스텔스 전투 인형", jp: "ステルス戦闘ドール", br: "Boneca de Combate Furtiva" },
-                                                description: { en: ["First appears after Guard Level reaches 1.", "Summons invisible monsters. If not defeated, they perform an area attack and disappear, They’re easily ignorable, since the attack they perform doesn’t increase Guard Level gauge, and often doesn’t kill."]}
-                                            },
-                                            gazelaser:{
-                                                name: { en: "Gaze Laser", es: "Láser de Mirada", kr: "응시 레이저", jp: "凝視レーザー>", br: "Laser de Olhar" },
-                                                description: { en: ["First appears after Guard Level reaches 1.","Targets a party member and follows them, after some time, it stops tracking the player and fires a laser where it stopped tracking. Number of lasers increases with Guard Level."]}
-                                            },
-                                            chargeinterference:{
-                                                name: { en: "Charge Interference", es: "Interferencia de Carga", kr: "차지 간섭", jp: "チャージ干渉", br: "Interferência de Carga" },
-                                                description: { en: ["Triggers whenever Guard Level is increased. 6 objects will show up on different platforms, they can either be a cube or diamond shape, 5 of the 6 cubes will share the same shape, Echidna will appear and consume the only object that was different from the others, afterwards, it will start charging, counter by using 2 Hyperactive skills OR by destroying the cube where Echidna will appear (reducing 2% of its HP). Failure wipes the party."]},
-                                                note: { en: ["Only use Hyperactive AFTER Echidna starts Charging, using Hyperactive before can result in the Hyperactive not counting towards countering the attack."]}
-                                            },
+                                        description: { en: ["Getting hit by <8-Directional Laser> or <Approaching Wave> fills the Guard Level gauge. Guard Level gauge has 5 Levels, Each level increases the threat of guard level patterns (Patterns exclusive to guard level are shown below)."]},
+                                        stealthcombatdoll:{
+                                            name: { en: "Stealth Combat Doll", es: "Muñeca de Combate Sigilosa", kr: "스텔스 전투 인형", jp: "ステルス戦闘ドール", br: "Boneca de Combate Furtiva" },
+                                            description: { en: ["First appears after Guard Level reaches 1.", "Summons invisible monsters. If not defeated, they perform an area attack and disappear, They’re easily ignorable, since the attack they perform doesn’t increase Guard Level gauge, and often doesn’t kill."]}
+                                        },
+                                        targetedlaser:{
+                                            name: { en: "Targeted Laser", es: "", kr: "", jp: "", br: "" },
+                                            description: { en: ["First appears after Guard Level reaches 1.","Targets a party member and follows them, after some time, it stops tracking the player and fires a laser where it stopped tracking. Number of lasers increases with Guard Level."]}
+                                        },
+                                        chargeinterference:{
+                                            name: { en: "Charge Interference", es: "Interferencia de Carga", kr: "차지 간섭", jp: "チャージ干渉", br: "Interferência de Carga" },
+                                            unavoidable: true,
+                                            groggy: true,
+                                            description: { en: ["Triggers whenever Guard Level is increased. 6 objects will show up on different platforms, they can either be a cube or diamond shape, 5 of the 6 cubes will share the same shape, Echidna will appear and consume the only object that was different from the others, afterwards, it will start charging, counter by using 2 Hyperactive skills OR by destroying the cube where Echidna will appear (reducing 2% of its HP).","If none of those 2 actions is performed, after some time, Echidna's charge will explode, causing instant death."]},
+                                            note: { en: ["Only use Hyperactive AFTER Echidna starts Charging, using Hyperactive before can result in the Hyperactive not counting towards countering the attack."]}
                                         },
                                     },
                                     spin:{
                                         name: { en: "Spin", es: "Giro", kr: "회전", jp: "スピン", br: "Giro" },
-                                        description: { en: ["Spins like a drill. High multi-hit damage and applies a 30-second defense reduction debuff. Does not fill <Guard Level>."]}
+                                        description: { en: ["Echidna raises up then spins at a rapid speed, dealing continuous damage to anybody nearby. Any players hit will be inflicted with Ravage."]}
                                     },
                                 },
                                 forcedmechs: {
                                     gaseruption: {
                                         name: { en: "Gas Eruption", es: "Erupción de Gas", kr: "가스 분출", jp: "ガス噴出", br: "Erupção de Gás" },
-                                        forcedat: { en: "@ 140 or 80 bars"},
-                                        description: { en: ["When Echidna's HP drops to 140 or 80 bars", "Gas will start to erupt from all trapdoors and holes except the ones in the middle (total of 6). Players need to find the safe gas looking at their debuffs: when on safe gas, players get cloud debuff, other gases give a skull debuff. Players outside the safe zone receive lethal damage."]},
+                                        unavoidable: true,
+                                        groggy: true,
+                                        forcedat: { en: "Forced at 140 or 80 bars"},
+                                        description: { en: ["Gas will start to erupt from all trapdoors and holes except the ones in the middle (total of 6). Players need to find the safe gas looking at their debuffs: when on safe gas, players get cloud debuff, other gases give a skull debuff. Players outside the safe zone receive lethal damage."]},
                                         note: { en: ["If 3 players are in the safe zone, the remaining players can stand and not recieve damage as long as they stay outside of Echidna's path"]}
                                     },
                                     laserguidance: {
                                         name: { en: "Laser Guidance", es: "Guía Láser", kr: "레이저 유도", jp: "レーザー誘導", br: "Guia de Laser" },
-                                        forcedat: { en: "@ 140 or 80 bars"},
+                                        unavoidable: true,
+                                        groggy: true,
+                                        forcedat: { en: "Forced at 140 or 80 bars"},
                                         description: { en: ["5 players position themselves to cover the 5 trapdoors located in the floor (only one player per trapdoor). The remaining player needs to stay off the trapdoors, since if more than one player gets eaten by Echidna at the same time, it will trigger a wipe. Echidna will come out from a trapdoor that can be identified by the lights behind it, if they're turned on, means Echidna will come out from there. Will eat the player standing in it, stunning the player and continuously dealing them damage. Another player needs to throw any type of orb to make Echidna free the player that was getting eaten, After being freed, the player recieves a colored buff between Green, Blue or Red, and a brand of the same color will be shown on top of their head. Echidna will once again hide inside the trapdoors and choose another trapdoor to come out from. This process will be repeated until he comes out 3 times, each time giving the player freed a different brand (Brands cannot be repeated), afterwards, 2 cubes colored Blue and Green will appear on top of the only 2 trapdoors Echidna didn't come out from. Players with brands will be targeted by a laser then position in a way that allows the laser to destroy the cube that matches the color of their brand. Failing to do so results in a wipe.","If Echidna comes out from a trapdoor and there is no player, one of the 3 brands will essentially become unobtainable, since it gets skipped."],
                                             es: ["5 jugadores se colocan para cubrir las 5 trampillas situadas en el suelo (solo un jugador se situa en cada trampilla). El jugador restante debe permanecer fuera de las trampillas, ya que si más de un jugador es devorado por Echidna al mismo tiempo, se aniquilara a todo el grupo. Echidna saldrá por una trampilla identificable por las luces detras de ella, si estan prendidas, significa que saldra por ahi. Devorará al jugador que se encuentre en ella, aturdiéndolo y causándole daño continuamente. Otro jugador debe lanzar cualquier tipo de orbe para que Echidna libere al jugador que estaba siendo devorado. Tras ser liberado, el jugador recibe un debufo de color verde, azul o rojo, y se muestra una marca del mismo color sobre su cabeza. Echidna volverá a esconderse dentro de las trampillas y elegirá otra trampilla por la que salir. Este proceso se repetirá hasta que salga 3 veces, cada vez dando al jugador liberado una marca diferente (las marcas no se pueden repetir), al terminar, aparecerán 2 cubos de color azul y verde encima de las únicas 2 trampillas por las que Echidna no ha salido. Los jugadores con marcas serán apuntados por un láser y se colocarán de manera que el láser pueda destruir el cubo que coincida con el color de su marca. Si no lo hacen, se aniquilara al grupo. Si Echidna sale por una trampilla y no hay ningún jugador, una de las tres marcas se hara inobtenible (Se omite)."]},
                                         note: { en: ["If players already have blue and green brand, everyone can get off the trapdoors, since there’s no need to get the red brand. Different from the others, the red brand is not related to any cube, it's laser just deals damage to anyone that touches it, in case of getting it, make sure to make it point to a position where no one can get damaged."],
@@ -6332,19 +6343,19 @@ export const data = {
                             phase2: {phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
                                 concepts: {
                                     chilldebuff: {
-                                        name: { en: "<Chill Debuff>"},
+                                        name: { en: "Chill Debuff"},
                                         description: { en: ["Stacks from frost attacks. Once buff reaches 10 stacks, the player gets frozen, freeze debuff doesn’t expire until another player uses command skill in the frozen player."]}
                                     },
-                                    specterhands: {
-                                        name: { en: "<Specter's Hands>"},
-                                        description: { en: ["Shadow appears in the ground, after a short period, hands will surge from the shadow and give 2 stacks of <Fear Debuff> to players hit by them.  "]}
-                                    },
                                     feardebuff: {
-                                        name: { en: "<Fear Debuff>"},
+                                        name: { en: "Fear Debuff"},
                                         description: { en: ["Stacks from necromancy attacks. Reaching 3 stacks cause instant death."]}
                                     },
+                                    specterhands: {
+                                        name: { en: "Specter's Hands"},
+                                        description: { en: ["Shadow appears in the ground, after a short period, hands will surge from the shadow and give 2 stacks of <Fear Debuff> to players hit by them.  "]}
+                                    },
                                     frostlaser: {
-                                        name: { en: "<Frost Laser>"},
+                                        name: { en: "Frost Laser"},
                                         description: { en: ["a Frozen laser falls from the sky, dealing high damage to anyone hit by it, works similar to Specter's Hands, but it doesnt give debuff stacks."]},
                                     }
                                 },
@@ -6352,45 +6363,58 @@ export const data = {
                                 np: {
                                     frostexplosion: {
                                         name: { en: "Frost Explosion", es: "Explosión de Escarcha", kr: "서리 폭발", jp: "フロストエクスプロージョン", br: "Explosão de Geada" },
+                                        iframe: true,
                                         description: { en: ["Barkat attacks with both wings stabbing them into the ground causing explosions near them. Stab attack petrifies for a short period. Explosions increase Chill Debuff stacks."]},
                                     },
                                     frostbreath: {
                                         name: { en: "Frost Breath", es: "Aliento de Escarcha", kr: "서리 숨결", jp: "フロストブレス", br: "Sopro de Geada" },
+                                        iframe: true,
                                         description: { en: ["Barkat attacks with claws twice then releases a long frost breath. Getting hit by it rapidly stacks Chill Debuff."]},
                                     }
                                 },
                                 mechs: {
                                     medusa: {
                                         name: { en: ["Medusa"]},
-                                        description: {en: ["All players receive an Eye-like debuff, which can be open or closed, they're also shown an Eye Icon above their head tht matches the state of the debuff. Players need to face towards (If eye is open) or away (If eye is closed) from Barkat. Failure causes high damage and Specter's Hands appear under the player, following them for a short period of time before locking position."]},
+                                        iframe: true,
+                                        description: {en: ["All players receive an Eye-like debuff (called Medusa Eye for simpleness), which can be on open or closed state, while also shown an Eye Icon above their head that matches the state of the debuff.","If the eye is open: Players need to face Barkat.","If the eye is closed: Players need to look away from Barkat.","If at least 1 player fails to meet the condition, barkat causes high damage and Specter's Hands to appear under the player, following them for a short period of time before locking position."]},
+                                    },
+                                    _sep1: {
+                                        separation: {
+                                            en: "- After <Fall> -"
+                                        }
                                     },
                                     discharge: {
                                         name: { en: "Discharge", es: "Descarga", kr: "방전", jp: "ディスチャージ", br: "Descarga" },
-                                        followup: { en: "After <Fall>"},
-                                        description: { en: ["A console will appear in the middle of the arena, players can charge the console by pressing Dungeon Function Key repeatedly. In the meanwhile, Barkat will protect herself with a shield and charge a Frost breath attack. To attack, Barkat will remove her shield, in that period, 2 players need to press Dungeon Function Key close to her. If done correctly, Barkat will be stunned. Pressing Dungeon Function Key before Barkat removes her shield or not pressing Dungeon Function Key in time will result in Barkat destroying the console. Successfully charging the console will result in timer until fall increasing by certain amount."]}
+                                        description: { en: ["A console will appear in the middle of the arena, players can charge the console by pressing Dungeon Function Key repeatedly. In the meanwhile, Barkat will protect herself with a shield and charge a Frost breath attack. To attack, Barkat will remove her shield, in that period, 2 players need to press Dungeon Function Key close to her. If done correctly, Barkat will be stunned. Pressing Dungeon Function Key before Barkat removes her shield or not pressing Dungeon Function Key in time will result in Barkat destroying the console.","Successfully charging the console will increase the <Fall> timer by certain amount."]}
                                     },
                                     gazingblackhand: {
                                         name: { en: "Gazing Black Hand", es: "Mano Negra que Mira", kr: "응시하는 검은 손", jp: "凝視する黒い手", br: "Mão Negra que Enxerga" },
-                                        followup: { en: "After <Fall>"},
+                                        iframe: true,
                                         description: { en: ["up to 3 players are marked consecutively and receive an eye-like debuff with a 3 second timer, when timer expires, Specter’s Hands will spawn from Barkat’s shadow and thrust in the direction the player was when the timer expired, essentially damaging everyone in its way and giving them Fear debuff stacks. Marked players should move to a position where no one can be damaged by Specter’s Hands until their timer expires to avoid killing members of the party on accident."]}
                                     }
                                 },
                                 forcedmechs: {
                                     deathzone: {
-                                        forcedat: { en: "@ 175 or 100 bars"},
+                                        forcedat: { en: "Forced at 175 or 100 bars"},
                                         name: { en: "Death Zone", es: "Zona de Muerte", kr: "데스 존", jp: "デスゾーン", br: "Zona da Morte" },
-                                        description: { en: ["Barkat hides, at the same time, the edges of the map become lethal. Players need to group at the center of the map, otherwise they will recieve lethal damage from the shadows. at the same time, the remaining part of the arena will be filled with Specter's Hands and Frost Lasers. All players receive a buff that looks like a hand, and has a color with it (red/purple) if the buff is purple, you’re immune to Frost Laser, else, if the buff is red, you’re immune to Specter’s Hand, based on the color, move to avoid the Frost Laser or Specter's Hand. This is repeated 3 times, and each time players can be given a different buff. All players have the same buff during this mechanic."]},
-                                        note: { en: ["Specter's Hands doesn't give Fear debuff stacks during this mechanic."] }
+                                        iframe: true,
+                                        groggy: true,
+                                        description: { en: ["Barkat hides and at the same time, the edges of the map are filled with shadows. Players need to group at the center of the map, otherwise they will recieve Fear Debuff stacks from the shadows. At the same time, the remaining part of the arena will be filled with inminent Specter's Hands and/or Frost Lasers. All players receive a buff that looks like a hand, and has a color with it (red/purple) if the buff is purple, you’re immune to Frost Lasers, else, if the buff is red, you’re immune to Specter’s Hands, based on the color, move to avoid the Frost Laser or Specter's Hand."]},
+                                        note: { en: ["- Specter's Hands will not increase Fear debuff stacks during this mechanic.","- This is repeated 3 times, and each time players can be given a different buff.","- All players have share the same buff during this mechanic."] }
                                     },
                                     eyeoffear: {
-                                        forcedat: { en: "@ 175 or 100 bars"},
+                                        forcedat: { en: "Forced at 175 or 100 bars"},
+                                        iframe: true,
+                                        groggy: true,
+                                        deathtimed: true,
                                         name: { en: "Eye of Fear", es: "Ojo del Miedo", kr: "공포의 눈", jp: "恐怖の目", br: "Olho do Medo" },
                                         description: { en: ["Barkat puts player into an illusion where they turned into objects. Players need to move forward when the Eyes of fear are closed, once they reach Barkat, use Z command to hit her, hitting her multiple times will release all players from the illusion. Moving when the Eyes of fear are open causes players to freeze."]},
                                     },
                                     fall: {
-                                        forcedat: { en: "@ 25 bars"},
+                                        forcedat: { en: "Forced at 25 bars"},
                                         name: { en: "Fall", es: "Caída", kr: "낙하", jp: "フォール", br: "Queda" },
-                                        description: { en: ["Barkat goes mad and deactivates the elevator power supply. Players need to defeat Barkat within 1 minute and 30 seconds before the elevator falls. Failing to do so results in a wipe."]}
+                                        deathtimed: "1:30",
+                                        description: { en: ["Barkat goes mad and deactivates the elevator power supply, making the elevator fall slowly."]}
                                     }
                                 }
                             }
@@ -6398,16 +6422,6 @@ export const data = {
                     },
                     // DOOM APORIA 2nd DUNGEON
                 nrr: {
-                    stdiff: {
-                        diffs: { 
-                            s2: {
-                                changes: {en: ["Soul Severance platforms reduced to 1 and all players can stand in it.","Changed so that in Illusion Maze 6 portals will lead to the correct room."]},
-                            },
-                            s1: {
-                                changes: { en: ["The HP of Specters in phase 1 is reduced."]}
-                            }
-                        }
-                    },
                     num: { en: "2nd Dungeon", es: "2da Mazmorra", kr: "두 번째 던전", jp: "2番目のダンジョン", br: "2ª Masmorra" },
                     name: { en: "- Nightmare: Reset Room -", es: "- Pesadilla: Sala de Reinicio -", kr: "- 악몽: 리셋 룸 -", jp: "- ナイトメア：リセットルーム -", br: "- Pesadelo: Sala de Reinício -"},
                     content: {
@@ -6415,112 +6429,119 @@ export const data = {
                             phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
                             concepts: {
                                 banishment: {
-                                    name: { en: "⟨Banishment Debuff⟩"},
+                                    name: { en: "Banishment Debuff"},
                                     description: { en: ["Receiving damage from Bifron, Specters or Specter Swarm gives Banishment stacks. At 10 stacks, the player is moved to another map: a small vertical room. Player is also transformed, and must slowly make his way down the room, in the way down, the player must collect the glowing orb and escape via the portal within 30s. Failing to do so results in death."]}
                                 },
                                 area: {
-                                    name: { en: "⟨Area Deployment⟩"},
+                                    name: { en: "Area Deployment"},
                                     description: { en: ["One player is given a deployable area, and can use Dungeon Function Key to release it, when released, area burns HP and MP but reveal hidden platforms that contact it. It’s recommended to put areas in a place where they can’t reach players, since the MP burn can result in loss of DPS, areas also reveal specters and make them able to get hit by skills."]}
                                 }
                             },
                             phasebname: { en: "Bifron"},
                             np: {
-                                    slash: {
-                                        name: { en: "Slash"},
-                                        description: { en: ["Bifron performs a slash that deals low damage. Gives 1 Banishment stack on hit."]}
-                                    },
-                                    smash: {
-                                        name: { en: "Smash"},
-                                        description: { en: ["Bifron stabs his sword to the ground, causing an explosion burst that comes out from the ground. Gives 1 <Banishment stack> per hit, but the skill does a fast multi-hit, so standing inside the burst can increase stacks fast."]}
-                                    }
-                                 },
-                                 mechs: {
-                                    spatialslash: {
-                                        name: { en: "Spatial Slash"},
-                                        description: { en: ["Bifron starts charging and pulls players toward him, after some time, it slashes all players who couldn’t run from his pull, inflicting lethal damage. Dodge by dashing/running in the opposite direction when being pulled."]}
-                                    },
-                                    soulwave: {
-                                        name: { en: "Soul Wave"},
-                                        description: { en: ["Bifron moves to the center of the arena and creates a barrier surrounding him, then stabs his sword, causing an explosion that damages everyone outside the barrier. Using skills inside the barrier when the explosion happens causes lethal rapid damage. Do not use skills until the barrier disappears."]}
-                                    },
-                                    soulexplosion: {
-                                        name: { en: "Soul Explosion"},
-                                        description: { en: ["An orb will be fixated on players, after some time, it will play an audio cue, indicating that the orb locked position. Players need to group, then run once the orb locks position, the orb will explode shortly after it locks position."]}
-                                    },
-                                    homingsoulorb: {
-                                        name: { en: "Homing Soul Orb"},
-                                        description: { en: ["A small orb chases a designated player, doesn’t do anything else; The orb can be destroyed by leading it into an area."]}
-                                    },
-                                    mhomingsoulorbs: {
-                                        name: { en: "Multiple Homing Soul Orbs"},
-                                        followup: { en: "After ⟨Soul Severance (Upper)⟩"},
-                                        description: { en: ["6 orbs target all players, one per player. Each player must collect only the orb tracking them. Collecting another's orb is lethal and often results in triggering Seal of Time, Resurection title, or death."]}
-                                    }
+                                slash: {
+                                    name: { en: "Slash"},
+                                    description: { en: ["Bifron performs a slash that deals low damage. Gives 1 Banishment stack on hit."]}
                                 },
-                                forcedmechs: {
-                                    soulseveranceu: {
-                                        name: { en: "Soul Severance (Upper)"},
-                                        forcedat: { en: "@ 225 bars"},
-                                        description: { en: ["Bifron escapes to the upper floor and starts charging an attack. All players are given areas, and need to release them, revealing the invisible platforms useful to help them make their way up to the portals on the top part of the arena. Upon teleporting to the upper arena, players need to find the 2 platforms affected by souls to survive Bifron’s attack. After the attack ends, Bifron will go groggy. Using 3 Hyperactive skills extends groggy."]},
-                                        note: { en: ["Only 3 players can stand in the same platform affected by souls, so there should be 3 in one, and 3 in the other."]}
-                                    },
-                                    soulseverancel: {
-                                        name: { en: "Soul Severance (Lower)"},
-                                        forcedat: { en:"@ 150 bars"},
-                                        description: { en: ["Bifron escapes to the lower floor and starts charging an attack, players need to use the portals at the edges of the upper arena to go back; After going back, all players are given areas and must release them in spots where they can reveal platforms that help them make their way up to the safe zones that will spawn at random invisible platforms. After the attack ends, he will go groggy. Using 3 Hyperactive skills extends groggy."]},
-                                        note: { en: ["Similarly to ⟨Soul Severance (Upper)⟩, only 3 players can stand in each safe zone, more than 4 standing in the same safe zone will result in all the players in the safe zone becoming vulnerable to Bifron’s attack.","It’s recommended for supports to go for a different safe zone, since area burns HP and MP, it’s better to have a support on each safe zone to heal the others."]}
-                                    },
-                                    evilspiritinfusion: {
-                                        name: { en: "Evil Spirit Infusion"},
-                                        forcedat: { en: "@ 75 bars"},
-                                        description: { en: [" Bifron moves to the center of the arena, then a random number of white orbs, max of 4, surround him. Bifron will perform 4 rounds of explosions on his position, giving 1 Infusion stack to players hit by the explosion. The number of white orbs indicates the number of times players need to be hit by Bifron’s explosions since they have an equal amount of Infusion stacks. If no player is hit by Bifron’s explosion, all players are given 1 Infusion stack. All players whose Infusion stacks do not match the number of white orbs shown will die."]},
-                                        note: { en: ["It’s important to communicate with your team to determinate who is going to enter to receive infusion stacks each explosion, the recommended number of people per explosion depends on the number of white orbs shown."]},
-                                        table: {
-                                            headers: {
-                                                h1: { en: "Round 1"},
-                                                h2: { en: "Round 2"},
-                                                h3: { en: "Round 3"},
-                                                h4: { en: "Round 4"}
-                                            },
-                                            row: {
-                                                r1: {
-                                                    title: { en: "1 Orb"},
-                                                    r1t1: { en: "Players 1 to 3"},
-                                                    r1t2: { en: "Player 4"},
-                                                    r1t3: { en: "Player 5"},
-                                                    r1t4: { en: "Player 6"}
-                                                },
-                                                r2: {
-                                                    title: { en: "2 Orbs"},
-                                                    r2t12: { en: "Players 1 to 3"},
-                                                    r2t34: { en: "Players 4 to 6"}
-                                                },
-                                                r3: {
-                                                    title: { en: "3 Orbs"},
-                                                    r3t1: { en: "Players 1 to 3"},
-                                                    r3t23: { en: "All"},
-                                                    r3t4: { en: "Players 4 to 6"}
-                                                },
-                                                r4: {
-                                                    title: { en: "4 Orbs"},
-                                                    r4t: { en: "All"},
-                                                }
-                                            }
-                                        },
-                                        end: { en: ["After mech ends, Bifron will go groggy. Using 3 Hyperactive skills extends groggy."]}
-                                    }
+                                smash: {
+                                    name: { en: "Smash"},
+                                    description: { en: ["Bifron stabs his sword to the ground, causing an explosion burst that comes out from the ground. Gives 1 <Banishment stack> per hit, but the skill does a fast multi-hit, so standing inside the burst can increase stacks fast."]}
                                 }
                             },
+                            mechs: {
+                                spatialslash: {
+                                    name: { en: "Spatial Slash"},
+                                    description: { en: ["Bifron starts charging and pulls players toward him, after some time, it slashes all players who couldn’t run from his pull, inflicting lethal damage. Dodge by dashing/running in the opposite direction when being pulled."]}
+                                },
+                                soulwave: {
+                                    name: { en: "Soul Wave"},
+                                    iframe: true,
+                                    description: { en: ["Bifron moves to the center of the arena and creates a barrier surrounding him, then stabs his sword, causing an explosion that damages everyone outside the barrier. Using skills inside the barrier when the explosion happens causes lethal rapid damage. Do not use skills until the barrier disappears."]}
+                                },
+                                soulexplosion: {
+                                    name: { en: "Soul Explosion"},
+                                    iframe: true,
+                                    description: { en: ["An orb will be fixated on each player, after some time, it will play an audio cue, indicating that the orb locked position. Players need to group, then run once the orb locks position, the orb will explode shortly after it locks position."]}
+                                },
+                                soullink: {
+                                    name: { en: "Soul Link"},
+                                    iframe: true,
+                                    description: { en: ["A Dark Soul orb chases a designated player and inflicts a stack of banishment debuff on touch. The orb can be destroyed by leading it into an area."]}
+                                },
+                                _sep1: {
+                                    separation: { en: "- After <Soul Severance (Upper)> -"}
+                                },
+                                msoullink: {
+                                    name: { en: "Mass Soul Link"},
+                                    iframe: true,
+                                    description: { en: ["A Dark Soul orb targets each player.","Each player must collect only the orb tracking them. Collecting another's orb results in instant death."]}
+                                }
+                            },
+                            forcedmechs: {
+                                soulseveranceu: {
+                                    name: { en: "Soul Severance (Upper)"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    deathtimed: true,
+                                    forcedat: { en: "Forced at 225 bars"},
+                                    description: { en: ["Bifron escapes to the upper floor and starts charging an attack. All players are given areas, and need to release them, revealing the invisible platforms useful to help them make their way up to the portals on the top part of the arena. Upon teleporting to the upper arena, players need to find the 2 platforms affected by souls to survive Bifron’s attack."]},
+                                    note: { en: ["Only 3 players can stand in the same platform affected by souls, so there should be 3 in one, and 3 in the other."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:" },
+                                            description: { en: ["- Two areas on each side of the room will automatically be deployed to help the player reach the teleporter."]}
+                                        }
+                                    }
+                                },
+                                soulseverancel: {
+                                    name: { en: "Soul Severance (Lower)"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    deathtimed: true,
+                                    forcedat: { en:"Forced at 150 bars"},
+                                    description: { en: ["Bifron escapes to the lower floor and starts charging an attack, players need to use the portals at the edges of the upper arena to go back; After going back, all players are given areas and must release them in spots where they can reveal platforms that help them make their way up to the safe zones that will spawn at random invisible platforms."]},
+                                    note: { en: ["Similarly to ⟨Soul Severance (Upper)⟩, only 3 players can stand in each safe zone, more than 4 standing in the same safe zone will result in all the players in the safe zone becoming vulnerable to Bifron’s attack.","It’s recommended for supports to go for a different safe zone, since area burns HP and MP, it’s better to have a support on each safe zone to heal the others."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:" },
+                                            description: { en: ["- Two areas on each side of the room will automatically be deployed to help the player reach the safe zone."]}
+                                        }
+                                    }
+                                },
+                                equalizer: {
+                                    name: { en: "Equalizer"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 75 bars"},
+                                    description: { en: [" Bifron moves to the center of the arena, then a random number of white orbs, max of 4, surround him. Bifron will perform 4 rounds of explosions on his position, giving 1 Infusion stack to players hit by the explosion. The number of white orbs indicates the number of times players need to be hit by Bifron’s explosions since they have an equal amount of Infusion stacks. If no player is hit by Bifron’s explosion, all players are given 1 Infusion stack. All players whose Infusion stacks do not match the number of white orbs shown will die."]},
+                                    note: { en: ["It’s important to communicate with your team to determinate who is going to enter to receive infusion stacks each explosion, the recommended number of people per explosion depends on the number of white orbs shown."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:" },
+                                            description: { en: ["- Stacks will now only be granted upon being hit by the explosions, and not by staying away."]}
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         phase2: {
                             description: { en: ["For the sake of context: this phase needs players to get used to the layout both in arena and upper floor."]},
                             concepts: {
                                 ufl: {
                                     name: { en: "Upper Floor Layout"},
-                                    description: { en: ["The top platform of the arena has a portal that teleports players to the middle room of the upper floor, which contains 3 different rooms, each with an imprisonment room accessible via the portal on the top left or top right platform of the rooms, in the middle platform of the imprisonment room is a portal that allows players to go back to the initial arena.","At the edge of the rooms of the upper floor are doors that lead to a vertical hall, on the top part of the hall is a portal that teleports you to the vertical hall of a different room, going down is a door that leads you to the main hall of the room. Imprisonment rooms and the direction of the room you’re at is identified by symbol color: pink is left, green is center and yellow is right.","When in imprisonment room, players can identify the room via the symbol color on top of the chimney, and when in the main hall, players can identify the room via the symbol color in the middle of the room."]}
+                                    description: { en: ["The top platform of the arena has a portal that teleports players to the middle room of the upper floor, which contains 3 different rooms, each with an imprisonment room accessible via the portal on the top left or top right platform of the rooms, in the middle platform of the imprisonment room is a portal that allows players to go back to the initial arena.","At the edge of the rooms of the upper floor are doors that lead to a vertical hall, on the top part of the hall is a portal that teleports you to the vertical hall of a different room, going down is a door that leads you to the main hall of the room. Imprisonment rooms and the direction of the room you’re at is identified by symbol color: pink is left, green is center and yellow is right.","When in imprisonment room, players can identify the room via the symbol color on top of the chimney, and when in the main hall, players can identify the room via the symbol color in the middle of the room."]},
+                                    img: {
+                                        primary: [
+                                            {src: "/images/mechs/ufl.png", alt: "Upper Floor Layout Diagram"}
+                                        ]
+                                    },
                                 },
                                 banishmentp2: {
-                                    name: { en: "⟨Banishment Debuff⟩ changes:"},
-                                    description: { en: ["At 10 stacks, players will instead be imprisoned in one of the 3 imprisonment rooms of the upper floor and must be rescued within 55s. Failure results in imprisoned player’s death, and Specter Swarm healing 5% of its total HP."]}
+                                    name: { en: "Banishment Debuff"},
+                                    description: { en: ["The debuff recieves a change:","At 10 stacks, players will instead be imprisoned in one of the 3 imprisonment rooms of the upper floor and must be rescued within 55s. Failure results in imprisoned player’s death, and Specter Swarm healing 5% of its total HP."]}
                                 },
                             },
                             phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
@@ -6528,42 +6549,71 @@ export const data = {
                                 np: {
                                     clawswipe: {
                                         name: { en: "Claw Swipe"},
+                                        iframe: true,
                                         description: { en: ["Attacks in the direction of the player Specter Swarm is targeting, performs 2 attacks that give 1 Banishment stack each, then a final swipe that gives 2 Banishment stacks."]}
                                     }
                                 },
                                 mechs: {
-                                    mpi: {
-                                        name: { en: "Multi-person Imprisonment"},
-                                        description: { en: ["The floor below 4 random players start to glow. After some time, Specter Swarm will do an Uppercut, and Specter’s Hands spawn on the glowing floor; Players should dodge those, since being hit by them, causes players to be imprisoned after some seconds. The cage imprisoning players can be broken by other players using command attacks or active skills."]}
+                                    bindingchain: {
+                                        name: { en: "Binding Chain"},
+                                        iframe: true,
+                                        description: { en: ["The floor below 4 players starts to glow. After some time, Specter Swarm will do an Uppercut, and Specter’s Hands spawn on the glowing floor; Players should dodge those, since being hit by them, causes players to be imprisoned after some seconds. The cage imprisoning players can be broken by other players using command attacks or active skills."]}
                                     },
                                     specterexplosion: {
-                                        name: { en: "Specter Explosion"},
+                                        name: { en: "Specter Fan of Explosion"},
+                                        iframe: true,
                                         description: { en: ["Arena is divided into 5 zones. Specter Swarm will cast an explosion in random zones, being hit by the explosions result in lethal damage. Additionally, a random number of players will be marked with small bombs with cross or x shape (+, x). Players with the same shape can stay in the same position without being damaged, but they can be damaged by players with different shapes."]}
                                     },
-                                    specterwave: {
-                                        name: { en: "Specter Wave"},
-                                        description: { en: ["Specter Swarm will use ⟨Multi-person Imprisonment⟩. This time, 1-2 players (supports if possible) need to let themselves be hit by the Specter’s Hands, after Shadow Hands disappear from the floor, concentrated lasers will spawn at the edges of the arena, inflicting lethal damage to anyone that touches it. The background will flash red twice from one of the sides, repeating a total of 3 times (meaning the background will flash 6 times total), these determinates the order on which the Specter waves will come out from. Free players must stand close to the imprisoned players and use them as a cover to prevent the Specter Wave from damaging them."]}
+                                    specterwot: {
+                                        name: { en: "Specter Wall of Torment"},
+                                        iframe: true,
+                                        description: { en: ["Specter Swarm will use <Binding Chain>. This time, 1-2 players (supports if possible) need to let themselves be hit by the Specter’s Hands, after Shadow Hands disappear from the floor, concentrated lasers will spawn at the edges of the arena, inflicting lethal damage to anyone that touches it. The background will flash red twice from one of the sides, repeating a total of 3 times (meaning the background will flash 6 times total), these determinates the order on which the Specter waves will come out from. Free players must stand close to the imprisoned players and use them as a cover to prevent the Specter Wave from damaging them."]}
                                     },
                                     oneirophany: {
                                         name: { en: "Oneirophany"},
+                                        iframe: true,
                                         description: { en: ["Specter Swarm teleports to the middle and strikes the ground. Background will be covered by small, bloomed flowers on both sides, but one side will be fake, a random player will have the fake side revealed to him and must move as soon as possible and use F5 to advise the party of the safe zone. This pattern repeats 3 times before ending."]}
                                     }
                                 },
                                 forcedmechs: {
                                     illusionmaze: {
                                         name: { en: "Illusion Maze"},
-                                        forcedat: { en: "@ 210 bars"},
-                                        description: { en: ["All players will be teleported to the Upper Floor; Portals will be randomized and only 1 of the 3 portals in the Imprisonment room will be available. Players must find the portal that leads to the only Imprisonment room with a portal, to go back to the Arena, once all players are in the arena, mech forcefully ends. Players that fail to be in the arena before time limit ends will die."]}
+                                        unavoidable: true,
+                                        iframe: true,
+                                        groggy: true,
+                                        deathtimed: "1:40",
+                                        forcedat: { en: "Forced at 210 bars"},
+                                        description: { en: ["All players will be teleported to the Upper Floor; Portals will be randomized and only 1 of the 3 portals in the Imprisonment room will be available. Players must find the portal that leads to the only Imprisonment room with a portal to go back to the Arena."]}
                                     },
-                                    soulorb: {
-                                        name: { en: "Soul Orb"},
-                                        forcedat: { en: "@ 150 bars"},
-                                        description: { en: ["Specter Swarm prepares to throw a Soul Orb. Two large portals labeled 0 and 7 appear in the arena. Each player is assigned a portal and a number from 1 to 6 based on the order they joined the party, from oldest to newest. Players must then form three pre-assigned pairs and go to different rooms: Players 1 and 2 go to the left room, Players 3 and 4 stay in the middle room, and Players 5 and 6 go to the right room. Each of these rooms contains a smaller Relay Orb (can be either in the hall or the imprisonment room). In each room, both players must use the Dungeon Function Key to place their personal portals around the Relay Orb, forming a gate. The rule is that the player with the odd number (1, 3, or 5) must place their portal to the right of the orb, and the player with the even number (2, 4, or 6) must place their portal to the left of the orb. Once all six portals are correctly placed, Specter Swarm launches Soul Orb into Portal 0. The orb then travels sequentially through the chain of portals from 0 to 7. As it passes through each room's portal gate, it consumes that room's Relay Orb, growing larger. If all three Relay Orbs are successfully eaten, the Soul Orb reaches its full size, exits through Portal 7, strikes Specter Swarm, and puts him into a groggy state. If any Relay Orb is missed, the orb will be too small when it reaches Portal 7, failing to hit the boss and resulting in a party wipe."]}
+                                    orbrelay: {
+                                        name: { en: "Orb Relay"},
+                                        unavoidable: true,
+                                        iframe: true,
+                                        groggy: true,
+                                        deathtimed: "1:40",
+                                        forcedat: { en: "Forced at 150 bars"},
+                                        description: { en: ["Specter Swarm prepares to throw a Soul Orb. Two large portals labeled 0 and 7 appear in the arena. Each player is assigned a portal and a number from 1 to 6 based on the order they joined the party, from oldest to newest. Players must then form three pre-assigned pairs and go to different rooms: Players 1 and 2 go to the left room, Players 3 and 4 stay in the middle room, and Players 5 and 6 go to the right room. Each of these rooms contains a smaller Relay Orb (can be either in the hall or the imprisonment room). In each room, both players must use the Dungeon Function Key to place their personal portals around the Relay Orb, forming a gate. The rule is that the player with the odd number (1, 3, or 5) must place their portal to the right of the orb, and the player with the even number (2, 4, or 6) must place their portal to the left of the orb. Once all six portals are correctly placed, Specter Swarm launches Soul Orb into Portal 0. The orb then travels sequentially through the chain of portals from 0 to 7. As it passes through each room's portal gate, it consumes that room's Relay Orb, growing larger. If all three Relay Orbs are successfully eaten, the Soul Orb reaches its full size, exits through Portal 7 and strikes Specter Swarm.","Otherwise, if any Relay Orb is missed, the orb will be too small when it reaches Portal 7, failing the mech."]},
+                                        variants: {
+                                            solo: {
+                                                name: {en: "Solo Mode Variation:"},
+                                                description: {en:["- The player will be marked with a number from 1-6. All portals beside the player's will already be in the place they need to be."]}
+                                            }
+                                        }
                                     },
                                     std: {
                                         name: { en: "Spot the difference"},
-                                        forcedat: { en: "@ 75 bars"},
-                                        description: { en: ["Pairs of 2 players are teleported to each hall of the Upper Floor. In each room, there are 12 interactable eyes positioned in a set pattern: 4 in the left vertical corridor, 4 in the central hall, and 4 in the right vertical corridor. Behind or near each eye spot, there can be random furniture from a set list: Chair (Ch), Sofa (S), Clock (Cl), Lamp (L), Mirror (M), or Pot (P). There can only be 2 or fewer pieces of furniture in each section of the room (left, center, right). One player in each room must record the furniture they see by writing down the first letter of each furniture piece in its corresponding spot, using 'x' for empty spots, in this exact format: 'x x x x / x x x x / x x x x'  (e.g., 'Cl Ch x x / x x S x / x M x P'). After all three rooms record their layouts, the team must compare them to find one unique piece of furniture per room. A piece of furniture only counts as a 'difference' for a room if it is different from what is in the same position in both other rooms. If it matches even one other room, it is not a valid difference.","For example:","Room 1: x x M S / x Ch x x / x P x L","Room 2: x x S S / x Ch Cl x / x P x L","Room 3: x x M S / x Ch Cl x / x P x M","Looking at the furniture from all the rooms, we can see that in position 3, Room 2 has a Sofa, while Rooms 1 and 3 have a Mirror, so Room 2's difference is spotted.","In position 7, Room 1 has nothing (x), while Rooms 2 and 3 have a Clock (Cl), so Room 1's difference is spotted.","In position 12, Room 3 has a Mirror (M), while Rooms 1 and 2 have a Lamp (L), so Room 3's difference is spotted. Once the three unique differences are identified (one per room), the players must use the Dungeon Function Key on the specific eye in that spot in each room. After all three correct eyes are activated, the mechanic ends and Specter Swarm become groggy."]}
+                                        unavoidable: true,
+                                        iframe: true,
+                                        groggy: true,
+                                        deathtimed: "1:40",
+                                        forcedat: { en: "Forced at 75 bars"},
+                                        description: { en: ["Pairs of 2 players are teleported to each hall of the Upper Floor. In each room, there are 12 interactable eyes positioned in a set pattern: 4 in the left vertical corridor, 4 in the central hall, and 4 in the right vertical corridor. Behind or near each eye spot, there can be random furniture from a set list: Chair (Ch), Sofa (S), Clock (Cl), Lamp (L), Mirror (M), or Pot (P). There can only be 2 or fewer pieces of furniture in each section of the room (left, center, right). One player in each room must record the furniture they see by writing down the first letter of each furniture piece in its corresponding spot, using 'x' for empty spots, in this exact format: 'x x x x / x x x x / x x x x'  (e.g., 'Cl Ch x x / x x S x / x M x P'). After all three rooms record their layouts, the team must compare them to find one unique piece of furniture per room. A piece of furniture only counts as a 'difference' for a room if it is different from what is in the same position in both other rooms. If it matches even one other room, it is not a valid difference.","For example:","Room 1: x x M S / x Ch x x / x P x L","Room 2: x x S S / x Ch Cl x / x P x L","Room 3: x x M S / x Ch Cl x / x P x M","Looking at the furniture from all the rooms, we can see that in position 3, Room 2 has a Sofa, while Rooms 1 and 3 have a Mirror, so Room 2's difference is spotted.","In position 7, Room 1 has nothing (x), while Rooms 2 and 3 have a Clock (Cl), so Room 1's difference is spotted.","In position 12, Room 3 has a Mirror (M), while Rooms 1 and 2 have a Lamp (L), so Room 3's difference is spotted. Once the three unique differences are identified (one per room), the players must use the Dungeon Function Key on the specific eye in that spot in each room."]},
+                                        variants: {
+                                            solo: {
+                                                name: {en: "Solo Mode Variation:"},
+                                                description: {en:["- The player will always be sent to the center room.","- The layout of the two parallel rooms on the left and right will be given in the chat window. find the item that is different in the center room using the information provided."]}
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -6583,158 +6633,228 @@ export const data = {
                     },
                     num: { en: "3rd Dungeon", es: "3ra Mazmorra", kr: "세 번째 던전", jp: "3番目のダンジョン", br: "3ª Masmorra" },
                     name: { en: "- Queen's Throne Hall -", es: "- Sala del Trono de la Reina -", kr: "- 여왕의 왕좌 홀 -", jp: "- 女王の玉座の間 -", br: "- Salão do Trono da Rainha -"},
-                    description: { en: ["For the sake of context, this dungeon will contain named weapons, listed here:","Sephirot Phantasma: Spear","Mull Darkness: Hammer","Haures: Fan","Invite Abyss: Sword"]},
                     content: {
                         phase1: {
+                            description: { en: ["IMPORTANT CONTEXT: This dungeon will contain named weapons, listed here:","Sephirot Phantasma: Spear","Mull Darkness: Hammer","Haures: Fan","Invite Abyss: Sword"]},
                             phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
                             phasebname: { en: "Tarith and Apollyon"},
                             np: {
                                 aponormalpattern: {
                                     name: { en: "Apollyon Normal Patterns", es: "Patrones Normales de Apollyon", kr: "아폴리온 일반 패턴", jp: "アポリオン通常パターン", br: "Padrões Normais de Apollyon" },
+                                    iframe: true,
                                     description: { en: ["Constantly attacks with Claw and will occasionally attack with Breath and Shockwave patterns. Its hits apply Attack reduction debuff (Cleansable)."]}
                                 },
                                 tarithnormalpattern: {
                                     name: { en: "Tarith Normal Patterns", es: "Patrones Normales de Tarith", kr: "타리스 일반 패턴", jp: "タリス通常パターン", br: "Padrões Normais de Tarith" },
+                                    iframe: true,
                                     description: { en: ["Constantly shoots players and will occasionally cast Pillars of Light that chain one after another. Both deal moderate damage."]}
                                 },
                             },
                             mechs: {
                                 sephirotphantasma: {
                                     name: { en: "Sephirot Phantasma", es: "Sephirot Fantasma", kr: "세피로트 환영", jp: "セフィロトファンタズマ", br: "Sephirot Fantasma" },
-                                    description: { en: ["First spawns at 270 bars.","Magic circles will appear on random platforms. Players who get <Sephirot Phantasma’s debuff> will be given spears and place 1-2 spears in each circle to dissipate them. Failing to dissipate circles will trigger an explosion that deals fatal damage."]}
-                                },
-                                sephirotpierce: {
-                                    name: { en: "Sephirot Pierce", es: "Perforación de Sephirot", kr: "세피로트 피어스", jp: "セフィロトピアス", br: "Perfurador Sephirot" },
-                                    description: { en: ["Sephirot will start tracking a random player, then lock position after some time, afterwards, it will fall doing high damage to anyone hit by it."]},
-                                    note: { en: ["Neglectable with proper defense."]}
+                                    iframe: true,
+                                    description: { en: ["First spawns at 270 bars.","Magic circles will appear on random platforms. Players who get Sephirot Phantasma’s debuff> will be given spears and place 1-2 spears in each circle to dissipate them. Failing to dissipate circles will trigger an explosion that deals lethal damage."]},
+                                    sephirotpierce: {
+                                        name: { en: "Sephirot Phantasma - Pierce", es: "Sephirot Fantasma - Perforación", kr: "", jp: "", br: "" },
+                                        iframe: true,
+                                        description: { en: ["Sephirot will start tracking a random player, then lock position after some time, afterwards, it will fall doing high damage to anyone hit by it."]},
+                                        note: { en: ["- Neglectable with proper defense."]}
+                                    },
                                 },
                                 mulldarkness: {
                                     name: { en: "Mull Darkness"},
-                                    description: { en: ["First spawns at 210 bars.","A magic circle will appear on a random platform, on top of the magic circle, there will be multiple circle icons that stablishes the number of players who need to stand in the circle in order to dissipate it."]},
-                                    failcondition: { en: ["Failing to dissipate the circle will trigger an explosion that deals fatal damage."]}
-                                },
-                                mulldarknessexplosion: {
-                                    name: { en: "Mull Darkness - Explosion"},
-                                    description: { en: ["Mull Darkness spawns at a random place in the arena (not on the platforms) and start charging an attack, the range of its attack will periodically increase if no one stands inside the range, if a player is inside the range of the explosion, the range will periodically decrease, then after some time, it will forcefully attack."]},
-                                    note: { en: ["Assign a support to stand inside in order to decrease the range of the explosion. "]}
+                                    iframe: true,
+                                    forcedat: { en: "After 210 bars."},
+                                    description: { en: ["A magic circle will appear on a random platform, on top of the magic circle, there will be multiple circle icons that stablishes the number of players who need to stand in the circle in order to dissipate it."]},
+                                    failcondition: { en: ["Failing to dissipate the circle will trigger an explosion that deals fatal damage."]},
+                                    mulldarknessexplosion: {
+                                        name: { en: "Mull Darkness - Explosion"},
+                                        iframe: true,
+                                        description: { en: ["Mull Darkness spawns at a random place in the arena (not on the platforms) and start charging an attack, the range of its attack will periodically increase if no one stands inside the range, if a player is inside the range of the explosion, the range will periodically decrease, then after some time, it will forcefully attack."]},
+                                        note: { en: ["- Assign a support to stand inside in order to decrease the range of the explosion. "]}
+                                    },
                                 },
                                 haures: {
                                     name: { en: "Haures", es: "Haures", kr: "하우레스", jp: "ハウレス", br: "Haures" },
-                                    description: { en: ["First spawns at 150 bars.","Haures will create subsequent Arena-wide typhoons. The safe zone is in the direction at which Haures' head faces. Typhoons deal high damage, but with proper defense, they don’t deal enough damage to kill players, so you can skip the process of going to the safe zone."]}
-                                },
-                                haurestornado: {
-                                    name: { en: "Haures - Tornado", es: "Haures - Tornado", kr: "하우레스 - 토네이도", jp: "ハウレス - トルネード", br: "Haures - Tornado" },
-                                    description: {en: ["Haures will cast a small advancing tornado that continuously deals damage to players in its way. It doesn’t deal much damage."]}
+                                    iframe: true,
+                                    forcedat: { en: "After 150 bars."},
+                                    description: { en: ["Haures will create subsequent Arena-wide typhoons. The safe zone is in the direction at which Haures' head faces. Typhoons deal high damage, but with proper defense, they don’t deal enough damage to kill players, so you can skip the process of going to the safe zone."]},
+                                    haurestornado: {
+                                        name: { en: "Haures - Tornado", es: "Haures - Tornado", kr: "하우레스 - 토네이도", jp: "ハウレス - トルネード", br: "Haures - Tornado" },
+                                        iframe: true,
+                                        description: {en: ["Haures will cast a small advancing tornado that continuously deals damage to players in its way. It doesn’t deal much damage."]}
+                                    },
                                 },
                                 inviteabyss: {
                                     name: { en: "Invite Abyss", es: "Invitar al Abismo", kr: "초대 심연", jp: "招待アビス", br: "Convidar Abismo" },
+                                    iframe: true,
+                                    forcedat: { en: "After 90 bars."},
                                     description: { en: ["First spawns at 90 bars.","Once Invite Abyss spawns, it will warn all players on where it will attack (3 times), then start attacking on the positions it foretold. Players must avoid being in the marked areas when Invite Abyss attacks."]},
+                                    iahs: {
+                                        name: { en: "Invite Abyss - Horizontal Slash", es: "Invitar al Abismo - Corte Horizontal", kr: "초대 심연 - 수평 베기", jp: "招待アビス - 水平斬り", br: "Convidar Abismo - Corte Horizontal" },
+                                        iframe: true,
+                                        description: { en: ["Invite Abyss will periodically attack with slashes that deal a moderate amount of damage."]}
+                                    }
                                 },
-                                iahs: {
-                                    name: { en: "Invite Abyss - Horizontal Slash", es: "Invitar al Abismo - Corte Horizontal", kr: "초대 심연 - 수평 베기", jp: "招待アビス - 水平斬り", br: "Convidar Abismo - Corte Horizontal" },
-                                    description: { en: ["Invite Abyss will periodically attack with slashes that deal a moderate amount of damage."]}
-                                }
                             },
                             forcedmechs: {
-                                pkabb: {
-                                    forcedat: { en: "@ 180 bars", es: "@ 180 barras", kr: "180바에서", jp: "180バーで", br: "a 180 barras" },
-                                    name: { en: "Puppet King and Beast's Brand", es: "Rey Marioneta y Marca de Bestia", kr: "꼭두각시 왕과 야수의 브랜드", jp: "パペットキングとビーストのブランド", br: "Rei Fantoche e Marca da Fera" },
-                                    description: { en: ["Hitting Tarith drops Puppet King(purple) while hitting Apollyon drops Beast(blue) brands around the arena and the platforms. Players must grab one of them using Dungeon Function Button and pair up Puppet King(purple) and Beast(blue) brands to survive Tarith’s attack which means 3 players will grab Puppet King(purple) brand and 3 players will grab Beast(blue) brand."]},
-                                    note: { en: ["Depending on the party the host may decide whether or not organize who grabs each brand."]}
+                                brand: {
+                                    forcedat: { en: "Forced at 180 bars", es: "Forzado a las 180 barras", kr: "", jp: "", br: "" },
+                                    name: { en: "Brand", es: "Marca", kr: "", jp: "", br: "" },
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    deathtimed: true,
+                                    description: { en: ["Hitting Tarith drops Puppet King(purple) brands while hitting Apollyon drops Demonic(blue) brands around the arena and the platforms. Players must grab one of them using Dungeon Function Button and pair up Puppet King brands with Demonic brands to survive Tarith’s attack. which means 3 players will grab Puppet King brand and 3 players will grab Demonic brand."]},
+                                    note: { en: ["- Depending on the party the host may decide whether or not to organize who grabs each brand."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:"},
+                                            description: { en: ["an Elsword Knight Emperor (1st path) will appear already protected by either Puppet King or Demonic Brand."]}
+                                        }
+                                    }
                                 },
                                 beastsrestraint: { 
-                                    forcedat: { en: "@ 60 bars", es: "@ 60 barras", kr: "60바에서", jp: "60バーで", br: "a 60 barras" },
-                                    name: { en: "Beast's Restraint", es: "Restricción de Bestia", kr: "야수의 속박", jp: "ビーストの拘束", br: "Restrição da Fera" },
-                                    description: { en: ["All weapons dispel and Tarith hides. Apollyon will mark and restrain one player, then shows the restrained player 5 symbols in random order (Star, Diamond, Circle, Hourglass, Flower); After all symbols are shown to the restrained player, portals with symbols will appear on random platforms with a symbol on top of them, hit the portals in the order that Apollyon revealed to reveal Tarith. Failing to reveal him on time triggers a Party Wipe."]},
-                                    note: { en: ["If a portal with the incorrect symbol is hit, mech will immediately end as failure and trigger a Party Wipe."]},
-                                    note2: { en: ["It is highly recommended to write the order given by Apollyon on Party chat, since it’s easier to keep track of."]}
+                                    forcedat: { en: "Forced at 60 bars", es: "Forzado a las 60 barras", kr: "", jp: "", br: "" },
+                                    name: { en: "Portal", es: "", kr: "", jp: "", br: "" },
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    wipetimed: true,
+                                    description: { en: ["All weapons dispel and Tarith hides. Apollyon will mark and restrain one player, then shows the restrained player 5 symbols in random order (Star, Diamond, Circle, Hourglass, Flower); After all symbols are shown to the restrained player, portals with symbols will appear on random platforms with a symbol on top of them, hit the portals in the order that Apollyon revealed to reveal Tarith."]},
+                                    note: { en: ["- If a portal with the incorrect symbol is hit, mech will immediately end as failure and trigger a Party Wipe.","- It is highly recommended to write the order given by Apollyon on Party chat, since it’s easier to keep track of."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:"},
+                                            description: { en: ["Since there's only 1 player, the player will always be grabbed, and once Apollyon finishes telling the order, they will be allowed to move again."]}
+                                        }
+                                    }
                                 }
                             }
                         },
                         phase2: {
                             phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
                             phasebname: { en: "Tarith and Type-Q Steel Queen"},
-                            mechs: {
-                                name: { en: "Mechanics" },
+                            concepts: {
                                 punishmentsystem: {
                                     name: { en: "Punishment System", es: "Sistema de Castigo", kr: "처벌 시스템", jp: "罰システム", br: "Sistema de Punição" },
                                     description: { en: ["On phase start, a gauge will start filling slowly; at 100%, different mechanics will be triggered as a <Punishment>. Getting hit by Steel Queen's will give a certain amount of <Punishment stacks>, after reaching 30 stacks, the gauge will increase by a certain amount."]}
                                 },
+                            },
+                            mechs: {
+                                name: { en: "Mechanics" },
                                 punishmentmechs:{
                                     name: { en: "Punishment Mechanics", es: "Mecánicas de Castigo", kr: "처벌 메커니즘", jp: "罰メカニクス", br: "Mecânicas de Punição" },
+                                    iframe: true,
                                     sephirotphantasma: {
-                                        name: { en: "Sephirot Phantasma <Punishment>", es: "Sephirot Fantasma <Castigo>", kr: "세피로트 환영 <처벌>", jp: "セフィロトファンタズマ＜罰＞", br: "Sephirot Fantasma <Punição>" },
+                                        name: { en: "Sephirot Phantasma (Punishment)", es: "Sephirot Fantasma (Castigo)", kr: "세피로트 환영 (처벌)", jp: "セフィロトファンタズマ(罰)", br: "Sephirot Fantasma (Punição)" },
                                         description: { en: ["All players get Sephirot Phantasma's debuff, with a timer depending on their party join position, the 2 oldest members have a timer that lasts 12 seconds, the 3rd and 4th to join have a timer that lasts 6 seconds and 5th and 6th have a 2 seconds timer, once the timer expires, Sephirot Phantasma will fall on the position the player was when the timer expired, damaging anyone who’s hit by it; If 2 Sephirot Phantasma collide with each other, it will trigger an explosion that deals lethal damage. It’s recommended that once the gauge reaches 100% the 3rd and 4th player separate to avoid spears falling in the same place."], 
                                             es: ["Todos los jugadores reciben el debufo de Sephirot Phantasma, con un temporizador que depende de la posición en la que se unio al grupo: los dos miembros más antiguos tienen un temporizador que dura 12 segundos, el segundo y el quinto en unirse tienen un temporizador que dura 6 segundos y el tercero y el cuarto tienen un temporizador de 2 segundos. Una vez que el temporizador expira, Sephirot Phantasma caerá en la posición en la que se encontraba el jugador cuando expiró el temporizador, dañando a cualquiera que sea golpeado por él. Si dos Sephirot Phantasma chocan entre sí, se producirá una explosión que causará un daño letal. Se recomienda que una vez que el medidor alcance el 100 %, el tercer y cuarto jugador se separen para evitar que las lanzas caigan en el mismo lugar."]},
                                     },
                                     mulldarkness: {
-                                        name: { en: "Mull Darkness <Punishment>"},
+                                        name: { en: "Mull Darkness (Punishment)"},
                                         description: {en: ["Mull Darkness will fall from the sky, once it reaches the ground it will explode. Hitting it reduces the range of the explosion and pushes it back up. "]},
-                                        note: { en: ["This Punishment can be neglected if the party has enough defense to tank."]}
+                                        note: { en: [" - This can be neglected if the party has enough defense to tank it."]}
                                     },
                                     haures: {
-                                        name: { en: "Haures <Punishment>", es: "Haures <Castigo>", kr: "하우레스 <처벌>", jp: "ハウレス＜罰＞", br: "Haures <Punição>" },
+                                        name: { en: "Haures (Punishment)", es: "Haures (Castigo)", kr: "하우레스 (처벌)", jp: "ハウレス(罰)", br: "Haures (Punição)" },
                                         description: { en: ["Haures will create 3 tornadoes (blue, purple or orange) on the steps of the edges of the arena. Use skill of the same tier as the color of the tornado to dispel it, blue is equal to tenacity, purple is equal to strength, orange is equal to bravery; If the tornadoes are not dispelled after some time, they will explode."]},
-                                        note: { en: ["When using the wrong skill tier on a tornado, it will instantly trigger an explosion that deals fatal damage."]},
-                                        note2: { en: ["Tornado explosions width is only half of the arena, so players can choose to only dispel tornados from 1 side and stay there until the other side explodes."]},
-                                        note3: { en: ["DPS characters usually lack tenacity skills on their rotation, so its better to assign supports to deal with tornadoes."]}
+                                        note: { en: ["- When using the wrong skill tier on a tornado, it will instantly trigger an explosion that deals lethal damage.","- Tornadoes explosion width is only half of the arena, so players can choose to only dispel tornados from 1 side and stay there until the other side explodes.","- DPS characters usually lack tenacity skills on their rotation, so its better to assign supports to deal with tornadoes."]},
                                     },
                                     inviteabyss: {
-                                        name: { en: "Invite Abyss <Punishment>", es: "Invitar al Abismo <Castigo>", kr: "초대 심연 <처벌>", jp: "招待アビス＜罰＞", br: "Convidar Abismo <Punição>" },
+                                        name: { en: "Invite Abyss (Punishment)", es: "Invitar al Abismo (Castigo)", kr: "초대 심연 (처벌)", jp: "招待アビス(罰)", br: "Convidar Abismo (Punição)" },
                                         description: { en: ["Platforms will appear in the middle of the arena. Each player will be shown a different safe zone between the platforms, after some time, Invite Abyss will slash the whole arena except the safe zone."]}
                                     }
                                 },
                                 steelqueenspear: {
                                     name: { en: "Steel Queen - Spear", es: "Reina de Acero - Lanza", kr: "스틸 퀸 - 창", jp: "スチールクイーン - 槍", br: "Rainha de Aço - Lança" },
-                                    description: { en: ["Steel Queen throws <Sephirot Phantasma> at multiple players on their current position, falling after some time. Deals lethal damage to players when hit by <Sephirot Phantasma>."]},
+                                    iframe: true,
+                                    description: { en: ["Steel Queen throws Sephirot Phantasma at multiple players on their current position, falling after some time. Deals lethal damage."]},
                                     punishmentstacks: { en: ["Gives 5 Punishment stacks per hit."]}
                                 },
                                 steelqueensmash: {
                                     name: { en: "Steel Queen - Smash", es: "Reina de Acero - Aplastamiento", kr: "스틸 퀸 - 스매시", jp: "スチールクイーン - スマッシュ", br: "Rainha de Aço - Esmagamento" },
-                                    description: { en: ["Steel Queen slams the floor with <Mull Darkness> dealing high damage. "]},
+                                    iframe: true,
+                                    description: { en: ["Steel Queen slams the floor with Mull Darkness dealing high damage. "]},
                                     punishmentstacks: { en: ["Gives 9 Punishment stacks on hit."]}
                                 },
                                 steelqueensteeltornado: {
                                     name: { en: "Steel Queen - Steel Tornado", es: "Reina de Acero - Tornado de Acero", kr: "스틸 퀸 - 스틸 토네이도", jp: "スチールクイーン - スチールトルネード", br: "Rainha de Aço - Tornado de Aço" },
-                                    description: { en: ["Steel Tornado: Steel Queen swings <Haures> and creates a tornado that moves slowly. "]},
+                                    iframe: true,
+                                    description: { en: ["Steel Queen swings Haures and creates a tornado that moves slowly. "]},
                                     punishmentstacks: { en: ["Swing: Gives 3 Punishment stacks on hit | Tornado: Gives 1 Punishment stack per hit."]}
                                 },
                                 sqssw: {
-                                    name: { en: "Steel Queen - Steel Slash Wave", es: "Reina de Acero - Onda de Corte de Acero", kr: "스틸 퀸 - 스틸 슬래시 웨이브", jp: "スチールクイーン - スチールスラッシュウェーブ", br: "Rainha de Aço - Onda de Corte de Aço" },
-                                    description: { en: ["Steel Queen does a horizontal slash with <Invite Abyss> then creates a wave that moves forward."]},
+                                    name: { en: "Steel Queen - Slash", es: "Reina de Acero - Corte", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: { en: ["Steel Queen does a horizontal slash with Invite Abyss then creates a wave that moves forward."]},
                                     punishmentstacks: { en: ["Slash: Gives 6 Punishment stacks on hit | Wave: Gives 2 Punishment stacks per hit.",]},
-                                    note: { en: ["The wave itself doesn’t deal a lot of damage, but if the player doesn’t have super armor, the wave can drag the player and deal massive damage that can result in death. "]}
+                                    note: { en: ["The wave itself doesn’t deal a lot of damage, but if the player doesn’t have super armor, the wave can drag the player and deal lethal damage. "]}
                                 },
                                 symbolbrand: {
                                     name: { en: "Symbol Brand"},
-                                    description: {en: ["All players are linked in pairs of brands with different shapes and colors: Triangle(red), Square(mint), Circle(blue). After some time, one will be bound (stunned), the other must damage the brand using skills to free them."]},
-                                    note: { en: ["If the gauge is 100% during this mechanic, it will delay the activation of the ⟨Punishment Mechanic⟩ until everyone is freed from the brand’s bound, so always deal with the brands first."]}
+                                    iframe: true,
+                                    timed: true,
+                                    description: {en: ["All players are linked in pairs of brands with different shapes and colors, after some time, one will be bound/shackles and, the other must damage other brands using skills to free them:","Triangle(red), which can be destroyed by players with blue circle.","Square(mint), which can be destroyed by players with red triangle.","Circle(blue), which can be destroyed by players with green square."]},
+                                    note: { en: ["- If the gauge is 100% during this mechanic, it will delay the activation of the ⟨Punishment Mechanic⟩ until everyone is freed from the brand’s bound, so always deal with the brands first.","- If any player remains binded after the timer expires, or if the player dies, the bind will explode dealing high damage."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:"},
+                                            description: {en: ["This attack cannot happen."]}
+                                        }
+                                    }
                                 }
                             },
                             forcedmechs: {
                                 name: { en: "Forced Mechanics", es: "Mecánicas Forzadas", kr: "강제 메커니즘", jp: "強制メカニクス", br: "Mecânicas Forçadas" },
-                                sephirotsnipe: {
-                                    name: { en: "Sephirot and Snipe"},
-                                    forcedat: { en: "@ 240 bars", es: "@ 240 barras", kr: "240바에서", jp: "240バーで", br: "a 240 barras" },
+                                roc: {
+                                    name: { en: "Rain of Chaos"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 240 bars", es: "Forzada a las 240 barras", kr: "", jp: "", br: "" },
                                     description: {en: ["Tarith and Steel Queen will move to 1 of 3 positions: Left, Middle or Right then mark 3 players with Snipe; Players with Snipe don’t damage themselves, but damage players without Snipe.","When Left: Tarith will mark 3 players with Snipe and Sephirot will fall everywhere but the steps on the left side of the arena, then Sephirot will start falling slowly from left to right, only leaving a small safe zone, this pattern repeats until the safe zone reaches the other side of the arena.","When Right: Essentially functions the same as ‘When Left’ but on reverse, starts on the right side, and slowly moves to the left.",,"When Middle: Sephirot will fall on the entire map, but with gaps between each spear, the next time it attacks, it will target the previous safe zone, and so on until mech ends."]},
-                                    note: { en: ["Since players with Snipe cannot damage themselves, it’s better for them to group in a different place so that they don’t kill people without snipe on accident."]}
+                                    note: { en: ["- Since players with Snipe cannot damage themselves, it’s better for them to group in a different place so that they don’t kill people without snipe on accident."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:"},
+                                            description: {en: ["Tarith cannot Snipe."]}
+                                        }
+                                    }
                                 },
-                                mdr: {
-                                    name: { en: "Mull Darkess' Restraint"},
-                                    forcedat: { en: "@ 180 bars", es: "@ 180 barras", kr: "180바에서", jp: "180バーで", br: "a 180 barras" },
+                                sniping: {
+                                    name: { en: "Sniping"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 180 bars", es: "Forzada a las 180 barras", kr: "180바에서", jp: "180バーで", br: "a 180 barras" },
                                     description: {en: ["Platforms will spawn in the middle of the arena, along with 6 Apollyons and Tarith guns scattered along the platform, 3 random players and Apollyons will be marked and have one of Tarith guns track them. Marked players need to position themselves in a way that makes Tarith guns chain the marked Apollyons instead of them. After all 3 guns fire, it will trigger a second round, marking another 3 random players, and the 3 remaining Apollyons, once again, marked players need to position themselves to chain the marked Apollyons."]},
-                                    note: { en: ["Chains can clip through other chains and Tarith guns, but it will chain any player or Apollyon in the way even if it was already chained, so double check to make sure the path towards the marked Apollyon is free."]}
+                                    note: { en: ["- Chains can clip through other chains and Tarith guns, but it will chain any player or Apollyon in the way even if it was already chained, so double check to make sure the path towards the marked Apollyon is free."]},
+                                    variants: {
+                                        solo: {
+                                            name: { en: "Solo Mode Variation:"},
+                                            description: {en: ["Limited to 2 rounds: one rifle per round."]}
+                                        }
+                                    }
                                 },
-                                hauresgarden: {
-                                    name: { en: "Haures' Garden"},
-                                    forcedat: { en: "@ 120 bars", es: "@ 120 barras", kr: "120바에서", jp: "120バーで", br: "a 120 barras" },
-                                    description: {en: ["A giant flower will spawn in the middle of the arena, afterwards, small flowers will constantly spawn on the floor. Attack the flowers with command attacks to remove them. After some time, the mech will successfully end ONLY if the floor is clean (All flowers removed), then, platforms will appear while Haures prepares his final attack; Players below the highest platform will die once Haures attacks. "]},
-                                    note: { en: ["If any flower stays on the floor 15 seconds before being removed, a Party Wipe will be triggered."]}
+                                goh: {
+                                    name: { en: "Garden of Haures"},
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    wipetimed: "15s each flower",
+                                    forcedat: { en: "Forced at 120 bars", es: "Forzada a las 120 barras", kr: "", jp: "", br: "" },
+                                    description: {en: ["A giant, non-interactable flower will spawn in the middle of the arena. Afterwards, small flowers will constantly spawn on the floor. Attack the flowers with command attacks to remove them. then, after a couple of rounds, platforms will appear while Haures prepares his final attack.","Players below the highest platform will die once Haures attacks. "]},
                                 },
                                 inviteabyssorb: {
                                     name: { en: "Invite Abyss' Orbs", es: "Orbes de Invite Abyss"},
-                                    forcedat: { en: "@ 60 bars", es: "@ 60 barras", kr: "60바에서", jp: "60バーで", br: "a 60 barras" },
-                                    description: {en: ["Tarith, who is on the left side and Steel Queen who is on the right side, will exchange orbs. Orbs with Punishment marks must NOT reach Steel Queen. Orbs without mark must reach her, if Steel Queen makes contact with an orb that has the Punishment mark, it will trigger a wipe."], es: ["Tarith, que está en el lado izquierdo, y Steel Queen, que está en el lado derecho, intercambiarán orbes. Los orbes con marcas de castigo NO deben llegar a Steel Queen. Los orbes sin marca deben llegar a ella; si Steel Queen entra en contacto con un orbe que tiene la marca de castigo, se aniquilara al grupo."]}
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 60 bars", es: "Forzada a las 60 barras", kr: "", jp: "", br: "" },
+                                    description: {en: ["Tarith, who is on the left side and Steel Queen who is on the right side, will exchange orbs. Orbs with Punishment marks must NOT reach Steel Queen. Orbs without mark must reach her."], es: ["Tarith, que está en el lado izquierdo, y Steel Queen, que está en el lado derecho, intercambiarán orbes. Los orbes con marcas de castigo NO deben llegar a Steel Queen. Los orbes sin marca deben llegar a ella."]},
+                                    note: {en: ["- If Steel Queen makes contact with an orb that has the Punishment mark, it will trigger a wipe."]}
                                 },
                             }
                         }                        
@@ -6964,53 +7084,73 @@ export const data = {
                         phase1: {
                             concepts: {
                                     ecd: {
-                                        name: { en: "<Energy Charging Devices>"},
+                                        name: { en: "Energy Charging Devices"},
                                         description: { en: ["On phase start, players will need to destroy 4 devices while dodging the attacks coming from Echoes of Doom. Each destroyed device reduces its HP by 25 bars and decreases its damage reduction by 4.75%. While destroying the devices, the floor will slowly electrify. Players who touch the electrified field will receive lethal multi-hit damage. Failing to destroy all devices before the floor electrifies entirely makes the task way harder, recommended to restart if this happens. After all 4 devices are destroyed all players will fall and enter the real arena and start the fight versus Echoes of Doom."]}
                                     },
                                     manabombs: {
-                                        name: { en: "<Mana Bombs>"},
+                                        name: { en: "Mana Bombs"},
                                         description: { en: ["A random player will be given a Mana Bomb, but differently to Wilting Tower: Flight, players hit by the bomb will receive lethal damage. If a Mall, Bomb is placed next to a device, the bomb will reduce 25% of the device’s HP."]}
                                     }
                             },
                             phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
-                            separation: {en: " - After destroying all 4 devices - "},
                             phasebname: { en: "Echoes of Doom", es: "Ecos de la Perdicion", kr: "묵시록의 메아리", jp: "黙示録のエコー", br: "Eco do Apocalipse"},
                             np: {
+                                _sep1: {
+                                    separation: { en: " - After destroying all 4 devices - "}
+                                },
                                 clawswipes: {
                                     name: { en: "Claw Swipes"},
+                                    iframe: true,
                                     description: { en: ["Echoes of Doom will target random players and cast 3 attacks: Horizontal, Vertical and cross claw, claws follow players then lock position seconds before the attack. If claws hit platforms 5 times, they will disappear for a short period."]}
                                 },
                                 electricexplosion: {
                                     name: { en: "Electric Explosion"},
+                                    iframe: true,
                                     description: { en: ["Small red circle will appear in all players, after a moment, it explodes, dealing moderate damage to players in range, it’s not lethal but if the explosions get stacked it will deal more damage."]}
                                 },
                             },
                             mechs: {
                                 fallinglightning: {
                                     name: { en: "Falling Lightning"},
+                                    iframe: true,
                                     description: { en: ["Lightning targets all players and falls after some time. Players hit by lightning will have their attack power reduced and receive moderate to lethal damage depending on the amount of defense they have."]}
                                 },
                                 electricpillar: {
                                     name: { en: "Electric Pillar"},
+                                    iframe: true,
+                                    forcedat: {en: "Casted immediately after <Falling Lightning>"},
                                     description: { en: ["Vertical pillars of light will fall near the players, leaving a safe zone between them for players to be in. Players hit by the pillar will receive moderate damage."]}
                                 },
                                 tailwhip: {
                                     name: { en: "Tail Whip"},
-                                    followup: { en: "After destroying 2 devices"},
+                                    iframe: true,
+                                    forcedat: {en: "Replaces <Electric Pillar> after destroying 2 devices."},
                                     description: { en: ["After Falling Lightning ends, Echoes of Doom will whip his tail on the floor, dealing lethal damage to anyone hit by it. Players should dodge by jumping and staying in air until the attack ends."]}
                                 },
                                 breath: {
                                     name: { en: "Breath"},
-                                    followup: { en: "After destroying 3 devices"},
+                                    iframe: true,
+                                    forcedat: {en: "Replaces <Tail Whip> after destroying 3 devices."},
                                     description: { en: ["Essentially a Tail Whip variant, it’s the same, but with Echoes of Doom’s breath instead of its tail."]}
+                                },
+                                _sep1: {
+                                    separation: { en: " - After destroying all 4 devices - "}
                                 },
                                 flightm: {
                                     name: { en: "Flight – Middle"},
-                                    description: { en: ["Echoes of Doom flies off the map and then returns, positioning itself in the middle-left section. After a moment, it roars, granting a freezing interaction (activatable with the Dungeon Function Key) to any players standing near it. It then begins charging its breath attack. If the freezing interaction is activated, the player instantly freezes in place, becoming immune to the breath attack and creating a small protective zone that blocks the breath for any players standing directly behind them. The recommended strategy is for all players except one to move to the middle-right side of the arena to avoid receiving the freezing interaction. The one remaining player stays near the boss to receive the interaction, then moves to the group and freezes themselves in front of everyone to protect the entire party. Players struck by the breath receive moderate multi-hit damage. Frozen players can be unfrozen by their allies using repeated command attacks or active skills. If a player who received the freezing interaction does not activate it, the interaction will explode after the timer expires, dealing lethal damage to the holder and others nearby. If a frozen player is not unfrozen before the interaction expires, the explosion will still happen."]}
+                                    iframe: true,
+                                    description: { en: ["Echoes of Doom flies off the map and then returns, positioning itself in the middle-left section. After a moment, it roars, granting a freezing interaction (activatable with the Dungeon Function Key) to any players standing near it. It then begins charging its breath attack. If the freezing interaction is activated, the player instantly freezes in place, becoming immune to the breath attack and creating a small protective zone that blocks the breath for any players standing directly behind them. The recommended strategy is for all players except one to move to the middle-right side of the arena to avoid receiving the freezing interaction. The one remaining player stays near the boss to receive the interaction, then moves to the group and freezes themselves in front of everyone to protect the entire party. Players struck by the breath receive moderate multi-hit damage. Frozen players can be unfrozen by their allies using repeated command attacks or active skills. If a player who received the freezing interaction does not activate it, the interaction will explode after the timer expires, dealing lethal damage to the holder and others nearby. If a frozen player is not unfrozen before the interaction expires, the explosion will still happen."]},
+                                    variants: {
+                                        solo: {
+                                            name: {en: "Solo Mode Variation:"},
+                                            description: {en: ["An Elsword Knight Emperor (1st path) will appear somewhere in the arena. the player must recieve the freezing interaction and freeze itself in front of the NPC to protec it. if done correctly, the player will be freed after the attack is over."]}
+                                        }
+                                    }
                                 },
                                 flighte: {
                                     name: { en: "Flight – Edges"},
-                                    description: { en: ["Echoes of Doom flies off the map and returns, positioning itself either in the top-left or bottom-left corner of the arena. If it positions in the top-left, it will use its breath attack to cover the entire map except the elevated top platforms. If it positions in the bottom-left, it will use its breath to cover the entire map except the ground-level bottom platforms. Players must immediately move to the corresponding safe area (top platforms or bottom platforms) to avoid the breath attack."]}
+                                    iframe: true,
+                                    description: { en: ["Echoes of Doom flies off the map and returns, positioning itself either in the top-left or bottom-left corner of the arena. If it positions in the top-left, it will use its breath attack to cover the entire map except the elevated top platforms. If it positions in the bottom-left, it will use its breath to cover the entire map except the ground-level bottom platforms. Players must immediately move to the corresponding safe area (top platforms or bottom platforms) to avoid the breath attack."]},
                                 },
                                 ioorb: {
                                     name: { en: "Inside/Outside Orb"},
@@ -7019,30 +7159,48 @@ export const data = {
                                 
                             },
                             forcedmechs: {
+                                _sep1: {
+                                    separation: { en: " - After destroying all 4 devices - "}
+                                },
                                 tornado: {
                                     name: { en: "Tornado"},
-                                    forcedat: { en: "@ 350 bars"},
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 350 bars"},
                                     description: { en: ["All players are forced to different random locations, and a blue circle spawns on their position, then after some seconds, all players will be teleported to the top-right / bottom-right part of the arena. Echoes of Doom will start a storm and start throwing waves of tornadoes from the left side. Players need to go back to the position where they were forced to stay inside the blue circle while avoiding the waves of tornadoes. Players hit by the tornadoes receive high or lethal damage depending on their gear and receive confusion debuff, which inverts your up and down movement actions. After 13 waves of tornadoes, the storm will stop, and Echoes of Doom will strike all the arena with thunder. Players outside of their blue circle when Echoes of Doom strikes the arena will die."]}
                                 },
                                 absorb: {
                                     name: { en: "Absorb"},
-                                    forcedat: { en: "@ 250 bars"},
-                                    description: { en: ["Echoes of Doom flies away to begin the absorption process. The six corner devices in the arena each generate a glowing charge that slowly expands outward. Each player must position themselves between the middle and the outer edge of the devices, one player per device. As a charge expands and touches its assigned player, it instantly shrinks back to its minimum size and grants that player 1 stack. With correct positioning, the player only touches the charge as it grows, causing it to immediately shrink again. This cycle can be repeated to give each player up to 4 stacks before the mechanic ends. If all six charges are at their minimum size when the mechanic finishes, Echoes of Doom attempts to consume them but fails, flying back to the arena and entering a groggy state. If even one charge is not at minimum size, the boss consumes them and wipes the party. Avoid letting a charge grow too large without touching it, and do not touch a charge while it is already at its smallest size, as this will rapidly increase your stacks. If any player reaches 5 stacks, they receive a special charge interaction that must be carried and placed as far to the right side of the arena as possible to prevent the boss from absorbing it."]}
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 250 bars"},
+                                    description: { en: ["Echoes of Doom flies away to begin the absorption process. The six corner devices in the arena each generate a glowing charge that slowly expands outward. Each player must position themselves between the middle and the outer edge of the devices, one player per device. As a charge expands and touches its assigned player, it instantly shrinks back to its minimum size and grants that player 1 stack. With correct positioning, the player only touches the charge as it grows, causing it to immediately shrink again. This cycle will be repeated to give each player 4 stacks before the mechanic ends. If all six charges should be at their minimum when the animation plays to succeed. If any player reaches 5 stacks, they receive a special charge interaction that must be carried and placed away to prevent the boss from absorbing it."]},
+                                    note: { en: ["- If even one charge is not at minimum size, the boss consumes them and wipes the party.","- Avoid letting a charge grow too large without touching it, and do not touch a charge while it is already at its smallest size, as this will rapidly increase your stacks."]}
                                 },
                                 debris: {
                                     name: { en: "Rock Debris"},
-                                    forcedat: { en: "@ 150 bars"},
-                                    description: { en: ["Echoes of Doom flies away, causing rock debris to fall and land on various platforms. It will then target a random player with a powerful laser four times in a row. All players must group tightly together in one of four pre-marked positions (A, B, C, or D shown in the mechanic image) before each laser targets. By doing this, the boss's laser will strike and destroy the rock debris instead of the players. After each laser attack is telegraphed, the entire group must move together to the next required position. If any player is out of position and gets targeted by the laser directly, it will likely leave at least one debris intact, resulting in a party wipe. If all debris are successfully destroyed, Echoes of Doom returns to the arena and enters a groggy state."]}
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 150 bars"},
+                                    description: { en: ["Echoes of Doom flies away, causing rock debris to fall and land on various platforms. It will then target a random player with a powerful laser four times in a row. All players must group tightly together in one of four pre-marked positions (A, B, C, or D shown in the mechanic image) before each laser targets. By doing this, the boss's laser will strike and destroy the rock debris instead of the players. After each laser attack is telegraphed, the entire group must move together to the next required position. If any player is out of position and gets targeted by the laser directly, it will likely leave at least one debris intact, resulting in a party wipe."]}
                                 },
                                 symbol: {
                                     name: { en: "Symbol"},
-                                    forcedat: { en: "@ 50 bars"},
-                                    description: { en: ["Echoes of Doom retreats to the background, and Roman Numeral Symbols appear on random platforms. These symbols periodically cast damaging thunder strikes into the arena. Each symbol has a matching pair elsewhere. Players must use the Dungeon Function Key to pick up a symbol, which marks them. The team should split into pairs, with each pair picking up the same symbol type. The two players with matching symbols must then make physical contact to dispel both of their marks. This process repeats until all symbol pairs are dispelled. If all symbols are cleared before the timer runs out, Echoes of Doom returns and enters a groggy state. If time runs out with symbols remaining, it triggers a party wipe. If a player dies to thunder damage while carrying a mark, that mark is lost and the mechanic becomes impossible to complete."]}
+                                    unavoidable: true,
+                                    iframe: true,
+                                    groggy: true,
+                                    wipetimed: true,
+                                    forcedat: { en: "Forced at 50 bars"},
+                                    description: { en: ["Echoes of Doom retreats to the background, and Roman Numeral Symbols appear on random platforms. These symbols periodically cast damaging thunder strikes into the arena. Each symbol has a matching pair elsewhere. Players must use the Dungeon Function Key to pick up a symbol, which marks them. The team should split into pairs, with each pair picking up the same symbol type. The two players with matching symbols must then make physical contact to dispel both of their marks. This process repeats until all symbol pairs are dispelled."]},
+                                    note: { en: ["- If a player dies to thunder damage while carrying a mark, that mark is lost and unless the player with the other part of the pair dies, the mechanic becomes impossible to complete."]}
                                 },
                                 berserk: {
                                     name: { en: "Berserk"},
-                                    forcedat: { en: "@ 0.5 bars"},
-                                    description: { en: ["Echoes of Doom Recovers 50 HP bars and stops doing all their previous attacks, instead follows a pattern where it flies off and performs 3 rounds of spamming claw swipes in random parts of the arena, then performs Flight – Edges, to ultimately fly back and enter groggy state. This pattern is repeated until phase ends."]}
+                                    iframe: true,
+                                    groggy: true,
+                                    forcedat: { en: "Forced at 0.5 bars"},
+                                    description: { en: ["Echoes of Doom Recovers 50 HP bars and stops doing all their previous attacks, instead follows a pattern where it flies off and performs 3 rounds of spamming claw swipes in random parts of the arena, then performs <Flight – Edges>."]},
+                                    note: { en: ["- This pattern is repeated until phase ends."]}
                                 },
                             }
                         },  

@@ -1972,6 +1972,10 @@ body.guide-modal-open {
     filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1352%) hue-rotate(330deg) brightness(91%) contrast(101%);
 }
 
+.mech-status-wipetimed img {
+    filter: brightness(0) saturate(130%) invert(45%) sepia(98%) saturate(1352%) hue-rotate(300deg) brightness(131%) contrast(101%);
+}
+
 .mech-status-iframe img {
     filter: brightness(0) saturate(100%) invert(60%) sepia(72%) saturate(320%) hue-rotate(180deg) brightness(95%) contrast(90%);
 }
@@ -1996,10 +2000,10 @@ body.guide-modal-open {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%);
 }
 
-.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed, .mech-status-deathtimed, .mech-status-magneticfield, .mech-status-superarmor {
+.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed, .mech-status-deathtimed, .mech-status-wipetimed, .mech-status-magneticfield, .mech-status-superarmor {
     overflow-y: hidden;
     align-self:flex-end;
-    bottom: 10px;
+    bottom: 8px;
 }
 
 .mech-separation {
