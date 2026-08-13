@@ -6272,6 +6272,12 @@ export const data = {
                                  phasebname: { en: "Type-E Echidna", es: "Tipo-E Equidna", kr: "E형 에키드나", jp: "タイプEエキドナ", br: "Tipo-E Equidna" },
                                  concepts: {
                                     gatecharge:{
+                                        img: {
+                                            secondary: [
+                                                {src: "/images/mechs/2111concept1.png"},
+                                                {src: "/images/mechs/2111concept1_2.png"}
+                                            ]
+                                        },
                                         name: { en: "Gate Charge", es: "Carga de Puerta", kr: "게이트 차지", jp: "ゲートチャージ", br: "Carga do Portão" },
                                         description: { en: ["At the beginning of the fase, all 6 players position themselves in the platforms to direct an electricity beam that comes from the upper platform’s right side, into a receptor that is on the below right part of the arena, there are 3 electricity rods in the platforms between, one per platform. The electricity beam needs to go through all the rods before reaching the receptor. The beam is intercepted by players standing in it’s path, if you face the direction the beam is coming from, the beam will go down, if you look at the side opposite from where the beam is coming from, the beam will go up. This process will be repeated 3 times before the gate is opened. Theres a 1 minute time limit that refreshes every time the beam reaches the receptor. Failing to reach the receptor before time limit results in party wipe."]},
                                         variants: {
@@ -6284,16 +6290,27 @@ export const data = {
                                  },
                                  np: {
                                     approachingwave:{
+                                        vid: {
+                                            src: "/images/mechs/2111np1.mp4"
+                                        },
                                         name: { en: "Approaching Wave", es: "Ola Acercándose", kr: "다가오는 파도", jp: "接近する波", br: "Onda se Aproximando" },
                                         description: { en: ["3 rounds of circular waves that close in, recommended to iframe."]}
                                     },
                                     eightdirectionallaser:{
+                                        vid: {
+                                            src: "/images/mechs/2111np2.mp4"
+                                        },
                                         name: { en: "8-Directional Laser", es: "Láser de 8 Direcciones", kr: "8방향 레이저", jp: "8方向レーザー", br: "Laser de 8 Direções" },
                                         description: {en: ["Shoots lasers in 8 directions from Echidna's position, not recommended to stay far away since this attack is mildly hard to iframe."]}
                                     }
                                  },          
                                  mechs: {
                                     guardlevel:{
+                                        img: {
+                                            secondary: [
+                                                { src: "/images/mechs/guardlevel.png"}
+                                            ]
+                                        },
                                         name: { en: "Guard Level System", es: "", kr: "", jp: "", br: "" },
                                         description: { en: ["Getting hit by <8-Directional Laser> or <Approaching Wave> fills the Guard Level gauge. Guard Level gauge has 5 Levels, Each level increases the threat of guard level patterns (Patterns exclusive to guard level are shown below)."]},
                                         stealthcombatdoll:{
@@ -6313,12 +6330,20 @@ export const data = {
                                         },
                                     },
                                     spin:{
+                                        vid: {
+                                            src: "/images/mechs/2111mech1.mp4"
+                                        },
                                         name: { en: "Spin", es: "Giro", kr: "회전", jp: "スピン", br: "Giro" },
                                         description: { en: ["Echidna raises up then spins at a rapid speed, dealing continuous damage to anybody nearby. Any players hit will be inflicted with Ravage."]}
                                     },
                                 },
                                 forcedmechs: {
                                     gaseruption: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2111fm2.png"}
+                                            ]
+                                        },
                                         name: { en: "Gas Eruption", es: "Erupción de Gas", kr: "가스 분출", jp: "ガス噴出", br: "Erupção de Gás" },
                                         unavoidable: true,
                                         groggy: true,
@@ -6327,17 +6352,20 @@ export const data = {
                                         note: { en: ["If 3 players are in the safe zone, the remaining players can stand and not recieve damage as long as they stay outside of Echidna's path"]}
                                     },
                                     laserguidance: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2111fm1.png", alt: "Light behind the trapdoors."},
+                                                { src: "/images/mechs/2111fm1_2.png", alt: "Echidna comes out to grab a player."},
+                                                { src: "/images/mechs/2111fm1_3.png", alt: "Spawned colored cube."}
+                                            ]
+                                        },
                                         name: { en: "Laser Guidance", es: "Guía Láser", kr: "레이저 유도", jp: "レーザー誘導", br: "Guia de Laser" },
                                         unavoidable: true,
                                         groggy: true,
                                         forcedat: { en: "Forced at 140 or 80 bars"},
-                                        description: { en: ["5 players position themselves to cover the 5 trapdoors located in the floor (only one player per trapdoor). The remaining player needs to stay off the trapdoors, since if more than one player gets eaten by Echidna at the same time, it will trigger a wipe. Echidna will come out from a trapdoor that can be identified by the lights behind it, if they're turned on, means Echidna will come out from there. Will eat the player standing in it, stunning the player and continuously dealing them damage. Another player needs to throw any type of orb to make Echidna free the player that was getting eaten, After being freed, the player recieves a colored buff between Green, Blue or Red, and a brand of the same color will be shown on top of their head. Echidna will once again hide inside the trapdoors and choose another trapdoor to come out from. This process will be repeated until he comes out 3 times, each time giving the player freed a different brand (Brands cannot be repeated), afterwards, 2 cubes colored Blue and Green will appear on top of the only 2 trapdoors Echidna didn't come out from. Players with brands will be targeted by a laser then position in a way that allows the laser to destroy the cube that matches the color of their brand. Failing to do so results in a wipe.","If Echidna comes out from a trapdoor and there is no player, one of the 3 brands will essentially become unobtainable, since it gets skipped."],
-                                            es: ["5 jugadores se colocan para cubrir las 5 trampillas situadas en el suelo (solo un jugador se situa en cada trampilla). El jugador restante debe permanecer fuera de las trampillas, ya que si más de un jugador es devorado por Echidna al mismo tiempo, se aniquilara a todo el grupo. Echidna saldrá por una trampilla identificable por las luces detras de ella, si estan prendidas, significa que saldra por ahi. Devorará al jugador que se encuentre en ella, aturdiéndolo y causándole daño continuamente. Otro jugador debe lanzar cualquier tipo de orbe para que Echidna libere al jugador que estaba siendo devorado. Tras ser liberado, el jugador recibe un debufo de color verde, azul o rojo, y se muestra una marca del mismo color sobre su cabeza. Echidna volverá a esconderse dentro de las trampillas y elegirá otra trampilla por la que salir. Este proceso se repetirá hasta que salga 3 veces, cada vez dando al jugador liberado una marca diferente (las marcas no se pueden repetir), al terminar, aparecerán 2 cubos de color azul y verde encima de las únicas 2 trampillas por las que Echidna no ha salido. Los jugadores con marcas serán apuntados por un láser y se colocarán de manera que el láser pueda destruir el cubo que coincida con el color de su marca. Si no lo hacen, se aniquilara al grupo. Si Echidna sale por una trampilla y no hay ningún jugador, una de las tres marcas se hara inobtenible (Se omite)."]},
-                                        note: { en: ["If players already have blue and green brand, everyone can get off the trapdoors, since there’s no need to get the red brand. Different from the others, the red brand is not related to any cube, it's laser just deals damage to anyone that touches it, in case of getting it, make sure to make it point to a position where no one can get damaged."],
-                                            es: ["Si los jugadores ya tienen la marca azul y verde, todos pueden salir de las trampillas, ya que no es necesario conseguir la marca roja. A diferencia de las demás, la marca roja no está relacionada con ningún cubo, su láser solo inflige daño a cualquiera que la toque, en caso de conseguirla, asegúrate de apuntarla hacia una posición en la que nadie pueda resultar dañado."]
-                                        }
+                                        description: { en: ["5 players position themselves to cover the 5 trapdoors located in the floor (only one player per trapdoor). The remaining player needs to stay off the trapdoors, since if more than one player gets eaten by Echidna at the same time, it will trigger a wipe. Echidna will come out from a trapdoor that can be identified by the lights behind it, if they're turned on, means Echidna will come out from there. Will eat the player standing in it, stunning the player and continuously dealing them damage. Another player needs to throw any type of orb to make Echidna free the player that was getting eaten, After being freed, the player recieves a colored buff between Green, Blue or Red, and a brand of the same color will be shown on top of their head. Echidna will once again hide inside the trapdoors and choose another trapdoor to come out from.","This process will be repeated 3 times, each time giving the player freed a different brand (Brands cannot be repeated), afterwards, 2 cubes 1 colored Green and one colored Blue will appear on top of the 2 trapdoors Echidna didn't come out from.","Players with brands gets targeted by a laser and will then position in a way that allows the laser to destroy the cube matching the color of their brand. Failing to do so results in a wipe."]},
+                                        note: { en: ["-If Echidna comes out from a trapdoor and there is no player or if Echidna grabs an already branded player, it will immediately hide and one of the 3 brands will essentially become unobtainable, since it gets skipped.","- If players already have blue and green brand, everyone can get off the trapdoors, since there’s no need to get the red brand. Different from the others, the red brand is not related to any cube, it's laser just deals damage to anyone that touches it, in case of getting it, make sure to make it point to a position where no one can get damaged."],}
                                     }
-                                
                                 }
                             },
                             phase2: {phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
@@ -6362,11 +6390,17 @@ export const data = {
                                 phasebname: { en: "Barkat" },
                                 np: {
                                     frostexplosion: {
+                                        vid: {
+                                            src: "/images/mechs/2112np2.mp4"
+                                        },
                                         name: { en: "Frost Explosion", es: "Explosión de Escarcha", kr: "서리 폭발", jp: "フロストエクスプロージョン", br: "Explosão de Geada" },
                                         iframe: true,
                                         description: { en: ["Barkat attacks with both wings stabbing them into the ground causing explosions near them. Stab attack petrifies for a short period. Explosions increase Chill Debuff stacks."]},
                                     },
                                     frostbreath: {
+                                        vid: {
+                                            src: "/images/mechs/2112np1.mp4"
+                                        },
                                         name: { en: "Frost Breath", es: "Aliento de Escarcha", kr: "서리 숨결", jp: "フロストブレス", br: "Sopro de Geada" },
                                         iframe: true,
                                         description: { en: ["Barkat attacks with claws twice then releases a long frost breath. Getting hit by it rapidly stacks Chill Debuff."]},
@@ -6374,6 +6408,11 @@ export const data = {
                                 },
                                 mechs: {
                                     medusa: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2112mech1.png"}
+                                            ]
+                                        },
                                         name: { en: ["Medusa"]},
                                         iframe: true,
                                         description: {en: ["All players receive an Eye-like debuff (called Medusa Eye for simpleness), which can be on open or closed state, while also shown an Eye Icon above their head that matches the state of the debuff.","If the eye is open: Players need to face Barkat.","If the eye is closed: Players need to look away from Barkat.","If at least 1 player fails to meet the condition, barkat causes high damage and Specter's Hands to appear under the player, following them for a short period of time before locking position."]},
@@ -6384,10 +6423,20 @@ export const data = {
                                         }
                                     },
                                     discharge: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2112mech2.png"}
+                                            ]
+                                        },
                                         name: { en: "Discharge", es: "Descarga", kr: "방전", jp: "ディスチャージ", br: "Descarga" },
                                         description: { en: ["A console will appear in the middle of the arena, players can charge the console by pressing Dungeon Function Key repeatedly. In the meanwhile, Barkat will protect herself with a shield and charge a Frost breath attack. To attack, Barkat will remove her shield, in that period, 2 players need to press Dungeon Function Key close to her. If done correctly, Barkat will be stunned. Pressing Dungeon Function Key before Barkat removes her shield or not pressing Dungeon Function Key in time will result in Barkat destroying the console.","Successfully charging the console will increase the <Fall> timer by certain amount."]}
                                     },
                                     gazingblackhand: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2112mech3.png"}
+                                            ]
+                                        },
                                         name: { en: "Gazing Black Hand", es: "Mano Negra que Mira", kr: "응시하는 검은 손", jp: "凝視する黒い手", br: "Mão Negra que Enxerga" },
                                         iframe: true,
                                         description: { en: ["up to 3 players are marked consecutively and receive an eye-like debuff with a 3 second timer, when timer expires, Specter’s Hands will spawn from Barkat’s shadow and thrust in the direction the player was when the timer expired, essentially damaging everyone in its way and giving them Fear debuff stacks. Marked players should move to a position where no one can be damaged by Specter’s Hands until their timer expires to avoid killing members of the party on accident."]}
@@ -6395,6 +6444,9 @@ export const data = {
                                 },
                                 forcedmechs: {
                                     deathzone: {
+                                        vid: {
+                                            src: "/images/mechs/2112fm1.mp4"
+                                        },
                                         forcedat: { en: "Forced at 175 or 100 bars"},
                                         name: { en: "Death Zone", es: "Zona de Muerte", kr: "데스 존", jp: "デスゾーン", br: "Zona da Morte" },
                                         iframe: true,
@@ -6403,6 +6455,9 @@ export const data = {
                                         note: { en: ["- Specter's Hands will not increase Fear debuff stacks during this mechanic.","- This is repeated 3 times, and each time players can be given a different buff.","- All players have share the same buff during this mechanic."] }
                                     },
                                     eyeoffear: {
+                                        vid: {
+                                            src: "/images/mechs/2112fm2.mp4"
+                                        },
                                         forcedat: { en: "Forced at 175 or 100 bars"},
                                         iframe: true,
                                         groggy: true,
@@ -6433,6 +6488,11 @@ export const data = {
                                     description: { en: ["Receiving damage from Bifron, Specters or Specter Swarm gives Banishment stacks. At 10 stacks, the player is moved to another map: a small vertical room. Player is also transformed, and must slowly make his way down the room, in the way down, the player must collect the glowing orb and escape via the portal within 30s. Failing to do so results in death."]}
                                 },
                                 area: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/2121concept1.png", alt: "Deployable Area in-game."}
+                                        ]
+                                    },
                                     name: { en: "Area Deployment"},
                                     description: { en: ["One player is given a deployable area, and can use Dungeon Function Key to release it, when released, area burns HP and MP but reveal hidden platforms that contact it. It’s recommended to put areas in a place where they can’t reach players, since the MP burn can result in loss of DPS, areas also reveal specters and make them able to get hit by skills."]}
                                 }
@@ -6440,10 +6500,16 @@ export const data = {
                             phasebname: { en: "Bifron"},
                             np: {
                                 slash: {
+                                    vid: {
+                                        src: "/images/mechs/2121np1.mp4"
+                                    },
                                     name: { en: "Slash"},
                                     description: { en: ["Bifron performs a slash that deals low damage. Gives 1 Banishment stack on hit."]}
                                 },
                                 smash: {
+                                    vid: {
+                                        src: "/images/mechs/2121np2.mp4"
+                                    },
                                     name: { en: "Smash"},
                                     description: { en: ["Bifron stabs his sword to the ground, causing an explosion burst that comes out from the ground. Gives 1 <Banishment stack> per hit, but the skill does a fast multi-hit, so standing inside the burst can increase stacks fast."]}
                                 }
@@ -6479,6 +6545,12 @@ export const data = {
                             },
                             forcedmechs: {
                                 soulseveranceu: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/2121fm1.png", alt: "Teleporter."},
+                                            { src: "/images/mechs/2121fm1_2.png", alt: "Safe Zone."},
+                                        ]
+                                    },
                                     name: { en: "Soul Severance (Upper)"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6511,6 +6583,11 @@ export const data = {
                                     }
                                 },
                                 equalizer: {
+                                    img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2121fm2.png"}
+                                            ]
+                                        },
                                     name: { en: "Equalizer"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6521,7 +6598,7 @@ export const data = {
                                     variants: {
                                         solo: {
                                             name: { en: "Solo Mode Variation:" },
-                                            description: { en: ["- Stacks will now only be granted upon being hit by the explosions, and not by staying away."]}
+                                            description: { en: ["- The player is given a range from 0-3 chances to summon a specter for bifron to hit instead of them in order to avoid the punishment of infusion stacks when no player is hit."]}
                                         }
                                     }
                                 }
@@ -6548,6 +6625,9 @@ export const data = {
                             phasebname: { en: "Specter Swarm"},
                                 np: {
                                     clawswipe: {
+                                        vid: {
+                                            src: "/images/mechs/2122np1.mp4"
+                                        },
                                         name: { en: "Claw Swipe"},
                                         iframe: true,
                                         description: { en: ["Attacks in the direction of the player Specter Swarm is targeting, performs 2 attacks that give 1 Banishment stack each, then a final swipe that gives 2 Banishment stacks."]}
@@ -6555,16 +6635,24 @@ export const data = {
                                 },
                                 mechs: {
                                     bindingchain: {
+                                        vid: {
+                                            src: "/images/mechs/2122mech1.mp4"
+                                        },
                                         name: { en: "Binding Chain"},
                                         iframe: true,
                                         description: { en: ["The floor below 4 players starts to glow. After some time, Specter Swarm will do an Uppercut, and Specter’s Hands spawn on the glowing floor; Players should dodge those, since being hit by them, causes players to be imprisoned after some seconds. The cage imprisoning players can be broken by other players using command attacks or active skills."]}
                                     },
-                                    specterexplosion: {
+                                    specterfanofexplosion: {
                                         name: { en: "Specter Fan of Explosion"},
                                         iframe: true,
                                         description: { en: ["Arena is divided into 5 zones. Specter Swarm will cast an explosion in random zones, being hit by the explosions result in lethal damage. Additionally, a random number of players will be marked with small bombs with cross or x shape (+, x). Players with the same shape can stay in the same position without being damaged, but they can be damaged by players with different shapes."]}
                                     },
                                     specterwot: {
+                                        img: {
+                                            secondary: [
+                                                { src: "/images/mechs/2122mech2.png"}
+                                            ]
+                                        },
                                         name: { en: "Specter Wall of Torment"},
                                         iframe: true,
                                         description: { en: ["Specter Swarm will use <Binding Chain>. This time, 1-2 players (supports if possible) need to let themselves be hit by the Specter’s Hands, after Shadow Hands disappear from the floor, concentrated lasers will spawn at the edges of the arena, inflicting lethal damage to anyone that touches it. The background will flash red twice from one of the sides, repeating a total of 3 times (meaning the background will flash 6 times total), these determinates the order on which the Specter waves will come out from. Free players must stand close to the imprisoned players and use them as a cover to prevent the Specter Wave from damaging them."]}
@@ -6586,6 +6674,11 @@ export const data = {
                                         description: { en: ["All players will be teleported to the Upper Floor; Portals will be randomized and only 1 of the 3 portals in the Imprisonment room will be available. Players must find the portal that leads to the only Imprisonment room with a portal to go back to the Arena."]}
                                     },
                                     orbrelay: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2122fm1_2.png"},
+                                            ]
+                                        },
                                         name: { en: "Orb Relay"},
                                         unavoidable: true,
                                         iframe: true,
@@ -6601,6 +6694,12 @@ export const data = {
                                         }
                                     },
                                     std: {
+                                        img: {
+                                            normal: [
+                                                { src: "/images/mechs/2122fm2.png", alt: "Empty spot."},
+                                                { src: "/images/mechs/2122fm2_2.png", alt: "Spot with furniture."}
+                                            ]
+                                        },
                                         name: { en: "Spot the difference"},
                                         unavoidable: true,
                                         iframe: true,
@@ -6652,6 +6751,11 @@ export const data = {
                             },
                             mechs: {
                                 sephirotphantasma: {
+                                    img: {
+                                            normal: [
+                                                { src: "/images/mechs/2131mech1.png"}
+                                            ]
+                                        },
                                     name: { en: "Sephirot Phantasma", es: "Sephirot Fantasma", kr: "세피로트 환영", jp: "セフィロトファンタズマ", br: "Sephirot Fantasma" },
                                     iframe: true,
                                     description: { en: ["First spawns at 270 bars.","Magic circles will appear on random platforms. Players who get Sephirot Phantasma’s debuff> will be given spears and place 1-2 spears in each circle to dissipate them. Failing to dissipate circles will trigger an explosion that deals lethal damage."]},
@@ -6676,6 +6780,9 @@ export const data = {
                                     },
                                 },
                                 haures: {
+                                    vid: {
+                                        src: "/images/mechs/2131mech3.mp4"
+                                    },
                                     name: { en: "Haures", es: "Haures", kr: "하우레스", jp: "ハウレス", br: "Haures" },
                                     iframe: true,
                                     forcedat: { en: "After 150 bars."},
@@ -6687,6 +6794,9 @@ export const data = {
                                     },
                                 },
                                 inviteabyss: {
+                                    vid: {
+                                        src: "/images/mechs/2131mech4.mp4"
+                                    },
                                     name: { en: "Invite Abyss", es: "Invitar al Abismo", kr: "초대 심연", jp: "招待アビス", br: "Convidar Abismo" },
                                     iframe: true,
                                     forcedat: { en: "After 90 bars."},
@@ -6700,6 +6810,12 @@ export const data = {
                             },
                             forcedmechs: {
                                 brand: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/2131fm1.png", alt: "Blue Brand."},
+                                            { src: "/images/mechs/2131fm1_2.png", alt: "Red Brand."}
+                                        ]
+                                    },
                                     forcedat: { en: "Forced at 180 bars", es: "Forzado a las 180 barras", kr: "", jp: "", br: "" },
                                     name: { en: "Brand", es: "Marca", kr: "", jp: "", br: "" },
                                     unavoidable: true,
@@ -6715,7 +6831,10 @@ export const data = {
                                         }
                                     }
                                 },
-                                beastsrestraint: { 
+                                portal: { 
+                                    vid: {
+                                        src: "/images/mechs/2131fm2.mp4"
+                                    },
                                     forcedat: { en: "Forced at 60 bars", es: "Forzado a las 60 barras", kr: "", jp: "", br: "" },
                                     name: { en: "Portal", es: "", kr: "", jp: "", br: "" },
                                     unavoidable: true,
@@ -6758,6 +6877,11 @@ export const data = {
                                         note: { en: [" - This can be neglected if the party has enough defense to tank it."]}
                                     },
                                     haures: {
+                                        img: {
+                                            tertiary: [
+                                                { src: "/images/mechs/2132mech1_3.png", alt: "Example of the mech with 3 tenacity/blue tornadoes visible."}
+                                            ]
+                                        },
                                         name: { en: "Haures (Punishment)", es: "Haures (Castigo)", kr: "하우레스 (처벌)", jp: "ハウレス(罰)", br: "Haures (Punição)" },
                                         description: { en: ["Haures will create 3 tornadoes (blue, purple or orange) on the steps of the edges of the arena. Use skill of the same tier as the color of the tornado to dispel it, blue is equal to tenacity, purple is equal to strength, orange is equal to bravery; If the tornadoes are not dispelled after some time, they will explode."]},
                                         note: { en: ["- When using the wrong skill tier on a tornado, it will instantly trigger an explosion that deals lethal damage.","- Tornadoes explosion width is only half of the arena, so players can choose to only dispel tornados from 1 side and stay there until the other side explodes.","- DPS characters usually lack tenacity skills on their rotation, so its better to assign supports to deal with tornadoes."]},
@@ -6768,24 +6892,36 @@ export const data = {
                                     }
                                 },
                                 steelqueenspear: {
+                                    vid: {
+                                        src: "/images/mechs/2132mech2.mp4"
+                                    },
                                     name: { en: "Steel Queen - Spear", es: "Reina de Acero - Lanza", kr: "스틸 퀸 - 창", jp: "スチールクイーン - 槍", br: "Rainha de Aço - Lança" },
                                     iframe: true,
                                     description: { en: ["Steel Queen throws Sephirot Phantasma at multiple players on their current position, falling after some time. Deals lethal damage."]},
                                     punishmentstacks: { en: ["Gives 5 Punishment stacks per hit."]}
                                 },
                                 steelqueensmash: {
+                                    vid: {
+                                        src: "/images/mechs/2132mech3.mp4"
+                                    },
                                     name: { en: "Steel Queen - Smash", es: "Reina de Acero - Aplastamiento", kr: "스틸 퀸 - 스매시", jp: "スチールクイーン - スマッシュ", br: "Rainha de Aço - Esmagamento" },
                                     iframe: true,
                                     description: { en: ["Steel Queen slams the floor with Mull Darkness dealing high damage. "]},
                                     punishmentstacks: { en: ["Gives 9 Punishment stacks on hit."]}
                                 },
                                 steelqueensteeltornado: {
+                                    vid: {
+                                        src: "/images/mechs/2132mech4.mp4"
+                                    },
                                     name: { en: "Steel Queen - Steel Tornado", es: "Reina de Acero - Tornado de Acero", kr: "스틸 퀸 - 스틸 토네이도", jp: "スチールクイーン - スチールトルネード", br: "Rainha de Aço - Tornado de Aço" },
                                     iframe: true,
                                     description: { en: ["Steel Queen swings Haures and creates a tornado that moves slowly. "]},
                                     punishmentstacks: { en: ["Swing: Gives 3 Punishment stacks on hit | Tornado: Gives 1 Punishment stack per hit."]}
                                 },
-                                sqssw: {
+                                sqs: {
+                                    vid: {
+                                        src: "/images/mechs/2132mech5.mp4"
+                                    },
                                     name: { en: "Steel Queen - Slash", es: "Reina de Acero - Corte", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: { en: ["Steel Queen does a horizontal slash with Invite Abyss then creates a wave that moves forward."]},
@@ -6793,6 +6929,11 @@ export const data = {
                                     note: { en: ["The wave itself doesn’t deal a lot of damage, but if the player doesn’t have super armor, the wave can drag the player and deal lethal damage. "]}
                                 },
                                 symbolbrand: {
+                                    img: {
+                                        tertiary: [
+                                            { src: "/images/mechs/2132mech6.png", alt: "Symbols in-game (even though the skills make them barely visible)."}
+                                        ]
+                                    },
                                     name: { en: "Symbol Brand"},
                                     iframe: true,
                                     timed: true,
@@ -6809,6 +6950,9 @@ export const data = {
                             forcedmechs: {
                                 name: { en: "Forced Mechanics", es: "Mecánicas Forzadas", kr: "강제 메커니즘", jp: "強制メカニクス", br: "Mecânicas Forçadas" },
                                 roc: {
+                                    vid: {
+                                        src: "/images/mechs/2132fm1.mp4"
+                                    },
                                     name: { en: "Rain of Chaos"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6824,6 +6968,11 @@ export const data = {
                                     }
                                 },
                                 sniping: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/2132fm2.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Sniping"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6839,6 +6988,12 @@ export const data = {
                                     }
                                 },
                                 goh: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/2132fm3.png", alt: "Giant Flower in the middle."},
+                                            { src: "/images/mechs/2132fm3_2.png", alt: "Small Flower."}
+                                        ]
+                                    },
                                     name: { en: "Garden of Haures"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6848,6 +7003,11 @@ export const data = {
                                     description: {en: ["A giant, non-interactable flower will spawn in the middle of the arena. Afterwards, small flowers will constantly spawn on the floor. Attack the flowers with command attacks to remove them. then, after a couple of rounds, platforms will appear while Haures prepares his final attack.","Players below the highest platform will die once Haures attacks. "]},
                                 },
                                 inviteabyssorb: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/2132fm4.png", alt: "Orb when not hit/does not have a mark."}
+                                        ]
+                                    },
                                     name: { en: "Invite Abyss' Orbs", es: "Orbes de Invite Abyss"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6890,10 +7050,16 @@ export const data = {
                             },
                             np: {
                                 sweep: {
+                                    vid: {
+                                        src: "/images/mechs/2141np1.mp4"
+                                    },
                                     name: { en: "Sweep"},
                                     description: { en: ["Jabberwock swipes with its claw, dealing high damage to player hit by it."]}
                                 },
                                 bite: {
+                                    vid: {
+                                        src: "/images/mechs/2141np2.mp4"
+                                    },
                                     name: { en: "Bite"},
                                     magneticfield: true,
                                     description: { en: ["Jabberwock bites and provokes an explosion."]}
@@ -6910,41 +7076,70 @@ export const data = {
                                     note: { en: ["No one should ever put bombs below a player, since if they get pushed up, they will touch the Electric Field."]}
                                 },
                                 breath: {
+                                    vid: {
+                                        src: "/images/mechs/2141mech3.mp4"
+                                    },
                                     name: { en: "Breath"},
                                     iframe: true,
                                     magneticfield: true,
                                     description: { en: ["Jabberwock pulls back and slowly breathes fire from one end of the arena to the other, player should move to the opposite direction from which Jabberwock faces."]}
                                 },
                                 laseremission: {
+                                    vid: {
+                                        src: "/images/mechs/2141mech4.mp4"
+                                    },
                                     name: { en: "Laser Emission"},
                                     iframe: true,
                                     magneticfield: true,
                                     description: { en: ["6 lasers fire from Jabberwock’s wings, three from each side of the arena, and then targets them to 1 player. Before lasers reach the arena, players will be able to see a warning zone where they will hit. It’s recommended that once lasers come out from Jabberwock's wings, everyone moves to the lowest part of the area until they lock target to avoid lasers from potentially covering the entire arena."]}
                                 },
                                 chargeneutralization: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/2141mech5.png", alt: ""},
+                                            { src: "/images/mechs/2141mech5_2.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Charge Neutralization"},
                                     description: { en: ["Jabberwock fires a large charge into the air, after some seconds, the charge will position itself on top of Jabberwock’s head. Players of any polarity can interact with this charge. Upon interaction, the charge will be divided into 2 smaller charges of a random polarity, players of the opposite polarity must touch the charges to neutralize them. Once again, upon contact, the charges are divided into 2 smaller ones of random polarity, and players of the opposite polarity must neutralize them, though this time they don’t become smaller anymore. Failing to neutralize all charges in 20s makes remaining charges create a map-wide explosion (can potentially wipe). "]}
                                 }
                             },
                             forcedmechs: {
                                 chargeinterference: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/2141fm1.png", alt: ""},
+                                            { src: "/images/mechs/2141fm1_2.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Charge Interference"},
                                     unavoidable: true,
                                     iframe: true,
                                     groggy: true,
-                                    timed: true,
+                                    wipetimed: true,
                                     forcedat: { en: "Forced at 270/225/90/45 bars"},
-                                    description: { en: ["2 to 4 big mana bombs of random polarity will spawn on the middle platform. Each bomb will have a shield with their opposite polarity. All players will be given a Deployable Mana Bomb. Mana Bombs with opposite polarity of the shield placed next to the shield can break it. After the shield is broken, the big mana bomb explosion sequence will start, and players hit by them will be given Fully Charged Buff. Players need to position themselves on top of the big bomb to pass through the Electric Field, once they go through, they need to shut down the Lightning rods that are lit (only rods that have a shielded bomb below them are lit). After all lit rods are shut down, Jabberwock will enter groggy state."]}
+                                    description: { en: ["2 to 4 big mana bombs of random polarity will spawn on the middle platform. Each bomb will have a shield with their opposite polarity. All players will be given a Deployable Mana Bomb. Mana Bombs with opposite polarity of the shield placed next to the shield can break it. After the shield is broken, the big mana bomb explosion sequence will start, and players hit by them will be given Fully Charged Buff. Players need to position themselves on top of the big bomb to pass through the Electric Field, once they go through, they need to shut down the Lightning rods that are lit (only rods that have a shielded bomb below them are lit)."]}
                                 },
                                 polarityfield: {
+                                    img: {
+                                        secondary: [
+                                            { src: "/images/mechs/2141fm2.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Polarity Field"},
                                     unavoidable: true,
                                     iframe: true,
-                                    timed: true,
+                                    deathtimed: true,
                                     forcedat: { en: "Forced at 225/90/45 bars"},
                                     description: { en: ["2 big magnetic fields appear in the sides of the arena, players of the opposite polarity need to enter this magnetic field but stay far enough, so that all 3 players can fit without being pushed off. After some time, Jabberwock will trigger an explosion that kills anyone who isn’t inside these magnetic fields. Magnetic fields slowly pull players towards the middle, so players should be careful and walk back to their original position."]}
                                 },
                                 simonsays: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/2141fm3_2.png", alt: ""},
+                                            { src: "/images/mechs/2141fm3_3.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Simon Says"},
                                     unavoidable: true,
                                     iframe: true,
@@ -6969,26 +7164,47 @@ export const data = {
                             phasebname: { en: "Opinionated Barkat", es: "Barkat Opinionada", es: "독마 바르캇", jp: "ドグマ・バルカット", br: "Dogma Barkat"},
                             np: {
                                 frostexplosion: {
-                                        name: { en: "Frost Explosion", es: "Explosión de Escarcha", kr: "서리 폭발", jp: "フロストエクスプロージョン", br: "Explosão de Geada" },
-                                        iframe: true,
-                                        description: { en: ["Barkat attacks with both wings stabbing them into the ground causing explosions near them. Stab attack petrifies for a short period. Explosions increase Chill Debuff stacks."]},
+                                    vid: {
+                                        src: "/images/mechs/2142np1.mp4"
                                     },
-                                    frostbreath: {
-                                        name: { en: "Frost Breath", es: "Aliento de Escarcha", kr: "서리 숨결", jp: "フロストブレス", br: "Sopro de Geada" },
-                                        iframe: true,
-                                        description: { en: ["Barkat attacks with claws twice then releases a long frost breath in the direction of a random player, differently to the Cornerstore of Prophecy version of this attack, the direction can be redirected even after the attack starts. Getting hit by it rapidly stacks Chill Debuff."]},
-                                    }
+                                    name: { en: "Frost Explosion", es: "Explosión de Escarcha", kr: "서리 폭발", jp: "フロストエクスプロージョン", br: "Explosão de Geada" },
+                                    iframe: true,
+                                    description: { en: ["Barkat attacks with both wings stabbing them into the ground causing explosions near them. Stab attack petrifies for a short period. Explosions increase Chill Debuff stacks."]},
+                                },
+                                frostbreath: {
+                                    vid: {
+                                        src: "/images/mechs/2142np2.mp4"
+                                    },
+                                    name: { en: "Frost Breath", es: "Aliento de Escarcha", kr: "서리 숨결", jp: "フロストブレス", br: "Sopro de Geada" },
+                                    iframe: true,
+                                    description: { en: ["Barkat attacks with claws twice then releases a long frost breath in the direction of a random player, differently to the Cornerstore of Prophecy version of this attack, the direction can be redirected even after the attack starts. Getting hit by it rapidly stacks Chill Debuff."]},
+                                }
                             },
                             mechs: {
                                 medusa: {
+                                    img: {
+                                        tertiary: [
+                                            { src: "/images/mechs/2142mech1.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Medusa"},
                                     iframe: true,
                                     description: {en: ["All players receive an Eye-like debuff, which can be open or closed, the state of the eye will be different for every player. They're also shown an Eye Icon above their head tht matches the state of the debuff. Players need to face towards (If eye is open) or away (If eye is closed) from Barkat. Failure causes high damage and Specter's Hands appear under all playesr, following them for a short period of time before locking position."]},
                                 },
                                 fallingrocks: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/2142mech4.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Falling Rocks"},
                                     iframe: true,
-                                    description: { en: ["Jabberwock hits the ground and makes a rock fall on the position of a random player. Players hit by the rock receive lethal damage (only one player can be hit by each rock)."]}
+                                    description: { en: ["Jabberwock hits the ground and makes a rock fall on the position of a random player. Players hit by the rock receive lethal damage (only one player can be hit by each rock)."]},
+                                    fallingrocksalt: {
+                                    forcedat: {en: "After <Collapse>"},
+                                    iframe: true,
+                                    description: { en: ["The falling rock has a designated color. Players with the same aura color as the rock can destroy it after touching it. If the rock hits the ground, it will explode dealing lethal damage. This has limited range, around half the arena."]}
+                                },
                                 },
                                 _sep1:{
                                     separation: { en: " - After <Collapse> - "}
@@ -7003,30 +7219,41 @@ export const data = {
                                     description: { en: ["Big circles spawn on the floor, after some time, they cast a barrage of explosion that extends vertically. Players with the same aura color as the circle in the floor do not receive damage."]}
                                 },
                                 auracrown: {
+                                    img: {
+                                        tertiary: [
+                                            { src: "/images/mechs/2142mech3.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Aura Crown"},
                                     iframe: true,
                                     description: { en: ["Colored crowns spawn in random platforms. Players with the same aura color as the crown can dispel the crowns by standing on them. Crowns that are not dispelled before certain time will explode causing lethal damage."]}
-                                },
-                                fallingrocksalt: {
-                                    name: { en: "Falling Rocks"},
-                                    iframe: true,
-                                    description: { en: ["The falling rock has a designated color. Players with the same aura color as the rock can destroy it after touching it. If the rock hits the ground, it will explode dealing lethal damage. This has limited range, around half the arena."]}
-                                },
+                                }
                             },
                             forcedmechs: {
                                 spaceseparation: {
+                                    img: {
+                                        secondary: [
+                                            { src: "/images/mechs/2142fm2.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Space Separation"},
                                     iframe: true,
                                     forcedat: { en: "Forced at 405 bars. Appears every 60s after first appearance."},
                                     description: { en: ["Shadow Hands divide the area horizontally or vertically. A random number of players are given eye debuff like the ones from medusa. An open eye has a value of +1, while closed has a value of -1. Players need to arrange people with eyed buffs in a way that makes both sides have equal values. Failing to make both sides have the same value triggers an explosion that deals lethal damage.","ej. If 2 players have open eyes, they should split to make both sides have a value of +1. If both are on the same side, one side will have a value of +2 and the other has a 0, which would trigger the explosion."]}
                                 },
                                 deathzone: {
+                                    vid: {
+                                        src: "/images/mechs/2142fm1.mp4"
+                                    },
                                     name: { en: "Death Zone"},
                                     iframe: true,
                                     forcedat: { en: "Forced at 315 bars. Appears every 2 minutes after first appearance."},
                                     description: { en: ["Barkat hides, at the same time, the edges of the map are filled with a shadowy mist that inflicts Fear debuff. Players need to group at the center of the map. At the same time, the middle part of the arena will be filled by either Specter's Hands or Frost Lasers for a total of 3 rounds (only one type appears per round, both can’t spawn at the same time).","All players receive either a buff that looks like a hand and has a color with it (red/purple).","If the round spawns Specter’s Hands, if you get the hand buff, then it’s a safe zone. Otherwise, if the round spawns Frost Lasers, if you get the hand buff, then it’s not safe.","After a couple of seconds, lasers/hands will attack everywhere but the safe zones. Once they disappear, they will double down and attack the previous safe zones, so players must move to a position that was already attacked."]}
                                 },
                                 collapse: {
+                                    vid: {
+                                        src: "/images/mechs/2142fm3.mp4"
+                                    },
                                     name: { en: "Collapse"},
                                     unavoidable: true,
                                     iframe: true,
@@ -7051,6 +7278,12 @@ export const data = {
                                     }
                                 },
                                 prophecy: {
+                                    img: {
+                                        secondary: [
+                                            { src: "/images/mechs/2142fm4.png", alt: ""},
+                                            { src: "/images/mechs/2142fm4_2.png", alt: ""},
+                                        ]
+                                    },
                                     name: { en: "Prophecy"},
                                     unavoidable: true,
                                     iframe: true,
@@ -7099,11 +7332,17 @@ export const data = {
                                     separation: { en: " - After destroying all 4 devices - "}
                                 },
                                 clawswipes: {
+                                    vid: {
+                                        src: "/images/mechs/215np1.mp4"
+                                    },
                                     name: { en: "Claw Swipes"},
                                     iframe: true,
                                     description: { en: ["Echoes of Doom will target random players and cast 3 attacks: Horizontal, Vertical and cross claw, claws follow players then lock position seconds before the attack. If claws hit platforms 5 times, they will disappear for a short period."]}
                                 },
                                 electricexplosion: {
+                                    vid: {
+                                        src: "/images/mechs/215np2.mp4"
+                                    },
                                     name: { en: "Electric Explosion"},
                                     iframe: true,
                                     description: { en: ["Small red circle will appear in all players, after a moment, it explodes, dealing moderate damage to players in range, it’s not lethal but if the explosions get stacked it will deal more damage."]}
@@ -7116,18 +7355,27 @@ export const data = {
                                     description: { en: ["Lightning targets all players and falls after some time. Players hit by lightning will have their attack power reduced and receive moderate to lethal damage depending on the amount of defense they have."]}
                                 },
                                 electricpillar: {
+                                    vid: {
+                                        src: "/images/mechs/215mech2.mp4"
+                                    },
                                     name: { en: "Electric Pillar"},
                                     iframe: true,
                                     forcedat: {en: "Casted immediately after <Falling Lightning>"},
                                     description: { en: ["Vertical pillars of light will fall near the players, leaving a safe zone between them for players to be in. Players hit by the pillar will receive moderate damage."]}
                                 },
                                 tailwhip: {
+                                    vid: {
+                                        src: "/images/mechs/215mech3.mp4"
+                                    },
                                     name: { en: "Tail Whip"},
                                     iframe: true,
                                     forcedat: {en: "Replaces <Electric Pillar> after destroying 2 devices."},
                                     description: { en: ["After Falling Lightning ends, Echoes of Doom will whip his tail on the floor, dealing lethal damage to anyone hit by it. Players should dodge by jumping and staying in air until the attack ends."]}
                                 },
                                 breath: {
+                                    vid: {
+                                        src: "/images/mechs/215mech4.mp4"
+                                    },
                                     name: { en: "Breath"},
                                     iframe: true,
                                     forcedat: {en: "Replaces <Tail Whip> after destroying 3 devices."},
@@ -7137,6 +7385,9 @@ export const data = {
                                     separation: { en: " - After destroying all 4 devices - "}
                                 },
                                 flightm: {
+                                    vid: {
+                                        src: "/images/mechs/215mech6.mp4"
+                                    },
                                     name: { en: "Flight – Middle"},
                                     iframe: true,
                                     description: { en: ["Echoes of Doom flies off the map and then returns, positioning itself in the middle-left section. After a moment, it roars, granting a freezing interaction (activatable with the Dungeon Function Key) to any players standing near it. It then begins charging its breath attack. If the freezing interaction is activated, the player instantly freezes in place, becoming immune to the breath attack and creating a small protective zone that blocks the breath for any players standing directly behind them. The recommended strategy is for all players except one to move to the middle-right side of the arena to avoid receiving the freezing interaction. The one remaining player stays near the boss to receive the interaction, then moves to the group and freezes themselves in front of everyone to protect the entire party. Players struck by the breath receive moderate multi-hit damage. Frozen players can be unfrozen by their allies using repeated command attacks or active skills. If a player who received the freezing interaction does not activate it, the interaction will explode after the timer expires, dealing lethal damage to the holder and others nearby. If a frozen player is not unfrozen before the interaction expires, the explosion will still happen."]},
@@ -7148,11 +7399,19 @@ export const data = {
                                     }
                                 },
                                 flighte: {
+                                    vid: {
+                                        src: "/images/mechs/215mech5.mp4"
+                                    },
                                     name: { en: "Flight – Edges"},
                                     iframe: true,
                                     description: { en: ["Echoes of Doom flies off the map and returns, positioning itself either in the top-left or bottom-left corner of the arena. If it positions in the top-left, it will use its breath attack to cover the entire map except the elevated top platforms. If it positions in the bottom-left, it will use its breath to cover the entire map except the ground-level bottom platforms. Players must immediately move to the corresponding safe area (top platforms or bottom platforms) to avoid the breath attack."]},
                                 },
                                 ioorb: {
+                                    img: {
+                                        small: [
+                                            { src: "/images/mechs/215mech7.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Inside/Outside Orb"},
                                     description: { en: ["Echoes of Doom throws an Orb that follows a random player, any player who touch the orb will obtain an Inside or Outside mark. Both will explode after 10s. Inside mark deals damage to the holder that decreases with the number of players near him, while outside mark deals damage to the holder that increases with the number of players near him."]}
                                 },
@@ -7163,6 +7422,9 @@ export const data = {
                                     separation: { en: " - After destroying all 4 devices - "}
                                 },
                                 tornado: {
+                                    vid: {
+                                        src: "/images/mechs/215fm1.mp4"
+                                    },
                                     name: { en: "Tornado"},
                                     iframe: true,
                                     groggy: true,
@@ -7170,6 +7432,12 @@ export const data = {
                                     description: { en: ["All players are forced to different random locations, and a blue circle spawns on their position, then after some seconds, all players will be teleported to the top-right / bottom-right part of the arena. Echoes of Doom will start a storm and start throwing waves of tornadoes from the left side. Players need to go back to the position where they were forced to stay inside the blue circle while avoiding the waves of tornadoes. Players hit by the tornadoes receive high or lethal damage depending on their gear and receive confusion debuff, which inverts your up and down movement actions. After 13 waves of tornadoes, the storm will stop, and Echoes of Doom will strike all the arena with thunder. Players outside of their blue circle when Echoes of Doom strikes the arena will die."]}
                                 },
                                 absorb: {
+                                    img: {
+                                        normal: [
+                                            { src: "/images/mechs/215fm2.png", alt: ""},
+                                            { src: "/images/mechs/215fm2_2.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Absorb"},
                                     iframe: true,
                                     groggy: true,
@@ -7178,6 +7446,9 @@ export const data = {
                                     note: { en: ["- If even one charge is not at minimum size, the boss consumes them and wipes the party.","- Avoid letting a charge grow too large without touching it, and do not touch a charge while it is already at its smallest size, as this will rapidly increase your stacks."]}
                                 },
                                 debris: {
+                                    vid: {
+                                        src: "/images/mechs/215fm3.mp4"
+                                    },
                                     name: { en: "Rock Debris"},
                                     iframe: true,
                                     groggy: true,
@@ -7185,6 +7456,11 @@ export const data = {
                                     description: { en: ["Echoes of Doom flies away, causing rock debris to fall and land on various platforms. It will then target a random player with a powerful laser four times in a row. All players must group tightly together in one of four pre-marked positions (A, B, C, or D shown in the mechanic image) before each laser targets. By doing this, the boss's laser will strike and destroy the rock debris instead of the players. After each laser attack is telegraphed, the entire group must move together to the next required position. If any player is out of position and gets targeted by the laser directly, it will likely leave at least one debris intact, resulting in a party wipe."]}
                                 },
                                 symbol: {
+                                    img: {
+                                        secondary: [
+                                            { src: "/images/mechs/215fm4.png", alt: ""}
+                                        ]
+                                    },
                                     name: { en: "Symbol"},
                                     unavoidable: true,
                                     iframe: true,
@@ -7195,6 +7471,9 @@ export const data = {
                                     note: { en: ["- If a player dies to thunder damage while carrying a mark, that mark is lost and unless the player with the other part of the pair dies, the mechanic becomes impossible to complete."]}
                                 },
                                 berserk: {
+                                    vid: {
+                                        src: "/images/mechs/215fm5.mp4"
+                                    },
                                     name: { en: "Berserk"},
                                     iframe: true,
                                     groggy: true,

@@ -2182,10 +2182,74 @@ body.guide-modal-open {
     flex: 0 0 calc(16.666% - 10px);
 }
 
-.image-layer-tertiary .guide-image {
-    max-width: 100%;
-    max-height: 200px;
-    object-fit: contain;
+.image-layer-normal .guide-image-figure:only-child {
+    flex: 0 0 calc(100% - 6px);
+}
+
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(2),
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(2) ~ .guide-image-figure {
+    flex: 0 0 calc(50% - 6px);
+}
+
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(4),
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(4) ~ .guide-image-figure {
+    flex: 0 0 calc(25% - 9px);
+}
+
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(5),
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(5) ~ .guide-image-figure {
+    flex: 0 0 calc(20% - 10px);
+}
+
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(n+6),
+.image-layer-normal .guide-image-figure:first-child:nth-last-child(n+6) ~ .guide-image-figure {
+    flex: 0 0 calc(16.666% - 10px);
+}
+
+.image-layer-small .guide-image-figure:only-child {
+    flex: 0 0 calc(100% - 6px);
+}
+
+.image-layer-small .guide-image-figure:first-child:nth-last-child(2),
+.image-layer-small .guide-image-figure:first-child:nth-last-child(2) ~ .guide-image-figure {
+    flex: 0 0 calc(50% - 6px);
+}
+
+.image-layer-small .guide-image-figure:first-child:nth-last-child(4),
+.image-layer-small .guide-image-figure:first-child:nth-last-child(4) ~ .guide-image-figure {
+    flex: 0 0 calc(25% - 9px);
+}
+
+.image-layer-small .guide-image-figure:first-child:nth-last-child(5),
+.image-layer-small .guide-image-figure:first-child:nth-last-child(5) ~ .guide-image-figure {
+    flex: 0 0 calc(20% - 10px);
+}
+
+.image-layer-small .guide-image-figure:first-child:nth-last-child(n+6),
+.image-layer-small .guide-image-figure:first-child:nth-last-child(n+6) ~ .guide-image-figure {
+    flex: 0 0 calc(16.666% - 10px);
+}
+
+.image-layer-tertiary {
+    max-width: 80%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 6px;
+}
+
+.image-layer-normal {
+    max-width: 50%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 6px;
+}
+
+.image-layer-small {
+    max-width: 20%;
+    max-height: 300px;
+    object-fit: cover;
     cursor: zoom-in;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border-radius: 6px;
@@ -2286,12 +2350,18 @@ body.lightbox-open {
 }
 
 .mech-image-wrapper .image-layer {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
 }
 
 .mech-image-wrapper .guide-image-figure {
-    width: 100%;
-    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mech-image-wrapper .guide-image-figure img {
@@ -2301,12 +2371,73 @@ body.lightbox-open {
 
 .mech-image-wrapper .guide-image {
     display: block;
-    object-fit: cover;
+    height: 280px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
     border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mech-image-wrapper .guide-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(102, 179, 255, 0.3);
 }
 
 .mech-image-wrapper .guide-image-caption {
+    margin-top: 6px;
     font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    width: 100%;
+}
+
+.mech-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 2px solid var(--border-color);
+    background: #000;
+    outline: none;
+}
+
+.mech-video-wrapper {
+    margin: 16px 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.mech-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 2px solid var(--border-color);
+    background: #000;
+    outline: none;
+}
+
+.mech-video:focus {
+    border-color: var(--primary-color);
+}
+
+.guide-video-caption {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+    width: 100%;
+}
+
+.guide-video-caption {
+    margin-top: 6px;
+    font-size: 13px;
     color: var(--text-secondary);
     text-align: center;
     width: 100%;

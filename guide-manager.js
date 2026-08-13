@@ -141,8 +141,8 @@ function renderGroupTitle(title) {
     return createElement('div', { class: 'guide-group-title' }, [title]);
 }
 
-const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'variants','separation']);
-const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img']);
+const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'vid', 'variants','separation']);
+const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'vid']);
 
 function isLangLeaf(value) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -153,6 +153,11 @@ function isLangLeaf(value) {
 
 function renderMechanicEntry(item) {
     const wrapper = createElement('div', { class: 'mech' }, []);
+
+    if (item.vid) {
+        const videoEl = renderVideoElement(item.vid);
+        if (videoEl) wrapper.appendChild(videoEl);
+    }
 
     const nameText = getLocalizedValue(item.name);
     if (nameText) {
@@ -191,12 +196,6 @@ function renderMechanicEntry(item) {
         if (variantsSection) wrapper.appendChild(variantsSection);
     }
 
-    if (item.img) {
-        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-        renderGenericValue(mechImgWrapper, 'img', item.img);
-        wrapper.appendChild(mechImgWrapper);
-    }
-
     if (item.note) {
         renderParagraphElements(item.note).forEach(el => {
             el.classList.add('mechnote');
@@ -218,6 +217,12 @@ function renderMechanicEntry(item) {
                 if (variantsSection) wrapper.appendChild(variantsSection);
             }
         });
+    }
+
+    if (item.img) {
+        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+        renderGenericValue(mechImgWrapper, 'img', item.img);
+        wrapper.appendChild(mechImgWrapper);
     }
 
     if (item.derivated_mechs) {
@@ -253,6 +258,12 @@ function renderMechanicEntry(item) {
         const subWrapper = createElement('div', { class: 'concept sub-mech' }, []);
         
         // Add the name as a ctitle
+
+        if (value.vid) {
+            const videoEl = renderVideoElement(value.vid);
+            if (videoEl) subWrapper.appendChild(videoEl);
+        }
+        
         const nameText = getLocalizedValue(value.name);
         if (nameText) {
             subWrapper.appendChild(createElement('div', { class: 'ctitle' }, [nameText]));
@@ -268,13 +279,6 @@ function renderMechanicEntry(item) {
             renderParagraphElements(value.description).forEach(el => subWrapper.appendChild(el));
         }
         
-        // Add img if present
-        if (value.img) {
-            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-            renderGenericValue(mechImgWrapper, 'img', value.img);
-            subWrapper.appendChild(mechImgWrapper);
-        }
-        
         // Add note if present
         if (value.note) {
             renderParagraphElements(value.note).forEach(el => {
@@ -288,6 +292,12 @@ function renderMechanicEntry(item) {
             const variantsSection = renderVariantsSection(value.variants);
             if (variantsSection) subWrapper.appendChild(variantsSection);
         }
+
+        if (value.img) {
+            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(mechImgWrapper, 'img', value.img);
+            subWrapper.appendChild(mechImgWrapper);
+        }
         
         wrapper.appendChild(subWrapper);
     }
@@ -298,6 +308,11 @@ function renderMechanicEntry(item) {
 function renderConceptEntry(concept) {
     const wrapper = createElement('div', { class: 'concept' }, []);
 
+    if (concept.vid) {
+        const videoEl = renderVideoElement(concept.vid);
+        if (videoEl) wrapper.appendChild(videoEl);
+    }
+    
     const titleText = getLocalizedValue(concept.title || concept.name);
     if (titleText) {
         wrapper.appendChild(createElement('div', { class: 'ctitle' }, [titleText]));
@@ -307,17 +322,16 @@ function renderConceptEntry(concept) {
         renderParagraphElements(concept.description).forEach(el => wrapper.appendChild(el));
     }
 
-    // Handle img inside concepts
-    if (concept.img) {
-        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-        renderGenericValue(mechImgWrapper, 'img', concept.img);
-        wrapper.appendChild(mechImgWrapper);
-    }
-
     // Variants inside concepts
     if (concept.variants) {
         const variantsSection = renderVariantsSection(concept.variants);
         if (variantsSection) wrapper.appendChild(variantsSection);
+    }
+
+    if (concept.img) {
+        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+        renderGenericValue(mechImgWrapper, 'img', concept.img);
+        wrapper.appendChild(mechImgWrapper);
     }
 
     Object.entries(concept).forEach(([key, value]) => {
@@ -421,6 +435,11 @@ function renderRaidSection(sectionKey, guideId) {
             const phaseImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
             renderGenericValue(phaseImgWrapper, 'img', phaseData.img);
             phaseWrapper.appendChild(phaseImgWrapper);
+        }
+
+        if (phaseData.vid) {
+            const videoEl = renderVideoElement(phaseData.vid);
+            if (videoEl) phaseWrapper.appendChild(videoEl);
         }
 
         if (phaseData.description) {
@@ -788,7 +807,9 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         const layers = [
             { key: 'primary',   containerClass: 'image-layer-primary' },
             { key: 'secondary', containerClass: 'image-layer-secondary' },
-            { key: 'tertiary',  containerClass: 'image-layer-tertiary' }
+            { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
+            { key: 'normal',  containerClass: 'image-layer-normal' },
+            { key: 'small',  containerClass: 'image-layer-small' }
         ];
 
         layers.forEach(layer => {
@@ -1041,6 +1062,66 @@ function renderVariantsSection(variants) {
         const variantBlock = renderVariantBlock(variants[key], key);
         if (variantBlock) wrapper.appendChild(variantBlock);
     });
+    
+    return wrapper;
+}
+
+function renderVideoElement(videoData) {
+    if (!videoData || !videoData.src) return null;
+    
+    const src = getLocalizedValue(videoData.src);
+    if (!src) return null;
+    
+    const wrapper = createElement('div', { class: 'mech-video-wrapper' }, []);
+    
+    const video = createElement('video', {
+        class: 'mech-video',
+        src: src,
+        muted: '',
+        playsinline: '',
+        preload: 'metadata',
+        loop: ''
+    }, []);
+    
+    const fallback = document.createTextNode('Your browser does not support the video tag.');
+    video.appendChild(fallback);
+    
+    wrapper.appendChild(video);
+    
+    // Intersection Observer to play/pause based on visibility
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play().catch(() => {
+                    // Autoplay might be blocked, user interaction needed
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.3  // At least 30% visible before playing
+    });
+    
+    observer.observe(video);
+    
+    // Clean up observer when video is removed from DOM
+    const cleanupObserver = new MutationObserver(() => {
+        if (!document.contains(video)) {
+            observer.disconnect();
+            cleanupObserver.disconnect();
+        }
+    });
+    cleanupObserver.observe(document.body, { childList: true, subtree: true });
+    
+    // Add caption if provided
+    if (videoData.caption) {
+        const captionText = getLocalizedValue(videoData.caption);
+        if (captionText) {
+            const caption = createElement('div', { class: 'guide-video-caption' }, [captionText]);
+            wrapper.appendChild(caption);
+        }
+    }
     
     return wrapper;
 }
