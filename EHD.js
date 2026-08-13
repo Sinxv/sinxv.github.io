@@ -6710,7 +6710,7 @@ export const data = {
                                         variants: {
                                             solo: {
                                                 name: {en: "Solo Mode Variation:"},
-                                                description: {en:["- The player will always be sent to the center room.","- The layout of the two parallel rooms on the left and right will be given in the chat window. find the item that is different in the center room using the information provided."]}
+                                                description: {en:["- The player will always be sent to the center room.","- The layout of the two parallel rooms on the left and right will be given in the chat window. find the sole item that is different between the 3 rooms using the information provided."]}
                                             }
                                         }
                                     }
