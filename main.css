@@ -936,6 +936,24 @@ h3 {
 .IMGPHASEHEADER#ccof3 {
     background: url('images/ccof3.webp') 5vh / cover no-repeat;
 }
+.IMGPHASEHEADER#swgc1 {
+    background: url('images/swgc1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#swgc2 {
+    background: url('images/swgc2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#swgc3 {
+    background: url('images/swgc3.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#aoi1 {
+    background: url('images/aoi1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#aoi2 {
+    background: url('images/aoi2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#aoi3 {
+    background: url('images/aoi3.png') 5vh / cover no-repeat;
+}
 .IMGPHASEHEADER#shg1 {
     background: url('images/shg1.webp') 5vh / cover no-repeat;
 }
@@ -1001,6 +1019,33 @@ h3 {
 }
 .IMGPHASEHEADER#wt_fa1 {
     background: url('images/wtfa.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#tts1 {
+    background: url('images/tts1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#tts2 {
+    background: url('images/tts2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#bs1 {
+    background: url('images/bs1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#bs2 {
+    background: url('images/bs2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#pz1 {
+    background: url('images/pz1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#pz2 {
+    background: url('images/pz2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#oua1 {
+    background: url('images/oua1.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#oua2 {
+    background: url('images/oua2.png') 5vh / cover no-repeat;
+}
+.IMGPHASEHEADER#ouo1 {
+    background: url('images/ouo1.png') 5vh / cover no-repeat;
 }
 
 .PHASEBNAME {
@@ -1777,11 +1822,13 @@ button.guide-open-button {
 }
 
 .guide-card-icon {
-    width: 48px;
-    height: 48px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.08);
     flex-shrink: 0;
+}
+.guide-card-icon img {
+    max-width: 64px;
+    max-height: 64px;
+    border-radius: 12px;
 }
 
 .guide-card-text {

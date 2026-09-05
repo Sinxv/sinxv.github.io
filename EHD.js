@@ -3040,6 +3040,9 @@ export const data = {
                     titlekey: {
                         en: "Altar of Invocation"
                     },
+                    name: {
+                        en: "- Altar of Invocation -"
+                    },
                     content: {
                         phase1:{
                             phasenum: {
@@ -3857,38 +3860,40 @@ export const data = {
                                 ]
                             },
                             {
-                                label: 'Metholon (Placeholder)',
+                                label: 'Nebulonsuit',
                                 columns: [
                                     { key: 'stage',        label: 'Stage' },
-                                    { key: 'zetrium',      label: 'Zetrium Steel' },
-                                    { key: 'exikel',       label: 'Refined Exikel' },
+                                    { key: 'methane',      label: 'Methane Ampoule' },
+                                    { key: 'metholone',       label: 'Metholone' },
                                     { key: 'crystals',     label: 'Magic Crystals' },
                                     { key: 'ed',           label: 'ED' },
                                     { key: 'effects',      label: 'Effects' },
-                                    { key: 'successRate',  label: 'Success Rate' }
+                                    { key: 'successRate',  label: 'Success Rate' },
                                 ],
                                 rows: [
-                                    { stage: '0 → 1',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '20%' },
-                                    { stage: '1 → 2',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '10%' },
-                                    { stage: '2 → 3',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: 'Critical Damage +3%', gauge: '-', successRate: '6.667%' },
-                                    { stage: '3 → 4',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '20%' },
-                                    { stage: '4 → 5',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '10%' },
-                                    { stage: '5 → 6',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +3%', gauge: '-', successRate: '6.667%' },
-                                    { stage: '6 → 7',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '20%' },
-                                    { stage: '7 → 8',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: '-', gauge: '-', successRate: '6.667%' },
-                                    { stage: '8 → 9',  zetrium: '2,000', exikel: '20', crystals: '100', ed: '300,000', effects: 'Critical Damage +3%', gauge: '-', successRate: '5%' },
-                                    { stage: '9 → 10', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: '-', gauge: '-', successRate: '10%' },
-                                    { stage: '10 → 11', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: '-', gauge: '-', successRate: '6.667%' },
-                                    { stage: '11 → 12', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +3%', gauge: '-', successRate: '5%' },
-                                    { stage: '12 → 13', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: '-', gauge: '-', successRate: '5%' },
-                                    { stage: '13 → 14', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: '-', gauge: '-', successRate: '3.333%' },
-                                    { stage: '14 → 15', zetrium: '4,000', exikel: '40', crystals: '200', ed: '900,000', effects: 'Physical Attack Power +2%\nMagical Attack Power +2%', gauge: '-', successRate: '2.5%' },
-                                    { stage: '15 → 16', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: '-', gauge: '-', successRate: '2.5%' },
-                                    { stage: '16 → 17', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: '-', gauge: '-', successRate: '1.25%' },
-                                    { stage: '17 → 18', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +4%', gauge: '-', successRate: '0.625%' },
-                                    { stage: '18 → 19', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: '-', gauge: '-', successRate: '2.5%' },
-                                    { stage: '19 → 20', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: '-', gauge: '-', successRate: '0.833%' },
-                                    { stage: '20 → 21', zetrium: '6,000', exikel: '60', crystals: '300', ed: '1,800,000', effects: 'Adaptation +2% (Dungeon)', gauge: '-', successRate: '0.416%' }
+                                    { stage: '0 → 1',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '',  successRate: '20%' },
+                                    { stage: '1 → 2',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '',  successRate: '10%' },
+                                    { stage: '2 → 3',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: 'Critical Damage +3%', successRate: '6.667%' },
+                                    { stage: '3 → 4',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '', successRate: '20%' },
+                                    { stage: '4 → 5',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '', successRate: '10%' },
+                                    { stage: '5 → 6',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +3%', successRate: '6.667%' },
+                                    { stage: '6 → 7',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '', successRate: '20%' },
+                                    { stage: '7 → 8',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: '', successRate: '6.667%' },
+                                    { stage: '8 → 9',  metholone: '2,000', methane: '20', crystals: '100', ed: '300,000', effects: 'Physical Attack Power +3%\nMagical Attack Power +3%', successRate: '5%' },
+                                    { stage: '9 → 10', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: '', successRate: '10%' },
+                                    { stage: '10 → 11', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: '', successRate: '6.667%' },
+                                    { stage: '11 → 12', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +3%', successRate: '5%' },
+                                    { stage: '12 → 13', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: '', successRate: '5%' },
+                                    { stage: '13 → 14', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: '', successRate: '3.333%' },
+                                    { stage: '14 → 15', metholone: '4,000', methane: '40', crystals: '200', ed: '900,000', effects: 'Adaptation +2%', successRate: '2.5%' },
+                                    { stage: '15 → 16', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: '', successRate: '2.5%' },
+                                    { stage: '16 → 17', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: '', successRate: '1.25%' },
+                                    { stage: '17 → 18', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: 'Active/Tenacity/Strength/Bravery\nSkill Damage Increase +4%', successRate: '0.625%' },
+                                    { stage: '18 → 19', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: '', gauge: '-', successRate: '2.5%' },
+                                    { stage: '19 → 20', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: '', gauge: '-', successRate: '0.833%' },
+                                    { stage: '20 → 21', metholone: '6,000', methane: '60', crystals: '300', ed: '1,800,000', effects: 'Hyper Adaptation +0.5%', gauge: '-', successRate: '0.416%' },
+                                    { stage: 'Cumulative'},
+                                    { stage: '', metholone: '5,840,000', methane: '58,400', crystals: '292,000', ed: '1,681,500,000\n1,513,350,000 with Blacksmith Lv.10', effects: '', gauge: '', successRate: '' }
                                 ]
                             }
                         ]
@@ -3904,13 +3909,13 @@ export const data = {
                             title: 'Details',
                             tabs: [
                                 {
-                                    label: 'Amethystine to Tenebrous',
+                                    label: 'All',
                                     columns: [
                                         { key: 'stage',          label: 'Reforge Stage' },
                                         { key: 'ed',             label: 'ED' },
                                         { key: 'crystals',       label: 'Magic Crystal' },
-                                        { key: 'tenebrous',      label: 'Normal Transfer\nTenebrous Aura' },
-                                        { key: 'tasma',          label: 'Normal Transfer\nTasma Aura' },
+                                        { key: 'tenebrous',      label: 'Normal Transfer' },
+                                        { key: 'tasma',          label: 'Normal Transfer' },
                                         { key: 'specialTransfer', label: 'Special Transfer\nRefinement Level Transfer Coupon' }
                                     ],
                                     rows: [
@@ -3920,6 +3925,7 @@ export const data = {
                                         { stage: '21', ed: '30,000,000', crystals: '3000', tenebrous: '3000',   tasma: '20000', normalTransfer: '-', specialTransfer: '4' }
                                     ]
                                 },
+                                /*
                                 {
                                     label: 'Tenebrous to Exascale',
                                     columns: [
@@ -3932,28 +3938,28 @@ export const data = {
                                     ],
                                     rows: [
                                         { stage: '18', ed: '10,000,000', crystals: '1250', exikel: '1000', zetrium: '8000', normalTransfer: '-', specialTransfer: '1' },
-                                        { stage: '19', ed: '12,500,000', crystals: '1250', exikel: '1250',    zetrium: '16000', normalTransfer: '-', specialTransfer: '2' },
-                                        { stage: '20', ed: '12,500,000', crystals: '1250', exikel: '1250',    zetrium: '16000', normalTransfer: '-', specialTransfer: '3' },
+                                        { stage: '19', ed: '12,500,000', crystals: '1250', exikel: '1250', zetrium: '16000', normalTransfer: '-', specialTransfer: '2' },
+                                        { stage: '20', ed: '12,500,000', crystals: '1250', exikel: '1250', zetrium: '16000', normalTransfer: '-', specialTransfer: '3' },
                                         { stage: '21', ed: '30,000,000', crystals: '3000', exikel: '3000',    zetrium: '20000', normalTransfer: '-', specialTransfer: '4' }
                                     ]
                                 },
                                 {
-                                    label: 'Exascale to Metholon (Placeholder)',
+                                    label: 'Exascale to Nebulonsuit',
                                     columns: [
                                         { key: 'stage',          label: 'Reforge Stage' },
                                         { key: 'ed',             label: 'ED' },
                                         { key: 'crystals',       label: 'Magic Crystal' },
-                                        { key: 'metholon',         label: 'Normal Transfer\nConcentrated Metholon' },
-                                        { key: 'metholin',        label: 'Normal Transfer\nMetholin' },
+                                        { key: 'methane',         label: 'Normal Transfer\nMethane Ampoule' },
+                                        { key: 'metholone',        label: 'Normal Transfer\nMetholone' },
                                         { key: 'specialTransfer', label: 'Special Transfer\nRefinement Level Transfer Coupon' }
                                     ],
                                     rows: [
-                                        { stage: '18', ed: '10,000,000', crystals: '1250', metholon: '1000', metholin: '8000', normalTransfer: '-', specialTransfer: '1' },
-                                        { stage: '19', ed: '12,500,000', crystals: '1250', metholon: '1250', metholin: '16000', normalTransfer: '-', specialTransfer: '2' },
-                                        { stage: '20', ed: '12,500,000', crystals: '1250', metholon: '1250', metholin: '16000', normalTransfer: '-', specialTransfer: '3' },
-                                        { stage: '21', ed: '30,000,000', crystals: '3000', metholon: '3000', metholin: '20000', normalTransfer: '-', specialTransfer: '4' }
+                                        { stage: '18', ed: '10,000,000', crystals: '1250', methane: '1000', metholone: '8000', normalTransfer: '-', specialTransfer: '1' },
+                                        { stage: '19', ed: '12,500,000', crystals: '1250', methane: '1250', metholone: '16000', normalTransfer: '-', specialTransfer: '2' },
+                                        { stage: '20', ed: '12,500,000', crystals: '1250', methane: '1250', metholone: '16000', normalTransfer: '-', specialTransfer: '3' },
+                                        { stage: '21', ed: '30,000,000', crystals: '3000', methane: '3000', metholone: '20000', normalTransfer: '-', specialTransfer: '4' }
                                     ]
-                                }
+                                }*/
                             ]
                         }
                     }
@@ -7490,7 +7496,305 @@ export const data = {
         },
         stage8: {
             title: { en: "Stage 8", es: "Etapa 8", kr: "8단계", jp: "ステージ8", br: "Estágio 8" },
-            stage8_title: { en: "Atma'ram and Mirror Dell", es: "", kr: "", jp: "", br: "" },
+            content_tts: { en: "T Tree Solution" },
+            content_bs: { en: "Bioweapon Shelter" },
+            content_pz: { en: "Progressive Zone" },
+            content_oua: { en: "Operation Undertow: Alpha" },
+            content_ouo: { en: "Operation Undertow: Omega" },
+            sections: {
+                tts: {
+                    titlekey: {
+                        en: "T Tree Solution",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    num: {
+                        en: "",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    name: {
+                        en: "- T Tree Solution -",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    content: {
+                        phase1: {
+                            phasenum: {
+                                en: "Phase 1",
+                                es: "Fase 1",
+                                kr: "1단계",
+                                jp: "フェーズ1",
+                                br: "Fase 1"
+                            },
+                            phasebname: {
+                                en: "Super Glitter",
+                                es: "",
+                                kr: "",
+                                jp: "",
+                                br: ""
+                            },
+                            np: {
+                                bombardment: {
+                                    name: { en: "Bombardment", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "Super Glitter will cast multiple explosions indicated by a pink telegraph, you can tank the damage. The number of explosions is random from a minimum of 1 to a maximum of 4."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                swing: {
+                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "Super Glitter performs a swing on the left side of the arena, and then on the right, this is tank-able with proper defense, though it's recommended to dodge otherwise."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                absorption: {
+                                    name: { en: "Absorption", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: [
+                                            "Super Glitter creates a green orb that surrounds it and charges energy. After its done charging, its damage reduction goes up by 10% until the next absorption pattern and performs 4 swings with a telegraph appearing before each; Dodge the swings, since they can be lethal."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "If strength/bravery skills are not used, Absorption will end without performing the swings or gaining damage reduction."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                slam: {
+                                    name: { en: "Slam", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    forcedat: { en: "Every 60 seconds", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: [
+                                            "Super Glitter howls, stunning the party and afterwards forms a green box on the entire arena except the edges, Players need to spam left and right key to break free from the stun and move outside the box until the slam happens."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                duel: {
+                                    name: { en: "Duel", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    forcedat: { en: "Every 3 minutes", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: [
+                                            "Super Glitter teleports to the upper floor and starts charging and forms a green and pink box, and afterwards, will prompt a dialog that indicates the number of party members that must be inside the box before the timer ends."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                pillars: {
+                                    name: { en: "Pillars", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "Super Glitter places 2 telegraphs on fixed locations, these indicate where pillars will fall. And then assigns 4 telegraphs to random players across 2 different rounds. Players should place them somewhere where they don't overlap with any other telegraph and stay inside the designated range until it locks place, indicated by a blink. After all pillars' telegraphs are positioned, they will fall, and a final telegraph where Super Glitter will fall from is given to another player that must be placed on the spots without pillars. If there's not enough space for it to descend the mech ends in failure."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                explosiveampoules: {
+                                    name: { en: "Explosive Ampoules", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "Super Glitter charges back and forth multiple times, then stops at the center and creates a red box that surrounds it, afterwards will slam the ground multiple times, causing methane (green) ampoules to fall on both sides of the arena slowly rolling towards the Super Glitter. Players should use Dungeon Function Key (F1) on the ampoules until they turn purple, and then allow them to reach them to roll. After being delivered 6 purple capsules, mech will end. Otherwise, if Super Glitter ingests too many green capsules, timer will automatically expire."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "Avoid using F1 on purple ampoules since they will explode, cause lethal damage and reduce consumable effectiveness by 95% for 15s."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        },
+                        phase2: {
+                            phasenum: {
+                                en: "Phase 2",
+                                es: "Fase 2",
+                                kr: "2단계",
+                                jp: "フェーズ2",
+                                br: "Fase 2"
+                            },
+                            phasebname: {
+                                en: "T Tree",
+                                es: "",
+                                kr: "",
+                                jp: "",
+                                br: ""
+                            },
+                            np: {
+                                drone: {
+                                    name: { en: "Drone", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "A drone will be summon and will target a random player. Standing in front of its path will make it explode in place."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                wires: {
+                                    name: { en: "Wires", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "A bunch of wires will drop off a location, indicated by a red telegraph, causing moderate damage to players nearby."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                lasers: {
+                                    name: { en: "Lasers", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    vertical: {
+                                        name: { en: "Vertical Variation", es: "", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: [
+                                                "Lasers will fall in a large area indicated by a red telegraph that covers most of the map, except the edges of the map. If a player is hit by the laser, their duration is extended."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    diagonal: {
+                                        name: { en: "Diagonal Variation", es: "", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: [
+                                                "A laser will be fired from either the upper left or upper right corner of the map, indicated by which monitor is shaking."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    horizontal: {
+                                        name: { en: "Horizontal Variation", es: "", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: [
+                                                "Lasers will be fired from the walls, indicated by a red telegraph."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            },
+                            mechs: {
+                                designatedlaser: {
+                                    name: { en: "Designated Laser", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: [
+                                            "Two lasers will be aimed at random party members, and drones will appear on random platforms of the map. Afterwards, a shape will be displayed in the lower monitor, indicating the drone the lasers should hit, both players should move to make their lasers point at the correct drone and move after they lock place but before they fire."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "The symbol can change half mech, so be wary."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                coloredarrows: {
+                                    name: { en: "Colored Arrows", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: [
+                                            "The camera zooms out as red and yellow arrows fly from the sides, the direction from where they will fly from is displayed on the monitor. Players obtain red shields and should then take turns to get hit by the yellow arrows up to 6 times. Upon contact with a yellow arrow, the shield will break."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "If you hit a yellow arrow without a shield, or a pink arrow without a shield, you receive lethal damage."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                safezone: {
+                                    name: { en: "Safe Zone", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: [
+                                            "The camera zooms out, Afterwards, lasers' telegraphs cover the entire arena except 1 spot, all players should then move to that safe spot. This will be repeated 5 times before the mech ends."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                droneshuffle: {
+                                    name: { en: "Drone Shuffle", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced At 225x, 150x, 75x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    timed: "1:00",
+                                    groggy: true,
+                                    heal: "75x",
+                                    description: {
+                                        en: [
+                                            "6 drones with numbers 1 to 6 in them will spawn at designated places, they then will hide the numbers and will be shuffled 4 times. Once they end shuffling, a random player will be selected to hack, indicated by its screen borders turning green. Selected players should use F1 near the drones in numerical order to activate a QTE (quick time event) to hack the drone.",
+                                            "Hacking the correct drone will deactivate its shield, but hacking the incorrect drone will reactivate all shields."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "Players should organize their number before entering the dungeon so they can properly follow their drone inside the dungeon and type their number after they're done shuffling. Otherwise it will become a mess."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                bs: {
+                    name: { en: "Bioweapon Shelter"},
+                },
+                pz: {
+                    name: { en: "Progressive Zone"},
+                },
+                oua: {
+                    name: { en: "Operation Undertow: Alpha"},
+                },
+                ouo: {
+                    name: { en: "Operation Undertow: Omega"},
+                }
+            }
         },
     },
 }

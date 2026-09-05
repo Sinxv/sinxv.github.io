@@ -13,6 +13,41 @@ const CATEGORY_LABELS = {
 };
 const RAID_ORDER = ['Rosso','Berthe','Abyss','Serpentium','Doom Aporia','Nebulon']
 
+// ============================================================
+// RAID COLOR THEMING
+// ============================================================
+const RAID_COLOR_MAP = {
+    'Rosso': 'color-red',
+    'Berthe': 'color-yellow',
+    'Abyss': 'color-purple',
+    'Serpentium': 'color-yellow',
+    'Doom Aporia': 'color-blue',
+    'Nebulon': 'color-mint',
+    // Add more as needed
+    'Other': 'color-yellow',
+    'Miscellaneous': 'color-yellow'
+};
+
+function getRaidColorClass(entry) {
+    if (!entry || !entry.belongsto) return 'color-yellow';
+    return RAID_COLOR_MAP[entry.belongsto] || 'color-yellow';
+}
+
+function applyRaidColorTheme(entry) {
+    // Remove any existing color classes
+    const colorClasses = ['color-red', 'color-blue', 'color-mint', 'color-purple', 'color-pink', 'color-darkblue', 'color-yellow'];
+    document.body.classList.remove(...colorClasses);
+    
+    // Apply the new color class
+    const colorClass = getRaidColorClass(entry);
+    document.body.classList.add(colorClass);
+}
+
+function resetRaidColorTheme() {
+    const colorClasses = ['color-red', 'color-blue', 'color-mint', 'color-purple', 'color-pink', 'color-darkblue', 'color-yellow'];
+    document.body.classList.remove(...colorClasses);
+}
+
 function getCurrentLang() {
     return window.translationManager?.currentLang || localStorage.getItem('elhelper-lang') || 'en';
 }
@@ -580,14 +615,87 @@ function renderRowGroupsTable(tableSpec) {
         table.appendChild(createElement('tr', {}, headerCells));
 
         rows.forEach(row => {
-            const labelText = row.labelKey ? getTranslation(row.labelKey) : getLocalizedValue(row.label);
-            const cells = [
-                createElement('td', {}, [createElement('span', {}, [labelText])])
-            ];
-            if (row.range !== undefined) {
-                cells.push(createElement('td', {}, [String(row.range)]));
+            const cells = [];
+            
+            // Get the columns for this table
+            const columns = tableSpec.columns || [];
+            
+            // Check for full-width row (any column has ColSpan/Colspan equal to totalCols)
+            let fullWidthCol = null;
+            columns.forEach(col => {
+                const colspan = row[`${col.key}ColSpan`] || row[`${col.key}Colspan`];
+                if (colspan && parseInt(colspan) === columns.length) {
+                    fullWidthCol = col;
+                }
+            });
+            
+            if (fullWidthCol) {
+                // Full-width row - single cell spanning all columns
+                const raw = row[fullWidthCol.key];
+                const labelText = raw !== undefined && raw !== null ? String(raw) : '';
+                const colspan = row[`${fullWidthCol.key}ColSpan`] || row[`${fullWidthCol.key}Colspan`];
+                const cellClass = row[`${fullWidthCol.key}Class`] || '';
+                
+                const cellAttrs = { colspan: String(colspan) };
+                if (cellClass) cellAttrs.class = cellClass;
+                
+                let rowClass = row.rowClass || '';
+                const rowAttrs = { class: rowClass };
+                
+                table.appendChild(createElement('tr', rowAttrs, [
+                    createElement('td', cellAttrs, [createElement('span', {}, [labelText])])
+                ]));
+                return;
             }
-            table.appendChild(createElement('tr', {}, cells));
+            
+            // Regular row - render each column in order
+            columns.forEach(col => {
+                const raw = row[col.key];
+                
+                // Skip hidden cells
+                if (row[`${col.key}Hidden`] === true) return;
+                
+                let content = [];
+                if (raw !== undefined && raw !== null) {
+                    if (isTranslationPath(raw)) {
+                        content = createCellLines(getMultiline(raw));
+                    } else {
+                        const lines = String(raw).split('\n');
+                        content = lines.length > 1
+                            ? lines.map(line => createElement('div', {}, [line]))
+                            : [String(raw)];
+                    }
+                }
+                
+                const attrs = {};
+                
+                // Custom colspan/rowspan
+                const colspan = row[`${col.key}ColSpan`] || row[`${col.key}Colspan`] || 1;
+                const rowspan = row[`${col.key}RowSpan`] || row[`${col.key}Rowspan`] || 1;
+                if (colspan > 1) attrs.colspan = String(colspan);
+                if (rowspan > 1) attrs.rowspan = String(rowspan);
+                
+                // Cell class
+                if (row[`${col.key}Class`]) {
+                    attrs.class = row[`${col.key}Class`];
+                }
+                if (col.cellId) {
+                    attrs.id = col.cellId;
+                    attrs.class = attrs.class ? `${attrs.class} ${col.cellId}` : col.cellId;
+                }
+                
+                cells.push(createElement('td', attrs, content));
+            });
+            
+            let rowClass = row.rowClass || '';
+            if (row.goodStat) rowClass = (rowClass + ' good-stat').trim();
+            if (row.hidden) rowClass = (rowClass + ' niche-stat').trim();
+            const rowAttrs = { class: rowClass };
+            if (row.hidden) {
+                rowAttrs.dataset = { hidden: 'true' };
+            }
+            
+            table.appendChild(createElement('tr', rowAttrs, cells));
         });
     });
 
@@ -638,7 +746,7 @@ function renderTableFromSpec(tableSpec) {
         )));
     }
 
-    const labelColKey = tableSpec.labelColumnKey || tableSpec.columns[0].key;
+        const labelColKey = tableSpec.labelColumnKey || tableSpec.columns[0].key;
     const valueCols = tableSpec.columns.filter(col => col.key !== labelColKey);
 
     function renderRow(row, includeLabel) {
@@ -648,11 +756,34 @@ function renderTableFromSpec(tableSpec) {
             const labelText = row.labelKey 
                 ? getTranslation(row.labelKey) 
                 : getLocalizedValue(row.label || row[labelColKey]);
-            cells.push(createElement('td', {}, [createElement('span', {}, [labelText])]));
+            
+            // Check for custom colspan/rowspan
+            const labelColspan = row[`${labelColKey}Colspan`] || row.labelColspan || 1;
+            const labelRowspan = row[`${labelColKey}Rowspan`] || row.labelRowspan || 1;
+            
+            const cellAttrs = {};
+            if (labelColspan > 1) cellAttrs.colspan = String(labelColspan);
+            if (labelRowspan > 1) cellAttrs.rowspan = String(labelRowspan);
+            
+            cells.push(createElement('td', cellAttrs, [createElement('span', {}, [labelText])]));
         }
 
         valueCols.forEach(col => {
+            // Skip if this column is covered by a label colspan
+            if (row[`${labelColKey}Colspan`] > 1 && includeLabel) {
+                const labelSpan = row[`${labelColKey}Colspan`];
+                const labelIndex = tableSpec.columns.findIndex(c => c.key === labelColKey);
+                const colIndex = tableSpec.columns.findIndex(c => c.key === col.key);
+                if (colIndex < labelIndex + labelSpan && colIndex > labelIndex) {
+                    return; // Skip this cell, covered by label colspan
+                }
+            }
+            
             const raw = row.cells ? row.cells[col.key] : row[col.key];
+            
+            // Check if this cell should be hidden/merged
+            if (row[`${col.key}Hidden`] === true) return;
+            
             let content = [];
             if (raw !== undefined && raw !== null) {
                 if (isTranslationPath(raw)) {
@@ -664,11 +795,24 @@ function renderTableFromSpec(tableSpec) {
                         : [String(raw)];
                 }
             }
+            
             const attrs = {};
             if (col.cellId) {
                 attrs.id = col.cellId;
                 attrs.class = col.cellId;
             }
+            
+            // Custom colspan/rowspan
+            const colspan = row[`${col.key}Colspan`] || 1;
+            const rowspan = row[`${col.key}Rowspan`] || 1;
+            if (colspan > 1) attrs.colspan = String(colspan);
+            if (rowspan > 1) attrs.rowspan = String(rowspan);
+            
+            // Cell class
+            if (row[`${col.key}Class`]) {
+                attrs.class = attrs.class ? `${attrs.class} ${row[`${col.key}Class`]}` : row[`${col.key}Class`];
+            }
+            
             cells.push(createElement('td', attrs, content));
         });
 
@@ -1529,7 +1673,6 @@ function checkUrlForGuide() {
     }
 }
 
-// Update openGuide
 function openGuide(guideId) {
     const entry = guideData.find(item => item.id === guideId);
     if (!entry) {
@@ -1541,6 +1684,9 @@ function openGuide(guideId) {
 
     const overlay = createGuideModal(entry);
     document.body.appendChild(overlay);
+    
+    // Apply raid color theme
+    applyRaidColorTheme(entry);
     
     updateUrlForGuide(guideId);
     
@@ -1558,7 +1704,6 @@ function openGuide(guideId) {
     document.body.classList.add('guide-modal-open');
 }
 
-// Update closeGuide
 function closeGuide() {
     const overlay = document.getElementById(GUIDE_OVERLAY_ID);
     if (overlay) {
@@ -1568,6 +1713,9 @@ function closeGuide() {
         }, { once: true });
     }
     document.body.classList.remove('guide-modal-open');
+    
+    // Reset raid color theme
+    resetRaidColorTheme();
     
     // Clear hash
     window.history.pushState({}, '', window.location.pathname);
@@ -1584,10 +1732,29 @@ function renderGuideCard(entry) {
         class: 'guide-card',
         dataset: { guideId: entry.id }
     }, []);
+    
+    // Add raid color as a data attribute for CSS
+    if (entry.belongsto) {
+        const colorClass = getRaidColorClass(entry);
+        card.dataset.raidColor = colorClass;
+    }
 
     const titleText = getTranslation(entry.titleKey) || entry.id;
+    
+    const iconWrapper = createElement('div', { class: 'guide-card-icon' }, []);
+    
+    if (entry.icon) {
+        const iconSrc = getLocalizedValue(entry.icon);
+        const img = createElement('img', {
+            src: iconSrc,
+            alt: titleText,
+            loading: 'lazy'
+        }, []);
+        iconWrapper.appendChild(img);
+    }
+    
     const content = createElement('div', { class: 'guide-card-content' }, [
-        createElement('div', { class: 'guide-card-icon' }, []),
+        iconWrapper,
         createElement('div', { class: 'guide-card-text' }, [
             createElement('div', { class: 'guide-card-title' }, [titleText])
         ])
