@@ -7783,7 +7783,277 @@ export const data = {
                     }
                 },
                 bs: {
-                    name: { en: "Bioweapon Shelter"},
+                    titlekey: {
+                        en: "Bioweapon Shelter",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    num: {
+                        en: "",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    name: {
+                        en: "- Bioweapon Shelter -",
+                        es: "",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    content: {
+                        phase1: {
+                            phasenum: {
+                                en: "Phase 1",
+                                es: "Fase 1",
+                                kr: "1단계",
+                                jp: "フェーズ1",
+                                br: "Fase 1"
+                            },
+                            phasebname: {
+                                en: "Epsilon",
+                                es: "",
+                                kr: "",
+                                jp: "",
+                                br: ""
+                            },
+                            concepts: {
+                                sectors: {
+                                    name: { en: "Sectors", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: [
+                                            "Arena is divided into 4 sectors, with three randomly inflicted debuffs at the start of the dungeon, limited to 1 debuff per sector. The list of debuffs are Gravity Reduction, Gravity Increase, and All Speed -20%, indicated by the symbol on the debuff bar or the red indicator in the wall of each sector."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            np: {
+                                swing: {
+                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Epsilon swipes its claws forward."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                clawslam: {
+                                    name: { en: "Claw Slam", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Epsilon buries his claws in the ground, provoking an explosion."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                dash: {
+                                    name: { en: "Dash", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Epsilon charges forward with its body dealing significant damage."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                stampede: {
+                                    name: { en: "Stampede", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    deathtimed: true,
+                                    description: {
+                                        en: [
+                                            "Epsilon moves to one edge of the arena and charges towards the other side, meanwhile, a random player will be marked and stunned. On touch, Epsilon will devour the party member and anyone standing in its path. All players receive a debuff that resembles a sector, meaning Epsilon should be lured there, and eaten players will receive a debuff that indicates the skill types that other player should use in order to set them free from epsilon."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    orangebluederivation: {
+                                        name: { en: "Orange+Blue Debuff", es: "", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: [
+                                                "A player who was not yet devoured must use Active/Tenacity skills in order to be freed."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    reddarkbluederivation: {
+                                        name: { en: "Red+Darkblue Debuff", es: "", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: [
+                                                "A player who was not yet devoured must use their Hyperactive skill in order to be freed."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    greenderivation: {
+                                        name: { en: "Green Debuff", es: "", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: [
+                                                "5 players who have not yet been devoured must use any stage of their master skill in order to be freed."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                consolehijacking: {
+                                    name: { en: "Console Hijacking", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "Epsilon moves to one edge of the arena and starts charging. 2 party members should operate the consoles that appear on the first and last sector. After operating, their skill bar is changed to Z, X, C, similarly to Serpentium raid. Pressing Z, X or C will prompt to close a green barrier, each button closing a different one. If both players close their part of the barrier at the same time, they will stay in place, otherwise they will retract back. After the timer expires, Epsilon will charge through the barriers, the clear condition of this mech is to have all 3 barriers closed."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                flappyslop: {
+                                    name: { en: "Flappy Slop", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    deathtimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "All players get teleported to the first sector and transform into balls, having their skill bar replaced for Z (Bat Wings), and X (Dash Forward), the 3 barriers will half close leaving a gap for players to fly through, while making the ceiling electrified and having dark spheres spawn at random locations. After the timer expires Epsilon will kill any player who isn't at the 4th sector."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    shockwavederivation: {
+                                        name: { en: "Shockwave", es: "", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: [
+                                                "Receiving Damage during the mech will grant a Shockwave stack, slowing the player down. At 8 stacks, the player is teleported back to the 1st sector."
+                                            ],
+                                            es: "", kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        phase2: {
+                            phasenum: {
+                                en: "Phase 2",
+                                es: "Fase 2",
+                                kr: "2단계",
+                                jp: "フェーズ2",
+                                br: "Fase 2"
+                            },
+                            phasebname: {
+                                en: "Shushu",
+                                es: "",
+                                kr: "",
+                                jp: "",
+                                br: ""
+                            },
+                            np: {
+                                shushusdash: {
+                                    name: { en: "Dash", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Shushu's Dash is a slightly upgraded version of Epsilon's Dash."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                shushuclawslam: {
+                                    name: { en: "Claw Slam", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Shushu's Claw Slam is a slightly upgraded version of Epsilon's Claw Slam."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                shushuswing: {
+                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Shushu's Swing is a slightly upgraded version of Epsilon's Swing."],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                breath: {
+                                    name: { en: "Breath", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "Shushu becomes untargetable and flies to one edge of the arena, afterwards will begin to charge a laser. 3 levels of platforms will appear. After Shushu finishes charging it will target either the top or bottom platform."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "After this pattern repeats thrice, Shushu will follow up with either <Flying Thrust> or <Howling>."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                flyingthrust: {
+                                    name: { en: "Flying Thrust", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "Shushu will target a random player to thrust, indicated by a yellow telegraph. After some time, the telegraph position will be locked and Shushu will thrust through there, being hit by its thrust inflicts lethal damage."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                howling: {
+                                    name: { en: "Howling", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: [
+                                            "Shushu howls, applying an uncleansable Confusion debuff for 12 seconds."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                volleyball: {
+                                    name: { en: "Volleyball", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "Shushu becomes untargetable and moves to either edge of the map. Afterwards releases a yellow orb. Players should make the orb bounce to charge it and stop it from touching the ground or the ceiling. After its fully charged, make it touch Shushu in order to end the mech."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                },
+                                sadamdareutagi: {
+                                    name: { en: "Sadam-dareutagi (Ladder Game)", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: [
+                                            "Shushu will fly to either edge of the map, afterwards, horizontal lines with occasional ladders (vertical lines) will appear connecting each level at random. Each player will obtain a F1 release that spawns a vertical line upon usage. At a random level, at the very left of the platforms there will be a red arrow indicating where an orb will travel from, and an arrow at the very right, indicating where it needs to reach, Players should use their F1 release to help the orb travel to its destination."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: [
+                                            "The orb can travel through the ground."
+                                        ],
+                                        es: "", kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
                 },
                 pz: {
                     name: { en: "Progressive Zone"},

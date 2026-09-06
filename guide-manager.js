@@ -276,7 +276,7 @@ function renderMechanicEntry(item) {
         });
     }
 
-    Object.entries(item).forEach(([key, value]) => {
+      Object.entries(item).forEach(([key, value]) => {
     if (MECH_KNOWN_KEYS.has(key) || key === 'variants' || MECH_STATUS_CONFIG[key] || !value || typeof value !== 'object') {
         return;
     }
@@ -290,15 +290,16 @@ function renderMechanicEntry(item) {
         wrapper.appendChild(derivedWrapper);
     } else {
         // Has name + description/forcedat - render as styled sub-mech
-        const subWrapper = createElement('div', { class: 'concept sub-mech' }, []);
+        let subClass = 'concept sub-mech';
         
-        // Add the name as a ctitle
-
-        if (value.vid) {
-            const videoEl = renderVideoElement(value.vid);
-            if (videoEl) subWrapper.appendChild(videoEl);
+        // Check for derivation class
+        if (value.derivationClass) {
+            subClass += ` ${value.derivationClass}`;
         }
         
+        const subWrapper = createElement('div', { class: subClass }, []);
+        
+        // Add the name as a ctitle
         const nameText = getLocalizedValue(value.name);
         if (nameText) {
             subWrapper.appendChild(createElement('div', { class: 'ctitle' }, [nameText]));
@@ -314,6 +315,19 @@ function renderMechanicEntry(item) {
             renderParagraphElements(value.description).forEach(el => subWrapper.appendChild(el));
         }
         
+        // Add img if present
+        if (value.img) {
+            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(mechImgWrapper, 'img', value.img);
+            subWrapper.appendChild(mechImgWrapper);
+        }
+        
+        // Add vid if present
+        if (value.vid) {
+            const videoEl = renderVideoElement(value.vid);
+            if (videoEl) subWrapper.appendChild(videoEl);
+        }
+        
         // Add note if present
         if (value.note) {
             renderParagraphElements(value.note).forEach(el => {
@@ -326,12 +340,6 @@ function renderMechanicEntry(item) {
         if (value.variants) {
             const variantsSection = renderVariantsSection(value.variants);
             if (variantsSection) subWrapper.appendChild(variantsSection);
-        }
-
-        if (value.img) {
-            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-            renderGenericValue(mechImgWrapper, 'img', value.img);
-            subWrapper.appendChild(mechImgWrapper);
         }
         
         wrapper.appendChild(subWrapper);

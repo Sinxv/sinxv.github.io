@@ -2104,6 +2104,24 @@ body.guide-modal-open {
     background: rgba(255, 255, 255, 0.015);
 }
 
+.derivation-red {
+    border-left: 3px solid #ff6b6b !important;
+    background: rgba(255, 107, 107, 0.04) !important;
+}
+
+.derivation-red .ctitle {
+    color: #ff6b6b;
+}
+
+.derivation-green {
+    border-left: 3px solid #38d9a9 !important;
+    background: rgba(56, 217, 169, 0.04) !important;
+}
+
+.derivation-green .ctitle {
+    color: #38d9a9;
+}
+
 .sub-mech .ctitle {
     font-size: 1rem;
     margin-bottom: 6px;
