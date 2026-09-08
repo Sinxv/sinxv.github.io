@@ -2,6 +2,29 @@ export const data = {
     translations: {
         // General terms used across all pages
         general: {
+            guide_sections: {
+                system: {
+                    en: "System Explanation",
+                    es: "Explicación del Sistema",
+                    kr: "시스템 설명",
+                    jp: "システム説明",
+                    br: "Explicação do Sistema"
+                },
+                raid: {
+                    en: "Raid Guides",
+                    es: "Guías de Raid",
+                    kr: "레이드 가이드",
+                    jp: "レイドガイド",
+                    br: "Guias de Raid"
+                },
+                misc: {
+                    en: "Miscellaneous",
+                    es: "Misceláneos",
+                    kr: "기타",
+                    jp: "その他",
+                    br: "Diversos"
+                }
+            },
             back: {
                 en: "Game Progression",
                 es: "Progresión del Juego",
@@ -2590,7 +2613,7 @@ export const data = {
                 swgc: {
                     titlekey: {
                         en: "Savage White-Ghost Castle",
-                        es: "",
+                        es: "Castillo del Fantasma Blanco Salvaje",
                         kr: "",
                         jp: "",
                         br: ""
@@ -3038,10 +3061,12 @@ export const data = {
                 },
                 aoi: {
                     titlekey: {
-                        en: "Altar of Invocation"
+                        en: "Altar of Invocation",
+                        es: "Altar de Invocación"
                     },
                     name: {
-                        en: "- Altar of Invocation -"
+                        en: "- Altar of Invocation -",
+                        es: "- Altar de Invocación -"
                     },
                     content: {
                         phase1:{
@@ -4794,7 +4819,7 @@ export const data = {
                 st: {
                     titlekey: {
                         en: "Serpentium Tower",
-                        es: "",
+                        es: "Torre Serpentium",
                         kr: "",
                         jp: "",
                         br: ""
@@ -4808,7 +4833,7 @@ export const data = {
                     },
                     name: {
                         en: "- Serpentium Tower -",
-                        es: "",
+                        es: "- Torre Serpentium -",
                         kr: "",
                         jp: "",
                         br: ""
@@ -4824,7 +4849,7 @@ export const data = {
                             },
                             phasebname: {
                                 en: "Security System Core",
-                                es: "",
+                                es: "Núcleo del Sistema de Seguridad",
                                 kr: "",
                                 jp: "",
                                 br: ""
@@ -4833,7 +4858,7 @@ export const data = {
                                 chargingrod: {
                                     name: {
                                         en: "Phase Gimmick",
-                                        es: "",
+                                        es: "Truco de Fase",
                                         kr: "",
                                         jp: "",
                                         br: ""
@@ -5187,7 +5212,7 @@ export const data = {
                             },
                             phasebname: {
                                 en: "Defense System",
-                                es: "",
+                                es: "Sistema de Defensa",
                                 kr: "",
                                 jp: "",
                                 br: ""
@@ -5547,7 +5572,7 @@ export const data = {
                 oh: {
                     titlekey: {
                         en: "Orchestra Hall",
-                        es: "",
+                        es: "Sala de la Orquesta",
                         kr: "",
                         jp: "",
                         br: ""
@@ -5561,7 +5586,7 @@ export const data = {
                     },
                     name: {
                         en: "- Orchestra Hall -",
-                        es: "",
+                        es: "- Sala de la Orquesta -",
                         kr: "",
                         jp: "",
                         br: ""
@@ -5577,7 +5602,7 @@ export const data = {
                             },
                             phasebname: {
                                 en: "Conductor",
-                                es: "",
+                                es: "Director",
                                 kr: "",
                                 jp: "",
                                 br: ""
@@ -6248,11 +6273,11 @@ export const data = {
         stage7: {
             title: { en: "Stage 7", es: "Etapa 7", kr: "7단계", jp: "ステージ7", br: "Estágio 7" },
             stage7_title: { en: "Doom Aporia", es: "Doom Aporia", kr: "둠 아포리아", jp: "ドゥームアポリア", br: "" },
-            content_cop: { en: "Cornerstone of Prophecy", es: "", kr: "", jp: "", br: "" },
-            content_nrr: { en: "Nightmare: Reset Room", es: "", kr: "", jp: "", br: "" },
-            content_qth: { en: "Queen's Throne Hall", es: "", kr: "", jp: "", br: "" },
-            content_wtfl: { en: "Wilting Tower: Flight", es: "", kr: "", jp: "", br: "" },
-            content_wtfa: { en: "Wilting Tower: Fall", es: "", kr: "", jp: "", br: "" },
+            content_cop: { en: "Cornerstone of Prophecy", es: "Piedra Angular de la Profecía", kr: "", jp: "", br: "" },
+            content_nrr: { en: "Nightmare: Reset Room", es: "Pesadilla: Habitación de Reinicio", kr: "", jp: "", br: "" },
+            content_qth: { en: "Queen's Throne Hall", es: "Sala del Trono de la Reina", kr: "", jp: "", br: "" },
+            content_wtfl: { en: "Wilting Tower: Flight", es: "Torre Marchita: Vuelo", kr: "", jp: "", br: "" },
+            content_wtfa: { en: "Wilting Tower: Fall", es: "Torre Marchita: Caída", kr: "", jp: "", br: "" },
             titles: {
                 nptitle: {en: "Normal Patterns", es: "Patrones normales"},
                 mtitle: { en: "Mechanics", es: "Mecanicas"},
@@ -7496,16 +7521,16 @@ export const data = {
         },
         stage8: {
             title: { en: "Stage 8", es: "Etapa 8", kr: "8단계", jp: "ステージ8", br: "Estágio 8" },
-            content_tts: { en: "T Tree Solution" },
-            content_bs: { en: "Bioweapon Shelter" },
-            content_pz: { en: "Progressive Zone" },
-            content_oua: { en: "Operation Undertow: Alpha" },
-            content_ouo: { en: "Operation Undertow: Omega" },
+            content_tts: { en: "T Tree Solution", es: "Solución del Arbol T" },
+            content_bs: { en: "Bioweapon Shelter", es: "Refugio de Armamento Biológico" },
+            content_pz: { en: "Progressive Zone", es: "Zona Progressiva" },
+            content_oua: { en: "Operation Undertow: Alpha", es: "Operación Resaca: Alfa" },
+            content_ouo: { en: "Operation Undertow: Omega", es: "Operación Resaca: Omega" },
             sections: {
                 tts: {
                     titlekey: {
                         en: "T Tree Solution",
-                        es: "",
+                        es: "Solución del Arbol T",
                         kr: "",
                         jp: "",
                         br: ""
@@ -7519,263 +7544,217 @@ export const data = {
                     },
                     name: {
                         en: "- T Tree Solution -",
-                        es: "",
+                        es: "- Solución del Arbol T -",
                         kr: "",
                         jp: "",
                         br: ""
                     },
                     content: {
                         phase1: {
-                            phasenum: {
-                                en: "Phase 1",
-                                es: "Fase 1",
-                                kr: "1단계",
-                                jp: "フェーズ1",
-                                br: "Fase 1"
-                            },
-                            phasebname: {
-                                en: "Super Glitter",
-                                es: "",
-                                kr: "",
-                                jp: "",
-                                br: ""
-                            },
+                            phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
+                            phasebname: { en: "Super Glitter", es: "Super Glitter", kr: "", jp: "", br: "" },
                             np: {
                                 bombardment: {
-                                    name: { en: "Bombardment", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Bombardment", es: "Bombardeo", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "Super Glitter will cast multiple explosions indicated by a pink telegraph, you can tank the damage. The number of explosions is random from a minimum of 1 to a maximum of 4."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter will cast multiple explosions indicated by a pink telegraph, you can tank the damage. The number of explosions is random from a minimum of 1 to a maximum of 4."],
+                                        es: ["Super Glitter lanzará múltiples explosiones indicadas por un telégrafo rosa, puedes tanquear el daño. El número de explosiones es aleatorio desde un mínimo de 1 hasta un máximo de 4."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 swing: {
-                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Swing", es: "Balanceo", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "Super Glitter performs a swing on the left side of the arena, and then on the right, this is tank-able with proper defense, though it's recommended to dodge otherwise."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter performs a swing on the left side of the arena, and then on the right, this is tank-able with proper defense, though it's recommended to dodge otherwise."],
+                                        es: ["Super Glitter realiza un balanceo en el lado izquierdo de la arena, y luego en el derecho, esto se puede tanquear con defensa adecuada, aunque se recomienda esquivar."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             mechs: {
                                 absorption: {
-                                    name: { en: "Absorption", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Absorption", es: "Absorción", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: [
-                                            "Super Glitter creates a green orb that surrounds it and charges energy. After its done charging, its damage reduction goes up by 10% until the next absorption pattern and performs 4 swings with a telegraph appearing before each; Dodge the swings, since they can be lethal."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter creates a green orb that surrounds it and charges energy. After its done charging, its damage reduction goes up by 10% until the next absorption pattern and performs 4 swings with a telegraph appearing before each; Dodge the swings, since they can be lethal."],
+                                        es: ["Super Glitter crea un orbe verde que lo rodea y carga energía. Después de terminar de cargar, su reducción de daño aumenta un 10% hasta el siguiente patrón de absorción y realiza 4 balanceos con un telégrafo apareciendo antes de cada uno; Esquiva los balanceos, ya que pueden ser letales."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "If strength/bravery skills are not used, Absorption will end without performing the swings or gaining damage reduction."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["If strength/bravery skills are not used, Absorption will end without performing the swings or gaining damage reduction."],
+                                        es: ["Si no se usan habilidades de fuerza/valentía, la Absorción terminará sin realizar los balanceos ni ganar reducción de daño."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 slam: {
-                                    name: { en: "Slam", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Slam", es: "Golpe", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
-                                    forcedat: { en: "Every 60 seconds", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every 60 seconds", es: "Cada 60 segundos", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: [
-                                            "Super Glitter howls, stunning the party and afterwards forms a green box on the entire arena except the edges, Players need to spam left and right key to break free from the stun and move outside the box until the slam happens."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter howls, stunning the party and afterwards forms a green box on the entire arena except the edges, Players need to spam left and right key to break free from the stun and move outside the box until the slam happens."],
+                                        es: ["Super Glitter aúlla, aturdiendo al grupo y después forma una caja verde en toda la arena excepto los bordes. Los jugadores deben presionar repetidamente las teclas izquierda y derecha para liberarse del aturdimiento y moverse fuera de la caja hasta que ocurra el golpe."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 duel: {
-                                    name: { en: "Duel", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Duel", es: "Duelo", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     wipetimed: true,
-                                    forcedat: { en: "Every 3 minutes", es: "", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every 3 minutes", es: "Cada 3 minutos", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: [
-                                            "Super Glitter teleports to the upper floor and starts charging and forms a green and pink box, and afterwards, will prompt a dialog that indicates the number of party members that must be inside the box before the timer ends."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter teleports to the upper floor and starts charging and forms a green and pink box, and afterwards, will prompt a dialog that indicates the number of party members that must be inside the box before the timer ends."],
+                                        es: ["Super Glitter se teletransporta al piso superior y comienza a cargar, formando una caja verde y rosa, y después mostrará un diálogo que indica el número de miembros del grupo que deben estar dentro de la caja antes de que termine el temporizador."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             forcedmechs: {
                                 pillars: {
-                                    name: { en: "Pillars", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Pillars", es: "Pilares", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "Forzado a 200x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "Super Glitter places 2 telegraphs on fixed locations, these indicate where pillars will fall. And then assigns 4 telegraphs to random players across 2 different rounds. Players should place them somewhere where they don't overlap with any other telegraph and stay inside the designated range until it locks place, indicated by a blink. After all pillars' telegraphs are positioned, they will fall, and a final telegraph where Super Glitter will fall from is given to another player that must be placed on the spots without pillars. If there's not enough space for it to descend the mech ends in failure."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter places 2 telegraphs on fixed locations, these indicate where pillars will fall. And then assigns 4 telegraphs to random players across 2 different rounds. Players should place them somewhere where they don't overlap with any other telegraph and stay inside the designated range until it locks place, indicated by a blink. After all pillars' telegraphs are positioned, they will fall, and a final telegraph where Super Glitter will fall from is given to another player that must be placed on the spots without pillars. If there's not enough space for it to descend the mech ends in failure."],
+                                        es: ["Super Glitter coloca 2 telégrafos en ubicaciones fijas, que indican dónde caerán los pilares. Luego asigna 4 telégrafos a jugadores aleatorios en 2 rondas diferentes. Los jugadores deben colocarlos donde no se superpongan con otros telégrafos y permanecer dentro del rango designado hasta que se fije la posición, indicado por un parpadeo. Después de que todos los telégrafos de los pilares estén posicionados, caerán, y un telégrafo final donde caerá Super Glitter se da a otro jugador que debe colocarse en los espacios sin pilares. Si no hay suficiente espacio para que descienda, la mecánica termina en fracaso."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 explosiveampoules: {
-                                    name: { en: "Explosive Ampoules", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Explosive Ampoules", es: "Ampollas Explosivas", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "Forzado a 100x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     wipetimed: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "Super Glitter charges back and forth multiple times, then stops at the center and creates a red box that surrounds it, afterwards will slam the ground multiple times, causing methane (green) ampoules to fall on both sides of the arena slowly rolling towards the Super Glitter. Players should use Dungeon Function Key (F1) on the ampoules until they turn purple, and then allow them to reach them to roll. After being delivered 6 purple capsules, mech will end. Otherwise, if Super Glitter ingests too many green capsules, timer will automatically expire."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Super Glitter charges back and forth multiple times, then stops at the center and creates a red box that surrounds it, afterwards will slam the ground multiple times, causing methane (green) ampoules to fall on both sides of the arena slowly rolling towards the Super Glitter. Players should use Dungeon Function Key (F1) on the ampoules until they turn purple, and then allow them to reach them to roll. After being delivered 6 purple capsules, mech will end. Otherwise, if Super Glitter ingests too many green capsules, timer will automatically expire."],
+                                        es: ["Super Glitter carga de un lado a otro varias veces, luego se detiene en el centro y crea una caja roja que lo rodea, después golpeará el suelo varias veces, causando que ampollas de metano (verdes) caigan en ambos lados de la arena rodando lentamente hacia Super Glitter. Los jugadores deben usar la Tecla de Función de Mazmorra (F1) en las ampollas hasta que se vuelvan púrpuras, y luego permitir que rueden hacia él. Después de entregar 6 cápsulas púrpuras, la mecánica terminará. De lo contrario, si Super Glitter ingiere demasiadas cápsulas verdes, el temporizador expirará automáticamente."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "Avoid using F1 on purple ampoules since they will explode, cause lethal damage and reduce consumable effectiveness by 95% for 15s."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Avoid using F1 on purple ampoules since they will explode, cause lethal damage and reduce consumable effectiveness by 95% for 15s."],
+                                        es: ["Evita usar F1 en ampollas púrpuras ya que explotarán, causarán daño letal y reducirán la efectividad de consumibles en un 95% durante 15s."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             }
                         },
                         phase2: {
-                            phasenum: {
-                                en: "Phase 2",
-                                es: "Fase 2",
-                                kr: "2단계",
-                                jp: "フェーズ2",
-                                br: "Fase 2"
-                            },
-                            phasebname: {
-                                en: "T Tree",
-                                es: "",
-                                kr: "",
-                                jp: "",
-                                br: ""
-                            },
+                            phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
+                            phasebname: { en: "T Tree", es: "T Tree", kr: "", jp: "", br: "" },
                             np: {
                                 drone: {
-                                    name: { en: "Drone", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Drone", es: "Dron", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "A drone will be summon and will target a random player. Standing in front of its path will make it explode in place."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["A drone will be summon and will target a random player. Standing in front of its path will make it explode in place."],
+                                        es: ["Se invocará un dron y apuntará a un jugador aleatorio. Pararse frente a su trayectoria hará que explote en el lugar."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 wires: {
-                                    name: { en: "Wires", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Wires", es: "Cables", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "A bunch of wires will drop off a location, indicated by a red telegraph, causing moderate damage to players nearby."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["A bunch of wires will drop off a location, indicated by a red telegraph, causing moderate damage to players nearby."],
+                                        es: ["Un montón de cables caerán en una ubicación, indicada por un telégrafo rojo, causando daño moderado a los jugadores cercanos."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 lasers: {
-                                    name: { en: "Lasers", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Lasers", es: "Láseres", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     vertical: {
-                                        name: { en: "Vertical Variation", es: "", kr: "", jp: "", br: "" },
+                                        name: { en: "Vertical Variation", es: "Variación Vertical", kr: "", jp: "", br: "" },
                                         description: {
-                                            en: [
-                                                "Lasers will fall in a large area indicated by a red telegraph that covers most of the map, except the edges of the map. If a player is hit by the laser, their duration is extended."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["Lasers will fall in a large area indicated by a red telegraph that covers most of the map, except the edges of the map. If a player is hit by the laser, their duration is extended."],
+                                            es: ["Los láseres caerán en un área grande indicada por un telégrafo rojo que cubre la mayor parte del mapa, excepto los bordes del mapa. Si un jugador es golpeado por el láser, su duración se extiende."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     },
                                     diagonal: {
-                                        name: { en: "Diagonal Variation", es: "", kr: "", jp: "", br: "" },
+                                        name: { en: "Diagonal Variation", es: "Variación Diagonal", kr: "", jp: "", br: "" },
                                         description: {
-                                            en: [
-                                                "A laser will be fired from either the upper left or upper right corner of the map, indicated by which monitor is shaking."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["A laser will be fired from either the upper left or upper right corner of the map, indicated by which monitor is shaking."],
+                                            es: ["Se disparará un láser desde la esquina superior izquierda o superior derecha del mapa, indicado por qué monitor está temblando."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     },
                                     horizontal: {
-                                        name: { en: "Horizontal Variation", es: "", kr: "", jp: "", br: "" },
+                                        name: { en: "Horizontal Variation", es: "Variación Horizontal", kr: "", jp: "", br: "" },
                                         description: {
-                                            en: [
-                                                "Lasers will be fired from the walls, indicated by a red telegraph."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["Lasers will be fired from the walls, indicated by a red telegraph."],
+                                            es: ["Se dispararán láseres desde las paredes, indicados por un telégrafo rojo."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     }
                                 }
                             },
                             mechs: {
                                 designatedlaser: {
-                                    name: { en: "Designated Laser", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Designated Laser", es: "Láser Designado", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     description: {
-                                        en: [
-                                            "Two lasers will be aimed at random party members, and drones will appear on random platforms of the map. Afterwards, a shape will be displayed in the lower monitor, indicating the drone the lasers should hit, both players should move to make their lasers point at the correct drone and move after they lock place but before they fire."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Two lasers will be aimed at random party members, and drones will appear on random platforms of the map. Afterwards, a shape will be displayed in the lower monitor, indicating the drone the lasers should hit, both players should move to make their lasers point at the correct drone and move after they lock place but before they fire."],
+                                        es: ["Dos láseres apuntarán a miembros aleatorios del grupo, y aparecerán drones en plataformas aleatorias del mapa. Después, se mostrará una forma en el monitor inferior, indicando el dron que los láseres deben golpear. Ambos jugadores deben moverse para que sus láseres apunten al dron correcto y moverse después de que se fijen pero antes de que disparen."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "The symbol can change half mech, so be wary."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["The symbol can change half mech, so be wary."],
+                                        es: ["El símbolo puede cambiar a mitad de la mecánica, así que ten cuidado."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 coloredarrows: {
-                                    name: { en: "Colored Arrows", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Colored Arrows", es: "Flechas de Colores", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     description: {
-                                        en: [
-                                            "The camera zooms out as red and yellow arrows fly from the sides, the direction from where they will fly from is displayed on the monitor. Players obtain red shields and should then take turns to get hit by the yellow arrows up to 6 times. Upon contact with a yellow arrow, the shield will break."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["The camera zooms out as red and yellow arrows fly from the sides, the direction from where they will fly from is displayed on the monitor. Players obtain red shields and should then take turns to get hit by the yellow arrows up to 6 times. Upon contact with a yellow arrow, the shield will break."],
+                                        es: ["La cámara se aleja mientras flechas rojas y amarillas vuelan desde los lados, la dirección desde donde volarán se muestra en el monitor. Los jugadores obtienen escudos rojos y deben turnarse para ser golpeados por las flechas amarillas hasta 6 veces. Al contacto con una flecha amarilla, el escudo se romperá."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "If you hit a yellow arrow without a shield, or a pink arrow without a shield, you receive lethal damage."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["If you hit a yellow arrow without a shield, or a pink arrow without a shield, you receive lethal damage."],
+                                        es: ["Si te golpea una flecha amarilla sin escudo, o una flecha rosa sin escudo, recibes daño letal."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 safezone: {
-                                    name: { en: "Safe Zone", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Safe Zone", es: "Zona Segura", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     description: {
-                                        en: [
-                                            "The camera zooms out, Afterwards, lasers' telegraphs cover the entire arena except 1 spot, all players should then move to that safe spot. This will be repeated 5 times before the mech ends."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["The camera zooms out, Afterwards, lasers' telegraphs cover the entire arena except 1 spot, all players should then move to that safe spot. This will be repeated 5 times before the mech ends."],
+                                        es: ["La cámara se aleja. Después, los telégrafos de los láseres cubren toda la arena excepto 1 lugar, todos los jugadores deben moverse a ese lugar seguro. Esto se repetirá 5 veces antes de que termine la mecánica."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             forcedmechs: {
                                 droneshuffle: {
-                                    name: { en: "Drone Shuffle", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced At 225x, 150x, 75x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Drone Shuffle", es: "Barajado de Drones", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced At 225x, 150x, 75x", es: "Forzado a 225x, 150x, 75x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     timed: "1:00",
                                     groggy: true,
                                     heal: "75x",
                                     description: {
-                                        en: [
-                                            "6 drones with numbers 1 to 6 in them will spawn at designated places, they then will hide the numbers and will be shuffled 4 times. Once they end shuffling, a random player will be selected to hack, indicated by its screen borders turning green. Selected players should use F1 near the drones in numerical order to activate a QTE (quick time event) to hack the drone.",
-                                            "Hacking the correct drone will deactivate its shield, but hacking the incorrect drone will reactivate all shields."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["6 drones with numbers 1 to 6 in them will spawn at designated places, they then will hide the numbers and will be shuffled 4 times. Once they end shuffling, a random player will be selected to hack, indicated by its screen borders turning green. Selected players should use F1 near the drones in numerical order to activate a QTE (quick time event) to hack the drone.", "Hacking the correct drone will deactivate its shield, but hacking the incorrect drone will reactivate all shields."],
+                                        es: ["6 drones con números del 1 al 6 aparecerán en lugares designados, luego ocultarán los números y se barajarán 4 veces. Una vez que terminen de barajarse, se seleccionará un jugador aleatorio para hackear, indicado por los bordes de su pantalla tornándose verdes. Los jugadores seleccionados deben usar F1 cerca de los drones en orden numérico para activar un QTE (evento de tiempo rápido) para hackear el dron.", "Hackear el dron correcto desactivará su escudo, pero hackear el dron incorrecto reactivará todos los escudos."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "Players should organize their number before entering the dungeon so they can properly follow their drone inside the dungeon and type their number after they're done shuffling. Otherwise it will become a mess."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Players should organize their number before entering the dungeon so they can properly follow their drone inside the dungeon and type their number after they're done shuffling. Otherwise it will become a mess."],
+                                        es: ["Los jugadores deben organizar su número antes de entrar a la mazmorra para poder seguir correctamente su dron dentro de la mazmorra y escribir su número después de que terminen de barajarse. De lo contrario, se convertirá en un desastre."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             }
@@ -7785,270 +7764,266 @@ export const data = {
                 bs: {
                     titlekey: {
                         en: "Bioweapon Shelter",
-                        es: "",
-                        kr: "",
-                        jp: "",
-                        br: ""
-                    },
-                    num: {
-                        en: "",
-                        es: "",
+                        es: "Refugio de Armas Biológicas",
                         kr: "",
                         jp: "",
                         br: ""
                     },
                     name: {
                         en: "- Bioweapon Shelter -",
-                        es: "",
+                        es: "- Refugio de Armas Biológicas -",
                         kr: "",
                         jp: "",
                         br: ""
                     },
                     content: {
                         phase1: {
-                            phasenum: {
-                                en: "Phase 1",
-                                es: "Fase 1",
-                                kr: "1단계",
-                                jp: "フェーズ1",
-                                br: "Fase 1"
-                            },
-                            phasebname: {
-                                en: "Epsilon",
-                                es: "",
-                                kr: "",
-                                jp: "",
-                                br: ""
-                            },
+                            phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
+                            phasebname: { en: "Epsilon", es: "Épsilon", kr: "", jp: "", br: "" },
                             concepts: {
                                 sectors: {
-                                    name: { en: "Sectors", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Sectors", es: "Sectores", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: [
-                                            "Arena is divided into 4 sectors, with three randomly inflicted debuffs at the start of the dungeon, limited to 1 debuff per sector. The list of debuffs are Gravity Reduction, Gravity Increase, and All Speed -20%, indicated by the symbol on the debuff bar or the red indicator in the wall of each sector."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Arena is divided into 4 sectors, with three randomly inflicted debuffs at the start of the dungeon, limited to 1 debuff per sector. The list of debuffs are Gravity Reduction, Gravity Increase, and All Speed -20%, indicated by the symbol on the debuff bar or the red indicator in the wall of each sector."],
+                                        es: ["La arena está dividida en 4 sectores, con tres desventajas infligidas aleatoriamente al inicio de la mazmorra, limitado a 1 desventaja por sector. La lista de desventajas son Reducción de Gravedad, Aumento de Gravedad y Velocidad -20%, indicadas por el símbolo en la barra de desventajas o el indicador rojo en la pared de cada sector."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             np: {
                                 swing: {
-                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Swing", es: "Balanceo", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
                                         en: ["Epsilon swipes its claws forward."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["Épsilon lanza sus garras hacia adelante."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 clawslam: {
-                                    name: { en: "Claw Slam", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Claw Slam", es: "Golpe de Garra", kr: "", jp: "", br: "" },
                                     description: {
                                         en: ["Epsilon buries his claws in the ground, provoking an explosion."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["Épsilon entierra sus garras en el suelo, provocando una explosión."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 dash: {
-                                    name: { en: "Dash", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Dash", es: "Embestida", kr: "", jp: "", br: "" },
                                     description: {
                                         en: ["Epsilon charges forward with its body dealing significant damage."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["Épsilon carga hacia adelante con su cuerpo infligiendo daño significativo."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             mechs: {
                                 stampede: {
-                                    name: { en: "Stampede", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Stampede", es: "Estampida", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     deathtimed: true,
                                     description: {
-                                        en: [
-                                            "Epsilon moves to one edge of the arena and charges towards the other side, meanwhile, a random player will be marked and stunned. On touch, Epsilon will devour the party member and anyone standing in its path. All players receive a debuff that resembles a sector, meaning Epsilon should be lured there, and eaten players will receive a debuff that indicates the skill types that other player should use in order to set them free from epsilon."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Epsilon moves to one edge of the arena and charges towards the other side, meanwhile, a random player will be marked and stunned. On touch, Epsilon will devour the party member and anyone standing in its path. All players receive a debuff that resembles a sector, meaning Epsilon should be lured there, and eaten players will receive 1 of the 3 possible 'Escape plan' debuffs that indicates the skill types that other player should use in order to set them free from epsilon."],
+                                        es: ["Épsilon se mueve a un borde de la arena y carga hacia el otro lado, mientras tanto, un jugador aleatorio será marcado y aturdido. Al contacto, Épsilon devorará al miembro del grupo y a cualquiera que esté en su camino. Todos los jugadores reciben una desventaja que se asemeja a un sector, lo que significa que Épsilon debe ser atraído allí, y los jugadores devorados recibirán 1 de los 3 posibles desventajas de 'Plan de Escape' que indican los tipos de habilidades que otros jugadores deben usar para liberarlos de Épsilon."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     orangebluederivation: {
-                                        name: { en: "Orange+Blue Debuff", es: "", kr: "", jp: "", br: "" },
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2431debuff2.webp", 
+                                                    alt: {
+                                                        en: "I'm devising an escape plan. One full of Activity and Tenacity came to my mind.",
+                                                        es: "Estoy ideando un plan de escape. Uno lleno de Actividad y Tenacidad vino a mi mente."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]   
+                                        },
+                                        name: { en: "Escape Plan - Active and Tenacious Plan", es: "Plan de Escape - Plan Activo y Tenaz", kr: "", jp: "", br: "" },
                                         derivationClass: "derivation-red",
                                         description: {
-                                            en: [
-                                                "A player who was not yet devoured must use Active/Tenacity skills in order to be freed."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["A player who was not yet been devoured must use Active/Tenacity skills in order to be freed."],
+                                            es: ["Un jugador que aún no ha sido devorado debe usar habilidades Activas/Tenacidad para liberarlo."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     },
                                     reddarkbluederivation: {
-                                        name: { en: "Red+Darkblue Debuff", es: "", kr: "", jp: "", br: "" },
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2431debuff1.webp", 
+                                                    alt: {
+                                                        en: "I'm devising an escape plan. Looks like a single powerful strike should do the trick.",
+                                                        es: "Estoy ideando un plan de escape. Parece que un solo golpe poderoso debería funcionar."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]   
+                                        },
+                                        name: { en: "Escape Plan - Powerful Attack", es: "Plan de Escape - Ataque Poderoso", kr: "", jp: "", br: "" },
                                         derivationClass: "derivation-red",
                                         description: {
-                                            en: [
-                                                "A player who was not yet devoured must use their Hyperactive skill in order to be freed."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["A player who was not yet been devoured must use their Hyperactive skill in order to be freed."],
+                                            es: ["Un jugador que aún no ha sido devorado debe usar su habilidad Hiperactiva para liberarlo."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     },
                                     greenderivation: {
-                                        name: { en: "Green Debuff", es: "", kr: "", jp: "", br: "" },
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2431debuff3.webp", 
+                                                    alt: {
+                                                        en: "I'm devising an escape plan. Looks like we will need a master's class on how to get out of this.",
+                                                        es: "Estoy ideando un plan de escape. Parece que necesitaremos la clase de un maestro para averiguar cómo salir de esta."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]   
+                                        },
+                                        name: { en: "Escape Plan - Master Escapist Techniques", es: "Plan de Escape - Técnicas Maestras de Escape", kr: "", jp: "", br: "" },
                                         derivationClass: "derivation-red",
                                         description: {
-                                            en: [
-                                                "5 players who have not yet been devoured must use any stage of their master skill in order to be freed."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["5 players who have not yet been devoured must use any stage of their master skill in order to be freed."],
+                                            es: ["5 jugadores que aún no han sido devorados deben usar cualquier etapa de su habilidad maestra para liberarlo."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     }
                                 }
                             },
                             forcedmechs: {
                                 consolehijacking: {
-                                    name: { en: "Console Hijacking", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Console Hijacking", es: "Secuestro de Consola", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "Forzado a 200x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     wipetimed: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "Epsilon moves to one edge of the arena and starts charging. 2 party members should operate the consoles that appear on the first and last sector. After operating, their skill bar is changed to Z, X, C, similarly to Serpentium raid. Pressing Z, X or C will prompt to close a green barrier, each button closing a different one. If both players close their part of the barrier at the same time, they will stay in place, otherwise they will retract back. After the timer expires, Epsilon will charge through the barriers, the clear condition of this mech is to have all 3 barriers closed."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Epsilon moves to one edge of the arena and starts charging. 2 party members should operate the consoles that appear on the first and last sector. After operating, their skill bar is changed to Z, X, C, similarly to Serpentium raid. Pressing Z, X or C will prompt to close a green barrier, each button closing a different one. If both players close their part of the barrier at the same time, they will stay in place, otherwise they will retract back. After the timer expires, Epsilon will charge through the barriers, the clear condition of this mech is to have all 3 barriers closed."],
+                                        es: ["Épsilon se mueve a un borde de la arena y comienza a cargar. 2 miembros del grupo deben operar las consolas que aparecen en el primer y último sector. Después de operar, su barra de habilidades cambia a Z, X, C, similar a la raid de Serpentium. Presionar Z, X o C cerrará una barrera verde, cada botón cierra una diferente. Si ambos jugadores cierran su parte de la barrera al mismo tiempo, permanecerán en su lugar, de lo contrario se retraerán. Después de que expire el temporizador, Épsilon cargará a través de las barreras, la condición de superación de esta mecánica es tener las 3 barreras cerradas."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 flappyslop: {
-                                    name: { en: "Flappy Slop", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Flappy Slop", es: "Flappy Slop", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "Forzado a 100x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     deathtimed: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "All players get teleported to the first sector and transform into balls, having their skill bar replaced for Z (Bat Wings), and X (Dash Forward), the 3 barriers will half close leaving a gap for players to fly through, while making the ceiling electrified and having dark spheres spawn at random locations. After the timer expires Epsilon will kill any player who isn't at the 4th sector."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["All players get teleported to the first sector and transform into balls, having their skill bar replaced for Z (Bat Wings), and X (Dash Forward), the 3 barriers will half close leaving a gap for players to fly through, while making the ceiling electrified and having dark spheres spawn at random locations. After the timer expires Epsilon will kill any player who isn't at the 4th sector."],
+                                        es: ["Todos los jugadores son teletransportados al primer sector y se transforman en bolas, con su barra de habilidades reemplazada por Z (Alas de Murciélago) y X (Embestida hacia Adelante). Las 3 barreras se cerrarán a la mitad dejando un espacio para que los jugadores vuelen a través, mientras el techo se electrifica y aparecen esferas oscuras en ubicaciones aleatorias. Después de que expire el temporizador, Épsilon matará a cualquier jugador que no esté en el 4to sector."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     shockwavederivation: {
-                                        name: { en: "Shockwave", es: "", kr: "", jp: "", br: "" },
+                                        name: { en: "Shockwave", es: "Onda de Choque", kr: "", jp: "", br: "" },
                                         derivationClass: "derivation-red",
                                         description: {
-                                            en: [
-                                                "Receiving Damage during the mech will grant a Shockwave stack, slowing the player down. At 8 stacks, the player is teleported back to the 1st sector."
-                                            ],
-                                            es: "", kr: "", jp: "", br: ""
+                                            en: ["Receiving Damage during the mech will grant a Shockwave stack, slowing the player down. At 8 stacks, the player is teleported back to the 1st sector."],
+                                            es: ["Recibir daño durante la mecánica otorgará una acumulación de Onda de Choque, ralentizando al jugador. Con 8 acumulaciones, el jugador es teletransportado de vuelta al 1er sector."],
+                                            kr: "", jp: "", br: ""
                                         }
                                     }
                                 }
                             }
                         },
                         phase2: {
-                            phasenum: {
-                                en: "Phase 2",
-                                es: "Fase 2",
-                                kr: "2단계",
-                                jp: "フェーズ2",
-                                br: "Fase 2"
-                            },
-                            phasebname: {
-                                en: "Shushu",
-                                es: "",
-                                kr: "",
-                                jp: "",
-                                br: ""
-                            },
+                            phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
+                            phasebname: { en: "Shushu", es: "Shushu", kr: "", jp: "", br: "" },
                             np: {
                                 shushusdash: {
-                                    name: { en: "Dash", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Dash", es: "Embestida", kr: "", jp: "", br: "" },
                                     description: {
                                         en: ["Shushu's Dash is a slightly upgraded version of Epsilon's Dash."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["La Embestida de Shushu es una versión ligeramente mejorada de la Embestida de Épsilon."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 shushuclawslam: {
-                                    name: { en: "Claw Slam", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Claw Slam", es: "Golpe de Garra", kr: "", jp: "", br: "" },
                                     description: {
                                         en: ["Shushu's Claw Slam is a slightly upgraded version of Epsilon's Claw Slam."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["El Golpe de Garra de Shushu es una versión ligeramente mejorada del Golpe de Garra de Épsilon."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 shushuswing: {
-                                    name: { en: "Swing", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Swing", es: "Balanceo", kr: "", jp: "", br: "" },
                                     description: {
                                         en: ["Shushu's Swing is a slightly upgraded version of Epsilon's Swing."],
-                                        es: "", kr: "", jp: "", br: ""
+                                        es: ["El Balanceo de Shushu es una versión ligeramente mejorada del Balanceo de Épsilon."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             mechs: {
                                 breath: {
-                                    name: { en: "Breath", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Breath", es: "Aliento", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "Shushu becomes untargetable and flies to one edge of the arena, afterwards will begin to charge a laser. 3 levels of platforms will appear. After Shushu finishes charging it will target either the top or bottom platform."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Shushu becomes untargetable and flies to one edge of the arena, afterwards will begin to charge a laser. 3 levels of platforms will appear. After Shushu finishes charging it will target either the top or bottom platform."],
+                                        es: ["Shushu se vuelve inobjetivable y vuela a un borde de la arena, después comenzará a cargar un láser. Aparecerán 3 niveles de plataformas. Después de que Shushu termine de cargar, apuntará a la plataforma superior o inferior."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "After this pattern repeats thrice, Shushu will follow up with either <Flying Thrust> or <Howling>."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["After this pattern repeats thrice, Shushu will follow up with either <Flying Thrust> or <Howling>."],
+                                        es: ["Después de que este patrón se repita tres veces, Shushu continuará con <Embestida Voladora> o <Aullido>."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 flyingthrust: {
-                                    name: { en: "Flying Thrust", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Flying Thrust", es: "Embestida Voladora", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "Shushu will target a random player to thrust, indicated by a yellow telegraph. After some time, the telegraph position will be locked and Shushu will thrust through there, being hit by its thrust inflicts lethal damage."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Shushu will target a random player to thrust, indicated by a yellow telegraph. After some time, the telegraph position will be locked and Shushu will thrust through there, being hit by its thrust inflicts lethal damage."],
+                                        es: ["Shushu apuntará a un jugador aleatorio para embestir, indicado por un telégrafo amarillo. Después de un tiempo, la posición del telégrafo se fijará y Shushu embestirá a través de allí, ser golpeado por su embestida inflige daño letal."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 howling: {
-                                    name: { en: "Howling", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Howling", es: "Aullido", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     description: {
-                                        en: [
-                                            "Shushu howls, applying an uncleansable Confusion debuff for 12 seconds."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Shushu howls, applying an uncleansable Confusion debuff for 12 seconds."],
+                                        es: ["Shushu aúlla, aplicando una desventaja de Confusión no purificable durante 12 segundos."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             },
                             forcedmechs: {
                                 volleyball: {
-                                    name: { en: "Volleyball", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 200x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Volleyball", es: "Voleibol", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "Forzado a 200x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     wipetimed: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "Shushu becomes untargetable and moves to either edge of the map. Afterwards releases a yellow orb. Players should make the orb bounce to charge it and stop it from touching the ground or the ceiling. After its fully charged, make it touch Shushu in order to end the mech."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Shushu becomes untargetable and moves to either edge of the map. Afterwards releases a yellow orb. Players should make the orb bounce to charge it and stop it from touching the ground or the ceiling. After its fully charged, make it touch Shushu in order to end the mech."],
+                                        es: ["Shushu se vuelve inobjetivable y se mueve a cualquier borde del mapa. Después libera un orbe amarillo. Los jugadores deben hacer rebotar el orbe para cargarlo y evitar que toque el suelo o el techo. Después de que esté completamente cargado, haz que toque a Shushu para terminar la mecánica."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 },
                                 sadamdareutagi: {
-                                    name: { en: "Sadam-dareutagi (Ladder Game)", es: "", kr: "", jp: "", br: "" },
-                                    forcedat: { en: "Forced at 100x", es: "", kr: "", jp: "", br: "" },
+                                    name: { en: "Sadam-dareutagi (Ladder Game)", es: "Sadam-dareutagi (Juego de Escalera)", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "Forzado a 100x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
                                     wipetimed: true,
                                     groggy: true,
                                     description: {
-                                        en: [
-                                            "Shushu will fly to either edge of the map, afterwards, horizontal lines with occasional ladders (vertical lines) will appear connecting each level at random. Each player will obtain a F1 release that spawns a vertical line upon usage. At a random level, at the very left of the platforms there will be a red arrow indicating where an orb will travel from, and an arrow at the very right, indicating where it needs to reach, Players should use their F1 release to help the orb travel to its destination."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["Shushu will fly to either edge of the map, afterwards, horizontal lines with occasional ladders (vertical lines) will appear connecting each level at random. Each player will obtain a F1 release that spawns a vertical line upon usage. At a random level, at the very left of the platforms there will be a red arrow indicating where an orb will travel from, and an arrow at the very right, indicating where it needs to reach, Players should use their F1 release to help the orb travel to its destination."],
+                                        es: ["Shushu volará a cualquier borde del mapa, después, líneas horizontales con escaleras ocasionales (líneas verticales) aparecerán conectando cada nivel al azar. Cada jugador obtendrá un lanzamiento F1 que genera una línea vertical al usarse. En un nivel aleatorio, en el extremo izquierdo de las plataformas habrá una flecha roja que indica desde dónde viajará un orbe, y una flecha en el extremo derecho que indica a dónde debe llegar. Los jugadores deben usar su lanzamiento F1 para ayudar al orbe a viajar a su destino."],
+                                        kr: "", jp: "", br: ""
                                     },
                                     note: {
-                                        en: [
-                                            "The orb can travel through the ground."
-                                        ],
-                                        es: "", kr: "", jp: "", br: ""
+                                        en: ["The orb can travel through the ground."],
+                                        es: ["El orbe puede viajar a través del suelo."],
+                                        kr: "", jp: "", br: ""
                                     }
                                 }
                             }
@@ -8056,13 +8031,724 @@ export const data = {
                     }
                 },
                 pz: {
-                    name: { en: "Progressive Zone"},
+                    titlekey: {
+                        en: "Progressive Zone",
+                        es: "Zona Progresiva",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    name: {
+                        en: "- Progressive Zone -",
+                        es: "- Zona Progresiva -",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    content: {
+                        phase1: {
+                            phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
+                            phasebname: { en: "Macbeth the Arrogant", es: "Macbeth el Arrogante", kr: "", jp: "", br: "" },
+                            np: {
+                                twoplustwoslash: {
+                                    name: { en: "2+2 Slash", es: "Corte 2+2", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Macbeth swings its spear horizontally, and then vertically, and following up, Macbeth's holograms will be formed on random positions, performing a map-wide vertical and horizontal slash indicated by a cyan telegraph."],
+                                        es: ["Macbeth balancea su lanza horizontalmente y luego verticalmente, y después, se formarán hologramas de Macbeth en posiciones aleatorias, realizando un corte vertical y horizontal en todo el mapa indicado por un telégrafo cian."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                concentratedthrust: {
+                                    name: { en: "Concentrated Thrust", es: "Embestida Concentrada", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Macbeth teleports to a random platform level, then starts charging before thrusting through the arena."],
+                                        es: ["Macbeth se teletransporta a un nivel de plataforma aleatorio, luego comienza a cargar antes de embestir a través de la arena."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Facing Macbeth when it finishes charging will inflict Confusion for 5s, if 3 or more players were inflicted with confusion, Thrust's vertical range will increase."],
+                                        es: ["Mirar a Macbeth cuando termina de cargar infligirá Confusión durante 5s, si 3 o más jugadores fueron afectados con confusión, el rango vertical de la Embestida aumentará."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                hologramplunge: {
+                                    name: { en: "Hologram Plunge", es: "Zambullida de Holograma", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Macbeth will become untargetable, and 4 holograms will spawn in random locations, each performing a plus (+) shaped double slash on the direction they face. Players should find the blind spots (similar to 21-3-1, aka. Queen Throne's Hall Invite Abyss Mech) to avoid the attacks."],
+                                        es: ["Macbeth se volverá inobjetivable, y aparecerán 4 hologramas en ubicaciones aleatorias, cada uno realizando un doble corte en forma de cruz (+) en la dirección que miran. Los jugadores deben encontrar los puntos ciegos (similar a 21-3-1, también conocido como Mecánica Abisal de Invitación al Salón del Trono de la Reina) para evitar los ataques."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                macbethplunge: {
+                                    name: { en: "Macbeth Plunge", es: "Zambullida de Macbeth", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Macbeth jumps out of the player's field of view and then targets a random player, indicated by a small pink telegraph, After the telegraph position is locked, Macbeth will dive and deal damage to its surroundings, and shortly after, a hologram will mimic this attack, indicated by a cyan telegraph."],
+                                        es: ["Macbeth salta fuera del campo de visión del jugador y luego apunta a un jugador aleatorio, indicado por un pequeño telégrafo rosa. Después de que la posición del telégrafo se fija, Macbeth se lanzará y causará daño a sus alrededores, y poco después, un holograma imitará este ataque, indicado por un telégrafo cian."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                hologramsrace: {
+                                    name: { en: "Holograms Race", es: "Carrera de Hologramas", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["1 Hologram will spawn on each platform level and then start charging to thrust forward, indicated by cyan telegraphs, one of the 4 telegraphs will have a different visual cue, its slower than the other 3. That one hologram will fall short, Players should move to the edge of the map at the level of the slower hologram."],
+                                        es: ["1 Holograma aparecerá en cada nivel de plataforma y comenzará a cargar para embestir hacia adelante, indicado por telégrafos cian, uno de los 4 telégrafos tendrá una señal visual diferente, es más lento que los otros 3. Ese holograma se quedará corto. Los jugadores deben moverse al borde del mapa al nivel del holograma más lento."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                walltilebombs: {
+                                    name: { en: "Wall Tile Bombs", es: "Bombas de Baldosas de Pared", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 226x, can appear at 0.5x", es: "Forzado a 226x, puede aparecer a 0.5x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    groggy: true,
+                                    description: {
+                                        en: ["4 green wall tiles spawn in random, fixed spots of a 4x8 grid to serve as safe zones. Next, 4 random players get an F1 Release to place 4-space-long red bomb tiles on the grid. Once those are placed, 4 other players receive F1 Releases to place 3-space-long red bomb tiles. Players must position all red tiles perfectly into the remaining empty slots without overlapping the green tiles. Finally, everyone must quickly stand on the green tiles to survive the massive room-wide explosion."],
+                                        es: ["4 baldosas de pared verdes aparecen en lugares fijos aleatorios de una cuadrícula 4x8 para servir como zonas seguras. Luego, 4 jugadores aleatorios obtienen un Lanzamiento F1 para colocar baldosas de bomba rojas de 4 espacios de largo en la cuadrícula. Una vez colocadas, otros 4 jugadores reciben Lanzamientos F1 para colocar baldosas de bomba rojas de 3 espacios de largo. Los jugadores deben posicionar todas las baldosas rojas perfectamente en los espacios vacíos restantes sin superponer las baldosas verdes. Finalmente, todos deben pararse rápidamente en las baldosas verdes para sobrevivir a la masiva explosión en toda la sala."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Overlapping a green tile or leaving empty grid spaces will trigger an instant wipe."],
+                                        es: ["Superponer una baldosa verde o dejar espacios vacíos en la cuadrícula activará una eliminación instantánea."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                hologramblocking: {
+                                    name: { en: "Hologram Blocking", es: "Bloqueo de Hologramas", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 150x, can appear at 0.5x", es: "Forzado a 150x, puede aparecer a 0.5x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    groggy: true,
+                                    description: {
+                                        en: ["Holograms will attempt to dash through random, fixed spots indicated by pink telegraphs. Meanwhile, all players will receive a shield facing Left, Up or Right. Players should make use of this shield to block the advance of the Holograms."],
+                                        es: ["Los hologramas intentarán atravesar lugares fijos aleatorios indicados por telégrafos rosas. Mientras tanto, todos los jugadores recibirán un escudo orientado hacia la Izquierda, Arriba o Derecha. Los jugadores deben usar este escudo para bloquear el avance de los Hologramas."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["If any of the holograms completes his advance an instant wipe will be triggered."],
+                                        es: ["Si alguno de los hologramas completa su avance, se activará una eliminación instantánea."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                hologrammemorygame: {
+                                    name: { en: "Hologram Memory Game", es: "Juego de Memoria de Hologramas", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 75x, can appear at 0.5x", es: "Forzado a 75x, puede aparecer a 0.5x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    groggy: true,
+                                    description: {
+                                        en: ["Holograms will spawn on the right side of almost every platform level, except for one safe level, and rush forward. This repeats 4 times, indicated by cyan arrow telegraphs. Players must dodge to the safe platform each time and note down the sequence of safe levels to prepare for the memory game.", "After the 4th rush, the memory game begins: F1-prompt holograms spawn on the left side of all levels, and all players except one are stunned. The right-side holograms will repeat their 4 rushes. The free player must follow the recorded safe sequence, interacting with the left hologram on the correct level to break everyone's stun, and then lead the team to the safe zone."],
+                                        es: ["Los hologramas aparecerán en el lado derecho de casi todos los niveles de plataforma, excepto un nivel seguro, y avanzarán rápidamente. Esto se repite 4 veces, indicado por telégrafos de flecha cian. Los jugadores deben esquivar a la plataforma segura cada vez y anotar la secuencia de niveles seguros para prepararse para el juego de memoria.", "Después de la 4ta embestida, comienza el juego de memoria: hologramas con aviso F1 aparecen en el lado izquierdo de todos los niveles, y todos los jugadores excepto uno están aturdidos. Los hologramas del lado derecho repetirán sus 4 embestidas. El jugador libre debe seguir la secuencia segura registrada, interactuando con el holograma izquierdo en el nivel correcto para romper el aturdimiento de todos, y luego guiar al equipo a la zona segura."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Interacting with the wrong hologram will trigger an instant wipe."],
+                                        es: ["Interactuar con el holograma incorrecto activará una eliminación instantánea."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        },
+                        phase2: {
+                            phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
+                            phasebname: { en: "Owen", es: "Owen", kr: "", jp: "", br: "" },
+                            concepts: {
+                                riftcrystals: {
+                                    name: { en: "Rift Crystals", es: "Cristales de Grieta", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["6 purple crystals are randomly placed throughout the arena. After being infused with Henir's energy the crystal enlarges and becomes targetable with commands and active skills. After Owen's HP reaches 150x, the positions of the crystals will change."],
+                                        es: ["6 cristales púrpuras se colocan aleatoriamente en toda la arena. Después de ser infundidos con la energía de Henir, el cristal se agranda y se vuelve objetivo con comandos y habilidades activas. Después de que la HP de Owen alcanza 150x, las posiciones de los cristales cambiarán."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                dimensionalinstability: {
+                                    name: { en: "Dimensional Instability", es: "Inestabilidad Dimensional", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Being hit by Owen's normal patterns will increase the gauge on the top middle of the screen, this gauge is individual for each pattern. After the gauge reaches 100, the player will be teleported to another dimension and obtain \"Henir's Erosion\" debuff. While being in another dimension, <Rift Crystals> gain a F1 prompt, upon use, the gauge resets to 0."],
+                                        es: ["Ser golpeado por los patrones normales de Owen aumentará el medidor en la parte superior central de la pantalla, este medidor es individual para cada patrón. Después de que el medidor alcanza 100, el jugador será teletransportado a otra dimensión y obtendrá la desventaja \"Erosión de Henir\". Mientras está en otra dimensión, los <Cristales de Grieta> obtienen un aviso F1, al usarlo, el medidor se reinicia a 0."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    henirserosion: {
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2442debuff1.webp", 
+                                                    alt: {
+                                                        en: "The one consumed by Henir can manipulate its space to deplete its energy.",
+                                                        es: "El consumido por Henir puede manipular su espacio para agotar su energía."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]
+                                        },
+                                        name: { en: "Henir's Erosion", es: "Erosión de Henir", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: ["Failing to deplete Henir's energy within 10 seconds will result in instant death."],
+                                            es: ["No lograr agotar la energía de Henir dentro de 10 segundos resultará en muerte instantánea."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            },
+                            np: {
+                                diagonalslash: {
+                                    name: { en: "Diagonal Slash", es: "Corte Diagonal", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Owen slashes diagonally upward towards any side then doubles down and slashes diagonally downwards."],
+                                        es: ["Owen corta diagonalmente hacia arriba hacia cualquier lado, luego se repliega y corta diagonalmente hacia abajo."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                swordfall: {
+                                    name: { en: "Sword Fall", es: "Caída de Espada", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    forcedat: { en: "After a <Rift Crystal> is infused with Henir's energy", es: "Después de que un <Cristal de Grieta> es infundido con la energía de Henir", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Owen will summon big swords that fall after a short period of time, leaving some safe spots, after all swords disappear, Owen attacks the previously safe zones."],
+                                        es: ["Owen invocará grandes espadas que caen después de un corto período de tiempo, dejando algunos lugares seguros, después de que todas las espadas desaparecen, Owen ataca las zonas previamente seguras."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                charge: {
+                                    name: { en: "Charge", es: "Carga", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    judgementcut: {
+                                        name: { en: "Judgement Cut", es: "Corte de Juicio", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: ["Owen will be surrounded by a purple orb. Hitting him pushes him. After a while he will end charging and perform several slashes around him covering almost the entire arena. Players should push him to an edge and move fast to the other edge to avoid being hit."],
+                                            es: ["Owen estará rodeado por un orbe púrpura. Golpearlo lo empuja. Después de un rato terminará de cargar y realizará varios cortes a su alrededor cubriendo casi toda la arena. Los jugadores deben empujarlo a un borde y moverse rápido al otro borde para evitar ser golpeados."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    influxcut: {
+                                        name: { en: "Influx Cut", es: "Corte de Afluencia", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: ["Owen's energy will start flowing inwards, with his attack range gradually becoming smaller. Hitting Owen will stop his attack range from becoming smaller so refrain from hitting him until the range is small enough. After he's done charging, he will perform slashes inside the range indicated by a dark blue telegraph."],
+                                            es: ["La energía de Owen comenzará a fluir hacia adentro, con su rango de ataque volviéndose gradualmente más pequeño. Golpear a Owen detendrá que su rango de ataque se haga más pequeño, así que abstente de golpearlo hasta que el rango sea lo suficientemente pequeño. Después de que termine de cargar, realizará cortes dentro del rango indicado por un telégrafo azul oscuro."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    },
+                                    effluxcut: {
+                                        name: { en: "Efflux Cut", es: "Corte de Eflujo", kr: "", jp: "", br: "" },
+                                        description: {
+                                            en: ["Owen's energy will start flowing outwards, with his attack range gradually becoming bigger. Hitting Owen will stop his attack range from becoming bigger and potentially decrease it. After he's done charging, he will perform slashes inside the range indicated by a dark blue telegraph."],
+                                            es: ["La energía de Owen comenzará a fluir hacia afuera, con su rango de ataque volviéndose gradualmente más grande. Golpear a Owen detendrá que su rango de ataque se haga más grande y potencialmente lo disminuirá. Después de que termine de cargar, realizará cortes dentro del rango indicado por un telégrafo azul oscuro."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                },
+                                henirsenvoy: {
+                                    name: { en: "Henir's Envoy", es: "Enviado de Henir", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Owen becomes untargetable and floats into the sky. A random player's <Dimensional Instability> gauge forcefully reaches 100% and is banished to the alternate dimension. Inside the dimension, that player can see an arena-wide grid of energy orbs with only a single safe spot. The banished player must quickly find that safe opening and press F5 to ping its location for the team, allowing everyone to dodge the incoming crystal pillar explosions."],
+                                        es: ["Owen se vuelve inobjetivable y flota hacia el cielo. El medidor de <Inestabilidad Dimensional> de un jugador aleatorio alcanza forzosamente el 100% y es desterrado a la dimensión alternativa. Dentro de la dimensión, ese jugador puede ver una cuadrícula de orbes de energía en toda la arena con solo un lugar seguro. El jugador desterrado debe encontrar rápidamente esa apertura segura y presionar F5 para marcar su ubicación para el equipo, permitiendo que todos esquiven las explosiones de pilares de cristal entrantes."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["After Owen's HP is below 150x, this pattern will be repeated once right after it happens."],
+                                        es: ["Después de que la HP de Owen esté por debajo de 150x, este patrón se repetirá una vez inmediatamente después de que ocurra."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                targetedswordfall: {
+                                    name: { en: "Targeted Sword Fall", es: "Caída de Espada Dirigida", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every 3 minutes", es: "Cada 3 minutos", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Owen summons falling swords in the position of each player."],
+                                        es: ["Owen invoca espadas que caen en la posición de cada jugador."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                quadrupleslash: {
+                                    name: { en: "Quadruple Slash", es: "Corte Cuádruple", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    wipetimed: true,
+                                    description: {
+                                        en: ["Owen will teleport to the position of a random <Rift Crystal> and perform 4 slashes at the same time, with their range indicated by a dark blue telegraph. After performing the slashes, Owen becomes invisible and starts charging a map-wide attack. Players should move out of the slashes range, and afterwards move to the crystal Owen was positioned on then press F1 to activate a safe zone before he finishes charging."],
+                                        es: ["Owen se teletransportará a la posición de un <Cristal de Grieta> aleatorio y realizará 4 cortes al mismo tiempo, con su rango indicado por un telégrafo azul oscuro. Después de realizar los cortes, Owen se vuelve invisible y comienza a cargar un ataque en todo el mapa. Los jugadores deben salir del rango de los cortes y después moverse al cristal en el que Owen estaba posicionado y presionar F1 para activar una zona segura antes de que termine de cargar."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["The safe zone isn't too big so you should make sure all players are close before activating the safe zone."],
+                                        es: ["La zona segura no es demasiado grande, así que asegúrate de que todos los jugadores estén cerca antes de activar la zona segura."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                henirssight: {
+                                    name: { en: "Henir's Sight", es: "Visión de Henir", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    deathtimed: "0:15",
+                                    description: {
+                                        en: ["Owen emits a flashing light and begins charging a powerful attack. During this time, certain players will see specific glowing blue, topped with small floating orbs that indicate how many players each crystal can protect. To survive Owen's incoming blast, players who can see the glowing crystals must call out their capacity limits in chat so the team can distribute themselves safely."],
+                                        es: ["Owen emite una luz parpadeante y comienza a cargar un ataque poderoso. Durante este tiempo, ciertos jugadores verán brillos azules específicos, coronados con pequeños orbes flotantes que indican cuántos jugadores puede proteger cada cristal. Para sobrevivir a la explosión entrante de Owen, los jugadores que pueden ver los cristales brillantes deben decir sus límites de capacidad en el chat para que el equipo se distribuya de manera segura."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Each player can only see 1-2 glowing crystals, but multiple players will share the duty of spotting and calling them out."],
+                                        es: ["Cada jugador solo puede ver 1-2 cristales brillantes, pero múltiples jugadores compartirán el deber de detectarlos y anunciarlos."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
                 },
                 oua: {
-                    name: { en: "Operation Undertow: Alpha"},
+                    titlekey: {
+                        en: "Operation Undertow: Alpha",
+                        es: "Operación Resaca: Alfa",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    name: {
+                        en: "- Operation Undertow: Alpha -",
+                        es: "- Operación Resaca: Alfa -",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    content: {
+                        phase1: {
+                            phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
+                            phasebname: { en: "Glitter Commander", es: "Comandante Glitter", kr: "", jp: "", br: "" },
+                            np: {
+                                doublejab: {
+                                    name: { en: "Double Jab", es: "Golpe Doble", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Glitter Commander performs a quick double punch and then summons an Ally, it being either Super Glitter or Macbeth's Hologram. The summoned ally will then perform one of its normal patterns. For Super Glitter, it can either perform 'Bombardment' or 'Swing' and the Hologram can perform '2+2 Slash' or 'Concentrated Thrust'"],
+                                        es: ["El Comandante Glitter realiza un rápido doble puñetazo y luego invoca a un Aliado, siendo Super Glitter o el Holograma de Macbeth. El aliado invocado realizará uno de sus patrones normales. Para Super Glitter, puede realizar 'Bombardeo' o 'Balanceo' y el Holograma puede realizar 'Corte 2+2' o 'Embestida Concentrada'"],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                hologramplunge: {
+                                    name: { en: "Hologram Plunge", es: "Zambullida de Holograma", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Glitter Commander steps back and summons Macbeth's Hologram, targeting a random player indicated by a pink telegraph. After the telegraph position is locked, the hologram will dive down dealing lethal damage to its surroundings."],
+                                        es: ["El Comandante Glitter retrocede e invoca el Holograma de Macbeth, apuntando a un jugador aleatorio indicado por un telégrafo rosa. Después de que la posición del telégrafo se fija, el holograma se lanzará causando daño letal a sus alrededores."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                alliancecombo: {
+                                    name: { en: "Alliance Combo", es: "Combo de Alianza", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Super Glitter spawns and camera zooms out, immediately followed by a Howl that stuns all players. All players will be prompted to spam left and right keys to free themselves from the stun. In the meanwhile, Macbeth holograms appears on every platform level except one, then prepare for a concentrated thrust indicated by cyan telegraphs."],
+                                        es: ["Super Glitter aparece y la cámara se aleja, inmediatamente seguido por un Aullido que aturde a todos los jugadores. Se pedirá a todos los jugadores que presionen repetidamente las teclas izquierda y derecha para liberarse del aturdimiento. Mientras tanto, los hologramas de Macbeth aparecen en cada nivel de plataforma excepto uno, y luego se preparan para una embestida concentrada indicada por telégrafos cian."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                guidedmissiles: {
+                                    name: { en: "Guided Missiles", es: "Misiles Guiados", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Glitter Commander targets up to 3 players and shoots missiles at them, indicated by a green crosshair telegraph. After the telegraphs lock position, the missiles will be shot after a short delay. Players with the crosshair telegraph should move away from the party and wait until the telegraph position is locked before going back."],
+                                        es: ["El Comandante Glitter apunta a hasta 3 jugadores y les dispara misiles, indicados por un telégrafo de mira verde. Después de que los telégrafos fijan su posición, los misiles se dispararán después de un breve retraso. Los jugadores con el telégrafo de mira deben alejarse del grupo y esperar hasta que la posición del telégrafo se fije antes de regresar."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                outwardinwardexplosion: {
+                                    name: { en: "Outward / Inward Explosion", es: "Explosión Hacia Afuera / Hacia Adentro", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    forcedat: { en: "Every minute", es: "Cada minuto", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Glitter Commander raises its fist, giving 3 random players an arrow mark of either red or green color. Red arrows mean an outward explosion that surrounds the marked player will be triggered, the arrow mark owner is immune to the explosion but deals lethal damage to everyone else, while green arrows mean the explosion is inward and must group with your party members to dispel the explosion, otherwise dealing lethal damage to the arrow mark owner.", "Resuming: Red arrow mark = stay away from party. Green arrow mark = group with party."],
+                                        es: ["El Comandante Glitter levanta el puño, dando a 3 jugadores aleatorios una marca de flecha de color rojo o verde. Las flechas rojas significan que se activará una explosión hacia afuera que rodea al jugador marcado, el dueño de la marca de flecha es inmune a la explosión pero inflige daño letal a todos los demás, mientras que las flechas verdes significan que la explosión es hacia adentro y debes agruparte con los miembros de tu grupo para disipar la explosión, de lo contrario inflige daño letal al dueño de la marca de flecha.", "Resumiendo: Marca de flecha roja = aléjate del grupo. Marca de flecha verde = agrúpate con el grupo."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                missileblocking: {
+                                    name: { en: "Missile Blocking", es: "Bloqueo de Misiles", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Glitter Snipers outside the map will target 3 random players, indicated by red telegraphs, and they will be stunned after a short delay. The remaining 3 players receive 'Shield' buff and a Shield icon above them. Players with 'Shield' buff should intercept the sniper's shots to protect the targeted players."],
+                                        es: ["Los Francotiradores Glitter fuera del mapa apuntarán a 3 jugadores aleatorios, indicados por telégrafos rojos, y serán aturdidos después de un breve retraso. Los 3 jugadores restantes reciben el beneficio 'Escudo' y un icono de Escudo sobre ellos. Los jugadores con el beneficio 'Escudo' deben interceptar los disparos del francotirador para proteger a los jugadores objetivo."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Shots failed to be intercepted will trigger an explosion that deals lethal damage to the surrounding area."],
+                                        es: ["Los disparos que no sean interceptados activarán una explosión que inflige daño letal al área circundante."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    shield: {
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2451buff1.webp", 
+                                                    alt: {
+                                                        en: "It can defend against the sniper fire that is aimed at your allies.",
+                                                        es: "Puede defender contra el fuego de francotirador que apunta a tus aliados."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]
+                                        },
+                                        name: { en: "Shield", es: "Escudo", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-green",
+                                        description: {
+                                            en: ["Gain the ability to block sniper bullets."],
+                                            es: ["Obtén la capacidad de bloquear balas de francotirador."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                radiotransmission: {
+                                    name: { en: "Radio Transmission", es: "Transmisión de Radio", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "Forzado a 200x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    groggy: true,
+                                    timed: true,
+                                    description: {
+                                        en: ["Glitter Commander becomes untargetable and teleports away. Immediately after, 4 barriers will appear on set locations with a number from 1 to 4 randomly set revealed only upon contact. Random players will receive individual whispers of an Intercepted Radio Signal, telling only a part of a full message, meaning players should type their message to piece together the information to figure out what to do.", "The possible message pieces that can be shared are:", "Position messages: \"Sector X / all sectors\"", "Alternative messages: \"Excluded / Changed / x People\"", "Examples:", "Scrambled message: \"Commence Bombardment... Sector 4...\" = All Sectors except Sector 4 are safe.", "\"Sector 3... 4 People\" \"Sector 1... 2 People\" = 4 Players should go to Sector 3 and 2 Players should go to Sector 1.", "\"Commence Bombardment... All Sectors... Sector 3... Excluded...\" = All Sectors except Sector 3 are excluded.", "\"Commence Bombardment... All Sectors...\" = All Sectors will be attacked, so players should stay outside of any barrier.", "During this mech, the information can be changed midway, indicated by a \"Change\" whisper arriving:", "\"Commence Bombardment... Sector 3... Changed... Sector 1...\" = The attacked Sector was changed to be Sector 1, so players should avoid Sector 1.", "\"Commence Bombardment... All Sectors... Sector 2... Excluded... Changed... Move... Sector 4...\" = The safe Sector was moved to be Sector 4."],
+                                        es: ["El Comandante Glitter se vuelve inobjetivable y se teletransporta lejos. Inmediatamente después, aparecerán 4 barreras en ubicaciones establecidas con un número del 1 al 4 establecido aleatoriamente y revelado solo al contacto. Jugadores aleatorios recibirán susurros individuales de una Señal de Radio Interceptada, contando solo una parte de un mensaje completo, lo que significa que los jugadores deben escribir su mensaje para unir la información y descubrir qué hacer.", "Las posibles piezas de mensaje que se pueden compartir son:", "Mensajes de posición: \"Sector X / todos los sectores\"", "Mensajes alternativos: \"Excluido / Cambiado / x Personas\"", "Ejemplos:", "Mensaje codificado: \"Comenzar Bombardeo... Sector 4...\" = Todos los Sectores excepto el Sector 4 son seguros.", "\"Sector 3... 4 Personas\" \"Sector 1... 2 Personas\" = 4 Jugadores deben ir al Sector 3 y 2 Jugadores deben ir al Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 3... Excluido...\" = Todos los Sectores excepto el Sector 3 están excluidos.", "\"Comenzar Bombardeo... Todos los Sectores...\" = Todos los Sectores serán atacados, así que los jugadores deben permanecer fuera de cualquier barrera.", "Durante esta mecánica, la información puede cambiar a mitad de camino, indicado por un susurro de \"Cambio\" que llega:", "\"Comenzar Bombardeo... Sector 3... Cambiado... Sector 1...\" = El Sector atacado fue cambiado al Sector 1, así que los jugadores deben evitar el Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 2... Excluido... Cambiado... Mover... Sector 4...\" = El Sector seguro fue movido al Sector 4."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                alloutattack: {
+                                    name: { en: "All-Out Attack", es: "Ataque Total", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 100x", es: "Forzado a 100x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    groggy: true,
+                                    description: {
+                                        en: ["Glitter Commander becomes untargetable and teleports away to launch an All-Out Attack using Super Glitter's Pillars and Macbeth's Concentrated Thrust. All players will see telegraphs marking where the Pillars will drop, while 4 random players are targeted by Macbeth's Clones via a pink telegraph. Much like the regular Pillars mechanic, Pillars cannot overlap. Additionally, Clones must not overlap with each other either. A single player can be targeted by both mechanics simultaneously, and both positions will lock at the exact same time. Once locked, everyone must quickly sprint to a safe zone."],
+                                        es: ["El Comandante Glitter se vuelve inobjetivable y se teletransporta lejos para lanzar un Ataque Total usando los Pilares de Super Glitter y la Embestida Concentrada de Macbeth. Todos los jugadores verán telégrafos marcando dónde caerán los Pilares, mientras que 4 jugadores aleatorios son objetivo de los Clones de Macbeth mediante un telégrafo rosa. Al igual que la mecánica regular de Pilares, los Pilares no pueden superponerse. Además, los Clones tampoco deben superponerse entre sí. Un solo jugador puede ser objetivo de ambas mecánicas simultáneamente, y ambas posiciones se fijarán exactamente al mismo tiempo. Una vez fijadas, todos deben correr rápidamente a una zona segura."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["If any Pillars overlap or any Clones overlap, it will trigger an instant wipe.", "Placing the Clones on all platforms except the first is usually the safest way to secure a proper safe zone."],
+                                        es: ["Si algún Pilar se superpone o algún Clon se superpone, activará una eliminación instantánea.", "Colocar los Clones en todas las plataformas excepto la primera suele ser la forma más segura de asegurar una zona segura adecuada."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        },
+                        phase2: {
+                            phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
+                            phasebname: { en: "Nebulon's Iron Fist", es: "Puño de Hierro de Nebulon", kr: "", jp: "", br: "" },
+                            concepts: {
+                                unstableplatforms: {
+                                    name: { en: "Unstable Platforms", es: "Plataformas Inestables", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["The platforms that constitute the arena are weak, failing to properly do mechanics will further weaken them, eventually causing them to collapse. Collapsed or weakened platforms will recover after some time."],
+                                        es: ["Las plataformas que constituyen la arena son débiles, fallar en hacer las mecánicas correctamente las debilitará aún más, eventualmente causando su colapso. Las plataformas colapsadas o debilitadas se recuperarán después de un tiempo."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            np: {
+                                downwardstrike: {
+                                    name: { en: "Downward Strike", es: "Golpe Descendente", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Iron Fist charges and strikes with a powerful punch to the ground. If a yellow warning text is prompted saying \"The damage will accumulate on the ground hit by the next downward strike\" while Iron Fist charges, then the punch will actually damage the ground, potentially destroying already weakened platforms."],
+                                        es: ["Puño de Hierro carga y golpea con un poderoso puñetazo al suelo. Si aparece un texto de advertencia amarillo diciendo \"El daño se acumulará en el suelo golpeado por el próximo golpe descendente\" mientras Puño de Hierro carga, entonces el puñetazo dañará el suelo, potencialmente destruyendo plataformas ya debilitadas."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            mechs: {
+                                missiledefense: {
+                                    name: { en: "Missile Defense", es: "Defensa de Misiles", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every minute", es: "Cada minuto", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Iron Fist becomes surrounded by a green aura as 3 players receive distinct \"Missile Defense\" debuffs, each marked by a unique icon above their heads. Shortly after, Iron Fist fires a colored missile, displaying the matching icon above his own head to indicate which player must intercept it. The player with the corresponding mark must jump in front of the missile to block it safely; if a player with the wrong mark touches it, they will take lethal damage."],
+                                        es: ["Puño de Hierro se rodea de un aura verde mientras 3 jugadores reciben desventajas distintas de \"Defensa de Misiles\", cada una marcada por un icono único sobre sus cabezas. Poco después, Puño de Hierro dispara un misil de color, mostrando el icono correspondiente sobre su propia cabeza para indicar qué jugador debe interceptarlo. El jugador con la marca correspondiente debe saltar frente al misil para bloquearlo de forma segura; si un jugador con la marca incorrecta lo toca, recibirá daño letal."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["If the missile reaches its destination without being blocked, it will detonate and heavily damage the ground."],
+                                        es: ["Si el misil llega a su destino sin ser bloqueado, detonará y dañará gravemente el suelo."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    missiledefense: {
+                                        ico: {
+                                            ico: [
+                                                { src: "/images/mechs/2452debuff1_1.webp", alt: { en: "", es: "" }, captionType: "quote" },
+                                                { src: "/images/mechs/2452debuff1_2.webp" },
+                                                { 
+                                                    src: "/images/mechs/2452debuff1_3.webp", 
+                                                    alt: {
+                                                        en: "The one affected can destroy missiles of the correct type.",
+                                                        es: "El afectado puede destruir misiles del tipo correcto."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ],
+                                        },
+                                        name: { en: "Missile Defense", es: "Defensa de Misiles", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: ["The player affected by a debuff is capable of blocking a missile that matches their debuff color and symbol."],
+                                            es: ["El jugador afectado por una desventaja es capaz de bloquear un misil que coincida con el color y símbolo de su desventaja."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                },
+                                missilesiege: {
+                                    name: { en: "Missile Siege", es: "Asedio de Misiles", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every 30 seconds", es: "Cada 30 segundos", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Iron Fist raises its right arm, giving start to the siege. Meanwhile, a random player will be targeted and have a mark above their head. Missiles will start falling from the upper left or upper right wall, depending on which wall the player is the closest to. Missiles deal around half of your HP worth of damage, so the targeted party member should move away from the party and dodge them by timing their jump."],
+                                        es: ["Puño de Hierro levanta su brazo derecho, dando inicio al asedio. Mientras tanto, un jugador aleatorio será objetivo y tendrá una marca sobre su cabeza. Los misiles comenzarán a caer desde la pared superior izquierda o superior derecha, dependiendo de a qué pared esté más cerca el jugador. Los misiles infligen alrededor de la mitad de tu HP de daño, por lo que el miembro del grupo objetivo debe alejarse del grupo y esquivarlos sincronizando su salto."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                methanelasers: {
+                                    name: { en: "Methane Lasers", es: "Láseres de Metano", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    hyper: true,
+                                    forcedat: { en: "Every 1 minute and 30 seconds", es: "Cada 1 minuto y 30 segundos", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Iron Fist extends its arm. Afterwards, every player will be targeted by a laser coming from above, with its range indicated by a crimson telegraph. After a short delay, the telegraphs will lock position and the lasers will be fired, staying for 3 or so seconds. Players should group together and dodge fast when the telegraph positions are locked to make dodging the lasers easier."],
+                                        es: ["Puño de Hierro extiende su brazo. Después, cada jugador será objetivo de un láser que viene desde arriba, con su rango indicado por un telégrafo carmesí. Después de un breve retraso, los telégrafos fijarán su posición y los láseres se dispararán, permaneciendo durante unos 3 segundos. Los jugadores deben agruparse y esquivar rápido cuando las posiciones de los telégrafos se fijen para facilitar esquivar los láseres."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                powerfulpunch: {
+                                    name: { en: "Powerful Punch", es: "Puñetazo Poderoso", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    hyper: true,
+                                    description: {
+                                        en: ["Iron Fist moves to the right side of the arena and begins charging. Meanwhile, falling debris tears an opening in the ceiling as a set of crimson+green telegraphs appear across the arena. Shortly after, a first wave of lasers fires on those marked locations. A second wave of lasers follows immediately, and Iron Fist will deliver his punch at the same time this second wave of lasers is fired. To survive, players must quickly climb through the opening in the ceiling right after the first laser wave ends to avoid the punch."],
+                                        es: ["Puño de Hierro se mueve al lado derecho de la arena y comienza a cargar. Mientras tanto, escombros que caen abren un agujero en el techo mientras un conjunto de telégrafos carmesí+verde aparecen en toda la arena. Poco después, una primera ola de láseres dispara en esas ubicaciones marcadas. Una segunda ola de láseres sigue inmediatamente, y Puño de Hierro lanzará su puñetazo al mismo tiempo que se dispara esta segunda ola de láseres. Para sobrevivir, los jugadores deben trepar rápidamente a través de la abertura en el techo justo después de que termine la primera ola de láseres para evitar el puñetazo."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                largemissile: {
+                                    name: { en: "Large Missile", es: "Misil Grande", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every minute", es: "Cada minuto", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Iron Fist targets a random player, with a falling missile indicated by a crimson telegraph with an hexagonal pattern in it. After a short delay, the telegraph will blink, indicating its position has been locked and a large methane missile is fired towards the locked position, damaging the platforms it hits."],
+                                        es: ["Puño de Hierro apunta a un jugador aleatorio, con un misil que cae indicado por un telégrafo carmesí con un patrón hexagonal. Después de un breve retraso, el telégrafo parpadeará, indicando que su posición ha sido fijada y un gran misil de metano se dispara hacia la posición fijada, dañando las plataformas que golpea."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                targetedmissile: {
+                                    name: { en: "Targeted Missile", es: "Misil Dirigido", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Iron Fist raises its right arm, targeting 2 random players with thin, red diagonal telegraphs that show the incoming path of two missiles. The targeted players must position themselves on opposite sides of the arena so that the firing trajectories cross perfectly. This forces the two missiles to collide with each other and safely detonate in mid-air."],
+                                        es: ["Puño de Hierro levanta su brazo derecho, apuntando a 2 jugadores aleatorios con telégrafos diagonales rojos delgados que muestran la trayectoria entrante de dos misiles. Los jugadores objetivo deben posicionarse en lados opuestos de la arena para que las trayectorias de disparo se crucen perfectamente. Esto obliga a los dos misiles a chocar entre sí y detonar de forma segura en el aire."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                gravitationalspacing: {
+                                    name: { en: "Gravitational Spacing", es: "Espaciado Gravitacional", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: ["Iron Fist moves to the right side of the arena, becomes untargetable, and begins charging a powerful punch. NPC Peta will broadcast a message stating that the gravity sensor is activated, giving players an F1 prompt to lock themselves in mid-air upon usage. Simultaneously, players are targeted with plus-shaped (+) or cross-shaped (x) lasers, marked by crimson telegraphs with green outlines. Players must use the F1 prompt to lock their positions as high up as possible near the ceiling (the orange zone) while spacing out to avoid hitting each other with their lasers. To minimize casualties and ensure survival, the team's aerial formation must strictly resolve in one of combinations: ++xxx+ or +++xxx."],
+                                        es: ["Puño de Hierro se mueve al lado derecho de la arena, se vuelve inobjetivable y comienza a cargar un puñetazo poderoso. El NPC Peta transmitirá un mensaje indicando que el sensor de gravedad está activado, dando a los jugadores un aviso F1 para fijarse en el aire al usarlo. Simultáneamente, los jugadores son objetivo de láseres en forma de cruz (+) o en forma de aspa (x), marcados por telégrafos carmesí con contornos verdes. Los jugadores deben usar el aviso F1 para fijar sus posiciones lo más alto posible cerca del techo (la zona naranja) mientras se espacian para evitar golpearse entre sí con sus láseres. Para minimizar bajas y asegurar la supervivencia, la formación aérea del equipo debe resolverse estrictamente en una de las combinaciones: ++xxx+ o +++xxx."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
                 },
                 ouo: {
-                    name: { en: "Operation Undertow: Omega"},
+                    titlekey: {
+                        en: "Operation Undertow: Omega",
+                        es: "Operación Resaca: Omega",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    name: {
+                        en: "- Operation Undertow: Omega -",
+                        es: "- Operación Resaca: Omega -",
+                        kr: "",
+                        jp: "",
+                        br: ""
+                    },
+                    content: {
+                        phase1: {
+                            phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
+                            phasebname: { en: "Grandmaster Marcus", es: "Gran Maestro Marcus", kr: "", jp: "", br: "" },
+                            concepts: {
+                                parrying: {
+                                    name: { en: "Parrying", es: "Parry", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["On the middle top of the screen there's a green diamond shaped icon activable by prompting the Dungeon Function Key (F1). Using it will start a 6s cooldown until it can be used again.", "During several patterns, Marcus will indicate whenever his attacks can be parried by flashing of a certain color. When to parry differs depending on the color Marcus flashes.", "Blue flash: Use Parry Function should be used immediately.", "Red flash (Only possible after its HP goes down to 339x): Wait until Marcus is fully covered in red before using Parry Function.", "Yellow flash (Only possible after its HP goes down to 279x): Wait until Marcus' flash pulses 3 times before using Parry Function.", "A green forcefield appears for a short moment to signal the parry was successful, and Marcus will be staggered temporarily.", "To properly know when to Parry each attack, check this video: https://www.youtube.com/watch?v=Dn_QQUmuhO0"],
+                                        es: ["En la parte superior central de la pantalla hay un icono verde en forma de diamante activable mediante la Tecla de Función de Mazmorra (F1). Usarlo iniciará un enfriamiento de 6s hasta que pueda usarse de nuevo.", "Durante varios patrones, Marcus indicará cuándo sus ataques pueden ser desviados (parry) parpadeando de un color determinado. Cuándo hacer el parry difiere dependiendo del color que Marcus parpadee.", "Parpadeo azul: La Función de Parry debe usarse inmediatamente.", "Parpadeo rojo (Solo posible después de que su HP baje a 339x): Espera hasta que Marcus esté completamente cubierto de rojo antes de usar la Función de Parry.", "Parpadeo amarillo (Solo posible después de que su HP baje a 279x): Espera hasta que el parpadeo de Marcus pulse 3 veces antes de usar la Función de Parry.", "Un campo de fuerza verde aparece por un breve momento para indicar que el parry fue exitoso, y Marcus quedará aturdido temporalmente.", "Para saber correctamente cuándo hacer Parry a cada ataque, mira este video: https://www.youtube.com/watch?v=Dn_QQUmuhO0"],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            np: {
+                                stomp: {
+                                    name: { en: "Stomp", es: "Pisotón", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Marcus jumps to a random player, inflicting him with 'Target Specified' debuff and a mark on top of their head. Then raises its leg to prepare to stomp. While preparing, it will flash."],
+                                        es: ["Marcus salta hacia un jugador aleatorio, infligiéndole la desventaja 'Objetivo Especificado' y una marca sobre su cabeza. Luego levanta la pierna para prepararse para pisar. Mientras se prepara, parpadeará."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    targetspecified: {
+                                         ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2461debuff1.webp", 
+                                                    alt: {
+                                                        en: "You have been targeted, Marcus is after you.",
+                                                        es: "Has sido marcado como objetivo, Marcus va tras de ti."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]
+                                        },
+                                        name: { en: "Target Specified", es: "Objetivo Especificado", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: ["You have been targeted, Marcus is after you.", "Cannot move, jump, awaken nor use commands or skills until this debuff is dispelled."],
+                                            es: ["Has sido marcado como objetivo, Marcus va tras de ti.", "No puedes moverte, saltar, despertar ni usar comandos o habilidades hasta que esta desventaja sea disipada."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                }
+                            },
+                            mechs: {
+                                timedmissiles: {
+                                    name: { en: "Timed Missiles", es: "Misiles Cronometrados", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    forcedat: { en: "Every minute", es: "Cada minuto", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Marcus swings its left arm signaling to launch a missile. When the missile is launched, a yellow text will appear saying a bullet has fallen from the ceiling. Players should assign 2 characters with strong commands to immediately start searching the missile and destroy it using only commands and active skills."],
+                                        es: ["Marcus balancea su brazo izquierdo señalando el lanzamiento de un misil. Cuando el misil es lanzado, aparecerá un texto amarillo diciendo que una bala ha caído del techo. Los jugadores deben asignar 2 personajes con comandos fuertes para comenzar a buscar inmediatamente el misil y destruirlo usando solo comandos y habilidades activas."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Using [Force] Drain is also possible."],
+                                        es: ["Usar [Force] Drain también es posible."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                methaneorbs: {
+                                    name: { en: "Methane Orbs", es: "Orbes de Metano", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    forcedat: { en: "Every minute more or less", es: "Cada minuto más o menos", kr: "", jp: "", br: "" },
+                                    description: {
+                                        en: ["Marcus swings its left arm signaling to fire a bunch of methane orbs at randomly selected players (up to 3). The randomly selected players will be surrounded by a giant green marker. After a short delay, the orb will collide with the marker, provoking an explosion that releases 2 waves of Methane Orbs."],
+                                        es: ["Marcus balancea su brazo izquierdo señalando el disparo de un montón de orbes de metano a jugadores seleccionados aleatoriamente (hasta 3). Los jugadores seleccionados aleatoriamente estarán rodeados por un marcador verde gigante. Después de un breve retraso, el orbe chocará con el marcador, provocando una explosión que libera 2 oleadas de Orbes de Metano."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                onetwofive: {
+                                    name: { en: "1-1-5 (3-Punch Combination)", es: "1-1-5 (Combinación de 3 Puñetazos)", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    description: {
+                                        en: ["Marcus performs 2 quick jabs then charges an uppercut. Flashing during his charge. Failing to parry inflicts lethal damage and triggers a map-wide explosion that also inflicts lethal damage."],
+                                        es: ["Marcus realiza 2 golpes rápidos y luego carga un gancho ascendente. Parpadea durante su carga. Fallar el parry inflige daño letal y activa una explosión en todo el mapa que también inflige daño letal."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                giantmethaneorb: {
+                                    name: { en: "Giant Methane Orb", es: "Orbe de Metano Gigante", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    forcedat: { en: "Every 1 minute and 30 seconds", es: "Cada 1 minuto y 30 segundos", kr: "", jp: "", br: "" },
+                                    heal: "20x",
+                                    description: {
+                                        en: ["Marcus jumps to the right side of the arena and summons a large, pulsing methane orb. Parry the orb whenever it flashes.", "This orb flashes differently to how Marcus' flash works: When its blue, it will flash blue on its 6th pulse. When its red, it will travel faster and will flash on the 4th pulse. When its Yellow, it will travel the fastest and will flash on the 2nd pulse.", "After each successful parry, the orb will back down and continue moving. After being parried 4 times, it will dispel."],
+                                        es: ["Marcus salta al lado derecho de la arena e invoca un gran orbe de metano pulsante. Haz parry al orbe cuando parpadee.", "Este orbe parpadea de manera diferente a como funciona el parpadeo de Marcus: Cuando es azul, parpadeará azul en su 6to pulso. Cuando es rojo, viajará más rápido y parpadeará en el 4to pulso. Cuando es amarillo, viajará lo más rápido y parpadeará en el 2do pulso.", "Después de cada parry exitoso, el orbe retrocederá y continuará moviéndose. Después de ser desviado (parry) 4 veces, se disipará."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["After Parrying the Orb, the Player that parried will receive 'Parry Restriction' Debuff for 15s.", "Failing to stop the methane orb from reaching the other side will result in it exploding, dealing lethal damage."],
+                                        es: ["Después de hacer Parry al Orbe, el Jugador que lo desvió recibirá la Desventaja 'Restricción de Parry' durante 15s.", "No lograr detener el orbe de metano para que llegue al otro lado resultará en su explosión, infligiendo daño letal."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    parryrestriction: {
+                                        ico: {
+                                            ico: [
+                                                { 
+                                                    src: "/images/mechs/2461debuff2.webp", 
+                                                    alt: {
+                                                        en: "Parry becomes unavailable for a short period.",
+                                                        es: "El Parry se vuelve no disponible por un corto período."
+                                                    },
+                                                    captionType: "quote" 
+                                                },
+                                            ]
+                                        },
+                                        name: { en: "Parry Restriction", es: "Restricción de Parry", kr: "", jp: "", br: "" },
+                                        derivationClass: "derivation-red",
+                                        description: {
+                                            en: ["Parry becomes unavailable for a short period."],
+                                            es: ["El Parry se vuelve no disponible por un corto período."],
+                                            kr: "", jp: "", br: ""
+                                        }
+                                    }
+                                },
+                                parrydischarge: {
+                                    name: { en: "Parry Discharge", es: "Descarga de Parry", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Every 4 minutes", es: "Cada 4 minutos", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    hyper: true,
+                                    description: {
+                                        en: ["Marcus jumps to the center of the map, becomes untargetable, and begins charging. After a brief delay, he flashes and slams down. Players must parry this slam to absorb his charged energy, which inflicts <Parry Restriction>. The absorbed energy locks in place after 5 seconds and explodes shortly after, meaning the parrying player must quickly deposit it away from the group. Marcus repeats this slam 6 times, requiring each player to take turns parrying exactly once.", "During this mechanic, Marcus' yellow flash changes: players must wait for 4 pulses and parry precisely on the 5th pulse."],
+                                        es: ["Marcus salta al centro del mapa, se vuelve inobjetivable y comienza a cargar. Después de un breve retraso, parpadea y golpea el suelo. Los jugadores deben hacer parry a este golpe para absorber su energía cargada, lo que inflige <Restricción de Parry>. La energía absorbida se fija en su lugar después de 5 segundos y explota poco después, lo que significa que el jugador que hizo parry debe depositarla rápidamente lejos del grupo. Marcus repite este golpe 6 veces, requiriendo que cada jugador se turne para hacer parry exactamente una vez.", "Durante esta mecánica, el parpadeo amarillo de Marcus cambia: los jugadores deben esperar 4 pulsos y hacer parry precisamente en el 5to pulso."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            },
+                            forcedmechs: {
+                                worthinesstest: {
+                                    name: { en: "Worthiness Test", es: "Prueba de Dignidad", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 200x", es: "Forzado a 200x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: ["Marcus becomes untargetable and teleports away. Meanwhile, all players are teleported to random locations and are inflicted with <Target Specified>. Marcus will then teleport to each player one by one counterclockwise, and start charging a punch. Parrying the punch will grant a shield. After Marcus is done punching all the players. He will stomp and instantly kill every player who isn't shielded."],
+                                        es: ["Marcus se vuelve inobjetivable y se teletransporta lejos. Mientras tanto, todos los jugadores son teletransportados a ubicaciones aleatorias y reciben <Objetivo Especificado>. Marcus se teletransportará a cada jugador uno por uno en sentido antihorario, y comenzará a cargar un puñetazo. Hacer parry al puñetazo otorgará un escudo. Después de que Marcus termine de golpear a todos los jugadores, pisará y matará instantáneamente a cada jugador que no esté protegido."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                },
+                                finalstruggle: {
+                                    name: { en: "Final Struggle", es: "Lucha Final", kr: "", jp: "", br: "" },
+                                    forcedat: { en: "Forced at 5x", es: "Forzado a 5x", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    unavoidable: true,
+                                    description: {
+                                        en: ["Marcus becomes untargetable and teleports away as 4 devices spawn evenly distributed across the map. Each device displays either one or two glowing orange squares, which indicate the minimum number of players required to parry simultaneously. After a moderate delay, Marcus teleports to a random device to strike it. Each time Marcus' attack is parried successfully turns 1 of the device's squares green and grants the entire party 1 stack of 'Gravitational Plasticity'. Once Marcus finishes targeting all 4 devices, an instant wipe will be triggered if any of the device's squares remains orange."],
+                                        es: ["Marcus se vuelve inobjetivable y se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga a todo el grupo 1 acumulación de 'Plasticidad Gravitacional'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará una eliminación instantánea si alguno de los cuadrados de los dispositivos permanece naranja."],
+                                        kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["There is no penalty or limit to how many players can parry a single punch, so players who have already defended their assigned device should immediately rotate to help others secure theirs."],
+                                        es: ["No hay penalización ni límite para cuántos jugadores pueden hacer parry a un solo puñetazo, por lo que los jugadores que ya han defendido su dispositivo asignado deben rotar inmediatamente para ayudar a otros a asegurar el suyo."],
+                                        kr: "", jp: "", br: ""
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },

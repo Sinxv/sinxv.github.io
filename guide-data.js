@@ -220,19 +220,19 @@ export const guideData = [
         raidKeys: ['stage8.sections.pz']
     },
     {
-        id: 'ou_o',
-        icon: '/images/ouoico.png',
-        category: 'raid',
-        belongsto: 'Nebulon',
-        titleKey: 'stage8.content_ouo',
-        raidKeys: ['stage8.sections.ouo']
-    },
-    {
         id: 'ou_a',
         icon: '/images/ouaico.png',
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_oua',
         raidKeys: ['stage8.sections.oua']
+    },
+    {
+        id: 'ou_o',
+        icon: '/images/ouoico.png',
+        category: 'raid',
+        belongsto: 'Nebulon',
+        titleKey: 'stage8.content_ouo',
+        raidKeys: ['stage8.sections.ouo']
     },
 ];

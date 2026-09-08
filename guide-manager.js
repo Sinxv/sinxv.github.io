@@ -177,7 +177,7 @@ function renderGroupTitle(title) {
 }
 
 const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'vid', 'variants','separation']);
-const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'vid']);
+const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'vid', 'ico', 'derivationClass']);
 
 function isLangLeaf(value) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -299,6 +299,13 @@ function renderMechanicEntry(item) {
         
         const subWrapper = createElement('div', { class: subClass }, []);
         
+        // Add ico BEFORE title if present
+        if (value.ico) {
+            const icoWrapper = createElement('div', { class: 'mech-ico-wrapper' }, []);
+            renderGenericValue(icoWrapper, 'img', value.ico);
+            subWrapper.appendChild(icoWrapper);
+        }
+        
         // Add the name as a ctitle
         const nameText = getLocalizedValue(value.name);
         if (nameText) {
@@ -351,11 +358,19 @@ function renderMechanicEntry(item) {
 function renderConceptEntry(concept) {
     const wrapper = createElement('div', { class: 'concept' }, []);
 
-    if (concept.vid) {
-        const videoEl = renderVideoElement(concept.vid);
-        if (videoEl) wrapper.appendChild(videoEl);
+    // Check for derivation class
+    if (concept.derivationClass) {
+        wrapper.classList.add(concept.derivationClass);
+        wrapper.classList.add('sub-mech');
     }
-    
+
+    // Add ico BEFORE title if present
+    if (concept.ico) {
+        const icoWrapper = createElement('div', { class: 'mech-ico-wrapper' }, []);
+        renderGenericValue(icoWrapper, 'img', concept.ico);
+        wrapper.appendChild(icoWrapper);
+    }
+
     const titleText = getLocalizedValue(concept.title || concept.name);
     if (titleText) {
         wrapper.appendChild(createElement('div', { class: 'ctitle' }, [titleText]));
@@ -365,20 +380,27 @@ function renderConceptEntry(concept) {
         renderParagraphElements(concept.description).forEach(el => wrapper.appendChild(el));
     }
 
-    // Variants inside concepts
-    if (concept.variants) {
-        const variantsSection = renderVariantsSection(concept.variants);
-        if (variantsSection) wrapper.appendChild(variantsSection);
-    }
-
+    // Handle img inside concepts
     if (concept.img) {
         const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
         renderGenericValue(mechImgWrapper, 'img', concept.img);
         wrapper.appendChild(mechImgWrapper);
     }
 
+    // Handle vid inside concepts
+    if (concept.vid) {
+        const videoEl = renderVideoElement(concept.vid);
+        if (videoEl) wrapper.appendChild(videoEl);
+    }
+
+    // Variants inside concepts
+    if (concept.variants) {
+        const variantsSection = renderVariantsSection(concept.variants);
+        if (variantsSection) wrapper.appendChild(variantsSection);
+    }
+
     Object.entries(concept).forEach(([key, value]) => {
-        if (CONCEPT_KNOWN_KEYS.has(key) || key === 'variants' || key === 'img' || !value || typeof value !== 'object') {
+        if (CONCEPT_KNOWN_KEYS.has(key) || key === 'variants' || key === 'img' || key === 'vid' || key === 'ico' || key === 'derivationClass' || !value || typeof value !== 'object') {
             return;
         }
 
@@ -474,33 +496,22 @@ function renderRaidSection(sectionKey, guideId) {
             if (conceptsSection) phaseWrapper.appendChild(conceptsSection);
         }
 
-        if (phaseData.img) {
-            const phaseImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-            renderGenericValue(phaseImgWrapper, 'img', phaseData.img);
-            phaseWrapper.appendChild(phaseImgWrapper);
-        }
-
-        if (phaseData.vid) {
-            const videoEl = renderVideoElement(phaseData.vid);
-            if (videoEl) phaseWrapper.appendChild(videoEl);
-        }
-
         if (phaseData.description) {
             renderParagraphElements(phaseData.description).forEach(el => phaseWrapper.appendChild(el));
         }
 
         if (phaseData.np) {
-            const npGroup = renderMechanicGroup('Normal Patterns', phaseData.np);
+            const npGroup = renderMechanicGroup(getSectionLabel('np'), phaseData.np);
             if (npGroup) phaseWrapper.appendChild(npGroup);
         }
 
         if (phaseData.mechs) {
-            const mechGroup = renderMechanicGroup('Mechanics', phaseData.mechs);
+            const mechGroup = renderMechanicGroup(getSectionLabel('mechs'), phaseData.mechs);
             if (mechGroup) phaseWrapper.appendChild(mechGroup);
         }
 
         if (phaseData.forcedmechs) {
-            const forcedGroup = renderMechanicGroup('Forced Mechanics', phaseData.forcedmechs);
+            const forcedGroup = renderMechanicGroup(getSectionLabel('forcedmechs'), phaseData.forcedmechs);
             if (forcedGroup) phaseWrapper.appendChild(forcedGroup);
         }
 
@@ -510,6 +521,41 @@ function renderRaidSection(sectionKey, guideId) {
     return sectionWrapper;
 }
 
+function getSectionLabel(type) {
+    const lang = getCurrentLang();
+    const labels = {
+        np: {
+            en: 'Normal Patterns',
+            es: 'Patrones Normales',
+            kr: '일반 패턴',
+            jp: '通常パターン',
+            br: 'Padrões Normais'
+        },
+        mechs: {
+            en: 'Mechanics',
+            es: 'Mecánicas',
+            kr: '메커니즘',
+            jp: 'メカニズム',
+            br: 'Mecânicas'
+        },
+        forcedmechs: {
+            en: 'Forced Mechanics',
+            es: 'Mecánicas Forzadas',
+            kr: '강제 메커니즘',
+            jp: '強制メカニズム',
+            br: 'Mecânicas Forçadas'
+        },
+        concepts: {
+            en: 'Concepts',
+            es: 'Conceptos',
+            kr: '개념',
+            jp: '概念',
+            br: 'Conceitos'
+        }
+    };
+    
+    return labels[type]?.[lang] || labels[type]?.en || type;
+}
 function isTranslationPath(value) {
     if (typeof value !== 'string' || !/^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)+$/.test(value)) {
         return false;
@@ -952,64 +998,75 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         return;
     }
 
-    // Handle img key with layered image structure
     if (key === 'img' && typeof value === 'object' && !Array.isArray(value)) {
-        const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
+    const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
 
-        const layers = [
-            { key: 'primary',   containerClass: 'image-layer-primary' },
-            { key: 'secondary', containerClass: 'image-layer-secondary' },
-            { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
-            { key: 'normal',  containerClass: 'image-layer-normal' },
-            { key: 'small',  containerClass: 'image-layer-small' }
-        ];
+    const layers = [
+        { key: 'primary',   containerClass: 'image-layer-primary' },
+        { key: 'secondary', containerClass: 'image-layer-secondary' },
+        { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
+        { key: 'ico',       containerClass: 'image-layer-ico' },
+        { key: 'normal',    containerClass: 'image-layer-normal' },
+        { key: 'small',     containerClass: 'image-layer-small' }
+    ];
 
-        layers.forEach(layer => {
-            const layerData = value[layer.key];
-            if (!layerData) return;
+    layers.forEach(layer => {
+        const layerData = value[layer.key];
+        if (!layerData) return;
 
-            const layerContainer = createElement('div', { 
-                class: `image-layer ${layer.containerClass}` 
+        const layerContainer = createElement('div', { 
+            class: `image-layer ${layer.containerClass}` 
+        }, []);
+
+        const images = Array.isArray(layerData) ? layerData : [layerData];
+
+        images.forEach(imgData => {
+            const figure = createElement('figure', { class: 'guide-image-figure' }, []);
+            
+            let src, altText, captionType;
+            
+            if (typeof imgData === 'string') {
+                src = imgData;
+                altText = '';
+                captionType = 'default';
+            } else if (typeof imgData === 'object') {
+                src = imgData.src;
+                altText = getLocalizedValue(imgData.alt) || '';
+                captionType = imgData.captionType || 'default';
+            }
+
+            const img = createElement('img', {
+                src: src,
+                alt: altText,
+                title: altText,
+                loading: 'lazy'
             }, []);
+            img.addEventListener('click', () => openImageLightbox(src, altText));
+            figure.appendChild(img);
 
-            const images = Array.isArray(layerData) ? layerData : [layerData];
-
-            images.forEach(imgData => {
-                const figure = createElement('figure', { class: 'guide-image-figure' }, []);
+            if (altText) {
+                const caption = createElement('figcaption', { class: 'guide-image-caption' }, []);
                 
-                let src, altText;
+                // Check if caption should have quotes
+                if (captionType === 'quote') {
+                    caption.textContent = `"${altText}"`;
+                    caption.classList.add('caption-quote');
+                } else {
+                    caption.textContent = altText;
+                }
                 
-                if (typeof imgData === 'string') {
-                    src = imgData;
-                    altText = '';
-                } else if (typeof imgData === 'object') {
-                    src = imgData.src;
-                    altText = getLocalizedValue(imgData.alt) || '';
-                }
+                figure.appendChild(caption);
+            }
 
-                const img = createElement('img', {
-                    src: src,
-                    alt: altText,
-                    title: altText,
-                    loading: 'lazy'
-                }, []);
-                img.addEventListener('click', () => openImageLightbox(src, altText));
-                figure.appendChild(img);
-
-                if (altText) {
-                    const caption = createElement('figcaption', { class: 'guide-image-caption' }, [altText]);
-                    figure.appendChild(caption);
-                }
-
-                layerContainer.appendChild(figure);
-            });
-
-            imgWrapper.appendChild(layerContainer);
+            layerContainer.appendChild(figure);
         });
 
-        container.appendChild(imgWrapper);
-        return;
-    }
+        imgWrapper.appendChild(layerContainer);
+    });
+
+    container.appendChild(imgWrapper);
+    return;
+}
 
     if (Array.isArray(value) || isLangLeaf(value)) {
         renderParagraphElements(value).forEach(el => container.appendChild(el));
