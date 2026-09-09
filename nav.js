@@ -4,34 +4,64 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.id = "nav-overlay";
     document.body.appendChild(overlay);
 
+    // Language-aware nav labels
+    function getNavLabels() {
+        const lang = localStorage.getItem("elhelper-lang") || "en";
+        const labels = {
+            en: { home: "Home", progression: "Game Progression", guides: "Guides" },
+            es: { home: "Inicio", progression: "Progresión del Juego", guides: "Guías" }
+        };
+        return labels[lang] || labels.en;
+    }
+
+    function updateNavigationLabels() {
+        const labels = getNavLabels();
+        const desktopHome = navDesktop.querySelector('a[href="/index.html"] li');
+        const desktopProgression = navDesktop.querySelector('a[href="/prog.html"] li');
+        const desktopGuides = navDesktop.querySelector('a[href="/guides.html"] li');
+        if (desktopHome) desktopHome.textContent = labels.home;
+        if (desktopProgression) desktopProgression.textContent = labels.progression;
+        if (desktopGuides) desktopGuides.textContent = labels.guides;
+
+        const mobileHome = navMobile.querySelector('a[href="/main/index.html"] li');
+        const mobileProgression = navMobile.querySelector('a[href="/main/prog.html"] li');
+        const mobileGuides = navMobile.querySelector('a[href="/main/guides.html"] li');
+        if (mobileHome) mobileHome.textContent = labels.home;
+        if (mobileProgression) mobileProgression.textContent = labels.progression;
+        if (mobileGuides) mobileGuides.textContent = labels.guides;
+    }
+
     // Desktop nav
     const navDesktop = document.createElement("nav");
     navDesktop.id = "main-nav-desktop";
+    const labels = getNavLabels();
     navDesktop.innerHTML = `
       <ul>
-        <a href="/index.html"><li>Home</li></a>
-        <a href="/prog.html"><li id="spec">Game Progression</li></a>
-        <a href="/guides.html"><li>Guides</li></a>
+        <a href="/index.html"><li>${labels.home}</li></a>
+        <a href="/prog.html"><li id="spec">${labels.progression}</li></a>
+        <a href="/guides.html"><li>${labels.guides}</li></a>
         <div class="settings-icon" id="settings-icon-desktop"></div>
       </ul>
     `;
     document.body.prepend(navDesktop);
 
-        // Mobile nav (hamburger)
-        const navMobile = document.createElement("nav");
-        navMobile.id = "main-nav-mobile";
-        navMobile.innerHTML = `
+    // Mobile nav (hamburger)
+    const navMobile = document.createElement("nav");
+    navMobile.id = "main-nav-mobile";
+    navMobile.innerHTML = `
     <div class="menu-bar">
         <div class="menu-icon" id="menu-icon"></div>
     </div>
     <div class="hamburger-nav" id="hamburger-nav">
         <div class="settings-icon" id="settings-icon-mobile"></div>
-        <a href="/main/index.html"><li>Home</li></a>
-        <a href="/main/prog.html"><li id="spec">Game Progression</li></a>
-        <a href="/main/guides.html"><li>Guides</li></a>
+        <a href="/main/index.html"><li>${labels.home}</li></a>
+        <a href="/main/prog.html"><li id="spec">${labels.progression}</li></a>
+        <a href="/main/guides.html"><li>${labels.guides}</li></a>
     </div>
 `;
-        document.body.prepend(navMobile);
+    document.body.prepend(navMobile);
+
+    updateNavigationLabels();
 
     // Settings icon positions
     document.getElementById("settings-icon-desktop").style.position = "absolute";
@@ -49,16 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const hamburgerNav = document.getElementById("hamburger-nav");
     menuIcon.addEventListener("click", () => {
         try {
-            console.log('[DEBUG] menuIcon clicked');
             const menuBar = document.querySelector('.menu-bar');
             if (hamburgerNav.classList.contains("open")) {
-                console.log('[DEBUG] Closing hamburger menu');
                 hamburgerNav.classList.remove("open");
                 overlay.classList.remove("open");
                 document.body.style.overflow = "";
                 menuBar.classList.remove('no-pointer');
             } else {
-                console.log('[DEBUG] Opening hamburger menu');
                 hamburgerNav.classList.add("open");
                 overlay.classList.add("open");
                 document.body.style.overflow = "hidden";
@@ -73,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     overlay.addEventListener("click", () => {
         try {
-            console.log('[DEBUG] overlay clicked, closing hamburger menu');
             hamburgerNav.classList.remove("open");
             overlay.classList.remove("open");
             document.body.style.overflow = "";
@@ -87,13 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show/hide navs depending on screen size
     function handleNavVisibility() {
         try {
-            console.log('[DEBUG] handleNavVisibility called, window.innerWidth:', window.innerWidth);
             if (window.innerWidth <= 900) {
-                console.log('[DEBUG] Mobile view: showing navMobile, hiding navDesktop');
                 navDesktop.style.display = "none";
                 navMobile.style.display = "block";
             } else {
-                console.log('[DEBUG] Desktop view: showing navDesktop, hiding navMobile');
                 navDesktop.style.display = "block";
                 navMobile.style.display = "none";
                 hamburgerNav.classList.remove("open");
@@ -109,23 +132,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Settings popup logic (shared for both icons)
     function updateGearIcon() {
-    const isLight = localStorage.getItem("elhelper-mode") === "light";
-    // Settings icon: fondo igual al modo, PNG contrario
-    document.getElementById("settings-icon-desktop").style.backgroundImage = `url('/images/gear-${isLight ? 'black' : 'white'}.png')`;
-    document.getElementById("settings-icon-desktop").style.backgroundColor = isLight ? "#fff" : "#222";
-    navDesktop.style.backgroundColor = isLight ? "#fff" : "#282832";
-    document.getElementById("settings-icon-mobile").style.backgroundImage = `url('/images/gear-${isLight ? 'black' : 'white'}.png')`;
-    document.getElementById("settings-icon-mobile").style.backgroundColor = isLight ? "#fff" : "#222";
+        const isLight = localStorage.getItem("elhelper-mode") === "light";
+        document.getElementById("settings-icon-desktop").style.backgroundImage = `url('/images/gear-${isLight ? 'black' : 'white'}.png')`;
+        document.getElementById("settings-icon-desktop").style.backgroundColor = isLight ? "#fff" : "#222";
+        navDesktop.style.backgroundColor = isLight ? "#fff" : "#282832";
+        document.getElementById("settings-icon-mobile").style.backgroundImage = `url('/images/gear-${isLight ? 'black' : 'white'}.png')`;
+        document.getElementById("settings-icon-mobile").style.backgroundColor = isLight ? "#fff" : "#222";
     }
+    
     function updateMenuIcon() {
-    const isLight = localStorage.getItem("elhelper-mode") === "light";
-    menuIcon.style.backgroundImage = `url('/images/menu-${isLight ? 'black' : 'white'}.png')`;
-    menuIcon.style.width = "40px";
-    menuIcon.style.height = "40px";
-    menuIcon.style.backgroundSize = "contain";
-    menuIcon.style.backgroundRepeat = "no-repeat";
-    menuIcon.style.backgroundColor = isLight ? "#cccccc" : "#282832";
+        const isLight = localStorage.getItem("elhelper-mode") === "light";
+        menuIcon.style.backgroundImage = `url('/images/menu-${isLight ? 'black' : 'white'}.png')`;
+        menuIcon.style.width = "40px";
+        menuIcon.style.height = "40px";
+        menuIcon.style.backgroundSize = "contain";
+        menuIcon.style.backgroundRepeat = "no-repeat";
+        menuIcon.style.backgroundColor = isLight ? "#cccccc" : "#282832";
     }
+    
     updateMenuIcon();
     updateGearIcon();
 
@@ -140,44 +164,123 @@ document.addEventListener("DOMContentLoaded", () => {
         updateGearIcon();
     });
 
+    // Helper function to get shared settings HTML
+    function getSettingsHTML() {
+        const savedLang = localStorage.getItem("elhelper-lang") || "en";
+        const isLight = localStorage.getItem("elhelper-mode") === "light";
+        const savedRegion = localStorage.getItem("elhelper-region") || "na";
+        const showFullInfo = window.isFullInfoEnabled?.() ?? false;
+        
+        return `
+            <label for="lang-select">Language:</label>
+            <select id="lang-select">
+                <option value="en" ${savedLang === 'en' ? 'selected' : ''}>English</option>
+                <option value="es" ${savedLang === 'es' ? 'selected' : ''}>Español</option>
+                <option value="kr" disabled ${savedLang === 'kr' ? 'selected' : ''}>한국어 (WIP)</option>
+                <option value="jp" disabled ${savedLang === 'jp' ? 'selected' : ''}>日本語 (WIP)</option>
+                <option value="br" disabled ${savedLang === 'br' ? 'selected' : ''}>Português (WIP)</option>
+            </select>
+            
+            <label for="region-select">Server Region:</label>
+            <select id="region-select">
+                <option value="na" ${savedRegion === 'na' ? 'selected' : ''}>Default (NA/INT)</option>
+                <option value="default" ${savedRegion === 'default' ? 'selected' : ''}>Others (KR/EU/JP/CN/TW)</option>
+            </select>
+            
+            <label for="mode-switch">Light Mode:</label>
+            <label class="switch">
+                <input type="checkbox" id="mode-switch" ${isLight ? 'checked' : ''}>
+                <span class="slider"></span>
+            </label>
+            
+            <label for="full-info-switch">Show Full Info:</label>
+            <label class="switch">
+                <input type="checkbox" id="full-info-switch" ${showFullInfo ? 'checked' : ''}>
+                <span class="slider"></span>
+            </label>
+        `;
+    }
+
+    // Helper function to bind settings events
+    function bindSettingsEvents(container) {
+        const langSelect = container.querySelector("#lang-select");
+        const regionSelect = container.querySelector("#region-select");
+        const modeSwitch = container.querySelector("#mode-switch");
+        const fullInfoSwitch = container.querySelector("#full-info-switch");
+        
+        if (langSelect) {
+            langSelect.addEventListener("change", (e) => {
+                const lang = e.target.value;
+                if (window.translationManager) {
+                    window.translationManager.switchLanguage(lang);
+                }
+            });
+        }
+        
+        if (regionSelect) {
+            regionSelect.addEventListener("change", (e) => {
+                const region = e.target.value;
+                localStorage.setItem("elhelper-region", region);
+                
+                // Re-apply translations
+                if (window.translationManager) {
+                    window.translationManager.applyTranslations();
+                }
+                
+                // Re-open any open guide to apply region filter
+                const openOverlay = document.getElementById('guide-modal-overlay');
+                if (openOverlay) {
+                    const hash = window.location.hash.replace('#', '');
+                    if (hash && window.openGuide) {
+                        window.openGuide(hash);
+                    }
+                }
+            });
+        }
+        
+        if (modeSwitch) {
+            modeSwitch.addEventListener("change", (e) => {
+                const isLight = e.target.checked;
+                localStorage.setItem("elhelper-mode", isLight ? "light" : "dark");
+                if (isLight) {
+                    document.body.classList.add("light-mode");
+                } else {
+                    document.body.classList.remove("light-mode");
+                }
+                updateMenuIcon();
+                updateGearIcon();
+            });
+        }
+        
+        if (fullInfoSwitch) {
+            fullInfoSwitch.addEventListener("change", (e) => {
+                const showFull = e.target.checked;
+                if (window.toggleFullInfo) {
+                    window.toggleFullInfo(showFull);
+                }
+            });
+        }
+    }
+
     // SETTINGS POPUP PC ver.
     function showSettingsPopupPC() {
-        // Remove any existing popup function (toggleSettingsMenuMobile) to avoid duplicates
         const existing = document.getElementById("settings-popup");
         if (existing) {
             existing.remove();
             return;
         }
+        
         const desktopIcon = document.getElementById("settings-icon-desktop");
         const popup = document.createElement("div");
         popup.id = "settings-popup";
-        popup.innerHTML = `
-            <label for="lang-select">Language:</label>
-            <select id="lang-select">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="kr">AI한국어</option>
-                <option value="jp">AI日本語 </option>
-                <option value="br">Português do IA</option>
-            </select>
-            <label for="mode-switch">Light Mode:</label>
-            <label class="switch">
-                <input type="checkbox" id="mode-switch">
-                <span class="slider"></span>
-            </label>
-            <label for="full-info-switch">Show Full Info:</label>
-            <label class="switch">
-                <input type="checkbox" id="full-info-switch">
-                <span class="slider"></span>
-            </label>
-        `;
+        popup.innerHTML = getSettingsHTML();
         document.body.appendChild(popup);
-        // Position popup: use fixed positioning relative to viewport and window scroll
+        
+        // Position popup
         const rect = desktopIcon.getBoundingClientRect();
         const popupWidth = 280;
-        let left = rect.right - popupWidth - 8;  // Right-aligned, expand left
+        let left = rect.right - popupWidth - 8;
         let top = rect.bottom + 8;
-        // Clamp left to viewport
         if (left < 8) left = 8;
         if (left + popupWidth > window.innerWidth - 8) left = window.innerWidth - popupWidth - 8;
         popup.style.position = "fixed";
@@ -185,50 +288,18 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.top = `${top}px`;
         popup.style.maxHeight = "calc(100vh - 100px)";
         popup.style.overflowY = "auto";
-        // Set current values
-        const savedLang = localStorage.getItem("elhelper-lang") || "en";
-        const isLight = localStorage.getItem("elhelper-mode") === "light";
-        const showFullInfo = window.isFullInfoEnabled?.() ?? false;
-        popup.querySelector("#lang-select").value = savedLang;
-        popup.querySelector("#mode-switch").checked = isLight;
-        popup.querySelector("#full-info-switch").checked = showFullInfo;
-        popup.querySelector("#lang-select").addEventListener("change", (e) => {
-            const lang = e.target.value;
-            if (window.translationManager) {
-                window.translationManager.switchLanguage(lang);
-            }
-        });
-        popup.querySelector("#mode-switch").addEventListener("change", (e) => {
-            const isLight = e.target.checked;
-            localStorage.setItem("elhelper-mode", isLight ? "light" : "dark");
-            if (isLight) {
-                document.body.classList.add("light-mode");
-                updateMenuIcon();
-                updateGearIcon();
-            } else {
-                document.body.classList.remove("light-mode");
-                updateMenuIcon();
-                updateGearIcon();
-            }
-        });
-        popup.querySelector("#full-info-switch").addEventListener("change", (e) => {
-            const showFull = e.target.checked;
-            if (window.toggleFullInfo) {
-                window.toggleFullInfo(showFull);
-            }
-        });
+        
+        // Bind events
+        bindSettingsEvents(popup);
     }
 
-    // SETTINGS POPUP MOBILE ver. (hamNav)
+    // SETTINGS POPUP MOBILE ver.
     function toggleSettingsMenuMobile() {
         try {
             const hamburgerNav = document.getElementById("hamburger-nav");
             let settingsMenu = hamburgerNav.querySelector('.settings-menu');
-            console.log('[DEBUG] toggleSettingsMenuMobile called');
-            console.log('[DEBUG] hamburgerNav.classList:', hamburgerNav.classList.toString());
-            // Si el menú hamburguesa está abierto y no está en settings, animar salida y mostrar settings
+            
             if (hamburgerNav.classList.contains("open") && !hamburgerNav.classList.contains("settings-open")) {
-                console.log('[DEBUG] Switching to settings menu');
                 hamburgerNav.classList.add("menu-slide-out");
                 setTimeout(() => {
                     hamburgerNav.classList.remove("menu-slide-out");
@@ -236,75 +307,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (!settingsMenu) {
                         let menu = document.createElement("div");
                         menu.className = "settings-menu";
-                        menu.innerHTML = `
-                            <label for="lang-select">Language:</label>
-                            <select id="lang-select">
-                                <option value="en">English</option>
-                                <option value="es">Español</option>
-                                <option value="kr">한국어</option>
-                                <option value="jp">日本語</option>
-                                <option value="br">Português</option>
-                            </select>
-                            <label for="mode-switch">Light Mode:</label>
-                            <label class="switch">
-                                <input type="checkbox" id="mode-switch">
-                                <span class="slider"></span>
-                            </label>
-                            <label for="full-info-switch">Show Full Info:</label>
-                            <label class="switch">
-                                <input type="checkbox" id="full-info-switch">
-                                <span class="slider"></span>
-                            </label>
-                        `;
+                        menu.innerHTML = getSettingsHTML();
                         hamburgerNav.appendChild(menu);
-                        // Set current values
-                        const savedLang = localStorage.getItem("elhelper-lang") || "en";
-                        const isLight = localStorage.getItem("elhelper-mode") === "light";
-                        const showFullInfo = window.isFullInfoEnabled?.() ?? false;
-                        menu.querySelector("#lang-select").value = savedLang;
-                        menu.querySelector("#mode-switch").checked = isLight;
-                        menu.querySelector("#full-info-switch").checked = showFullInfo;
-                        menu.querySelector("#lang-select").addEventListener("change", (e) => {
-                            const lang = e.target.value;
-                            if (window.translationManager) {
-                                window.translationManager.switchLanguage(lang);
-                            }
-                        });
-                        menu.querySelector("#mode-switch").addEventListener("change", (e) => {
-                            const isLight = e.target.checked;
-                            localStorage.setItem("elhelper-mode", isLight ? "light" : "dark");
-                            if (isLight) {
-                                document.body.classList.add("light-mode");
-                                updateMenuIcon();
-                                updateGearIcon();
-                            } else {
-                                document.body.classList.remove("light-mode");
-                                updateMenuIcon();
-                                updateGearIcon();
-                            }
-                        });
-                        menu.querySelector("#full-info-switch").addEventListener("change", (e) => {
-                            const showFull = e.target.checked;
-                            if (window.toggleFullInfo) {
-                                window.toggleFullInfo(showFull);
-                            }
-                        });
+                        bindSettingsEvents(menu);
                     } else {
                         settingsMenu.style.display = 'flex';
                     }
-                }, 350); // Duración de la animación slideOutLeft
+                }, 350);
             } else if (hamburgerNav.classList.contains("settings-open")) {
-                // Si está en settings, alterna de vuelta al menú con animación
-                console.log('[DEBUG] Switching back to hamburger menu');
                 hamburgerNav.classList.add("menu-slide-in");
                 setTimeout(() => {
                     hamburgerNav.classList.remove("settings-open");
                     hamburgerNav.classList.remove("menu-slide-in");
                     if (settingsMenu) settingsMenu.remove();
-                }, 350); // Duración de la animación slideInRight
+                }, 350);
             } else {
-                // Si el menú hamburguesa no está abierto, ábrelo y luego muestra settings
-                console.log('[DEBUG] Opening hamburger menu before showing settings');
                 hamburgerNav.classList.add("open");
                 overlay.classList.add("open");
                 document.body.style.overflow = "hidden";
@@ -317,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } catch (err) {
                         console.error('[ERROR] setTimeout toggleSettingsMenuMobile:', err);
                     }
-                }, 350); // Espera a que se abra el menú antes de mostrar settings
+                }, 350);
             }
         } catch (err) {
             console.error('[ERROR] toggleSettingsMenuMobile:', err);
@@ -327,7 +344,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- EVENT BINDINGS ---
     document.getElementById("settings-icon-desktop").addEventListener("click", () => {
         try {
-            console.log('[DEBUG] settings-icon-desktop clicked');
             if (window.innerWidth > 900) {
                 showSettingsPopupPC();
             }
@@ -335,9 +351,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error('[ERROR] settings-icon-desktop click handler:', err);
         }
     });
+    
     document.getElementById("settings-icon-mobile").addEventListener("click", () => {
         try {
-            console.log('[DEBUG] settings-icon-mobile clicked');
             if (window.innerWidth <= 900) {
                 toggleSettingsMenuMobile();
             }
@@ -346,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Cerrar popup PC al hacer click fuera
+    // Close PC popup when clicking outside
     document.addEventListener("click", (e) => {
         const popup = document.getElementById("settings-popup");
         if (popup && !popup.contains(e.target) &&
@@ -354,7 +370,4 @@ document.addEventListener("DOMContentLoaded", () => {
             popup.remove();
         }
     });
-
 });
-
-

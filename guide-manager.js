@@ -67,6 +67,14 @@ function getTranslationObject(key) {
     return node;
 }
 
+function getCurrentRegion() {
+    return localStorage.getItem('elhelper-region') || 'default';
+}
+
+function isNAFilterEnabled() {
+    return getCurrentRegion() === 'na';
+}
+
 function getLocalizedValue(value) {
     const lang = getCurrentLang();
 
@@ -82,6 +90,20 @@ function getLocalizedValue(value) {
     }
 
     if (typeof value === 'object') {
+        // Check for region_na override first if NA filter is enabled
+        if (isNAFilterEnabled() && Object.prototype.hasOwnProperty.call(value, 'region_na')) {
+            const regionData = value.region_na;
+            if (regionData && typeof regionData === 'object') {
+                if (Object.prototype.hasOwnProperty.call(regionData, lang)) {
+                    return getLocalizedValue(regionData[lang]);
+                }
+                if (Object.prototype.hasOwnProperty.call(regionData, 'en')) {
+                    return getLocalizedValue(regionData.en);
+                }
+            }
+        }
+        
+        // Normal language fallback
         if (Object.prototype.hasOwnProperty.call(value, lang)) {
             return getLocalizedValue(value[lang]);
         }

@@ -139,7 +139,6 @@ function hideInfoPanel(panel) {
     panel.classList.remove('visible');
 }
 
-// In your data.js
 function getLocalizedNote(noteType) {
     const lang = localStorage.getItem('elhelper-lang') || 'en';
     const page = window.translationManager?.currentPage || 'stage3';
