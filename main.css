@@ -19,6 +19,7 @@
     --border-color: #444456;
     --card-bg: #383848;
     --footer-bg: #282832;
+    --disclaimer-color: #ffe066;
     --warning-color: #ff6666;
     --success-color: #66cc66;
     --info-color: #66b3ff;
@@ -73,7 +74,6 @@ body.color-darkblue {
    ============================================================ */
 
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-optical-sizing: auto;
@@ -135,6 +135,7 @@ a {
 }
 .guide-open-a:hover {
     color: var(--primary-light);
+    cursor: pointer;
 }
 
 .guide-section-title, .raid-owner-title, .guide-section-grid {
@@ -1489,7 +1490,6 @@ body.light-mode .lower .info {
     z-index: 1000;
     min-width: 240px;
     max-width: 300px;
-    height: 600px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -1793,11 +1793,8 @@ button.guide-open-button {
 .guide-card {
     cursor: pointer;
     border-radius: 16px;
-    padding: 0;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
-    min-width: 300px;
-    min-height: 100px;
     margin-bottom: 15px;
     margin-right: 15px;
     width: 300px;
@@ -1806,6 +1803,7 @@ button.guide-open-button {
     align-items: center;
     justify-content: flex-start;
     transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
 }
 .guide-card:hover {
     background: rgba(255,255,255,0.06);
@@ -1819,6 +1817,7 @@ button.guide-open-button {
     width: 100%;
     padding: 16px;
     gap: 16px;
+    overflow-y: hidden;
 }
 
 .guide-card-icon {
@@ -1889,6 +1888,60 @@ body.guide-modal-open {
 .guide-control-btn[data-active="false"] {
     opacity: 0.5;
     background: rgba(255, 255, 255, 0.02);
+}
+
+.guide-status-warnings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.guide-status-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-left: 4px solid;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.guide-status-warning-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 1px;
+}
+
+.guide-status-warning-text {
+    flex: 1;
+}
+
+/* Yellow warning */
+.guide-status-yellow {
+    background: rgba(255, 224, 102, 0.08);
+    border: 1px solid var(--disclaimer-color);
+    color: var(--primary-light);
+}
+
+.guide-status-yellow .guide-status-warning-icon {
+    color: var(--primary-color);
+    overflow-y: hidden;
+}
+
+/* Red warning */
+.guide-status-red {
+    background: rgba(255, 102, 102, 0.1);
+    border: 1px solid var(--warning-color);
+    color: #ffb3b3;
+}
+
+.guide-status-red .guide-status-warning-icon {
+    color: var(--warning-color);
+    overflow-y: hidden;
 }
 
 .variants-container {
@@ -2047,7 +2100,15 @@ body.guide-modal-open {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%);
 }
 
-.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed, .mech-status-deathtimed, .mech-status-wipetimed, .mech-status-magneticfield, .mech-status-superarmor {
+.mech-status-inv img {
+    filter: brightness(0) saturate(130%) invert(45%) sepia(98%) saturate(1652%) hue-rotate(230deg) brightness(131%) contrast(101%);
+}
+
+.mech-status-hyper img {
+    filter: brightness(0) saturate(130%) invert(45%) sepia(98%) saturate(652%) hue-rotate(310deg) brightness(131%) contrast(101%);
+}
+
+.mech-status-unavoidable, .mech-status-iframe, .mech-status-groggy, .mech-status-heal, .mech-status-timed, .mech-status-deathtimed, .mech-status-wipetimed, .mech-status-magneticfield, .mech-status-superarmor, .mech-status-hyper, .mech-status-inv {
     overflow-y: hidden;
     align-self:flex-end;
     bottom: 8px;
@@ -2733,6 +2794,12 @@ h2, h3,
     }
 }
 
+@media only screen and (min-width: 481px) {
+    * {
+        margin: 0;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .banner {
         height: 160px;
@@ -2861,5 +2928,168 @@ h2, h3,
     
     .titleinfo p {
         font-size: 2.2rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    *{
+        margin-right: 0px;
+    }
+    .mechname {
+        font-size: 1.8rem;
+    }
+    .IMGPHASEHEADER{
+        border-radius: 10px;
+        margin: 30px 0 20px;  
+    }
+    .guide-section-grid {
+        white-space: nowrap;    
+        overflow-x: auto;    
+    }
+    .guide-section-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        margin: 0px;
+    }
+
+    .IMGPHASEHEADER#ctohf1 {
+        background: url('images/ctohf1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ctohf2 {
+        background: url('images/ctohf2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ctohf3 {
+        background: url('images/ctohf3.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ned1 {
+        background: url('images/ned1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ned2 {
+        background: url('images/ned2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ned3 {
+        background: url('images/ned3.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ccof1 {
+        background: url('images/ccof1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ccof2 {
+        background: url('images/ccof2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#ccof3 {
+        background: url('images/ccof3.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#swgc1 {
+        background: url('images/swgc1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#swgc2 {
+        background: url('images/swgc2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#swgc3 {
+        background: url('images/swgc3.png') no-repeat;
+    }
+    .IMGPHASEHEADER#aoi1 {
+        background: url('images/aoi1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#aoi2 {
+        background: url('images/aoi2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#aoi3 {
+        background: url('images/aoi3.png') no-repeat;
+    }
+    .IMGPHASEHEADER#shg1 {
+        background: url('images/shg1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#shg2 {
+        background: url('images/shg2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#bmf1 {
+        background: url('images/bmf1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#bmf2 {
+        background: url('images/bmf2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#nc1 {
+        background: url('images/nc1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#nc2 {
+        background: url('images/nc2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#boo1 {
+        background: url('images/boo1.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#boo2 {
+        background: url('images/boo2.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#boo3 {
+        background: url('images/boo3.webp') no-repeat;
+    }
+    .IMGPHASEHEADER#st1 {
+        background: url('images/st1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#st2 {
+        background: url('images/st2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#oh1 {
+        background: url('images/oh1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#oh2 {
+        background: url('images/oh2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#cop1 {
+        background: url('images/cop1.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#cop2 {
+        background: url('images/cop2.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#nrr1 {
+        background: url('images/nrr1.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#nrr2 {
+        background: url('images/nrr2.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#qth1 {
+        background: url('images/qth1.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#qth2 {
+        background: url('images/qth2.jpg') no-repeat;
+    }
+    .IMGPHASEHEADER#wt_fl1 {
+        background: url('images/wtfl2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#wt_fl2 {
+        background: url('images/wtfl1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#wt_fa1 {
+        background: url('images/wtfa.png') no-repeat;
+    }
+    .IMGPHASEHEADER#tts1 {
+        background: url('images/tts1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#tts2 {
+        background: url('images/tts2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#bs1 {
+        background: url('images/bs1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#bs2 {
+        background: url('images/bs2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#pz1 {
+        background: url('images/pz1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#pz2 {
+        background: url('images/pz2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#ou_a1 {
+        background: url('images/oua1.png') no-repeat;
+    }
+    .IMGPHASEHEADER#ou_a2 {
+        background: url('images/oua2.png') no-repeat;
+    }
+    .IMGPHASEHEADER#ou_o1 {
+        background: url('images/ouo1.png') no-repeat;
     }
 }

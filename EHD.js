@@ -132,7 +132,7 @@ export const data = {
                         en: "Birth of Origin"
                     },
                     link9: {
-                        en: "Harconium"
+                        en: "Harconium Tuning System"
                     },
                 },
                 lower: {
@@ -206,18 +206,19 @@ export const data = {
                 br: "Última Atualização"
             },
             update_date: {
-                en: "May 2026",
-                es: "Mayo de 2026",
-                kr: "2026년 5월",
-                jp: "2026年5月",
-                br: "Maio de 2026"
+                en: "September 2026",
+                es: "Septiembre de 2026",
+                kr: "2026년 9월",
+                jp: "2026年9月",
+                br: "Setembro de 2026"
             },
             update_content: {
                 en: [
-                    "Compressed the first 3 stages of the Progression Guide into a single stage since the content is too old and fast to go by, this is an attempt to make each stage of the guide pack more content and be more relevant to the current state of the game.",
-                    "The guide will now automatically hide useless information from tables and only show the relevant information for the character's current level and CP, this should make it easier to navigate through the guide and find the relevant information for your character.",
-                    "Finally fixed the setting pop-up",
-                    "Again, Fixed various typos and outdated information + Reworked the phrasing of some parts of the early guide to make them more clear and easier to understand."
+                    "Added Nebulon Raid to the guides section.",
+                    "Started migrating every guide to the guide section and game progression expanded to tirnog.",
+                    "Progression now has a section called 'guides relevant to this section' that serve as a quick way to open a guide without going to the guide section.",
+                    "Re-fixed the settings pop-up to actually take up the proper amount of space and added a region filter so that concepts fall back to a supported language to make some concepts easier to understand for servers with custom terms for things.",
+                    "Another round of fixing various typos and outdated information, reworking the phrasing of some parts."
                 ],
                 es: [
                     "Guía completa agregada para la raid de Doom Aporia",
@@ -797,7 +798,7 @@ export const data = {
                     },
                     intro: {
                         en: [
-                            "In this region there are a couple of things you can do, first of all is to get the Amethystine Prophecy Armor, which should be given to you once you clear Sea of Ruin 1 time, on Dr. Pho's Rigomor Lesson, 2nd is trying to get Complete Conversion Ring for DPS by farming on Abandoned Deep-Sea Tunnel.","The hard part about the progression of this region is the fact that you'll have to do Master Class Advancement Quests, which make you clear 25 rigomor dungeons (5 + 20 for 1/5 and 2/5) and 16 master road dungeons (1 + 10 + 5 for 3/5, 4/5 and 5/5)"
+                            "In this region there are a couple of things you can do, first of all is to get the Amethystine Prophecy Armor, which should be given to you once you clear Sea of Ruin 1 time, on Dr. Pho's Rigomor Lesson, 2nd is trying to get Complete Conversion Ring for DPS by farming on Abandoned Deep-Sea Tunnel.","The hard part about the progression of this region is the fact that you'll have to do Master Class Advancement Quests, which make you clear 25 rigomor dungeons (5 + 20 for 1/5 and 2/5) and 16 master road dungeons (1 + 10 + 5 for 3/5, 4/5 and 5/5)."
                         ],
                         es: [
                             ""
@@ -814,7 +815,7 @@ export const data = {
                     },
                     content: {
                         en: [
-                            "the current task would be to spam quests till you complete your 2nd quest. If you manage to find a party to go through those dungeons, the fastest rigomor dungeon is Trosh's Nest if you have a party or enough damage to oneshot all enemies, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin.","After finishing the 2/5 quest you'll be ready to start doing Master Road."
+                            "The current task would be to spam quests till you complete your 2nd quest. If you manage to find a party to go through those dungeons, the fastest rigomor dungeon is Trosh's Nest if you have a party or enough damage to oneshot all enemies, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin.","After finishing the 2/5 quest you'll be ready to start doing Master Road:"
                         ],
                         es: [
                             ""
@@ -1300,7 +1301,8 @@ export const data = {
                                 redflamememory:{
                                     name: { en: "Red Flame Memory",},
                                     forcedat: { en: "Enabled @ 35 bars"},
-                                    description: { en: ["Soul of Crimson Flame becomes invincible and summons 5 Marbles of Flames, the player needs to break the marbles within a timer, or the boss will heal 4 bars of HP per marble not destroyed."], }
+                                    inv: true,
+                                    description: { en: ["Soul of Crimson Flame summons 5 Marbles of Flames, the player needs to break the marbles within a timer, or the boss will heal 4 bars of HP per marble not destroyed."], }
                                 },
                                 strengthen:{
                                     name: { en: "Strengthen",},
@@ -1468,7 +1470,8 @@ export const data = {
                             mechs: {
                                 energyvolley:{
                                     name: { en: "Energy Volley", es: "Descarga de Energía", kr: "에너지 연발", jp: "エネルギーボレー", br: "Rajada de Energia" },
-                                    description: { en: ["Malice will laugh, and after a short period of time, becomes invincible, afterwards balls of energy will start spawning from the bottom of the arena, and slowly make their way up, getting hit by the balls will deal lethal damage. After a certain time balls will start to dissapear."]}
+                                    inv: true,
+                                    description: { en: ["Malice will laugh, and after a short period of time, balls of energy will start spawning from the bottom of the arena, and slowly make their way up, getting hit by the balls will deal lethal damage. After a certain time balls will start to dissapear."]}
                                 },
                                 pillarofthorns:{
                                     name: { en: "Pillar of Thorns", es: "Pilar de Espinas", kr: "가시의 기둥", jp: "トゲの柱", br: "Pilar de Espinhos" },
@@ -4135,7 +4138,8 @@ export const data = {
                             concepts: {
                                 shield: {
                                     name: { en: "Shield", es: "Escudo", kr: "실드", jp: "シールド", br: "Escudo" },
-                                    description: { en: ["This is the gimmick for Phase 1. It's a pink gauge displayed below the Dreaming Hatchling's HP. The Dreaming Hatchling is permanently invincible. Reducing this gauge to zero disables the iframes for a certain period, allowing attacks. The gauge is reduced by destroying minerals that spawn randomly throughout the map. Once fully depleted, the gauge starts recovering, and upon full recovery, the Dreaming Hatchling re-enters its invincible state along with its ultimate pattern (Explained Afterwards). Additionally, getting hit by the Dreaming Hatchling's laser patterns recovers the shield gauge."], es: "", kr: "", jp: "", br: "" }
+                                    inv: true,
+                                    description: { en: ["This is the gimmick for Phase 1. It's a pink gauge displayed below the Dreaming Hatchling's HP. Reducing this gauge to zero disables its shield for a certain period, allowing attacks. The gauge is reduced by destroying minerals that spawn randomly throughout the map. Once fully depleted, the gauge starts recovering, and upon full recovery, the Dreaming Hatchling re-enters its invincible state along with its ultimate pattern (Explained Afterwards). Additionally, getting hit by the Dreaming Hatchling's laser patterns recovers the shield gauge."], es: "", kr: "", jp: "", br: "" }
                                 }
                             },
                             np: {
@@ -8054,9 +8058,10 @@ export const data = {
                                     },
                                     name: { en: "Breath", es: "Aliento", kr: "", jp: "", br: "" },
                                     iframe: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Shushu becomes untargetable and flies to one edge of the arena, afterwards will begin to charge a laser. 3 levels of platforms will appear. After Shushu finishes charging it will target either the top or bottom platform."],
-                                        es: ["Shushu se vuelve invencible y vuela a un borde de la arena, después comenzará a cargar un láser. Aparecerán 3 niveles de plataformas. Después de que Shushu termine de cargar, apuntará a la plataforma superior o inferior."],
+                                        en: ["Shushu flies to one edge of the arena, afterwards will begin to charge a laser. 3 levels of platforms will appear. After Shushu finishes charging it will target either the top or bottom platform."],
+                                        es: ["Shushu vuela a un borde de la arena, después comenzará a cargar un láser. Aparecerán 3 niveles de plataformas. Después de que Shushu termine de cargar, apuntará a la plataforma superior o inferior."],
                                         kr: "", jp: "", br: ""
                                     },
                                     note: {
@@ -8095,12 +8100,13 @@ export const data = {
                                     name: { en: "Volleyball", es: "Voleibol", kr: "", jp: "", br: "" },
                                     forcedat: { en: "Forced at 200x", es: "Forzado en 200x", kr: "", jp: "", br: "" },
                                     iframe: true,
+                                    inv: true,
                                     unavoidable: true,
                                     wipetimed: true,
                                     groggy: true,
                                     description: {
-                                        en: ["Shushu becomes untargetable and moves to either edge of the map. Afterwards releases a yellow orb. Players should make the orb bounce to charge it and stop it from touching the ground or the ceiling. After its fully charged, make it touch Shushu in order to end the mech."],
-                                        es: ["Shushu se vuelve invencible y se mueve a cualquier borde del mapa. Después libera un orbe amarillo. Los jugadores deben hacer rebotar el orbe para cargarlo y evitar que toque el suelo o el techo. Después de que esté completamente cargado, haz que toque a Shushu para terminar la mecánica."],
+                                        en: ["Shushu moves to either edge of the map. Afterwards releases a yellow orb. Players should make the orb bounce to charge it and stop it from touching the ground or the ceiling. After its fully charged, make it touch Shushu in order to end the mech."],
+                                        es: ["Shushu se mueve a cualquier borde del mapa. Después libera un orbe amarillo. Los jugadores deben hacer rebotar el orbe para cargarlo y evitar que toque el suelo o el techo. Después de que esté completamente cargado, haz que toque a Shushu para terminar la mecánica."],
                                         kr: "", jp: "", br: ""
                                     }
                                 },
@@ -8186,11 +8192,12 @@ export const data = {
                                     },
                                     name: { en: "Multiple Double Slashes", es: "Cortes Dobles Múltiples", kr: "", jp: "", br: "" },
                                     iframe: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Macbeth will become untargetable, and 4 holograms spawn in random locations, each performing a plus (+) shaped double slash on the direction they face. Players should find the blind spots (similar to 21-3-1, aka. Queen Throne's Hall Invite Abyss Mech) to avoid the attacks."],
-                                        es: ["Macbeth se volverá invencible, y aparecen 4 hologramas en ubicaciones aleatorias, cada uno realizando un doble corte en forma de cruz (+) en la dirección que miran. Los jugadores deben encontrar los puntos ciegos (similar a la mecánica en 21-3-1 de Invitación al Abismo (Salón del Trono de la Reina) para evitar los ataques."],
+                                        en: ["4 holograms spawn in random locations, each performing a plus (+) shaped double slash on the direction they face. Players should find the blind spots (similar to 21-3-1, aka. Queen Throne's Hall Invite Abyss Mech) to avoid the attacks."],
+                                        es: ["Aparecen 4 hologramas en ubicaciones aleatorias, cada uno realizando un doble corte en forma de cruz (+) en la dirección que miran. Los jugadores deben encontrar los puntos ciegos (similar a la mecánica en 21-3-1 de Invitación al Abismo (Salón del Trono de la Reina) para evitar los ataques."],
                                         region_na: {
-                                            es: ["Macbeth se volverá invencible, y aparecen 4 hologramas en ubicaciones aleatorias, cada uno realizando un doble corte en forma de cruz (+) en la dirección que miran. Los jugadores deben encontrar los puntos ciegos (similar a la mecánica de Invite Abyss en 21-3-1 (Queen's Throne Hall) para evitar los ataques."],
+                                            es: ["Aparecen 4 hologramas en ubicaciones aleatorias, cada uno realizando un doble corte en forma de cruz (+) en la dirección que miran. Los jugadores deben encontrar los puntos ciegos (similar a la mecánica de Invite Abyss en 21-3-1 (Queen's Throne Hall) para evitar los ataques."],
                                         },
                                         kr: "", jp: "", br: ""
                                     }
@@ -8418,9 +8425,11 @@ export const data = {
                                         src: "/images/mechs/2442he_e2.mp4"
                                     },
                                     name: { en: "Henir's Envoy", es: "Enviado de Henir", kr: "", jp: "", br: "" },
+                                    iframe: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Owen becomes untargetable and floats into the sky. A random player's <Dimensional Instability> gauge forcefully reaches 100% and is banished to the alternate dimension. Inside the dimension, that player can see an arena-wide grid of energy orbs with only a single safe spot. The banished player must quickly find that safe opening and press F5 to ping its location for the team, allowing everyone to dodge the incoming crystal pillar explosions."],
-                                        es: ["Owen se vuelve invencible y flota hacia el cielo. El medidor de <Inestabilidad Dimensional> de un jugador aleatorio alcanza forzosamente el 100% y es desterrado a la dimensión alternativa. Dentro de la dimensión, ese jugador puede ver una cuadrícula de orbes de energía en toda la arena con solo un lugar seguro. El jugador desterrado debe encontrar rápidamente esa apertura segura y presionar F5 para marcar su ubicación para el equipo, permitiendo que todos esquiven las explosiones de pilares de cristal entrantes."],
+                                        en: ["Owen floats into the sky. A random player's <Dimensional Instability> gauge forcefully reaches 100% and is banished to the alternate dimension. Inside the dimension, that player can see an arena-wide grid of energy orbs with only a single safe spot. The banished player must quickly find that safe opening and press F5 to ping its location for the team, allowing everyone to dodge the incoming crystal pillar explosions."],
+                                        es: ["Owen flota hacia el cielo. El medidor de <Inestabilidad Dimensional> de un jugador aleatorio alcanza forzosamente el 100% y es desterrado a la dimensión alternativa. Dentro de la dimensión, ese jugador puede ver una cuadrícula de orbes de energía en toda la arena con solo un lugar seguro. El jugador desterrado debe encontrar rápidamente esa apertura segura y presionar F5 para marcar su ubicación para el equipo, permitiendo que todos esquiven las explosiones de pilares de cristal entrantes."],
                                         kr: "", jp: "", br: ""
                                     },
                                     note: {
@@ -8604,9 +8613,10 @@ export const data = {
                                     unavoidable: true,
                                     groggy: true,
                                     timed: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Glitter Commander becomes untargetable and teleports away. Immediately after, 4 barriers will appear on set locations with a number from 1 to 4 randomly set revealed only upon contact. Random players will receive individual whispers of an Intercepted Radio Signal, telling only a part of a full message, meaning players should type their message to piece together the information to figure out what to do.", "The possible message pieces that can be shared are:", "Position messages: \"Sector X / all sectors\"", "Alternative messages: \"Excluded / Changed / x People\"", "Examples:", "Scrambled message: \"Commence Bombardment... Sector 4...\" = All Sectors except Sector 4 are safe.", "\"Sector 3... 4 People\" \"Sector 1... 2 People\" = 4 Players should go to Sector 3 and 2 Players should go to Sector 1.", "\"Commence Bombardment... All Sectors... Sector 3... Excluded...\" = All Sectors except Sector 3 are excluded.", "\"Commence Bombardment... All Sectors...\" = All Sectors will be attacked, so players should stay outside of any barrier.", "During this mech, the information can be changed midway, indicated by a \"Change\" whisper arriving:", "\"Commence Bombardment... Sector 3... Changed... Sector 1...\" = The attacked Sector was changed to be Sector 1, so players should avoid Sector 1.", "\"Commence Bombardment... All Sectors... Sector 2... Excluded... Changed... Move... Sector 4...\" = The safe Sector was moved to be Sector 4."],
-                                        es: ["El Comandante Glitter se vuelve invencible y se teletransporta lejos. Inmediatamente después, aparecerán 4 barreras en ubicaciones establecidas con un número del 1 al 4 establecido aleatoriamente y revelado solo al contacto. Jugadores aleatorios recibirán susurros individuales de una Señal de Radio Interceptada, contando solo una parte de un mensaje completo, lo que significa que los jugadores deben escribir su mensaje para unir la información y descubrir qué hacer.", "Las posibles piezas de mensaje que se pueden compartir son:", "Mensajes de posición: \"Sector X / todos los sectores\"", "Mensajes alternativos: \"Excluido / Cambiado / x Personas\"", "Ejemplos:", "Mensaje codificado: \"Comenzar Bombardeo... Sector 4...\" = Todos los Sectores excepto el Sector 4 son seguros.", "\"Sector 3... 4 Personas\" \"Sector 1... 2 Personas\" = 4 Jugadores deben ir al Sector 3 y 2 Jugadores deben ir al Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 3... Excluido...\" = Todos los Sectores excepto el Sector 3 están excluidos.", "\"Comenzar Bombardeo... Todos los Sectores...\" = Todos los Sectores serán atacados, así que los jugadores deben permanecer fuera de cualquier barrera.", "Durante esta mecánica, la información puede cambiar a mitad de camino, indicado por un susurro de \"Cambio\" que llega:", "\"Comenzar Bombardeo... Sector 3... Cambiado... Sector 1...\" = El Sector atacado fue cambiado al Sector 1, así que los jugadores deben evitar el Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 2... Excluido... Cambiado... Mover... Sector 4...\" = El Sector seguro fue movido al Sector 4."],
+                                        en: ["Glitter Commander teleports away. Immediately after, 4 barriers will appear on set locations with a number from 1 to 4 randomly set revealed only upon contact. Random players will receive individual whispers of an Intercepted Radio Signal, telling only a part of a full message, meaning players should type their message to piece together the information to figure out what to do.", "The possible message pieces that can be shared are:", "Position messages: \"Sector X / all sectors\"", "Alternative messages: \"Excluded / Changed / x People\"", "Examples:", "Scrambled message: \"Commence Bombardment... Sector 4...\" = All Sectors except Sector 4 are safe.", "\"Sector 3... 4 People\" \"Sector 1... 2 People\" = 4 Players should go to Sector 3 and 2 Players should go to Sector 1.", "\"Commence Bombardment... All Sectors... Sector 3... Excluded...\" = All Sectors except Sector 3 are excluded.", "\"Commence Bombardment... All Sectors...\" = All Sectors will be attacked, so players should stay outside of any barrier.", "During this mech, the information can be changed midway, indicated by a \"Change\" whisper arriving:", "\"Commence Bombardment... Sector 3... Changed... Sector 1...\" = The attacked Sector was changed to be Sector 1, so players should avoid Sector 1.", "\"Commence Bombardment... All Sectors... Sector 2... Excluded... Changed... Move... Sector 4...\" = The safe Sector was moved to be Sector 4."],
+                                        es: ["El Comandante Glitter se teletransporta lejos. Inmediatamente después, aparecerán 4 barreras en ubicaciones establecidas con un número del 1 al 4 establecido aleatoriamente y revelado solo al contacto. Jugadores aleatorios recibirán susurros individuales de una Señal de Radio Interceptada, contando solo una parte de un mensaje completo, lo que significa que los jugadores deben escribir su mensaje para unir la información y descubrir qué hacer.", "Las posibles piezas de mensaje que se pueden compartir son:", "Mensajes de posición: \"Sector X / todos los sectores\"", "Mensajes alternativos: \"Excluido / Cambiado / x Personas\"", "Ejemplos:", "Mensaje codificado: \"Comenzar Bombardeo... Sector 4...\" = Todos los Sectores excepto el Sector 4 son seguros.", "\"Sector 3... 4 Personas\" \"Sector 1... 2 Personas\" = 4 Jugadores deben ir al Sector 3 y 2 Jugadores deben ir al Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 3... Excluido...\" = Todos los Sectores excepto el Sector 3 están excluidos.", "\"Comenzar Bombardeo... Todos los Sectores...\" = Todos los Sectores serán atacados, así que los jugadores deben permanecer fuera de cualquier barrera.", "Durante esta mecánica, la información puede cambiar a mitad de camino, indicado por un susurro de \"Cambio\" que llega:", "\"Comenzar Bombardeo... Sector 3... Cambiado... Sector 1...\" = El Sector atacado fue cambiado al Sector 1, así que los jugadores deben evitar el Sector 1.", "\"Comenzar Bombardeo... Todos los Sectores... Sector 2... Excluido... Cambiado... Mover... Sector 4...\" = El Sector seguro fue movido al Sector 4."],
                                         kr: "", jp: "", br: ""
                                     }
                                 },
@@ -8619,9 +8629,10 @@ export const data = {
                                     iframe: true,
                                     unavoidable: true,
                                     groggy: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Glitter Commander becomes untargetable and teleports away to launch an All-Out Attack using Super Glitter's Pillars and Macbeth's Concentrated Thrust. All players will see telegraphs marking where the Pillars will drop, while 4 random players are targeted by Macbeth's Clones via a pink telegraph. Much like the regular Pillars mechanic, Pillars cannot overlap. Additionally, Clones must not overlap with each other either. A single player can be targeted by both mechanics simultaneously, and both positions will lock at the exact same time. Once locked, everyone must quickly sprint to a safe zone."],
-                                        es: ["El Comandante Glitter se vuelve invencible y se teletransporta lejos para lanzar un Ataque Total usando los Pilares de Super Glitter y la Embestida Concentrada de Macbeth. Todos los jugadores verán telégrafos marcando dónde caerán los Pilares, mientras que 4 jugadores aleatorios son objetivo de los Clones de Macbeth mediante un telégrafo rosa. Al igual que la mecánica regular de Pilares, los Pilares no pueden superponerse. Además, los Clones tampoco deben superponerse entre sí. Un solo jugador puede ser objetivo de ambas mecánicas simultáneamente, y ambas posiciones se fijarán exactamente al mismo tiempo. Una vez fijadas, todos deben correr rápidamente a una zona segura."],
+                                        en: ["Glitter Commander teleports away to launch an All-Out Attack using Super Glitter's Pillars and Macbeth's Concentrated Thrust. All players will see telegraphs marking where the Pillars will drop, while 4 random players are targeted by Macbeth's Clones via a pink telegraph. Much like the regular Pillars mechanic, Pillars cannot overlap. Additionally, Clones must not overlap with each other either. A single player can be targeted by both mechanics simultaneously, and both positions will lock at the exact same time. Once locked, everyone must quickly sprint to a safe zone."],
+                                        es: ["El Comandante Glitter se teletransporta lejos para lanzar un Ataque Total usando los Pilares de Super Glitter y la Embestida Concentrada de Macbeth. Todos los jugadores verán telégrafos marcando dónde caerán los Pilares, mientras que 4 jugadores aleatorios son objetivo de los Clones de Macbeth mediante un telégrafo rosa. Al igual que la mecánica regular de Pilares, los Pilares no pueden superponerse. Además, los Clones tampoco deben superponerse entre sí. Un solo jugador puede ser objetivo de ambas mecánicas simultáneamente, y ambas posiciones se fijarán exactamente al mismo tiempo. Una vez fijadas, todos deben correr rápidamente a una zona segura."],
                                         kr: "", jp: "", br: ""
                                     },
                                     note: {
@@ -8775,9 +8786,10 @@ export const data = {
                                     name: { en: "Gravitational Spacing", es: "Espaciado Gravitacional", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Iron Fist moves to the right side of the arena, becomes untargetable, and begins charging a powerful punch. NPC Peta will broadcast a message stating that the gravity sensor is activated, giving players an F1 prompt to lock themselves in mid-air upon usage. Simultaneously, players are targeted with plus-shaped (+) or cross-shaped (x) lasers, marked by crimson telegraphs with green outlines. Players must use the F1 prompt to lock their positions as high up as possible near the ceiling (the orange zone) while spacing out to avoid hitting each other with their lasers. To minimize casualties and ensure survival, the team's aerial formation must strictly resolve in one of combinations: ++xxx+ or +++xxx."],
-                                        es: ["Puño de Hierro se mueve al lado derecho de la arena, se vuelve invencible y comienza a cargar un puñetazo poderoso. El NPC Peta transmitirá un mensaje indicando que el sensor de gravedad está activado, dando a los jugadores un aviso F1 para fijarse en el aire al usarlo. Simultáneamente, los jugadores son objetivo de láseres en forma de cruz (+) o en forma de aspa (x), marcados por telégrafos carmesí con contornos verdes. Los jugadores deben usar el aviso F1 para fijar sus posiciones lo más alto posible cerca del techo (la zona naranja) mientras se espacian para evitar golpearse entre sí con sus láseres. Para minimizar bajas y asegurar la supervivencia, la formación aérea del equipo debe resolverse estrictamente en una de las combinaciones: ++xxx+ o +++xxx."],
+                                        en: ["Iron Fist moves to the right side of the arena, and begins charging a powerful punch. NPC Peta will broadcast a message stating that the gravity sensor is activated, giving players an F1 prompt to lock themselves in mid-air upon usage. Simultaneously, players are targeted with plus-shaped (+) or cross-shaped (x) lasers, marked by crimson telegraphs with green outlines. Players must use the F1 prompt to lock their positions as high up as possible near the ceiling (the orange zone) while spacing out to avoid hitting each other with their lasers. To minimize casualties and ensure survival, the team's aerial formation must strictly resolve in one of combinations: ++xxx+ or +++xxx."],
+                                        es: ["Puño de Hierro se mueve al lado derecho de la arena, y comienza a cargar un puñetazo poderoso. El NPC Peta transmitirá un mensaje indicando que el sensor de gravedad está activado, dando a los jugadores un aviso F1 para fijarse en el aire al usarlo. Simultáneamente, los jugadores son objetivo de láseres en forma de cruz (+) o en forma de aspa (x), marcados por telégrafos carmesí con contornos verdes. Los jugadores deben usar el aviso F1 para fijar sus posiciones lo más alto posible cerca del techo (la zona naranja) mientras se espacian para evitar golpearse entre sí con sus láseres. Para minimizar bajas y asegurar la supervivencia, la formación aérea del equipo debe resolverse estrictamente en una de las combinaciones: ++xxx+ o +++xxx."],
                                         kr: "", jp: "", br: ""
                                     }
                                 }
@@ -8940,10 +8952,10 @@ export const data = {
                                     name: { en: "Parry Discharge", es: "Descarga de Parry", kr: "", jp: "", br: "" },
                                     forcedat: { en: "Every 4 minutes", es: "Cada 4 minutos", kr: "", jp: "", br: "" },
                                     iframe: true,
-                                    hyper: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Marcus jumps to the center of the map, becomes untargetable, and begins charging. After a brief delay, he flashes and slams down. Players must parry this slam to absorb his charged energy, which inflicts <Parry Restriction>. The absorbed energy locks in place after 5 seconds and explodes shortly after, meaning the parrying player must quickly deposit it away from the group. Marcus repeats this slam 6 times, requiring each player to take turns parrying exactly once.", "During this mechanic, Marcus' yellow flash changes: players must wait for 4 pulses and parry precisely on the 5th pulse."],
-                                        es: ["Marcus salta al centro del mapa, se vuelve invencible y comienza a cargar. Después de un breve retraso, parpadea y golpea el suelo. Los jugadores deben hacer parry a este golpe para absorber su energía cargada, lo que inflige <Restricción de Parry>. La energía absorbida se fija en su lugar después de 5 segundos y explota poco después, lo que significa que el jugador que hizo parry debe depositarla rápidamente lejos del grupo. Marcus repite este golpe 6 veces, requiriendo que cada jugador se turne para hacer parry exactamente una vez.", "Durante esta mecánica, el parpadeo amarillo de Marcus cambia: los jugadores deben esperar 4 pulsos y hacer parry precisamente en el 5to pulso."],
+                                        en: ["Marcus jumps to the center of the map and begins charging. After a brief delay, he flashes and slams down. Players must parry this slam to absorb his charged energy, which inflicts <Parry Restriction>. The absorbed energy locks in place after 5 seconds and explodes shortly after, meaning the parrying player must quickly deposit it away from the group. Marcus repeats this slam 6 times, requiring each player to take turns parrying exactly once.", "During this mechanic, Marcus' yellow flash changes: players must wait for 4 pulses and parry precisely on the 5th pulse."],
+                                        es: ["Marcus salta al centro del mapa y comienza a cargar. Después de un breve retraso, parpadea y golpea el suelo. Los jugadores deben hacer parry a este golpe para absorber su energía cargada, lo que inflige <Restricción de Parry>. La energía absorbida se fija en su lugar después de 5 segundos y explota poco después, lo que significa que el jugador que hizo parry debe depositarla rápidamente lejos del grupo. Marcus repite este golpe 6 veces, requiriendo que cada jugador se turne para hacer parry exactamente una vez.", "Durante esta mecánica, el parpadeo amarillo de Marcus cambia: los jugadores deben esperar 4 pulsos y hacer parry precisamente en el 5to pulso."],
                                         kr: "", jp: "", br: ""
                                     }
                                 }
@@ -8957,9 +8969,10 @@ export const data = {
                                     forcedat: { en: "Forced at 200x", es: "Forzado en 200x", kr: "", jp: "", br: "" },
                                     iframe: true,
                                     unavoidable: true,
+                                    inv: true,
                                     description: {
-                                        en: ["Marcus becomes untargetable and teleports away. Meanwhile, all players are teleported to random locations and are inflicted with <Target Specified>. Marcus will then teleport to each player one by one counterclockwise, and start charging a punch. Parrying the punch will grant a shield. After Marcus is done punching all the players. He will stomp and instantly kill every player who isn't shielded."],
-                                        es: ["Marcus se vuelve invencible y se teletransporta lejos. Mientras tanto, todos los jugadores son teletransportados a ubicaciones aleatorias y reciben <Objetivo Especificado>. Marcus se teletransportará a cada jugador uno por uno en sentido antihorario, y comenzará a cargar un puñetazo. Hacer parry al puñetazo otorgará un escudo. Después de que Marcus termine de golpear a todos los jugadores, pisará y matará instantáneamente a cada jugador que no esté protegido."],
+                                        en: ["Marcus teleports away. Meanwhile, all players are teleported to random locations and are inflicted with <Target Specified>. Marcus will then teleport to each player one by one counterclockwise, and start charging a punch. Parrying the punch will grant a shield. After Marcus is done punching all the players. He will stomp and instantly kill every player who isn't shielded."],
+                                        es: ["Marcus se teletransporta lejos. Mientras tanto, todos los jugadores son teletransportados a ubicaciones aleatorias y reciben <Objetivo Especificado>. Marcus se teletransportará a cada jugador uno por uno en sentido antihorario, y comenzará a cargar un puñetazo. Hacer parry al puñetazo otorgará un escudo. Después de que Marcus termine de golpear a todos los jugadores, pisará y matará instantáneamente a cada jugador que no esté protegido."],
                                         kr: "", jp: "", br: ""
                                     }
                                 },
@@ -8972,8 +8985,8 @@ export const data = {
                                     iframe: true,
                                     unavoidable: true,
                                     description: {
-                                        en: ["Marcus becomes untargetable and teleports away as 4 devices spawn evenly distributed across the map. Each device displays either one or two glowing orange squares, which indicate the minimum number of players required to parry simultaneously. After a moderate delay, Marcus teleports to a random device to strike it. Each time Marcus' attack is parried successfully turns 1 of the device's squares green and grants the entire party 1 stack of 'Gravitational Plasticity'. Once Marcus finishes targeting all 4 devices, an instant wipe will be triggered if any of the device's squares remains orange."],
-                                        es: ["Marcus se vuelve invencible y se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga a todo el grupo 1 acumulación de 'Plasticidad Gravitacional'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará una eliminación instantánea si alguno de los cuadrados de los dispositivos permanece naranja."],
+                                        en: ["Marcus teleports away as 4 devices spawn evenly distributed across the map. Each device displays either one or two glowing orange squares, which indicate the minimum number of players required to parry simultaneously. After a moderate delay, Marcus teleports to a random device to strike it. Each time Marcus' attack is parried successfully turns 1 of the device's squares green and grants the entire party 1 stack of 'Gravitational Plasticity'. Once Marcus finishes targeting all 4 devices, an instant wipe will be triggered if any of the device's squares remains orange."],
+                                        es: ["Marcus se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga a todo el grupo 1 acumulación de 'Plasticidad Gravitacional'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará una eliminación instantánea si alguno de los cuadrados de los dispositivos permanece naranja."],
                                         kr: "", jp: "", br: ""
                                     },
                                     note: {

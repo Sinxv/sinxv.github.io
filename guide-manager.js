@@ -1185,6 +1185,12 @@ function renderGenericSection(sectionKey, providedSection) {
 function renderGuideContent(entry, container = null) {
     const contentWrapper = createElement('div', { class: 'guide-content' }, []);
 
+    // Add guide-level status warnings at the very top
+    const warnings = renderGuideStatusWarnings(entry);
+    if (warnings) {
+        contentWrapper.appendChild(warnings);
+    }
+
     if (entry.introKey) {
         const introLines = getMultiline(entry.introKey);
         introLines.forEach(line => renderParagraphElements(line).forEach(el => contentWrapper.appendChild(el)));
@@ -1447,53 +1453,224 @@ function createGuideModal(entry) {
 }
 
 // ============================================================
+// GUIDE STATUS CONFIG - top-level warnings for guides
+// ============================================================
+const GUIDE_STATUS_CONFIG = {
+    noimg: {
+        color: 'yellow',
+        class: 'guide-status-yellow',
+        // Shows for ALL languages (no language restriction)
+        showForAllLanguages: true,
+        info: { 
+            en: "This guide does not have images yet, please contact the developer if you can provide images for this guide.",
+            es: "Esta guía aún no tiene imágenes, por favor contacta al desarrollador si puedes proporcionar imágenes para esta guía.",
+            kr: "이 가이드는 아직 이미지가 없습니다. 이 가이드에 이미지를 제공할 수 있다면 개발자에게 연락해 주세요.",
+            jp: "このガイドにはまだ画像がありません。このガイド用の画像を提供できる場合は、開発者にご連絡ください。",
+            br: "Este guia ainda não tem imagens, por favor entre em contato com o desenvolvedor se puder fornecer imagens para este guia."
+        }
+    },
+    unsuplang: {
+        color: 'red',
+        class: 'guide-status-red',
+        // Only shows when current language is NOT in the guide's available languages
+        showForAllLanguages: false,
+        info: {
+            en: "This guide is not available in your selected language, please contact the developer if you can provide a translation for this guide.",
+            es: "Esta guía no está disponible en tu idioma seleccionado, por favor contacta al desarrollador si puedes proporcionar una traducción para esta guía.",
+            kr: "이 가이드는 선택한 언어로 제공되지 않습니다. 이 가이드의 번역을 제공할 수 있다면 개발자에게 연락해 주세요.",
+            jp: "このガイドは選択した言語では利用できません。このガイドの翻訳を提供できる場合は、開発者にご連絡ください。",
+            br: "Este guia não está disponível no idioma selecionado, por favor entre em contato com o desenvolvedor se puder fornecer uma tradução para este guia."
+        }
+    },
+    autotrlang: {
+        color: 'yellow',
+        class: 'guide-status-yellow',
+        // Only shows when current language IS in the guide's available languages
+        // (since auto-translation applies only to available languages)
+        showForAllLanguages: false,
+        showOnlyForAvailableLanguages: true,
+        info: {
+            en: "The translation for this guide was automatically generated, please contact the developer if you can provide a better translation for this guide.",
+            es: "La traducción de esta guía fue generada automáticamente, por favor contacta al desarrollador si puedes proporcionar una mejor traducción para esta guía.",
+            kr: "이 가이드의 번역은 자동으로 생성되었습니다. 더 나은 번역을 제공할 수 있다면 개발자에게 연락해 주세요.",
+            jp: "このガイドの翻訳は自動生成されました。より良い翻訳を提供できる場合は、開発者にご連絡ください。",
+            br: "A tradução deste guia foi gerada automaticamente, por favor entre em contato com o desenvolvedor se puder fornecer uma tradução melhor para este guia."
+        }
+    }
+};
+
+function renderGuideStatusWarnings(entry) {
+    const warnings = [];
+    const currentLang = getCurrentLang();
+    
+    // Get the list of languages this guide is available in
+    // This should be an array like ['en', 'es'] stored in the guide entry
+    const availableLanguages = entry.availableLanguages || ['en'];
+    const isLangAvailable = availableLanguages.includes(currentLang);
+    
+    Object.keys(GUIDE_STATUS_CONFIG).forEach(statusKey => {
+        if (entry[statusKey] !== true) return;
+        
+        const config = GUIDE_STATUS_CONFIG[statusKey];
+        
+        // Language-based filtering
+        if (!config.showForAllLanguages) {
+            // For warnings that only appear when the language is NOT available
+            if (config.showOnlyForAvailableLanguages === undefined) {
+                if (isLangAvailable) return; // Skip if language is available
+            }
+            // For warnings that only appear when the language IS available
+            if (config.showOnlyForAvailableLanguages === true) {
+                if (!isLangAvailable) return; // Skip if language is not available
+            }
+        }
+        
+        const message = getLocalizedValue(config.info);
+        if (!message) return;
+        
+        const warning = createElement('div', {
+            class: `guide-status-warning ${config.class}`
+        }, []);
+        
+        const icon = createElement('span', { class: 'guide-status-warning-icon' }, ['⚠']);
+        const text = createElement('span', { class: 'guide-status-warning-text' }, [message]);
+        
+        warning.appendChild(icon);
+        warning.appendChild(text);
+        warnings.push(warning);
+    });
+    
+    if (warnings.length === 0) return null;
+    
+    const wrapper = createElement('div', { class: 'guide-status-warnings' }, []);
+    warnings.forEach(w => wrapper.appendChild(w));
+    return wrapper;
+}
+
+// ============================================================
 // MECH STATUS ICONS CONFIG
 // ============================================================
 const MECH_STATUS_CONFIG = {
     unavoidable: {
         icon: 'images/unavoidable.png',
-        info: 'Resurrection titles and effects do not work during this mechanic.',
+        info: {
+            en: 'Resurrection titles and effects do not work during this mechanic.',
+            es: 'Los títulos y efectos de resurrección no funcionan durante esta mecánica.',
+            kr: '이 메커니즘 동안 부활 타이틀과 효과가 작동하지 않습니다.',
+            jp: 'このメカニズム中、復活タイトルと効果は機能しません。',
+            br: 'Títulos e efeitos de ressurreição não funcionam durante esta mecânica.'
+        },
         class: 'mech-status-unavoidable'
     },
     iframe: {
         icon: 'images/iframe.png',
-        info: 'Invincibility frames are bypassed by this mechanic.',
+        info: {
+            en: 'Invincibility frames are bypassed by this mechanic.',
+            es: 'Los marcos de invencibilidad son ignorados por esta mecánica.',
+            kr: '이 메커니즘은 무적 프레임을 무시합니다.',
+            jp: 'このメカニズムは無敵フレームを無視します。',
+            br: 'Frames de invencibilidade são ignorados por esta mecânica.'
+        },
         class: 'mech-status-iframe'
     },
     groggy: {
         icon: 'images/groggy.png',
-        info: 'The boss enters groggy state after mechanic completion.',
+        info: {
+            en: 'The boss enters groggy state after mechanic completion.',
+            es: 'El jefe entra en estado groggy después de completar la mecánica.',
+            kr: '메커니즘 완료 후 보스가 그로기 상태에 들어갑니다.',
+            jp: 'メカニズム完了後、ボスがグロッキー状態になります。',
+            br: 'O chefe entra em estado groggy após a conclusão da mecânica.'
+        },
         class: 'mech-status-groggy'
     },
     heal: {
         icon: 'images/heal.png',
-        info: 'Failing to fulfill the mechanic clear condition results in boss healing.',
+        info: {
+            en: 'Failing to fulfill the mechanic clear condition results in boss healing.',
+            es: 'No cumplir la condición de superación de la mecánica resulta en curación del jefe.',
+            kr: '메커니즘 클리어 조건을 충족하지 못하면 보스가 회복합니다.',
+            jp: 'メカニズムのクリア条件を満たさないと、ボスが回復します。',
+            br: 'Falhar em cumprir a condição de conclusão da mecânica resulta em cura do chefe.'
+        },
         class: 'mech-status-heal'
     },
     timed: {
         icon: 'images/timed.png',
-        info: 'This mech has a time limit until mechanic ends in failure if its condition is not fulfilled.',
+        info: {
+            en: 'This mech has a time limit until mechanic ends in failure if its condition is not fulfilled.',
+            es: 'Esta mecánica tiene un límite de tiempo hasta que termina en fracaso si no se cumple su condición.',
+            kr: '이 메커니즘은 조건이 충족되지 않으면 실패로 끝나는 시간 제한이 있습니다.',
+            jp: 'このメカニズムは条件が満たされない場合、失敗で終了する時間制限があります。',
+            br: 'Esta mecânica tem um limite de tempo até terminar em falha se sua condição não for cumprida.'
+        },
         class: 'mech-status-timed'
     },
     deathtimed: {
         icon: 'images/timed.png',
-        info: 'This mech has a time limit until mechanic ends in death if its condition is not fulfilled.',
+        info: {
+            en: 'This mech has a time limit until mechanic ends in death if its condition is not fulfilled.',
+            es: 'Esta mecánica tiene un límite de tiempo hasta que termina en muerte si no se cumple su condición.',
+            kr: '이 메커니즘은 조건이 충족되지 않으면 죽음으로 끝나는 시간 제한이 있습니다.',
+            jp: 'このメカニズムは条件が満たされない場合、死亡で終了する時間制限があります。',
+            br: 'Esta mecânica tem um limite de tempo até terminar em morte se sua condição não for cumprida.'
+        },
         class: 'mech-status-deathtimed'
     },
     wipetimed: {
         icon: 'images/timed.png',
-        info: 'This mech has a time limit until mechanic ends in party wipe if its condition is not fulfilled.',
+        info: {
+            en: 'This mech has a time limit until mechanic ends in party wipe if its condition is not fulfilled.',
+            es: 'Esta mecánica tiene un límite de tiempo hasta que termina en eliminación del grupo si no se cumple su condición.',
+            kr: '이 메커니즘은 조건이 충족되지 않으면 파티 전멸로 끝나는 시간 제한이 있습니다.',
+            jp: 'このメカニズムは条件が満たされない場合、パーティ全滅で終了する時間制限があります。',
+            br: 'Esta mecânica tem um limite de tempo até terminar em wipe do grupo se sua condição não for cumprida.'
+        },
         class: 'mech-status-wipetimed'
     },
     magneticfield: {
         icon: 'images/magneticfield.png',
-        info: 'This attack increases magnetic field size.',
+        info: {
+            en: 'This attack increases magnetic field size.',
+            es: 'Este ataque aumenta el tamaño del campo magnético.',
+            kr: '이 공격은 자기장 크기를 증가시킵니다.',
+            jp: 'この攻撃は磁場のサイズを増加させます。',
+            br: 'Este ataque aumenta o tamanho do campo magnético.'
+        },
         class: 'mech-status-magneticfield'
     },
     superarmor: {
         icon: 'images/superarmor.png',
-        info: 'Super Armor is bypassed by this mechanic.',
+        info: {
+            en: 'Super Armor is bypassed by this mechanic.',
+            es: 'La Súper Armadura es ignorada por esta mecánica.',
+            kr: '이 메커니즘은 슈퍼 아머를 무시합니다.',
+            jp: 'このメカニズムはスーパーアーマーを無視します。',
+            br: 'Super Armadura é ignorada por esta mecânica.'
+        },
         class: 'mech-status-superarmor'
+    },
+    hyper: {
+        icon: 'images/hyper.png',
+        info: {
+            en: 'Boss enters Hyper Armor state during this mechanic.\n Hyper Armor: Becomes immune to knockback effects and debuffs.',
+            es: 'El jefe entra en el estado de Hiper Armadura durante esta mecánica.\n Hiper Armadura: Se vuelve inmune a los efectos de empuje y debuffs.',
+            kr: '보스는 이 메커니즘 동안 하이퍼 아머 상태로 진입합니다.\n 하이퍼 아머: 넉백 효과와 디버프에 대해 면역이 됩니다.',
+            jp: 'ボスはこのメカニズム中にハイパーアーマー状態に進入します。\n ハイパーアーマー: ノックバック効果とデバフに免疫を持ちます。',
+            br: 'Chefe entra no estado de Hiper Armadura durante esta mecânica.\n Hiper Armadura: Torna-se imune aos efeitos de empurrão e debuffs.'
+        },
+        class: 'mech-status-hyper'
+    },
+    inv: {
+        icon: 'images/inv.png',
+        info: {
+            en: 'Boss enters Invincibility state during this mechanic.\n Invincibility: Becomes immune to all damage.',
+            es: 'El jefe entra en el estado de Invincibilidad durante esta mecánica.\n Invincibilidad: Se vuelve inmune a todo el daño.',
+            kr: '보스는 이 메커니즘 동안 무적 상태로 진입합니다.\n 무적: 모든 데미지에 대해 면역이 됩니다.',
+            jp: 'ボスはこのメカニズム中に無敵状態に進入します。\n 無敵: すべてのダメージに免疫を持ちます。',
+            br: 'Chefe entra no estado de Invencibilidade durante esta mecânica.\n Invencibilidade: Torna-se imune a todo o dano.'
+        },
+        class: 'mech-status-inv'
     }
 };
 
@@ -1502,9 +1679,9 @@ function createStatusIcon(statusKey, customLabel, showText = false) {
     if (!config) return null;
     
     // Only use customLabel if provided, otherwise use config.label
-    // If showText is true but no label exists, don't show any text
     const labelText = customLabel || config.label || null;
-    const tooltipText = config.info || '';
+    // Use getLocalizedValue for info since it's now a multilingual object
+    const tooltipText = getLocalizedValue(config.info) || '';
     
     const icon = createElement('span', {
         class: `mech-status-icon ${config.class}`,

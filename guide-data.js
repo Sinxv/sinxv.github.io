@@ -61,7 +61,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Rosso',
         titleKey: 'stage3.sections.ctohf.titlekey',
-        raidKeys: ['stage3.sections.ctohf']
+        raidKeys: ['stage3.sections.ctohf'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'ned',
@@ -69,7 +71,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Rosso',
         titleKey: 'stage3.sections.ned.titlekey',
-        raidKeys: ['stage3.sections.ned']
+        raidKeys: ['stage3.sections.ned'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'ccof',
@@ -77,7 +81,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Rosso',
         titleKey: 'stage3.sections.ccof.titlekey',
-        raidKeys: ['stage3.sections.ccof']
+        raidKeys: ['stage3.sections.ccof'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'swgc',
@@ -85,7 +91,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Berthe',
         titleKey: 'stage4.sections.swgc.titlekey',
-        raidKeys: ['stage4.sections.swgc']
+        raidKeys: ['stage4.sections.swgc'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'aoi',
@@ -93,7 +101,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Berthe',
         titleKey: 'stage4.sections.aoi.titlekey',
-        raidKeys: ['stage4.sections.aoi']
+        raidKeys: ['stage4.sections.aoi'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'shg',
@@ -101,7 +111,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Abyss',
         titleKey: 'stage5.sections.shg.titlekey',
-        raidKeys: ['stage5.sections.shg']
+        raidKeys: ['stage5.sections.shg'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'bmf',
@@ -109,7 +121,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Abyss',
         titleKey: 'stage5.sections.bmf.titlekey',
-        raidKeys: ['stage5.sections.bmf']
+        raidKeys: ['stage5.sections.bmf'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'nc',
@@ -117,7 +131,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Abyss',
         titleKey: 'stage5.sections.nc.titlekey',
-        raidKeys: ['stage5.sections.nc']
+        raidKeys: ['stage5.sections.nc'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'boo',
@@ -125,7 +141,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Abyss',
         titleKey: 'stage5.sections.boo.titlekey',
-        raidKeys: ['stage5.sections.boo']
+        raidKeys: ['stage5.sections.boo'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'st',
@@ -133,7 +151,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Serpentium',
         titleKey: 'stage6.sections.st.titlekey',
-        raidKeys: ['stage6.sections.st']
+        raidKeys: ['stage6.sections.st'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'oh',
@@ -141,7 +161,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Serpentium',
         titleKey: 'stage6.sections.oh.titlekey',
-        raidKeys: ['stage6.sections.oh']
+        raidKeys: ['stage6.sections.oh'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'cop',
@@ -149,7 +171,9 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_cop',
-        raidKeys: ['stage7.sections.cop']
+        raidKeys: ['stage7.sections.cop'],
+        availableLanguages: ['en'],
+        noimg: true,
     },
     {
         id: 'nrr',
@@ -157,7 +181,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_nrr',
-        raidKeys: ['stage7.sections.nrr']
+        raidKeys: ['stage7.sections.nrr'],
+        availableLanguages: ['en'],
     },
     {
         id: 'artifact_system',
@@ -172,7 +197,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_qth',
-        raidKeys: ['stage7.sections.qth']
+        raidKeys: ['stage7.sections.qth'],
+        availableLanguages: ['en'],
     },
     {
         id: 'wt_fl',
@@ -186,6 +212,7 @@ export const guideData = [
             description: {en: "In-depth guide of Doom Aporia's 4th raid dungeon."},
             image: "images/wtfl1.png"
         },
+        availableLanguages: ['en'],
     },
     {
         id: 'wt_fa',
@@ -193,7 +220,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Doom Aporia',
         titleKey: 'stage7.content_wtfa',
-        raidKeys: ['stage7.sections.wtfa']
+        raidKeys: ['stage7.sections.wtfa'],
+        availableLanguages: ['en'],
     },
     {
         id: 'tts',
@@ -201,7 +229,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_tts',
-        raidKeys: ['stage8.sections.tts']
+        raidKeys: ['stage8.sections.tts'],
+        availableLanguages: ['en', 'es'],
     },
     {
         id: 'bs',
@@ -209,7 +238,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_bs',
-        raidKeys: ['stage8.sections.bs']
+        raidKeys: ['stage8.sections.bs'],
+        availableLanguages: ['en', 'es'],
     },
     {
         id: 'pz',
@@ -217,7 +247,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_pz',
-        raidKeys: ['stage8.sections.pz']
+        raidKeys: ['stage8.sections.pz'],
+        availableLanguages: ['en', 'es'],
     },
     {
         id: 'ou_a',
@@ -225,7 +256,8 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_oua',
-        raidKeys: ['stage8.sections.oua']
+        raidKeys: ['stage8.sections.oua'],
+        availableLanguages: ['en', 'es'],
     },
     {
         id: 'ou_o',
@@ -233,6 +265,7 @@ export const guideData = [
         category: 'raid',
         belongsto: 'Nebulon',
         titleKey: 'stage8.content_ouo',
-        raidKeys: ['stage8.sections.ouo']
+        raidKeys: ['stage8.sections.ouo'],
+        availableLanguages: ['en', 'es'],
     },
 ];
