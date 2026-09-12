@@ -8313,13 +8313,21 @@ export const data = {
                                         en: ["6 purple crystals are randomly placed throughout the arena. After being infused with Henir's energy the crystal enlarges and becomes a target damageable with commands and active skills. After Owen's HP reaches 150x, the positions of the crystals will change."],
                                         es: ["6 cristales púrpuras se colocan aleatoriamente en toda la arena. Después de ser infundidos con la energía de Henir, el cristal se agranda y se vuelve un objetivo dañable con comandos y habilidades activas. Después de que la HP de Owen alcanza 150x, las posiciones de los cristales cambiarán."],
                                         kr: "", jp: "", br: ""
+                                    },
+                                    note: {
+                                        en: ["Infused Crystals cannot be re infused before their energy is depleted."],
+                                        es: ["Los cristales infundidos no pueden ser infundidos de nuevo antes de agotar su energía."],
+                                        kr: "",
+                                        jp: "",
+                                        br: ""
                                     }
+
                                 },
                                 dimensionalinstability: {
                                     name: { en: "Dimensional Instability", es: "Inestabilidad Dimensional", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: ["Being hit by Owen's normal patterns will increase the gauge on the top middle of the screen, this gauge is individual for each pattern. After the gauge reaches 100, the player will be teleported to another dimension and obtain \"Henir's Erosion\" debuff. While being in another dimension, <Rift Crystals> gain a F1 prompt, upon use, the gauge resets to 0."],
-                                        es: ["Ser golpeado por los patrones normales de Owen aumentará el medidor en la parte superior central de la pantalla, este medidor es individual para cada patrón. Después de que el medidor alcanza 100, el jugador será teletransportado a otra dimensión y obtendrá la desventaja \"Erosión de Henir\". Mientras está en otra dimensión, los <Cristales de la Grieta> obtienen un uso de Funcion F1, al usarlo, el medidor se reinicia a 0."],
+                                        en: ["Being hit by Owen's normal patterns will increase the gauge on the top middle of the screen, this gauge is individual for each player. After the gauge reaches 100, the player will be teleported to another dimension and obtain \"Henir's Erosion\" debuff. While being in another dimension, <Rift Crystals> gain a F1 prompt, upon use, the gauge resets to 0."],
+                                        es: ["Ser golpeado por los patrones normales de Owen aumentará el medidor en la parte superior central de la pantalla, este medidor es individual para cada jugador. Después de que el medidor alcanza 100, el jugador será teletransportado a otra dimensión y obtendrá la desventaja \"Erosión de Henir\". Mientras está en otra dimensión, los <Cristales de la Grieta> obtienen un uso de Funcion F1, al usarlo, el medidor se reinicia a 0."],
                                         kr: "", jp: "", br: ""
                                     },
                                     henirserosion: {
