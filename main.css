@@ -73,21 +73,22 @@ body.color-darkblue {
    2. GLOBAL RESET & BASE TYPOGRAPHY
    ============================================================ */
 
-* {
-    padding: 0;
+
+*, *::before, *::after {
     box-sizing: border-box;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    color: var(--text-color);
-    background: none;
-    overflow-x: hidden;
 }
 
 html, body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-optical-sizing: auto;
+    color: var(--text-color);
+    background: none;
+}
+
+.guidetext, .tginfo, .guider, .container {
+    font-weight: 100;
 }
 
 body {
@@ -182,7 +183,9 @@ a {
     display: flex;
 }
 
-
+strong, b {
+    font-weight: 700 !important;  /* or 500 for subtle, 700 for strong */
+}
 
 /* ============================================================
    3. PAGE LAYOUT (SHELL / CONTAINER)
@@ -1522,6 +1525,14 @@ body.light-mode .lower .info {
     box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb, 255, 224, 102), 0.1);
 }
 
+#settings-popup small,
+.settings-menu small {
+    display: block;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -2157,6 +2168,85 @@ body.guide-modal-open {
     );
 }
 
+
+.image-float-left,
+.image-float-right {
+    margin: 6px 0;
+    max-width: 45%;
+    /* Prevent the image from being larger than half the container */
+    width: 45%;
+    flex: none !important;
+}
+
+.image-float-left {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.image-float-right {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* Images inside a layer that are floated don't need flex layout */
+.image-layer .guide-image-figure.image-float-left,
+.image-layer .guide-image-figure.image-float-right {
+    align-items: flex-start;
+    flex: 0 0 auto !important;
+    max-width: 45%;
+}
+
+/* Caption adjustments for floating images */
+.image-float-left .guide-image-caption,
+.image-float-right .guide-image-caption {
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+/* Ensure the image itself scales properly */
+.image-float-left .guide-image,
+.image-float-right .guide-image {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-radius: 6px;
+}
+
+/* Clear floats before major headings so the layout doesn't bleed */
+.mech h3,
+.mech h4,
+.mech .mechanic-group-title,
+.guide-raid-section h3,
+.guide-raid-section .mechanic-group-title,
+.phase-section h3 {
+    clear: both;
+}
+
+/* Clear floats at the end of every mech entry */
+.mech::after,
+.concept::after,
+.guide-raid-section::after,
+.phase-section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* Mobile: disable float, stack vertically */
+@media (max-width: 768px) {
+    .image-float-left,
+    .image-float-right,
+    .image-layer .guide-image-figure.image-float-left,
+    .image-layer .guide-image-figure.image-float-right {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        margin: 12px 0;
+    }
+}
+
 .sub-mech {
     margin: 12px 0 12px 16px;
     padding: 12px 16px;
@@ -2220,6 +2310,8 @@ body.guide-modal-open {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    height: auto;
+    width: fit-content;
 }
 
 .image-layer-ico {
@@ -2266,7 +2358,7 @@ body.guide-modal-open {
 .image-layer-primary .guide-image-figure {
     flex: 1 1 100%;
     max-width: 100%;
-    align-items: center;
+    align-self: center;
 }
 
 .image-layer-primary .guide-image {
@@ -2279,9 +2371,32 @@ body.guide-modal-open {
     border-radius: 6px;
 }
 
+.guide-image-inline-placeholder {
+    margin: 12px 0;
+    display: block;
+    width: 100%;
+}
+
+.guide-image-placeholder .guide-image-group {
+    margin: 0;
+}
+
+/* If you want inline float support here too: */
+.guide-image-placeholder .image-layer {
+    justify-content: center;
+}
+
+/* Paragraphs adjacent to inline image placeholders */
+p + .guide-image-placeholder {
+    margin-top: 16px;
+}
+
+.guide-image-placeholder + p {
+    margin-top: 16px;
+}
+
 .image-layer-primary .guide-image:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 16px rgba(102, 179, 255, 0.3);
 }
 
 /* Secondary images */
@@ -2425,7 +2540,6 @@ body.guide-modal-open {
 
 .image-layer-tertiary .guide-image:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(102, 179, 255, 0.2);
 }
 
 .guide-image {
@@ -2608,6 +2722,170 @@ body.lightbox-open {
     color: var(--text-secondary);
     text-align: center;
     width: 100%;
+}
+
+/* ============================================================
+   INLINE PICTURES — separate from guide-image-group renderer
+   ============================================================ */
+
+
+
+/* Layer sizing for inline pictures */
+.guide-inline-pic-layer-primary .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-primary {
+    max-height: 400px;
+}
+
+.guide-inline-pic-layer-secondary .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-secondary {
+    max-height: 300px;
+}
+
+.guide-inline-pic-layer-tertiary .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-tertiary {
+    max-height: 200px;
+}
+
+.guide-inline-pic-layer-ico .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-ico {
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.guide-inline-pic-layer-normal .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-normal {
+    max-height: 300px;
+}
+
+.guide-inline-pic-layer-small .guide-inline-pic-img,
+.guide-inline-pic-img.guide-inline-pic-layer-small {
+    max-height: 200px;
+}
+
+/* The figure also respects the layer's max size */
+.guide-inline-pic-layer-primary { max-width: 100%; }
+.guide-inline-pic-layer-secondary { max-width: 60%; }
+.guide-inline-pic-layer-tertiary { max-width: 40%; }
+.guide-inline-pic-layer-ico { max-width: 48px; }
+.guide-inline-pic-layer-normal { max-width: 50%; }
+.guide-inline-pic-layer-small { max-width: 25%; }
+
+/* Float rules override the max-width */
+.guide-inline-pic-float-left,
+.guide-inline-pic-float-right {
+    max-width: 45% !important;
+}
+
+.guide-inline-pic {
+    margin: 8px 0;
+    display: block;
+    max-width: 100%;
+}
+
+.guide-inline-pic-img {
+    display: block;
+    max-width: 100%;
+    margin-right: 20px;
+    height: auto;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guide-inline-pic-img:hover {
+    transform: scale(1.02);
+}
+
+.guide-inline-pic-caption {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.guide-inline-pic-caption.caption-quote {
+    font-style: italic;
+    opacity: 0.85;
+}
+
+/* Floating variants — these actually wrap text now */
+.guide-inline-pic-float-left {
+    float: left;
+    margin: 4px 20px 12px 0;
+    max-width: 45%;
+}
+
+.guide-inline-pic-float-right {
+    float: right;
+    margin: 4px 0 12px 20px;
+    max-width: 45%;
+}
+
+.guide-inline-pic-inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 4px;
+    max-width: 48px;
+    width: auto;
+    float: none;
+}
+
+.guide-inline-pic-inline .guide-inline-pic-img {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: none;
+    max-height: 1.4em;  /* matches line height */
+    width: auto;
+    height: auto;
+    border-radius: 3px;
+    cursor: zoom-in;
+}
+
+/* If you set an explicit width/height in the data, respect it */
+.guide-inline-pic-inline[style*="width"] .guide-inline-pic-img {
+    max-height: none;
+}
+
+/* Layer-specific inline sizes (icons stay small) */
+.guide-inline-pic-inline.guide-inline-pic-layer-ico .guide-inline-pic-img {
+    max-height: 48px;
+    max-width: 48px;
+}
+
+.guide-inline-pic-inline.guide-inline-pic-layer-small .guide-inline-pic-img {
+    max-height: 32px;
+    max-width: 32px;
+}
+
+/* Clear floats so headings/end-of-section don't collide */
+.guidetext::after,
+.mech::after,
+.concept::after,
+.phase-section::after,
+.guide-raid-section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.mech h3,
+.mech h4,
+.mech .mechanic-group-title,
+.guide-raid-section h3,
+.phase-section h3,
+h2, h3 {
+    clear: both;
+}
+
+/* Mobile: disable float */
+@media (max-width: 768px) {
+    .guide-inline-pic-float-left,
+    .guide-inline-pic-float-right {
+        float: none;
+        max-width: 100%;
+        margin: 12px 0;
+    }
 }
 
 /* ============================================================
@@ -3092,4 +3370,38 @@ h2, h3,
     .IMGPHASEHEADER#ou_o1 {
         background: url('images/ouo1.png') no-repeat;
     }
+}
+
+/* ============================================================
+   GUIDE HYPERLINKS
+   ============================================================ */
+
+.guide-hyperlink {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary-color);
+    font-weight: 600;
+    transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.guide-hyperlink:hover {
+    color: var(--primary-light);
+    border-bottom-style: solid;
+    border-bottom-color: var(--primary-light);
+    opacity: 0.9;
+}
+
+.guide-hyperlink:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* External link indicator */
+.guide-hyperlink[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-left: 1px;
 }

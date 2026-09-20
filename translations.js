@@ -12,8 +12,62 @@ class TranslationManager {
         this.isBackButtonActive = false;
         this.glossaryEntries = this.buildGlossaryEntries();
         this.glossaryTooltip = null;
+        this._inlineImgRegistry = new Map();
+        this._inlineImgCounter = 0;
+        this._currentBaseObject = null;
         document.documentElement.lang = this.currentLang;
         this.setupGlossaryTooltipHandlers();
+    }
+
+    _registerInlineImg(imgData) {
+        const id = `inline-img-${++this._inlineImgCounter}`;
+        this._inlineImgRegistry.set(id, imgData);
+        return id;
+    }
+
+    _resolveInlineImg(id) {
+        return this._inlineImgRegistry.get(id);
+    }
+
+    getObjectByPathFromBase(key, base) {
+        const keys = key.split('.');
+        let value = base;
+        for (const k of keys) {
+            if (!value || typeof value !== 'object' || !(k in value)) return null;
+            value = value[k];
+        }
+        return value;
+    }
+
+    renderWithBase(value, baseObject, container = null) {
+        const prev = this._currentBaseObject;
+        this._currentBaseObject = baseObject;
+        try {
+            return this.renderRichText(value, container);
+        } finally {
+            this._currentBaseObject = prev;
+        }
+    }
+
+    findBaseObjectForKey(key) {
+        const parts = key.split('.');
+        
+        // 1. Try the key itself
+        const self = this.getObjectByPath(key);
+        if (self && typeof self === 'object' && self.img) {
+            return self;
+        }
+        
+        // 2. Walk up the tree
+        for (let drop = 1; drop <= 5; drop++) {
+            const candidateKey = parts.slice(0, parts.length - drop).join('.');
+            if (!candidateKey) continue;
+            const candidate = this.getObjectByPath(candidateKey);
+            if (candidate && typeof candidate === 'object' && candidate.img) {
+                return candidate;
+            }
+        }
+        return null;
     }
 
     applyTranslations(context = document) {
@@ -123,6 +177,183 @@ class TranslationManager {
 
         history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${targetId}`);
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    renderImageValue(value) {
+        // Use the guide-manager's image renderer if available
+        if (window.renderGenericImage) {
+            return window.renderGenericImage(value);
+        }
+        
+        // Fallback: basic image rendering if guide-manager not loaded
+        const wrapper = document.createElement('div');
+        wrapper.className = 'guide-image-group';
+        
+        const layers = ['primary', 'secondary', 'tertiary', 'ico', 'normal', 'small'];
+        layers.forEach(layer => {
+            const layerData = value[layer];
+            if (!layerData) return;
+            
+            const layerContainer = document.createElement('div');
+            layerContainer.className = `image-layer image-layer-${layer}`;
+            
+            const images = Array.isArray(layerData) ? layerData : [layerData];
+            images.forEach(imgData => {
+                const figure = document.createElement('figure');
+                figure.className = 'guide-image-figure';
+                
+                let src, altText, captionType, floatSide, floatWidth;
+                if (typeof imgData === 'string') {
+                    src = imgData;
+                    altText = '';
+                    captionType = 'default';
+                } else {
+                    src = imgData.src;
+                    altText = this.getLocalizedValue(imgData.alt) || (imgData.alt?.en || '');
+                    captionType = imgData.captionType || 'default';
+                    floatSide = imgData.float || null;
+                    floatWidth = imgData.width || null;
+                }
+                
+                if (!src) return;
+                
+                // Apply float class
+                if (floatSide === 'left') {
+                    figure.classList.add('image-float-left');
+                } else if (floatSide === 'right') {
+                    figure.classList.add('image-float-right');
+                }
+                
+                if (floatWidth) {
+                    figure.style.width = floatWidth;
+                }
+                
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = altText;
+                img.className = 'guide-image';
+                img.loading = 'lazy';
+                if (floatWidth) {
+                    img.style.width = '100%';
+                    img.style.height = 'auto';
+                }
+                img.addEventListener('click', () => {
+                    if (window.openImageLightbox) window.openImageLightbox(src, altText);
+                });
+                figure.appendChild(img);
+                
+                if (altText) {
+                    const caption = document.createElement('figcaption');
+                    caption.className = 'guide-image-caption';
+                    if (captionType === 'quote') {
+                        caption.textContent = `"${altText}"`;
+                        caption.classList.add('caption-quote');
+                    } else {
+                        caption.textContent = altText;
+                    }
+                    figure.appendChild(caption);
+                }
+                
+                layerContainer.appendChild(figure);
+            });
+            
+            wrapper.appendChild(layerContainer);
+        });
+        
+        return wrapper;
+    }
+
+    renderInlineFloatImage(imgData) {
+        // imgData = { primary: [{ src, float, width, alt, captionType }] }
+        // Pick the first image from the first layer, or handle multiple
+        const layers = ['primary', 'secondary', 'tertiary', 'ico', 'normal', 'small'];
+        const figures = [];
+
+        for (const layer of layers) {
+            const arr = imgData[layer];
+            if (!arr) continue;
+            const images = Array.isArray(arr) ? arr : [arr];
+            for (const raw of images) {
+                let src, altText, captionType, floatSide, floatWidth;
+                if (typeof raw === 'string') {
+                    src = raw;
+                    altText = '';
+                    captionType = 'default';
+                } else {
+                    src = raw.src;
+                    altText = this.getLocalizedValue(raw.alt) || (raw.alt?.en || '');
+                    captionType = raw.captionType || 'default';
+                    floatSide = raw.float || null;
+                    floatWidth = raw.width || null;
+                }
+                if (!src) continue;
+
+                const figure = document.createElement('figure');
+                figure.className = 'guide-image-figure';
+                if (floatSide === 'left') figure.classList.add('image-float-left');
+                else if (floatSide === 'right') figure.classList.add('image-float-right');
+
+                if (floatWidth) figure.style.width = floatWidth;
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = altText;
+                img.className = 'guide-image';
+                img.loading = 'lazy';
+                img.addEventListener('click', () => {
+                    if (window.openImageLightbox) window.openImageLightbox(src, altText);
+                });
+                figure.appendChild(img);
+
+                if (altText) {
+                    const caption = document.createElement('figcaption');
+                    caption.className = 'guide-image-caption';
+                    if (captionType === 'quote') {
+                        caption.textContent = `"${altText}"`;
+                        caption.classList.add('caption-quote');
+                    } else {
+                        caption.textContent = altText;
+                    }
+                    figure.appendChild(caption);
+                }
+                figures.push(figure);
+            }
+        }
+
+        const frag = document.createDocumentFragment();
+        figures.forEach(f => frag.appendChild(f));
+        return frag;
+    }
+
+    _registerInlineImg(imgData) {
+        const id = `inline-img-${++this._inlineImgCounter}`;
+        this._inlineImgRegistry.set(id, imgData);
+        return id;
+    }
+
+    _resolveInlineImg(id) {
+        return this._inlineImgRegistry.get(id);
+    }
+
+    // Wrapper to render with a base object
+    renderWithBase(value, baseObject, container = null) {
+        const prev = this._currentBaseObject;
+        this._currentBaseObject = baseObject;
+        try {
+            return this.renderRichText(value, container);
+        } finally {
+            this._currentBaseObject = prev;
+        }
+    }
+
+    getLocalizedValue(value) {
+        if (value === null || value === undefined) return '';
+        if (typeof value === 'string') return value;
+        if (Array.isArray(value)) return value.map(v => this.getLocalizedValue(v)).join(' ');
+        if (typeof value === 'object') {
+            return value[this.currentLang] || value.en || '';
+        }
+        return String(value);
     }
 
     setupGlossaryTooltipHandlers() {
@@ -293,18 +524,242 @@ class TranslationManager {
         return result;
     }
 
+    _registerInlinePic(picConfig) {
+        if (!this._inlinePicRegistry) {
+            this._inlinePicRegistry = new Map();
+            this._inlinePicCounter = 0;
+        }
+        const id = `inline-pic-${++this._inlinePicCounter}`;
+        this._inlinePicRegistry.set(id, picConfig);
+        return id;
+    }
+
+    _resolveInlinePic(id) {
+        return this._inlinePicRegistry?.get(id);
+    }
+
+    _createInlinePicFigure(picData) {
+        if (!picData) return null;
+
+        // New shape: { img, layer }
+        if (picData.img !== undefined) {
+            return this._createSingleInlinePicFigure(picData.img, picData.layer);
+        }
+
+        // Legacy shape: layer object
+        if (typeof picData === 'object' && !Array.isArray(picData) && !picData.src) {
+            const layers = ['primary', 'secondary', 'tertiary', 'ico', 'normal', 'small'];
+            const wrapper = document.createDocumentFragment();
+            let any = false;
+
+            for (const layerName of layers) {
+                const layerData = picData[layerName];
+                if (!layerData) continue;
+                const images = Array.isArray(layerData) ? layerData : [layerData];
+                for (const img of images) {
+                    const fig = this._createSingleInlinePicFigure(img, layerName);
+                    if (fig) {
+                        wrapper.appendChild(fig);
+                        any = true;
+                    }
+                }
+            }
+
+            return any ? wrapper : null;
+        }
+
+        // Leaf
+        return this._createSingleInlinePicFigure(picData);
+    }
+
+    _createSingleInlinePicFigure(imgData, layerName = null) {
+        if (!imgData) return null;
+
+        let src, altText, captionType, floatSide, floatWidth, isInline;
+        if (typeof imgData === 'string') {
+            src = imgData;
+            altText = '';
+            captionType = 'default';
+            isInline = false;
+        } else {
+            src = imgData.src;
+            altText = this.getLocalizedValue(imgData.alt) || (imgData.alt?.en || '');
+            captionType = imgData.captionType || 'default';
+            floatSide = imgData.float || null;
+            floatWidth = imgData.width || null;
+            isInline = imgData.inline === true;
+        }
+        if (!src) return null;
+
+        const figure = document.createElement('figure');
+        figure.className = 'guide-inline-pic';
+
+        if (isInline) {
+            figure.classList.add('guide-inline-pic-inline');
+        }
+
+        if (layerName) {
+            figure.classList.add(`guide-inline-pic-layer-${layerName}`);
+        }
+
+        if (floatSide === 'left') figure.classList.add('guide-inline-pic-float-left');
+        else if (floatSide === 'right') figure.classList.add('guide-inline-pic-float-right');
+
+        if (floatWidth) figure.style.width = floatWidth;
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = altText;
+        img.className = 'guide-inline-pic-img';
+        img.loading = 'lazy';
+        img.addEventListener('click', () => {
+            if (window.openImageLightbox) window.openImageLightbox(src, altText);
+        });
+        figure.appendChild(img);
+
+        // Inline mode: no caption (it would break the flow)
+        if (altText && !isInline) {
+            const caption = document.createElement('figcaption');
+            caption.className = 'guide-inline-pic-caption';
+            if (captionType === 'quote') {
+                caption.textContent = `"${altText}"`;
+                caption.classList.add('caption-quote');
+            } else {
+                caption.textContent = altText;
+            }
+            figure.appendChild(caption);
+        }
+
+        // Inline mode: keep the alt on the img for accessibility
+        if (isInline && altText) {
+            img.title = altText;
+        }
+
+        return figure;
+    }
+
+    // Resolve a [pic:...] path to an array of image leaf objects
+    _resolveInlinePicPath(path, base) {
+        let data = null;
+        if (base) data = this.getObjectByPathFromBase(path, base);
+        if (!data) data = this.getObjectByPath(path);
+        if (!data) return null;
+
+        // Case A: single image leaf
+        if (typeof data === 'string' || (data && typeof data === 'object' && data.src)) {
+            return [data];
+        }
+
+        // Case B: array of images
+        if (Array.isArray(data)) {
+            return data;
+        }
+
+        // Case C: layer object like { primary: [...] } or the full img object
+        if (typeof data === 'object') {
+            const layers = ['primary', 'secondary', 'tertiary', 'ico', 'normal', 'small'];
+            const collected = [];
+            for (const layer of layers) {
+                if (data[layer]) {
+                    const arr = Array.isArray(data[layer]) ? data[layer] : [data[layer]];
+                    collected.push(...arr);
+                }
+            }
+            return collected.length ? collected : null;
+        }
+
+        return null;
+    }
+
+    parseMiniMarkdown(text) {
+        if (!text) return '';
+        
+        let result = String(text);
+        result = result.replace(/(?<!\!)\!([^!]+?)\!(?!\!)/g, '<strong>$1</strong>');
+        result = result.replace(/\^([^\^]+?)\^/g, '<em>$1</em>');
+        result = result.replace(/(?<!~)~([^~]+?)~(?!~)/g, '<u>$1</u>');
+        return result;
+    }
+    
     renderRichText(value, container = null) {
         if (value === null || value === undefined) {
             return '';
         }
 
-        const text = String(value);
+        let text = String(value);
+
+        // Hyperlinks first ({{url|text}})
+        if (this.parseHyperlinks) {
+            text = this.parseHyperlinks(text);
+        }
+
         const parts = [];
         let lastIndex = 0;
 
+        text = text.replace(/\[pic:([^\]]+)\]/g, (match, rawPath) => {
+            const path = rawPath.trim().replace(/:/g, '.');
+            const base = this._currentBaseObject;
+
+            const images = this._resolveInlinePicPath(path, base);
+            if (!images || !images.length) {
+                console.warn(`[pic:] could not resolve "${rawPath}"`);
+                return `<span style="color:orange">[pic not found: ${rawPath}]</span>`;
+            }
+
+            // Detect layer from the path
+            let layerName = null;
+            if (path.includes('.secondary')) layerName = 'secondary';
+            else if (path.includes('.tertiary')) layerName = 'tertiary';
+            else if (path.includes('.ico')) layerName = 'ico';
+            else if (path.includes('.normal')) layerName = 'normal';
+            else if (path.includes('.small')) layerName = 'small';
+            else if (path.includes('.primary')) layerName = 'primary';
+
+            // Register each image WITH its layer so the figure can use the right class
+            const ids = images.map(img => this._registerInlinePic({ img, layer: layerName }));
+            return ids.map(id => `<span class="guide-inline-pic-placeholder" data-pic-id="${id}"></span>`).join('');
+        });
+
+        text = text.replace(/\[img:([^\]]+)\]/g, (match, rawPath) => {
+            const path = rawPath.trim().replace(/:/g, '.');
+            const base = this._currentBaseObject;
+
+            let imgData = null;
+            if (base) {
+                imgData = this.getObjectByPathFromBase(path, base);
+            }
+            if (!imgData) {
+                imgData = this.getObjectByPath(path);
+            }
+
+            if (!imgData) {
+                console.warn(`[img:] could not resolve "${rawPath}" against base`, base);
+                return `<span style="color:orange">[img not found: ${rawPath}]</span>`;
+            }
+
+            // If it's a leaf image (string or { src }), wrap it in the correct layer
+            let layerObject;
+            if (typeof imgData === 'string' || (imgData && typeof imgData === 'object' && imgData.src)) {
+                let layerName = 'primary'; // default fallback
+                if (path.includes('.secondary')) layerName = 'secondary';
+                else if (path.includes('.tertiary')) layerName = 'tertiary';
+                else if (path.includes('.ico')) layerName = 'ico';
+                else if (path.includes('.normal')) layerName = 'normal';
+                else if (path.includes('.small')) layerName = 'small';
+                else if (path.includes('.primary')) layerName = 'primary';
+
+                layerObject = { [layerName]: [imgData] };
+            } else {
+                layerObject = imgData;
+            }
+
+            const id = this._registerInlineImg(layerObject);
+            return `<span class="guide-image-inline-placeholder" data-img-id="${id}" style="display:inline-block"></span>`;
+        });
+
         text.replace(/<([^>]+)>/g, (match, inner, offset) => {
             const before = text.slice(lastIndex, offset);
-            parts.push(this.renderTextWithGlossary(before));
+            parts.push(this.parseMiniMarkdown(this.renderTextWithGlossary(before)));
 
             const token = inner.trim();
             if (!token) {
@@ -312,7 +767,7 @@ class TranslationManager {
             } else {
                 const lower = token.toLowerCase();
                 if (['concept', 'np', 'mech', 'forced mech', 'forced', 'forced mech,', 'derivated from', 'derived from', 'attribute'].includes(lower)) {
-                    parts.push(token); // Just the word without brackets
+                    parts.push(token);
                 } else if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(token)) {
                     parts.push(match);
                 } else {
@@ -321,7 +776,6 @@ class TranslationManager {
                     if (id && document.getElementById(id)) {
                         parts.push(`<a href="#${id}" class="mech-reference" data-mech-anchor="${id}" style="color:${this.getPrimaryColor()};">${label}</a>`);
                     } else {
-                        // Use HTML entities to preserve <> for resolveMechReferences
                         parts.push(`&lt;${token}&gt;`);
                     }
                 }
@@ -331,7 +785,7 @@ class TranslationManager {
             return match;
         });
 
-        parts.push(this.renderTextWithGlossary(text.slice(lastIndex)));
+        parts.push(this.parseMiniMarkdown(this.renderTextWithGlossary(text.slice(lastIndex))));
         return parts.join('');
     }
 
@@ -358,12 +812,36 @@ class TranslationManager {
         return null;
     }
 
+    parseHyperlinks(text) {
+        if (!text) return '';
+        
+        return String(text).replace(/\{\{([^}|]+)(?:\|([^}|]+))?(?:\|([^}]+))?\}\}/g, (match, url, label, mode) => {
+            const trimmedUrl = url.trim();
+            const trimmedLabel = (label || '').trim() || trimmedUrl;
+            const modeAttr = (mode || '').trim().toLowerCase();
+            
+            let targetAttr = '';
+            if (modeAttr === 'external') {
+                targetAttr = ' target="_blank" rel="noopener noreferrer"';
+            } else if (modeAttr === 'internal') {
+                targetAttr = '';
+            } else if (/^https?:\/\//i.test(trimmedUrl)) {
+                // Auto-detect external
+                targetAttr = ' target="_blank" rel="noopener noreferrer"';
+            }
+            
+            return `<a href="${trimmedUrl}" class="guide-hyperlink"${targetAttr}>${trimmedLabel}</a>`;
+        });
+    }
+
     translateElements(context = document) {
+        // data-translate (single-line)
         context.querySelectorAll('[data-translate]:not([data-multiline])').forEach(el => {
             const key = el.getAttribute('data-translate');
             const translation = this.getTranslation(key);
             if (translation) {
-                el.innerHTML = this.renderRichText(translation);
+                const base = this.findBaseObjectForKey(key);
+                el.innerHTML = this.renderWithBase(translation, base);
             }
         });
 
@@ -371,17 +849,64 @@ class TranslationManager {
             const key = el.getAttribute('data-multiline');
             const lines = this.getTranslation(key, true);
             if (lines && Array.isArray(lines)) {
-                el.innerHTML = lines.map(line => `<p>${this.renderRichText(line)}</p>`).join('');
+                const base = this.findBaseObjectForKey(key);
+                el.innerHTML = lines.map(line => {
+                    const trimmed = String(line).trim();
+                    // If the line is ONLY [pic:...] tokens, don't wrap in <p>
+                    if (/^(?:\[pic:[^\]]+\]\s*)+$/.test(trimmed)) {
+                        return this.renderWithBase(line, base);
+                    }
+                    return `<p>${this.renderWithBase(line, base)}</p>`;
+                }).join('');
             }
         });
 
-        context.querySelectorAll('th[data-translate], td[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            const translation = this.getTranslation(key);
-            if (translation) {
-                el.textContent = translation;
+        context.querySelectorAll('[data-img-id]').forEach(el => {
+            const id = el.getAttribute('data-img-id');
+            const imgData = this._resolveInlineImg(id);
+            if (imgData && typeof imgData === 'object') {
+                el.innerHTML = '';
+                const imgEl = this.renderImageValue(imgData);
+                if (imgEl) el.appendChild(imgEl);
             }
         });
+
+        context.querySelectorAll('[data-pic-id]').forEach(el => {
+            const id = el.getAttribute('data-pic-id');
+            const picData = this._resolveInlinePic(id);
+            if (!picData) return;
+
+            const result = this._createInlinePicFigure(picData);
+            if (!result) return;
+
+            if (result instanceof DocumentFragment) {
+                el.replaceWith(result);
+            } else {
+                el.replaceWith(result);
+            }
+        });
+
+        // Legacy [data-img] path-based placeholders
+        context.querySelectorAll('[data-img]').forEach(el => {
+            const key = el.getAttribute('data-img');
+            const imgData = this.getObjectByPath(key);
+            if (imgData && typeof imgData === 'object') {
+                el.innerHTML = '';
+                const imgEl = this.renderImageValue(imgData);
+                if (imgEl) el.appendChild(imgEl);
+            }
+        });
+    }
+
+    // Helper to get an object by dot-path
+    getObjectByPath(key) {
+        const keys = key.split('.');
+        let value = translations;
+        for (const k of keys) {
+            if (!value || typeof value !== 'object' || !(k in value)) return null;
+            value = value[k];
+        }
+        return value;
     }
 
     getTranslation(key, isMultiline = false) {

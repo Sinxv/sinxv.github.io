@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navDesktop.innerHTML = `
       <ul>
         <a href="/index.html"><li>${labels.home}</li></a>
-        <a href="/prog.html"><li id="spec">${labels.progression}</li></a>
+        <a href="/prog/s1.html"><li id="spec">${labels.progression}</li></a>
         <a href="/guides.html"><li>${labels.guides}</li></a>
         <div class="settings-icon" id="settings-icon-desktop"></div>
       </ul>
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="hamburger-nav" id="hamburger-nav">
         <div class="settings-icon" id="settings-icon-mobile"></div>
         <a href="/main/index.html"><li>${labels.home}</li></a>
-        <a href="/main/prog.html"><li id="spec">${labels.progression}</li></a>
+        <a href="/main/prog/s1.html"><li id="spec">${labels.progression}</li></a>
         <a href="/main/guides.html"><li>${labels.guides}</li></a>
     </div>
 `;
@@ -164,27 +164,26 @@ document.addEventListener("DOMContentLoaded", () => {
         updateGearIcon();
     });
 
-    // Helper function to get shared settings HTML
     function getSettingsHTML() {
         const savedLang = localStorage.getItem("elhelper-lang") || "en";
         const isLight = localStorage.getItem("elhelper-mode") === "light";
-        const savedRegion = localStorage.getItem("elhelper-region") || "na";
-        const showFullInfo = window.isFullInfoEnabled?.() ?? false;
+        const savedRegion = localStorage.getItem("elhelper-region") || "default";
+        const nerdMode = localStorage.getItem("elhelper-nerd-mode") === "true";
         
         return `
             <label for="lang-select">Language:</label>
             <select id="lang-select">
                 <option value="en" ${savedLang === 'en' ? 'selected' : ''}>English</option>
-                <option value="es" ${savedLang === 'es' ? 'selected' : ''}>Español</option>
-                <option value="kr" disabled ${savedLang === 'kr' ? 'selected' : ''}>한국어 (WIP)</option>
-                <option value="jp" disabled ${savedLang === 'jp' ? 'selected' : ''}>日本語 (WIP)</option>
-                <option value="br" disabled ${savedLang === 'br' ? 'selected' : ''}>Português (WIP)</option>
+                <option value="es" ${savedLang === 'es' ? 'selected' : ''}>Español (WIP)</option>
+                <option value="kr" ${savedLang === 'kr' ? 'selected' : ''}>한국어 (WIP)</option>
+                <option value="jp" disabled ${savedLang === 'jp' ? 'selected' : ''}>日本語</option>
+                <option value="br" disabled ${savedLang === 'br' ? 'selected' : ''}>Português</option>
             </select>
             
             <label for="region-select">Server Region:</label>
             <select id="region-select">
-                <option value="na" ${savedRegion === 'na' ? 'selected' : ''}>Default (NA/INT)</option>
-                <option value="default" ${savedRegion === 'default' ? 'selected' : ''}>Others (KR/EU/JP/CN/TW)</option>
+                <option value="default" ${savedRegion === 'default' ? 'selected' : ''}>Default (EU/KR/JP/CN)</option>
+                <option value="na" ${savedRegion === 'na' ? 'selected' : ''}>NA/INT</option>
             </select>
             
             <label for="mode-switch">Light Mode:</label>
@@ -193,20 +192,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="slider"></span>
             </label>
             
-            <label for="full-info-switch">Show Full Info:</label>
+            <label for="nerd-mode-switch">Nerd Mode:</label>
             <label class="switch">
-                <input type="checkbox" id="full-info-switch" ${showFullInfo ? 'checked' : ''}>
+                <input type="checkbox" id="nerd-mode-switch" ${nerdMode ? 'checked' : ''}>
                 <span class="slider"></span>
             </label>
+            <small style="color: #888; font-size: 11px;">
+                Shows detailed stat tables and advanced info.
+            </small>
         `;
     }
 
-    // Helper function to bind settings events
     function bindSettingsEvents(container) {
         const langSelect = container.querySelector("#lang-select");
         const regionSelect = container.querySelector("#region-select");
         const modeSwitch = container.querySelector("#mode-switch");
-        const fullInfoSwitch = container.querySelector("#full-info-switch");
+        const nerdModeSwitch = container.querySelector("#nerd-mode-switch");
         
         if (langSelect) {
             langSelect.addEventListener("change", (e) => {
@@ -222,12 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const region = e.target.value;
                 localStorage.setItem("elhelper-region", region);
                 
-                // Re-apply translations
                 if (window.translationManager) {
                     window.translationManager.applyTranslations();
                 }
                 
-                // Re-open any open guide to apply region filter
                 const openOverlay = document.getElementById('guide-modal-overlay');
                 if (openOverlay) {
                     const hash = window.location.hash.replace('#', '');
@@ -252,11 +251,18 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         
-        if (fullInfoSwitch) {
-            fullInfoSwitch.addEventListener("change", (e) => {
-                const showFull = e.target.checked;
-                if (window.toggleFullInfo) {
-                    window.toggleFullInfo(showFull);
+        if (nerdModeSwitch) {
+            nerdModeSwitch.addEventListener("change", (e) => {
+                const enabled = e.target.checked;
+                localStorage.setItem("elhelper-nerd-mode", enabled ? "true" : "false");
+                
+                // Re-open current guide to refresh tables
+                const openOverlay = document.getElementById('guide-modal-overlay');
+                if (openOverlay) {
+                    const hash = window.location.hash.replace('#', '');
+                    if (hash && window.openGuide) {
+                        window.openGuide(hash);
+                    }
                 }
             });
         }

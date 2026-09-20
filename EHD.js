@@ -276,64 +276,33 @@ export const data = {
                 intro: { en: ["This part of the game has a lot of cut content and is a mere shadow of what it was in the early days, so it should be doable in 4-5ish hours."], es: ["Esta parte del juego tiene mucho contenido recortado y es una mera sombra de lo que era en los primeros días, por lo que debería ser posible en unas 4-5 horas."], kr: ["게임의 이 부분에는 잘린 콘텐츠가 많으며 초기의 그림자에 불과하므로 약 4-5시간 만에 완료할 수 있습니다."], jp: ["ゲームのこの部分には多くのカットコンテンツがあり、初期の頃の影に過ぎないため、約4〜5時間で完了できるはずです。"], br: ["Esta parte do jogo tem muito conteúdo cortado e é uma mera sombra do que era nos primeiros dias, então deve ser possível em cerca de 4-5 horas."] },
                 first_dungeon: {
                     title: { en: "Leveling", es: "", kr: "", jp: "", br: ""},
-                    content: { en: [
-                        "Once you finish deciding which character to create and complete the tutorial, you'll notice a couple of buttons. For now, only focus on the 'Dungeon' button. This will open a list of dungeons divided by region, you can only see the next region once you complete a quest that unlocks it, or after completing the last dungeon of the previous region, and entering the level range required to play in the next region. Click 'Start Dungeon' button to enter the dungeon your Main Quest asks you to do.",
-                        "After completing the first dungeon 'Tree of El' (Dungeon is different for Lithia, Noah and Laby) you will receive 'Growing Adventurer's Equipment Cube'.",
-                        "This cube gives the following: Top Piece, Bottom Piece, Gloves, Shoes, Weapon. This is the equipment you will use for the entirety of the leveling up (Lv. 1 to 99) section, This section will only revolve around following your Main Quest, so just do all the dungeons your main quest ask you to do until you're level 99.",
-                        "During the Leveling section, and in the 2nd region of the game (while you follow your main quest), you will get a pet called 'Phoru', this pet auto collects all drops, which is essential in order to get some headstart money. (Should be around 25M ED by the time you reach level 99)"
-                    ],
-                    es: [
-                        "Una vez que termines de decidir qué personaje crear y completes el tutorial, verás un par de botones. Por ahora, céntrate solo en el botón 'Mazmorra'. Esto abrirá una lista de mazmorras divididas por región; solo podrás ver la siguiente región una vez que completes una misión que la desbloquea, o después de completar la última mazmorra de la región anterior y entrar en el rango de nivel requerido para jugar en la siguiente región. Haz clic en el botón 'Iniciar Mazmorra' para entrar en la mazmorra que tu Misión Principal te pide hacer.",
-                        "Después de completar la primera mazmorra 'Árbol de El' (la mazmorra es diferente para Lithia, Noah y Laby) recibirás el 'Cubo de Equipo de Aventurero en Crecimiento'.",
-                        "Este cubo da lo siguiente: Parte Superior, Parte Inferior, Guantes, Zapatos, Arma. Este es el equipo que usarás durante toda la sección de subida de nivel (Nv. 1 a 99). Esta sección solo girará en torno a seguir tu Misión Principal, así que haz todas las mazmorras que tu misión principal te pida hacer hasta que llegues al nivel 99."
-                    ],
-                    kr: [
-                        "캐릭터 생성 결정과 튜토리얼을 마치면 몇 개의 버튼이 표시됩니다. 지금은 '던전' 버튼에만 집중하세요. 이 버튼을 클릭하면 지역별로 나뉜 던전 목록이 열립니다. 다음 지역은 해당 지역을 잠금 해제하는 퀘스트를 완료하거나 이전 지역의 마지막 던전을 완료하고 다음 지역에서 플레이할 수 있는 필수 레벨 범위에 들어간 후에야 볼 수 있습니다. '던전 시작' 버튼을 클릭하여 메인 퀘스트가 요구하는 던전에 입장하세요.",
-                        "첫 던전 '엘의 나무'를 완료하면(던전은 리시아, 노아, 라비마다 다름) '성장하는 모험가의 장비 큐브'를 받습니다.",
-                        "이 큐브는 다음을 제공합니다: 상의, 하의, 장갑, 신발, 무기. 이 장비는 레벨업 구간(Lv. 1부터 99까지) 전체에서 사용하게 될 장비입니다. 이 구간은 오로지 메인 퀘스트를 따라가는 것에만 집중하므로, 메인 퀘스트가 요구하는 모든 던전을 레벨 99가 될 때까지 완료하세요."
-                    ],
-                    jp: [
-                        "どのキャラクターを作成するか決めてチュートリアルを完了すると、いくつかのボタンが表示されます。今は「ダンジョン」ボタンだけに注目してください。これをクリックすると地域ごとに分かれたダンジョンのリストが開きます。次の地域は、それをアンロックするクエストを完了するか、前の地域の最後のダンジョンをクリアして次の地域でプレイするための必要なレベル範囲に入った後でしか見ることができません。「ダンジョン開始」ボタンをクリックして、メインクエストが要求するダンジョンに入ります。",
-                        "最初のダンジョン『エルの木』をクリアすると（ダンジョンはリシア、ノア、ラビで異なります）、『成長する冒険者の装備キューブ』を受け取ります。",
-                        "このキューブは次のものを提供します：トップピース、ボトムピース、手袋、靴、武器。これがレベリングセクション（Lv. 1から99まで）全体で使用する装備です。このセクションはメインクエストに従うことだけで進むので、メインクエストが要求するすべてのダンジョンをレベル99になるまでこなしてください。"
-                    ],
-                    br: [
-                        "Depois de terminar de decidir qual personagem criar e completar o tutorial, você verá alguns botões. Por enquanto, foque apenas no botão 'Dungeon'. Isso abrirá uma lista de masmorras divididas por região; você só poderá ver a próxima região depois de completar uma missão que a desbloqueia, ou após completar a última masmorra da região anterior e entrar na faixa de nível necessária para jogar na região seguinte. Clique no botão 'Iniciar Masmorra' para entrar na masmorra que sua Missão Principal pede para você fazer.",
-                        "Após completar a primeira masmorra 'Árvore de El' (a masmorra é diferente para Lithia, Noah e Laby), você receberá o 'Cubo de Equipamento do Aventureiro em Crescimento'.",
-                        "Este cubo dá o seguinte: Peça Superior, Peça Inferior, Luvas, Sapatos, Arma. Este é o equipamento que você usará durante toda a seção de nivelamento (Nv. 1 a 99). Esta seção só girará em torno de seguir sua Missão Principal, então faça todas as masmorras que sua missão principal pedir até chegar ao nível 99."
-                    ]}
+                    img: {
+                        primary: [
+                            { src: "/images/charcui.png", float:"center", alt:"Character Creation Screen prompted when first making an account or creating a new character."}
+                        ],
+                        ico: [
+                            { src: "/images/growingcube.png", inline:true},
+                            { src: "/images/phoru.png", inline:true}
+                        ]
+                    },
+                    content: { 
+                        en: [
+                            "[img:img.primary.0]","Once you finish deciding which character to create and complete the tutorial, you'll notice a couple of buttons. For now, only focus on the 'Dungeon' button. This will open a list of dungeons divided by region, you can only see the next region once you complete a quest that unlocks it, or after completing the last dungeon of the previous region, and entering the level range required to play in the next region. Click 'Start Dungeon' button to enter the dungeon your Main Quest asks you to do.",
+                            "After completing the first dungeon 'Tree of El' (Dungeon is different for Lithia, Noah and Laby) you will receive[pic:img.ico.0]'Growing Adventurer's Equipment Cube'.",
+                            "This cube gives you a Top Piece, Bottom Piece, Gloves, Shoes and Weapon. This is the equipment you will use for the entirety of the leveling up (Lv. 1 to 99) section, This section will only revolve around following your Main Quest, so just do all the dungeons your main quest ask you to do until you're level 99.",
+                            "During the Leveling section, and in the 2nd region of the game (while you follow your main quest), you will get a pet called [pic:img.ico.1] 'Phoru', this pet auto collects all drops, which is essential in order to get some headstart money. (Should be around 25M ED by the time you reach level 99)"
+                        ],
+                    },
                 },
                 choose_path: {
                     title: { en: "Choosing a Path", es: "Elegir un Camino", kr: "경로 선택", jp: "道を選ぶ", br: "Escolhendo um Caminho" },
-                    content: { en: [
+                    content: { 
+                        en: [
                         "Upon reaching level 15, you will get the '1st Class Promotion Quest' where you will be able to choose between the 4 paths each character has.",
                         "You can complete this just by following the main quest, as you will still enter all the dungeons that the promotion quest asks for.",
                         "This is later repeated, since upon reaching level 40, and level 70 you will get further promotions that will grant passives, new skills and enhance previous skills of the path you chose back at Level 15."
-                    ],
-                    es: [
-                        "En el nivel 15 obtendrás una mascota llamada 'Phoru', esta mascota recoge automáticamente todas las gotas, lo cual es esencial para obtener algo de dinero inicial. (Debería ser alrededor de 25M ED cuando alcances el nivel 99)",
-                        "También obtendrás la 'misión de promoción de primera clase' donde podrás elegir el camino de un personaje.",
-                        "Puedes completar esto simplemente siguiendo las misiones principales, ya que aún ingresarás a todas las mazmorras que la misión de promoción solicita.",
-                        "En el nivel 40 y nivel 70 obtendrás promociones que darán pasivas y nuevas habilidades a tu personaje."
-                    ],
-                    kr: [
-                        "15레벨에서 '포루'라는 펫을 얻습니다. 이 펫은 모든 드롭을 자동으로 수집하며, 이는 약간의 시작 자금을 얻는 데 필수적입니다.",
-                        "'1차 전직 퀘스트'도 받게 되며, 여기서 캐릭터의 경로를 선택할 수 있습니다.",
-                        "메인 퀘스트를 따라가면 프로모션 퀘스트에서 요구하는 모든 던전에 여전히 입장하게 되므로 이를 완료할 수 있습니다.",
-                        "40레벨과 70레벨에서 캐릭터에게 패시브와 새로운 스킬을 부여하는 프로모션을 받게 됩니다."
-                    ],
-                    jp: [
-                        "レベル15で「ポル」というペットを手に入れます。このペットはすべてのドロップを自動的に収集し、いくつかのスタート資金を得るために不可欠です。",
-                        "また、「第一クラス昇進クエスト」を取得し、キャラクターの道を選択できるようになります。",
-                        "メインクエストに従うだけでこれを完了できます。昇進クエストが要求するすべてのダンジョンにまだ入ることになるからです。",
-                        "レベル40とレベル70で、キャラクターにパッシブと新しいスキルを与えるプロモーションを取得します。"
-                    ],
-                    br: [
-                        "No nível 15 você obterá um pet chamado 'Phoru', este pet coleta automaticamente todas as gotas, o que é essencial para obter algum dinheiro inicial.",
-                        "Você também receberá a 'missão de promoção de primeira classe', onde poderá escolher o caminho de um personagem.",
-                        "Você pode completar isso apenas seguindo as missões principais, pois ainda entrará em todas as masmorras que a missão de promoção pede.",
-                        "No nível 40 e nível 70 você receberá promoções que darão passivas e novas habilidades ao seu personagem."
-                    ]}
+                        ],
+                    }
                 }
             },
         },
@@ -348,13 +317,16 @@ export const data = {
             content_third_class: { en: "3rd Class", es: "3ª Clase", kr: "3차 직업", jp: "3次クラス", br: "3ª Classe" },
             content_henir: { en: "Henir's Time and Space", es: "Tiempo y Espacio de Henir", kr: "헤니르의 시간과 공간", jp: "ヘニルの時間と空間", br: "Tempo e Espaço de Henir" },
             sections: {
-                intro: { en: ["Once you reach level 99, you will unlock 'Elrianode'."], es: ["Una vez que alcances el nivel 99, desbloquearás 'Elrianode' y la 2ª guía de la 'Guía del Dr. Pho'. Tu objetivo principal en esta etapa es completar completamente las primeras 2 Guías del Dr. Pho."], kr: ["레벨 99에 도달하면 '엘리아노드'와 '닥터 포의 가이드'의 두 번째 가이드가 잠금 해제됩니다. 이 단계에서의 주요 목표는 닥터 포의 첫 번째 가이드를 완전히 완료하는 것입니다."], jp: ["レベル99に到達すると、「エルリアノード」と「ドクター・ポーのガイド」の2番目のガイドがアンロックされます。このステージでの主な目的は、ドクター・ポーの最初の2つのガイドを完全に完了することです。"], br: ["Depois de atingir o nível 99, você desbloqueará 'Elrianode' e o 2º guia do 'Guia do Dr. Pho'. Seu objetivo principal nesta fase é completar totalmente os primeiros 2 Guias do Dr. Pho."], kr: ["레벨 99에 도달하면 '엘리아노드'와 '닥터 포의 가이드'의 두 번째 가이드가 잠금 해제됩니다. 이 단계에서의 주요 목표는 닥터 포의 첫 번째 가이드를 완전히 완료하는 것입니다."], jp: ["レベル99に到達すると、「エルリアノード」と「ドクター・ポーのガイド」の2番目のガイドがアンロックされます。このステージでの主な目的は、ドクター・ポーの最初の2つのガイドを完全に完了することです。"], br: ["Depois de atingir o nível 99, você desbloqueará 'Elrianode' e o 2º guia do 'Guia do Dr. Pho'. Seu objetivo principal nesta fase é completar totalmente os primeiros 2 Guias do Dr. Pho."]},
                 elrianode_armor: {
                     title: { en: "Post lv. 99 / Earlygame", es: "Armadura de Elrianode", kr: "엘리아노드 갑옷", jp: "エルリアノードアーマー", br: "Armadura Elrianode"},
+                    img: {
+                        primary: [
+                            { src:"/images/elrianodesdui.png"}
+                        ]
+                    },
                     content: { en: [
-                        "Upon reaching Level 99 and alongside the unlock of Elrianode, There is a system that is crucial to your growth, called 'Dr. Pho's Guide'. This system is basically a set of quests that will teach you the basics of the game and reward you with really good items that will help you in your early game journey.",
-                        "Focus on the 'Elrianode' Region quests of the 'Dr. Pho's Guide' and you will be able to claim the Restored Elrianode Armor, +10 Apocalypse-Type Weapon, and a 30 days Elrios Guardian Knights IB Accessories Set.",
-                        "Those items are really good for early game, since both Armor and Ice Burners, alongside your weapon, are your main source of Combat Power (And damage output in general)"
+                        "Once you reach level 99, you will unlock !Elrianode!.[img:img.primary.0]","Upon reaching Level 99 and alongside the unlock of Elrianode, There is a system that is crucial to your growth, called !Dr. Pho's Guide!. This system is basically a set of quests that will teach you the basics of the game and reward you with really good items that will help you in your early game journey.",
+                        "Focus on the !Elrianode! Region quests of the !Dr. Pho's Guide! and you will be able to claim the Restored Elrianode Armor, +10 Apocalypse-Type Weapon, and a 30 days Elrios Guardian Knights IB Accessories Set. Those items are really good for early game, since both Armor and Ice Burners, alongside your weapon, are your main source of Combat Power (And damage output in general)"
                     ],
                     es: [
                         "En la 2ª Guía del Dr. Pho, Lección 1, notarás que la primera misión es Limpiar 3 Mazmorras de la Región de Elrianode.",
@@ -379,32 +351,17 @@ export const data = {
                 },
                 socketing: {
                     title: { en: "Socketing", es: "Encajonado", kr: "소켓", jp: "ソケット", br: "Socketing" },
-                    content: { en: [
-                        "Both Armor and Weapons have Slots called 'Sockets', Dr. Pho's Guide provides weapons that are already socketed, but you might need to switch the Sockets to get better stat percentages, or to switch the stats, in order to match the recommended stats of your path.",
-                        "Socketing is performed by infusing Magic Stones into your Armor or Weapons by pressing the Inventory Key (I) -> Magic Stone Enchant. (PD: If you get a good stat, you can click the Square Icon on the Socket UI to lock the stat, otherwise you will spend a lot of Stones trying to get the stat you want.)",
-                        "The stats you should socket are Maximize and Critical, then Damage to Boss (Requires a Special Magic Stone called 'Dual Magic Stone of Pursuit' which is obtainable via purchase on Board, or by doing the Special Dungeon 'Heroic Dungeon' and crafting the stones via NPC Glave)",
-                        "Magic Stones (Normal ones, Special ones like Dual Magic Stone of Pursuit are different) are divided in 4 Tiers, shown in the table below, each tier has a different minimum and maximum stat value, T4 having the highest, it being 12% on weapon and 6% on Armor, since Armor socket values are divided by half."
-                    ],
-                    es: [
-                        "Tu Armadura y Arma tienen algo llamado 'Encajonado', que está vacío cuando los obtienes.",
-                        "Puedes usar Piedras Mágicas para encajonar presionando Inventario -> Encantamiento de Piedra Mágica.",
-                        "Las estadisticas que deberias encajonar son "
-                    ],
-                    kr: [
-                        "당신의 갑옷과 무기에는 '소켓'이라는 것이 있으며, 그것을 얻었을 때는 비어 있습니다.",
-                        "인벤토리 -> 마법석 인챈트를 눌러 소켓에 마법석을 사용할 수 있습니다.",
-                        
-                    ],
-                    jp: [
-                        "あなたのアーマーと武器には「ソケット」と呼ばれるものがあり、取得したときは空です。",
-                        "インベントリ -> マジックストーンエンチャントを押して、ソケットにマジックストーンを使用できます。",
-                        
-                    ],
-                    br: [
-                        "Sua Armadura e Arma têm algo chamado 'Socket', que está vazio quando você os obtém.",
-                        "Você pode usar Pedras Mágicas para socket pressionando Inventário -> Encantamento de Pedra Mágica.",
-                        
-                    ]}
+                    img: {
+                        primary: { src: "/images/socketing.png", alt: "Socketing UI in-game." },
+                    },
+                    content: { 
+                        en: [
+                            "Armor, Weapon and Armor Costumes (Shoes, Bottom, Gloves, Top, Hair, Suit) have Socket Slots. !Dr. Pho's Guide! provides weapons that are already socketed, but the stat is not perfect, so you might need to switch the Sockets to get better stat percentages, or to switch the stats, in order to match the {{https://docs.google.com/spreadsheets/d/e/2PACX-1vQkHyGXROrJ0TUrax6T5h2Sc0dta9p3xCh-Jwl_z_4l22bEEB44k03xZ9tSfvnpZWyTHTgYYqN-tFIV/pubhtml#gid=1679907376|recommended stats of your path|external}}.",
+                            "Socketing is performed by infusing Magic Stones into your Armor or Weapons by pressing the Inventory Key (I) -> Magic Stone Enchant. (PD: If you get a good stat, you can click the Square Icon on the Socket UI to lock the stat, otherwise you will spend a lot of Stones trying to get the stat you want.)",
+                            "The stats you should socket are Maximize and Critical until your character reaches the recommended %, then Damage to Boss (Requires a Special Magic Stone called !Dual Magic Stone of Pursuit! which is obtainable via purchase on Board, or by doing the Special Dungeon 'Heroic Dungeon' and crafting the stones via NPC Glave)",
+                            "Magic Stones (Normal ones, Special ones like Dual Magic Stone of Pursuit are different) are divided in 4 Tiers, shown in the table below, each tier has a different minimum and maximum stat value, T4 having the highest, it being 12% on weapon and 6% on Armor, since Armor socket values are divided by half, as said by the item tooltip."
+                        ],
+                    }
                 },
                 el_resonance: {
                     title: { en: "El Resonance", es: "Resonancia El", kr: "엘 공명", jp: "エルレゾナンス", br: "El Resonance" },
@@ -450,30 +407,10 @@ export const data = {
                         ]
                     }
                 },
-                dosi_wings: {
-                    title: { en: "Dimension of Sinister Intent Wings", es: "Accesorio: Alas de la Dimensión de la Intención Siniestra", kr: "액세서리: 사악한 의도의 차원 날개", jp: "アクセサリー：邪悪な意図の次元の翼", br: "Acessório: Asas da Dimensão da Intenção Sinistra" },
-                    content: { en: [
-                        "On Dr. Pho's Guide, you're asked to do 'Dimension of Sinister Intent', which is located on Dungeon List → Special.",
-                        "Upon completion, you will be given a cube with grants you the entire Corrupted Master set, but only the wings are good to use, you'll keep this accessory for a quite some time, and it's easy to get, so if you can, get it, it's not a life changing accessory though, so you can choose to skip it."
-                    ], es: [
-                        "En la Primera Guía del Dr. Pho, se te pide que hagas 'Dimensión de la Intención Siniestra', que se encuentra en Lista de Mazmorras → Especial.",
-                        "Usarás este accesorio durante una LARGA cantidad de tiempo, y a medida que hagas Puerta de la Oscuridad obtendrás un material que te permitirá mejorar las Alas."
-                    ], kr: [
-                        "닥터 포의 첫 번째 가이드에서는 던전 목록 → 특수에 있는 '사악한 의도의 차원'을 하도록 요청합니다.",
-                        "이 액세서리는 오랜 시간 동안 사용할 것이며, 어둠의 문을 만들면서 날개를 업그레이드할 수 있는 재료를 얻을 수 있습니다."
-                    ], jp: [
-                        "ドクター・ポーの最初のガイドでは、ダンジョンリスト→スペシャルにある「邪悪な意図の次元」を行うように求められます。",
-                        "このアクセサリーは長い間使用し、闇の門を作成すると、翼をアップグレードできる素材が手に入ります。"
-                    ], br: [
-                        "No 1º Guia do Dr. Pho, você é solicitado a fazer 'Dimensão da Intenção Sinistra', que está localizada em Lista de Masmorras → Especial.",
-                        "Você usará este acessório por um longo período de tempo, e à medida que fizer Portão das Trevas, obterá um material que permitirá atualizar as Asas."
-                    ]}
-                },
                 third_class: {
                     title: { en: "3rd Class", es: "Avance de Trabajo: 3ª Clase", kr: "직업 승급: 3차 직업", jp: "ジョブアドバンスメント：3次クラス", br: "Avanço de Trabalho: 3ª Classe" },
                     content: { en: [
-                        "After everything you got, you should be able to easily advance to 3rd Class.",
-                        "3rd Class is unlocked after completing 5 quests, which will unlock the last batch of passives and, will unlock Force Skills.","The requirements to complete all 5 quests are:"
+                        "After everything you got, you should be able to easily advance to {{https://elwiki.net/w/3rd_Jobs|3rd Job|external}}, which is unlocked after completing 5 quests (Information on the quest requirements is refered to in the link provided). Upon job advancement, the last batch of passives are unlocked, along {{https://elwiki.net/w/Force_Skills|Force Skills|external}}."
                     ], es: [
                         "Ahora que tienes una nueva armadura, una nueva arma y un par de accesorios, deberías poder avanzar fácilmente a la 3ª Clase.",
                         "Después de completar la misión 5/5, avanzarás a la 3ª Clase, lo que desbloqueará las Habilidades de Fuerza."
@@ -490,23 +427,18 @@ export const data = {
                 },
                 henir: {
                     title: { en: "Henir's Time and Space", es: "Tiempo y Espacio de Henir", kr: "헤니르의 시간과 공간", jp: "ヘニルの時間と空間", br: "Tempo e Espaço de Henir" },
-                    content: { en: [
-                        "You can find this dungeon on: Dungeon List → Henir, Henir's Time and Space is a Boss Rush-like dungeon with 2 difficulties, Normal Mode (20 Bosses) and Challenge Mode (6 Bosses, Higher HP than Normal Mode).",
-                        "Clearing Henir's Time and Space up to Stage 20 (Normal Mode) will let you complete the quests from Dr. Pho's Guide Henir Tab, rewarding you the Force Skills Eroding Energy and Head Hunter, those are very useful, since Eroding Energy provides Max MP, and Head Hunter provides Damage to Bosses. you will also be given materials to upgrade those Force Skills up to Elite (2nd Tier) with higher stats. Along with Illipia's Aura, which was given after 3rd class quest completion, on Rare (1st Tier) are the 3 most important Force Skills for early game.",
-                        "Table below shows the stats of these 3 Force Skills at each Tier, and the materials required to upgrade them."
-                    ], es: [
-                        "Puedes encontrar esta mazmorra en: Lista de Mazmorras → Especial, el Tiempo y Espacio de Henir es similar a un 'Boss Rush' con 2 dificultades, Modo Normal (20 Jefes) y Modo Desafío (6 Jefes, más HP que el Modo Normal).",
-                        "Tu tarea aquí es Limpiar la Etapa 20 del Tiempo y Espacio de Henir (Modo Normal), esto te permitirá completar 4 misiones de la Guía del Dr. Pho, recompensándote con las Habilidades de Fuerza."
-                    ], kr: [
-                        "이 던전은 던전 목록 → 특수에서 찾을 수 있습니다. 헤니르의 시간과 공간은 2가지 난이도의「보스 러시」와 비슷합니다. 일반 모드(보스 20마리)와 챌린지 모드(보스 6마리, 일반 모드보다 HP가 높음)입니다.",
-                        "여기서 당신의 임무는 헤니르의 시간과 공간 스테이지 20(일반 모드)을 클리어하는 것입니다. 이렇게 하면 닥터 포의 가이드에서 4개의 퀘스트를 완료할 수 있으며, 포스 스킬을 보상으로 받을 수 있습니다."
-                    ], jp: [
-                        "このダンジョンは、ダンジョンリスト→スペシャルで見つけることができます。ヘニルの時間と空間は、2つの難易度、ノーマルモード（ボス20体）とチャレンジモード（ボス6体、ノーマルモードよりHPが高い）を備えた「ボスラッシュ」に似ています。",
-                        "ここでのあなたの任務は、ヘニルの時間と空間ステージ20（ノーマルモード）をクリアすることです。これにより、ドクター・ポーのガイドから4つのクエストを完了でき、フォーススキルが報酬として与えられます。"
-                    ], br: [
-                        "Você pode encontrar esta masmorra em: Lista de Masmorras → Especial, Tempo e Espaço de Henir é semelhante a um 'Boss Rush' com 2 dificuldades, Modo Normal (20 Chefes) e Modo Desafio (6 Chefes, mais HP do que o Modo Normal).",  
-                        "Sua tarefa aqui é Limpar a Etapa 20 do Tempo e Espaço de Henir (Modo Normal), isso permitirá que você complete 4 missões do Guia do Dr. Pho, recompensando você com as Habilidades de Força."
-                    ]}
+                    img: {
+                        ico: [
+                            { src: "/images/tasfrag.webp", inline: true}
+                        ]
+                    },
+                    content: { 
+                        en: [
+                            "You can find this dungeon on: Dungeon List → Henir, Henir's Time and Space is a Boss Rush-like dungeon with 2 difficulties, Normal Mode (20 Bosses) and Challenge Mode (6 Bosses, Higher HP than Normal Mode).",
+                            "Clearing Henir's Time and Space up to Stage 20 (Normal Mode) will let you complete the quests from Dr. Pho's Guide Henir Tab, rewarding you the Force Skills Eroding Energy and Head Hunter, those are very useful, since Eroding Energy provides Max MP, and Head Hunter provides Damage to Bosses. you will also be given materials [pic:img.ico.0] to upgrade those Force Skills up to Elite (2nd Tier) with higher stats. Along with Illipia's Aura, which was given after 3rd class quest completion on Rare Tier, are the 3 most important Force Skills for early game.",
+                            "Table below shows the stats of these 3 Force Skills at each Tier."
+                        ],
+                    }
                 }
             },
             tables: {
@@ -603,43 +535,6 @@ export const data = {
                 br: "Rigomor"
             },
             sections: {
-                varnimyr_intro: {
-                    en: [
-                        "Till this point you should have:",
-                        "Elrianode Armor, Apocalypse-Type Void Weapon (+9 or +10), DoSI Wings, ",
-                        "Elrios Guardian Knights Accessories, Head Hunter (Elite), ",
-                        "Eroding Energy (Elite), El Resonance System Unlocked. ",
-                        "if you lack any of those, get it and come back."
-                    ],
-                    es: [
-                        "Hasta este punto deberías tener:",
-                        "Armadura de Elrianode, Arma del Vacío Tipo Apocalipsis (+9 o +10), Alas DoSI, ",
-                        "Accesorios de los Caballeros Guardianes de Elrios, Cazador de Cabezas (Élite), ",
-                        "Energía Corrosiva (Élite), Sistema de Resonancia El desbloqueado. ",
-                        "Si te falta alguno de estos, consíguelo y vuelve."
-                    ],
-                    kr: [
-                        "이 시점까지 다음을 보유해야 합니다:",
-                        "엘리아노드 방어구, 묵시록형 보이드 무기(+9 또는 +10), DoSI 날개, ",
-                        "엘리오스 수호기사 액세서리, 헤드 헌터(엘리트), ",
-                        "침식 에너지(엘리트), 엘 공명 시스템 해제. ",
-                        "이 중 부족한 것이 있다면 획득한 후 돌아오세요."
-                    ],
-                    jp: [
-                        "この時点までに以下を所持している必要があります:",
-                        "エルリアノード防具、黙示録型ヴォイド武器(+9または+10)、DoSIの翼、",
-                        "エリオス守護騎士アクセサリー、ヘッドハンター(エリート)、",
-                        "侵食エネルギー(エリート)、エル共鳴システムの解除。",
-                        "不足しているものがあれば取得して戻ってきてください。"
-                    ],
-                    br: [
-                        "Até este ponto você deve ter:",
-                        "Armadura Elrianode, Arma do Vazio Tipo Apocalipse (+9 ou +10), Asas DoSI, ",
-                        "Acessórios dos Cavaleiros Guardiões de Elrios, Caçador de Cabeças (Elite), ",
-                        "Energia Corrosiva (Elite), Sistema de Ressonância El desbloqueado. ",
-                        "Se faltar algum deles, obtenha e volte."
-                    ]
-                },
                 varnimyr: {
                     title: {
                         en: "Varnimyr",
@@ -648,10 +543,14 @@ export const data = {
                         jp: "ヴァルニミル",
                         br: "Varnimyr"
                     },
+                    img: {
+                        primary: [
+                            { src: "/images/varnimyrsdui.png"},
+                        ]
+                    },
                     content: {
                         en: [
-                            "Varnimyr is a region consisting of 5 Dungeons, and 3 Raid Dungeons. The only mandatory task of this region is to clear Crimson Cradle of Flames to complete the 5th quest of Dr. Pho's Varnimyr guide. To access Crimson Cradle of Flames you have to clear the previous 2 dungeons first (Crimson Tower of Flames and Never-Ending Darkness).",
-                            "The purpose of doing so is to get the reward cube that gives you the Flame of Judgement Weapon, alternatively:"
+                            "[img:img.primary.0]Varnimyr is a region consisting of 5 Dungeons, and 3 Raid Dungeons (Formerly known as the Rosso raid). The only mandatory task of this region is to clear !Crimson Cradle of Flames! to complete the 5th quest of !Dr. Pho's Varnimyr guide!, which gives you a cube with the !Flame of Judgement! Weapon. To access !Crimson Cradle of Flames! you have to clear the previous 2 dungeons first (Crimson Tower of Flames and Never-Ending Darkness)."
                         ],
                         es: [],
                         kr: [],
@@ -660,9 +559,14 @@ export const data = {
                     }
                 },
                 foj: {
+                    img: {
+                        primary: [
+                            { src: "/images/rossorui.png", float: "left"}
+                        ]
+                    },
                     content: {
                         en: [
-                            "Clearing each phase of the Rosso Raid will make you able to get pity percentage to get a new weapon, the clear information is refreshed on week reset (Wednesday at 00:00 PST), or via Reset Tickets, exchangable for marks (given for helping people who haven't cleared the raid in this week, while being 100%).",
+                            "[pic:img.primary.0]","Clearing each phase of the Rosso Raid will make you able to get pity percentage to get a new weapon, the clear information is refreshed on week reset (Wednesday at 00:00 PST), or via Reset Tickets, exchangable for marks (given for helping people who haven't cleared the raid in this week, while being 100%).",
                             "The higher your pity bar, the higher the chances you have to drop the weapon. Every time a player in the party drops weapon, every member will be rewarded with 1 crystal (can only get 1 even if 2 people drop), accumulate them, since you can exchange them for Raid Accessories (5 crystals each), or Weapon (20 crystals).",
                             "You could farm this raid until you get all 3 accessories, but if you're fast enough, the 30d temporary set Dr. Pho's Guide gives you should be enough, since a later raid gives replacements for these.",
                             "Flame of Judgement Weapon is also given at +10 enhancement level in the Dr. Pho's guide, which also comes pre-socketed on both Sockets and Mystic Enhancement, although the stats pre-socketed aren't perfect, they are good enough to get you through the next raid, and you can always farm varnimyr dungeons for better rolls."
@@ -798,7 +702,7 @@ export const data = {
                     },
                     intro: {
                         en: [
-                            "In this region there are a couple of things you can do, first of all is to get the Amethystine Prophecy Armor, which should be given to you once you clear Sea of Ruin 1 time, on Dr. Pho's Rigomor Lesson, 2nd is trying to get Complete Conversion Ring for DPS by farming on Abandoned Deep-Sea Tunnel.","The hard part about the progression of this region is the fact that you'll have to do Master Class Advancement Quests, which make you clear 25 rigomor dungeons (5 + 20 for 1/5 and 2/5) and 16 master road dungeons (1 + 10 + 5 for 3/5, 4/5 and 5/5)."
+                            "Let's start with Rigomor, in this region there are a couple of things you can do, first of all is to get the !Amethystine Prophecy! Armor, which should be given to you once you clear !Sea of Ruin! 1 time, on !Dr. Pho's Rigomor Lesson!, 2nd is trying to get Complete Conversion Ring by farming on Abandoned Deep-Sea Tunnel. (It's RNG)","The hard part about the progression of this region is the fact that you'll have to do {{https://elwiki.net/w/Master_Class|Master Class|external}} Advancement Quests. (Quest requirements are refered to in the link provided)"
                         ],
                         es: [
                             ""
@@ -815,7 +719,7 @@ export const data = {
                     },
                     content: {
                         en: [
-                            "The current task would be to spam quests till you complete your 2nd quest. If you manage to find a party to go through those dungeons, the fastest rigomor dungeon is Trosh's Nest if you have a party or enough damage to oneshot all enemies, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin.","After finishing the 2/5 quest you'll be ready to start doing Master Road:"
+                            "The current task would be to spam quests till you complete your Master Class Rigomor Quests. If you manage to find a party to go through those dungeons, or if you have enough damage by yourself to oneshot enemies, the fastest rigomor dungeon would be Trosh's Nest, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin."
                         ],
                         es: [
                             ""
@@ -841,24 +745,7 @@ export const data = {
                     },
                     intro: {
                         en: [
-                            "Master Road consists of multiple boss spars, divided by both normal mode and hell mode; you won't stay long in this region, as you'll only need it to complete Master Class Quest, all enemies are boss type, so use of Head Hunter is recommended. The fastest dungeon of the region would be Shrine of the Two-Headed Serpent, since its adapted for solo play, you'll need to do this 16 times on normal mode, although it's recommended to do 1 hell mode to complete the Dr. Pho's Master Road Assignment, but you can do that later since it's harder when you lack gear."
-                        ],
-                        es: [
-                            ""
-                        ],
-                        kr: [
-                            ""
-                        ],
-                        jp: [
-                            ""
-                        ],
-                        br: [
-                            ""
-                        ]
-                    },
-                    content: {
-                        en: [
-                            "After doing all 16 runs, you'll be able to advance your character to Master Class, which unlocks the Master Artifact System and the first stage of your master skill.","Most important of all, you'll finally be free from the job advancement hell..."
+                            "Master Road consists of multiple boss spars, divided by normal and hell difficulties; you won't stay long in this region, as you'll only need it to complete Master Class Quests. All enemies are boss type, so use of Head Hunter is recommended. The fastest dungeon of the region would be Shrine of the Two-Headed Serpent, since its adapted for solo play, you'll need to do this 16 times on normal mode, although it's recommended to do 1 hell mode to complete the !Dr. Pho's Master Road Guide! Assignments, but you can do that later since it's harder when you lack gear.","After finishing all quests and advancing to Master Class, you will unlock the !Master Artifact! System and the 1st stage of you !Master Skill!."
                         ],
                         es: [
                             ""
@@ -3461,7 +3348,12 @@ export const data = {
                 intro: { en: ["After succesfully getting Master Class (even if below stage 4), your next goal lays here:"], es: ["Después de obtener con éxito la Clase Maestra (incluso si estás por debajo de la etapa 4), tu próximo objetivo se encuentra aquí:"], kr: ["마스터 클래스를 성공적으로 획득한 후(4단계 이하인 경우에도) 다음 목표는 여기 있습니다:"], jp: ["マスタークラスを無事に取得した後（ステージ4以下でも）、次の目標はここにあります:"], br: ["Após conseguir com sucesso a Classe Mestre (mesmo que abaixo do estágio 4), seu próximo objetivo está aqui:"] },
                 pruinaum: {
                     title: { en: "Pruinaum / Pruinaum Outskirts", es: "Pruinaum", kr: "프루이나움", jp: "プルイナウム", br: "Pruinaum" },
-                    content: { en: ["Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game, and useful rewards that can increase your power by quite a bit; you won't really do too much here in comparison to the previous 2 regions, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe Raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress.","Those 3 will also drop Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when recieved, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of Dr. Pho's Pruinaum Guide by Clearing Savage White-Ghost Castle and Altar of Invocation to get the Vestige of Soul."],
+                    img: {
+                        primary: [
+                            { src: "/images/pruinaumsdui.png"}
+                        ]
+                    },
+                    content: { en: ["[img:img.primary.0]Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game (Formerly known as the Berthe raid), and useful rewards that can increase your power by quite a bit; you won't really do too much here, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress, no need for you to stay on the region until you get those.","While working on those 3 objectives you will also get Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when recieved, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of !Dr. Pho's Pruinaum Guide! by Clearing Savage White-Ghost Castle and Altar of Invocation to get the !Vestige of Soul! weapon."],
                         es: [],
                         kr: [],
                         jp: [],
@@ -3469,7 +3361,7 @@ export const data = {
                      }
                 },
                 vos: {
-                    content: { en: ["The Vestige of Soul is the next weapon in progression after Flame of Judgement, this weapon comes with imprints upon recieving it, and a new system called Weapon Advancement."], es: [""], kr: [""], jp: [""], br: [""] }
+                    content: { en: ["The !Vestige of Soul! is the next weapon in progression after !Flame of Judgement!, this weapon a new system called Weapon Advancement (Refer to the Weapon Advancement System Guide for more information)."], es: [""], kr: [""], jp: [""], br: [""] }
                 },
                 imprint: {
                     title: { en: "Imprint" },
@@ -3565,7 +3457,7 @@ export const data = {
                     }
                 },
                 pruiout: {
-                    content: { en: ["Pruinaum Outskirts unlocks after progressing through Pruinaum. It's a small filler dungeon that offers new daily quests: Completing Plegas' Gaze / Plegas' Reflection (limited to 1 time per day) gives a material called Artifact Spirit Stone Fragment that serves to further upgrade the Master Artifact by wedging a special socket into it. Plegas' Reflection also serves as an EXP farming dungeon, a better alternative to Trosh's Nest if you have enough power. Theres 2 mandatory tasks in this region: Clear Plegas' Gaze and Plegas' Reflection to clear Quests 1 and 2 of Dr. Pho's Pruinaum Outskirts guide, rewarding you wedges and free stones to socket into your Master Artifact, the stats are near perfect. It's still recommended to do these daily to perfect the socket values."] }
+                    content: { en: ["Pruinaum Outskirts unlocks after completing the Epic Quest <Entering Pruinaum Outskirts> by clearing any Pruinaum dungeon. It's a small filler region that offers new daily quests: Completing Plegas' Gaze / Plegas' Reflection (limited to 1 time per day) gives a material called Artifact Spirit Stone Fragment that serves to further upgrade the Master Artifact by wedging a special socket into it. Plegas' Reflection also serves as an EXP farming dungeon, a better alternative to Trosh's Nest if you have enough power. Theres 2 mandatory tasks in this region: Clear Plegas' Gaze and Plegas' Reflection to clear Quests 1 and 2 of Dr. Pho's Pruinaum Outskirts guide, rewarding you wedges and free stones to socket into your Master Artifact, the stats are near perfect. It's still recommended to do these daily to perfect the socket values."] }
                 },
                 weaponadvancement: {
                     title: { en: "Weapon Advancement" },
@@ -3624,12 +3516,25 @@ export const data = {
                 },
                 tirnog: {
                     title: { en: "Midgame (Tirnog - Monaterra)" },
-                    content: { en: ["Tirnog is unlocked after completing the Epic Quest > Enter Tirnog, completed by clearing 1 Pruinaum Outskirts dungeon. In this region you will get the next armor in progression, called Tenebrous Armor, coming alongside it's own reforge material called Tenebrous Aura, Upon completing Dr. Pho's Tenebrous Guide idk what quest, you will be given a full +10 reforge 18 armor, (update after)"] }
+                    img: {
+                        primary: [
+                            { src: "/images/tirnogsdui.png"}
+                        ],
+                        ico: [
+                            { src: "/images/tasma.png", inline: true},
+                            { src: "/images/teneaura.png", inline: true},
+                            { src: "/images/tenecube.png", inline: true},
+                            { src: "/images/teneidscroll.png", inline: true},
+                            { src: "/images/teneticket.png", inline: true},
+                        ]
+                    },
+                    content: { en: ["[img:img.primary.0]To unlock the Tirnog region, you must complete the Epic Quest <Entering Tirnog> by clearing any Pruinaum Outskirts dungeon. This region introduces the next armor progression set, Tenebrous Armor, along with its dedicated upgrade materials, [pic:img.ico.1]Tenebrous Aura and [pic:img.ico.0]Tasma Aura.","!Dr. Pho's Guide Rewards!","Clearing quests 1 through 3 of Dr. Pho's Tirnog Guide rewards you with:","-[pic:img.ico.2] Full +10 r18 Tenebrous Armor","-[pic:img.ico.3] 4 Shadow Identification Scrolls","-[pic:img.ico.4] 12 Shadow Effect Stat Choice Tickets","Tenebrous pieces !are unequipable by default! and can only be equipped after using a !Shadow Identification Scroll! on them. After identifying, use the stat choice tickets to set the desired set effects. The stats these tickets provide are fixed to 80% of their maximum possible value, so to max out your stats, you must complete tirnog dungeons once daily to drop additional Tenebrous pieces, then identify them, and extract their useful effects to improve your main armor's rolls. (Refer to Shadow Effect Guide for details)."] }
                 },
                 shadoweffect: {
                     title: { en: "Shadow Effect"},
                     content: { en: ["Tenebrous Armor can be identified using the Shadow Effect Identification Scroll to grant special Shadow effects. There are 3 lines that can be identified, and once identified, that piece can no longer be identified. Identified Shadow effects can be extracted and stored for later use via Magmelia > Vasili > Effect Storage, allowing you to apply them to the corresponding piece and identification line when desired.","The Following table shows all possible effects.","Note: ◆◇◇, ◆◆◇ and ◆◆◆ refers to the slot the effect uses in each piece of the armor, they're alternatively called line 1, 2 and 3, each armor piece is limited to 1 stat per line."]},
                     table: {
+                        nerd: true,
                         title: 'Shadow Effect Stats',
                         labelColumnKey: 'stat',
                         columns: [
@@ -3696,7 +3601,27 @@ export const data = {
                             { type: '◆◆◆', part: 'Shared', label: 'Upon awakening, create a barrier with n% of Max HP. Recover HP/MP by n% every 3 sec. when the barrier is up (Cooldown: 20 sec.) (When same socket is applied, barrier HP and recovery stat stacks)', values: '1% / 2% / 3% / 4% / 5% / 6% / 7% / 8% / 9% / 10%\n1% / 2% / 3% / 4% / 5% / 6% / 7% / 8% / 9% / 10%' },
                             { type: '◆◆◆', part: 'Shared', label: 'Transcendence Skill Slot Enhance effect increase by n% and buff duration increase by n sec. (When same socket is applied, duration and damage stacks)', values: '0.2% / 0.4% / 0.6% / 0.8% / 1% / 1.2% / 1.4% / 1.6% / 1.8% / 2%\n0.3 / 0.6 / 0.9 / 1.2 / 1.5 / 1.8 / 2.1 / 2.4 / 2.7 / 3' },
                             { type: '◆◆◆', part: 'Shared', label: 'Upon using Hyperactive skill, gain buff that increases skill cooldown acceleration by n times for n sec. (When same socket is applied, buff duration and skill acceleration stat stacks)', values: '1.5 / 3 / 4.5 / 6 / 7.5 / 9 / 10.5 / 12 / 13.5 / 15\n1.005 / 1.01 / 1.015 / 1.02 / 1.025 / 1.03 / 1.035 / 1.04 / 1.045 / 1.05' }
-                        ]
+                        ],
+                        simpleTable: {
+                            title: {en: "Desired Shadow Effect Stats"},
+                            labelColumnKey: 'stat',
+                            columns: [
+                                { key: 'type',  labelKey: 'Type' },
+                                { key: 'part',  labelKey: 'Part' },
+                                { key: 'stat',  labelKey: 'Stat' },
+                                { key: 'values', labelKey: 'Possible Values' }
+                            ],
+                            rows: [
+                                { type: '◆◇◇', part: 'Shared', label: 'All Skill Damage Increase +n%', values: '0.15% / 0.3% / 0.45% / 0.6% / 0.75% / 0.9% / 1.05% / 1.2% / 1.35% / 1.5%' },
+                                { type: '◆◆◇', part: 'Top Piece', label: 'Deal n% of Damage as Continuous Damage for 3 sec. (Dungeon)', values: '1% / 2% / 3% / 4% / 5% / 6% / 7% / 8% / 9% / 10%' },
+                                { type: '◆◆◇', part: 'Bottom Piece', label: 'Any (Not important)', values: '-' },    
+                                { type: '◆◆◇', part: 'Gloves', label: 'Strength or Bravery Skill Damage Increase +n%', values: '1% / 2% / 3% / 4% / 5% / 6% / 7% / 8% / 9% / 10%' },
+                                { type: '◆◆◇', part: 'Shoes', label: 'Skill MP Cost Decrease -n% (Dungeon)', values: '1% / 2% / 3% / 4% / 5% / 6% / 7% / 8% / 9% / 10%' },
+                                { type: '◆◆◆', part: 'Shared', label: 'Damage Increased by n% when attacking enemies with HP n% or lower (When same socket is applied, HP condition and Damage Increase stat stacks)', values: 'DMG: 0.2% / 0.4% / 0.6% / 0.8% / 1% / 1.2% / 1.4% / 1.6% / 1.8% / 2%\n HP: 2% / 4% / 6% / 8% / 10% / 12% / 14% / 16% / 18% / 20%' },
+                                {label: 'Alternatively (If your character benefits out of reset stat):'},
+                                { type: '◆◆◆', part: 'Shared', label: 'Upon using Skill, n% chance to reset cooldown for the Skill used [Excluding Extreme Heavenly Love, Hyperactives, Active Force Skill] (When same socket is applied, chance stacks)', values: '0.3% / 0.6% / 0.9% / 1.2% / 1.5% / 1.8% / 2.1% / 2.4% / 2.7% / 3%' },
+                            ],
+                        },
                     },
                     content2 :{
                         en: ["There are 3 Set Effect, when all ◆◆◆ (Line 3) Shadow Effects are set, if they're all stats that share set effect, the tenebrous armor set effect will be activated, otherwise if 1 or more line 3 stats have a different set effect bonus, the set effect won't activate."]
@@ -3706,7 +3631,7 @@ export const data = {
                         columns: [
                             { key: 'category', label: 'Set Category' },
                             { key: 'socket',   label: 'Set Effect' },
-                            { key: 'setEffect', label: 'Shadow Effect' },
+                            { key: 'effect',   label: 'Effect' }
                         ],
                         rowGroups: [
                             {
@@ -4005,6 +3930,17 @@ export const data = {
             content_sunken: { en: "Sunken Holy Ground", es: "Terreno Sagrado Hundido", kr: "가라앉은 성스러운 땅", jp: "沈んだ聖地", br: "Terreno Sagrado Afundado" },
             sections: {
                 // ABYSS RAID
+                abyss_intro: {
+                    content: {
+                        en: ["!Unlocking Abyss Raid!","[img:img.primary.0]","Completing the Epic Quest <Entering Abyss> unlocks the !Abyss Raid!, which requires a minimum of !270,000 CP! to enter.","The raid consists of 4 different dungeons that offer the following key rewards:[pic:img.primary.1]<ul><li>!Accessories!: The 3 new accessories Phantom Crest, Abyssal Incense and Swirling Phantasma serve as official replacements for the Rosso Raid accessory set. These accessories can be obtained either via drop when completing Sunken Holy Ground / Blooming Mineral Field, or exchanging them for 83 Purifiers in Blacksmith NPC.</li>","<li>!Weapon!: Clearing Abyss raid dungeons increases the cube drop gauge. Upon clearing Birth of Origin with 100% drop gauge you will obtain a cube that lets you obtain either Phantom Crest accessory or Submergence of Abyss weapon. Just like previous raids, !Dr. Pho's Abyss Guide! will provide you with a !+10 Submergence of Abyss! upon clearing Birth of Origin 5 times.</li><li>^Submergence of Abyss also has stages, refer to the !Weapon Advancement System! Guide for details.^</li></ul>","This raid also lets you obtain a title that replaces Black and White, called {{https://cobodex.eu/en/title/2210|Natural Flow|external}}."],
+                    },
+                    img: {
+                            primary: [
+                                { src: "/images/abysssdui.png"},
+                                { src: "/images/abyssrui.png", float: "left"}
+                            ]
+                        },
+                },
                 shg: {
                     titlekey: {
                         en: "Sunken Holy Ground", es: "Tierra Santa Hundida", kr: "가라앉은 성지", jp: "沈んだ聖地", br: "Terra Santa Afundada"    

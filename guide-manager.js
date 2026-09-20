@@ -175,11 +175,13 @@ function createFragmentFromHtml(html) {
     return document.importNode(template.content, true);
 }
 
-function renderParagraphElements(value, container = null) {
+function renderParagraphElements(value, container = null, baseObject = null) {
     const resolved = getLocalizedValue(value);
     const lines = Array.isArray(resolved) ? resolved : [resolved];
     return lines.flatMap(line => {
-        const rendered = getRenderedText(line, container);
+        const rendered = window.translationManager?.renderWithBase
+            ? window.translationManager.renderWithBase(line, baseObject)
+            : getRenderedText(line, container);
         if (!rendered) {
             return [];
         }
@@ -339,9 +341,14 @@ function renderMechanicEntry(item) {
             subWrapper.appendChild(createElement('div', { class: 'mechforcedat' }, [getLocalizedValue(value.forcedat)]));
         }
         
-        // Add description
-        if (value.description) {
-            renderParagraphElements(value.description).forEach(el => subWrapper.appendChild(el));
+        if (item.description) {
+            renderParagraphElements(item.description, null, item).forEach(el => wrapper.appendChild(el));
+        }
+        if (item.note) {
+            renderParagraphElements(item.note, null, item).forEach(el => {
+                el.classList.add('mechnote');
+                wrapper.appendChild(el);
+            });
         }
         
         // Add img if present
@@ -355,14 +362,6 @@ function renderMechanicEntry(item) {
         if (value.vid) {
             const videoEl = renderVideoElement(value.vid);
             if (videoEl) subWrapper.appendChild(videoEl);
-        }
-        
-        // Add note if present
-        if (value.note) {
-            renderParagraphElements(value.note).forEach(el => {
-                el.classList.add('mechnote');
-                subWrapper.appendChild(el);
-            });
         }
         
         // Add variants if present
@@ -784,6 +783,26 @@ function renderTableFromSpec(tableSpec) {
         return null;
     }
 
+    // Check nerd mode rules
+    const nerdMode = isNerdModeEnabled();
+    const isNerdTable = tableSpec.nerd === true;
+    
+    // If it's a nerd table and nerd mode is off, try to render the simple version
+    if (isNerdTable && !nerdMode) {
+        if (tableSpec.simpleTable) {
+            return renderTableFromSpec(tableSpec.simpleTable);
+        }
+        // No simple alternative - hide entirely
+        return null;
+    }
+    
+    // If it's a simple-only table (simpleTable: true) and nerd mode is on,
+    // optionally hide it if it has a nerd table alternative
+    if (tableSpec.simpleOnly === true && nerdMode) {
+        // Hide the simple version when nerd mode is on
+        return null;
+    }
+
     if (Array.isArray(tableSpec.tabs)) {
         return renderTabbedTable(tableSpec);
     }
@@ -1014,9 +1033,36 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
     const isTableSpec = typeof value === 'object' && !Array.isArray(value)
         && (Array.isArray(value.rows) || Array.isArray(value.rowGroups));
 
+    if (key === 'tableGroup' && Array.isArray(value)) {
+        const nerdMode = isNerdModeEnabled();
+        
+        // Find the right table to show
+        let tableToShow = null;
+        
+        if (nerdMode) {
+            // Show the first table marked as nerd, or the last table
+            tableToShow = value.find(t => t.nerd === true) || value[value.length - 1];
+        } else {
+            // Show the first table marked as simpleOnly, or the first table
+            tableToShow = value.find(t => t.simpleOnly === true) || value[0];
+        }
+        
+        if (tableToShow) {
+            const tableEl = renderTableFromSpec(tableToShow);
+            if (tableEl) container.appendChild(tableEl);
+        }
+        return;
+    }
+
     if (key === 'table' || isTableSpec) {
         const tableEl = renderTableFromSpec(value);
         if (tableEl) container.appendChild(tableEl);
+        return;
+    }
+
+    if (key === 'img' && typeof value === 'object' && !Array.isArray(value)) {
+        const imgEl = renderGenericImage(value);
+        if (imgEl) container.appendChild(imgEl);
         return;
     }
 
@@ -1045,7 +1091,7 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         images.forEach(imgData => {
             const figure = createElement('figure', { class: 'guide-image-figure' }, []);
             
-            let src, altText, captionType;
+            let src, altText, captionType, floatSide, floatWidth;
             
             if (typeof imgData === 'string') {
                 src = imgData;
@@ -1055,6 +1101,8 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
                 src = imgData.src;
                 altText = getLocalizedValue(imgData.alt) || '';
                 captionType = imgData.captionType || 'default';
+                floatSide = imgData.float || null;
+                floatWidth = imgData.width || null;
             }
 
             const img = createElement('img', {
@@ -1063,13 +1111,27 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
                 title: altText,
                 loading: 'lazy'
             }, []);
+            
+            // Apply float class to the figure
+            if (floatSide === 'left') {
+                figure.classList.add('image-float-left');
+            } else if (floatSide === 'right') {
+                figure.classList.add('image-float-right');
+            }
+            
+            // Apply custom width
+            if (floatWidth) {
+                figure.style.width = floatWidth;
+                img.style.width = '100%';
+                img.style.height = 'auto';
+            }
+            
             img.addEventListener('click', () => openImageLightbox(src, altText));
             figure.appendChild(img);
 
             if (altText) {
                 const caption = createElement('figcaption', { class: 'guide-image-caption' }, []);
                 
-                // Check if caption should have quotes
                 if (captionType === 'quote') {
                     caption.textContent = `"${altText}"`;
                     caption.classList.add('caption-quote');
@@ -1100,6 +1162,10 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         const nestedSection = renderGenericSection(path, value);
         if (nestedSection) container.appendChild(nestedSection);
     }
+}
+
+function isNerdModeEnabled() {
+    return localStorage.getItem('elhelper-nerd-mode') === 'true';
 }
 
 function openImageLightbox(src, alt) {
@@ -2089,6 +2155,83 @@ function handleGuideLinkClick(event) {
         openGuide(guideId);
     }
 }
+
+function renderGenericImage(value) {
+    if (!value || typeof value !== 'object') return null;
+    
+    const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
+
+    const layers = [
+        { key: 'primary',   containerClass: 'image-layer-primary' },
+        { key: 'secondary', containerClass: 'image-layer-secondary' },
+        { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
+        { key: 'ico',       containerClass: 'image-layer-ico' },
+        { key: 'normal',    containerClass: 'image-layer-normal' },
+        { key: 'small',     containerClass: 'image-layer-small' }
+    ];
+
+    layers.forEach(layer => {
+        const layerData = value[layer.key];
+        if (!layerData) return;
+
+        const layerContainer = createElement('div', { 
+            class: `image-layer ${layer.containerClass}` 
+        }, []);
+
+        const images = Array.isArray(layerData) ? layerData : [layerData];
+
+        images.forEach(imgData => {
+            const figure = createElement('figure', { class: 'guide-image-figure' }, []);
+            
+            let src, altText, captionType;
+            
+            if (typeof imgData === 'string') {
+                src = imgData;
+                altText = '';
+                captionType = 'default';
+            } else if (typeof imgData === 'object') {
+                src = imgData.src;
+                altText = getLocalizedValue(imgData.alt) || '';
+                captionType = imgData.captionType || 'default';
+            }
+
+            if (!src) return;
+
+            const img = createElement('img', {
+                src: src,
+                alt: altText,
+                title: altText,
+                loading: 'lazy',
+                class: 'guide-image'
+            }, []);
+            img.addEventListener('click', () => openImageLightbox(src, altText));
+            figure.appendChild(img);
+
+            if (altText) {
+                const caption = createElement('figcaption', { class: 'guide-image-caption' }, []);
+                
+                if (captionType === 'quote') {
+                    caption.textContent = `"${altText}"`;
+                    caption.classList.add('caption-quote');
+                } else {
+                    caption.textContent = altText;
+                }
+                
+                figure.appendChild(caption);
+            }
+
+            layerContainer.appendChild(figure);
+        });
+
+        imgWrapper.appendChild(layerContainer);
+    });
+
+    return imgWrapper;
+}
+
+window.renderGenericImage = renderGenericImage;
+window.openImageLightbox = openImageLightbox;
+window.closeImageLightbox = closeImageLightbox;
 
 function initializeGuideManager() {
     buildGuideIndex();
