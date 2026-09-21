@@ -310,12 +310,7 @@ export const data = {
             title: { en: "Stage 2", es: "Etapa 2", kr: "2단계", jp: "ステージ2", br: "Estágio 2" },
             stage2_title: { en: "Road to 3rd Class & Dr.Pho's Guide", es: "Camino a la 3ª Clase y Guía del Dr. Pho", kr: "3차 직업 및 닥터 포의 가이드로 가는 길", jp: "3次クラスとドクター・ポーのガイドへの道", br: "Caminho para a 3ª Classe e Guia do Dr. Pho" },
             contents: { en: "List of Content", es: "Lista de Contenido", kr: "콘텐츠 목록", jp: "コンテンツ一覧", br: "Lista de Conteúdo" },
-            content_elrianode_armor: { en: "Post lv. 99 / Earlygame", es: "", kr: "", jp: "", br: "" },
-            content_socketing: { en: "Socketing", es: "Encajonado", kr: "소켓", jp: "ソケット", br: "Socketing" },
-            content_el_resonance: { en: "El Resonance", es: "Resonancia El", kr: "엘 공명", jp: "エルレゾナンス", br: "El Resonance" },
-            content_dosi_wings: { en: "Accessory: Dimension of Sinister Intent Wings", es: "Accesorio: Alas de la Dimensión de la Intención Siniestra", kr: "액세서리: 사악한 의도의 차원 날개", jp: "アクセサリー：邪悪な意図の次元の翼", br: "Acessório: Asas da Dimensão da Intenção Sinistra" },
-            content_third_class: { en: "3rd Class", es: "3ª Clase", kr: "3차 직업", jp: "3次クラス", br: "3ª Classe" },
-            content_henir: { en: "Henir's Time and Space", es: "Tiempo y Espacio de Henir", kr: "헤니르의 시간과 공간", jp: "ヘニルの時間と空間", br: "Tempo e Espaço de Henir" },
+            content_elrianode_armor: { en: "Earlygame", es: "", kr: "", jp: "", br: "" },
             sections: {
                 elrianode_armor: {
                     title: { en: "Post lv. 99 / Earlygame", es: "Armadura de Elrianode", kr: "엘리아노드 갑옷", jp: "エルリアノードアーマー", br: "Armadura Elrianode"},
@@ -352,16 +347,24 @@ export const data = {
                 socketing: {
                     title: { en: "Socketing", es: "Encajonado", kr: "소켓", jp: "ソケット", br: "Socketing" },
                     img: {
-                        primary: { src: "/images/socketing.png", alt: "Socketing UI in-game." },
+                        primary: [ 
+                            {src: "/images/socketing.png", alt: "Socketing UI in-game." }
+                        ],
+                        ico: [
+                            { src: "/images/items/MSI.png", inline: true},
+                            { src: "/images/items/AMSI.png", inline: true},
+                            { src: "/images/items/RMSI.png", inline: true},
+                            { src: "/images/items/SMSI.png", inline: true},
+                        ]
                     },
                     content: { 
                         en: [
                             "Armor, Weapon and Armor Costumes (Shoes, Bottom, Gloves, Top, Hair, Suit) have Socket Slots. !Dr. Pho's Guide! provides weapons that are already socketed, but the stat is not perfect, so you might need to switch the Sockets to get better stat percentages, or to switch the stats, in order to match the {{https://docs.google.com/spreadsheets/d/e/2PACX-1vQkHyGXROrJ0TUrax6T5h2Sc0dta9p3xCh-Jwl_z_4l22bEEB44k03xZ9tSfvnpZWyTHTgYYqN-tFIV/pubhtml#gid=1679907376|recommended stats of your path|external}}.",
                             "Socketing is performed by infusing Magic Stones into your Armor or Weapons by pressing the Inventory Key (I) -> Magic Stone Enchant. (PD: If you get a good stat, you can click the Square Icon on the Socket UI to lock the stat, otherwise you will spend a lot of Stones trying to get the stat you want.)",
                             "The stats you should socket are Maximize and Critical until your character reaches the recommended %, then Damage to Boss (Requires a Special Magic Stone called !Dual Magic Stone of Pursuit! which is obtainable via purchase on Board, or by doing the Special Dungeon 'Heroic Dungeon' and crafting the stones via NPC Glave)",
-                            "Magic Stones (Normal ones, Special ones like Dual Magic Stone of Pursuit are different) are divided in 4 Tiers, shown in the table below, each tier has a different minimum and maximum stat value, T4 having the highest, it being 12% on weapon and 6% on Armor, since Armor socket values are divided by half, as said by the item tooltip."
+                            "Magic Stones (Normal ones, Special ones like Dual Magic Stone of Pursuit are different) are divided in 4 Tiers: [pic:img.ico.0] Magic Stone, [pic:img.ico.2] Refined Magic Stone, [pic:img.ico.1] Advanced Magic Stone and [pic:img.ico.3] Sage's Magic Stone. each tier has a different minimum and maximum stat value, T4 having the highest, it being 12% on weapon and 6% on Armor, since Armor socket values are divided by half, as said by the item tooltip."
                         ],
-                    }
+                    },
                 },
                 el_resonance: {
                     title: { en: "El Resonance", es: "Resonancia El", kr: "엘 공명", jp: "エルレゾナンス", br: "El Resonance" },
@@ -408,7 +411,6 @@ export const data = {
                     }
                 },
                 third_class: {
-                    title: { en: "3rd Class", es: "Avance de Trabajo: 3ª Clase", kr: "직업 승급: 3차 직업", jp: "ジョブアドバンスメント：3次クラス", br: "Avanço de Trabalho: 3ª Classe" },
                     content: { en: [
                         "After everything you got, you should be able to easily advance to {{https://elwiki.net/w/3rd_Jobs|3rd Job|external}}, which is unlocked after completing 5 quests (Information on the quest requirements is refered to in the link provided). Upon job advancement, the last batch of passives are unlocked, along {{https://elwiki.net/w/Force_Skills|Force Skills|external}}."
                     ], es: [
@@ -426,7 +428,6 @@ export const data = {
                     ]}
                 },
                 henir: {
-                    title: { en: "Henir's Time and Space", es: "Tiempo y Espacio de Henir", kr: "헤니르의 시간과 공간", jp: "ヘニルの時間と空間", br: "Tempo e Espaço de Henir" },
                     img: {
                         ico: [
                             { src: "/images/tasfrag.webp", inline: true}
@@ -434,7 +435,7 @@ export const data = {
                     },
                     content: { 
                         en: [
-                            "You can find this dungeon on: Dungeon List → Henir, Henir's Time and Space is a Boss Rush-like dungeon with 2 difficulties, Normal Mode (20 Bosses) and Challenge Mode (6 Bosses, Higher HP than Normal Mode).",
+                            "!Henir's Time and Space!","You can find this dungeon on: Dungeon List → Henir, Henir's Time and Space is a Boss Rush-like dungeon with 2 difficulties, Normal Mode (20 Bosses) and Challenge Mode (6 Bosses, Higher HP than Normal Mode).",
                             "Clearing Henir's Time and Space up to Stage 20 (Normal Mode) will let you complete the quests from Dr. Pho's Guide Henir Tab, rewarding you the Force Skills Eroding Energy and Head Hunter, those are very useful, since Eroding Energy provides Max MP, and Head Hunter provides Damage to Bosses. you will also be given materials [pic:img.ico.0] to upgrade those Force Skills up to Elite (2nd Tier) with higher stats. Along with Illipia's Aura, which was given after 3rd class quest completion on Rare Tier, are the 3 most important Force Skills for early game.",
                             "Table below shows the stats of these 3 Force Skills at each Tier."
                         ],
@@ -442,29 +443,13 @@ export const data = {
                 }
             },
             tables: {
-                magic_stones: {
-                    title: {en: "Magic Stones", es: "Piedras Mágicas", kr: "마법석", jp: "魔法石", br: "Pedras Mágicas"},
-                    headers: ["", "", "", ""],
-                    images: [
-                        "../images/Items/MagStoneIcon.png",
-                        "../images/Items/AdvMagStoneIcon.png",
-                        "../images/Items/RefMagStoneIcon.png",
-                        "../images/Items/SagMagStoneIcon.png"
-                    ],
-                    rows: {
-                        t1: {en: "Tier 1: Magic Stone", es: "Nivel 1: Piedra Mágica", kr: "1단계: 마법석", jp: "ティア1: 魔法石", br: "Nível 1: Pedra Mágica"},
-                        t2: {es: "Tier 2: Advanced Magic Stone", es: "Nivel 2: Piedra Mágica Avanzada", kr: "2단계: 고급 마법석", jp: "ティア2: 高級魔法石", br: "Nível 2: Pedra Mágica Avançada"},
-                        t3: {en: "Tier 3: Refined Magic Stone", es: "Nivel 3: Piedra Mágica Refinada", kr: "3단계: 정제된 마법석", jp: "ティア3: 精製された魔法石", br: "Nível 3: Pedra Mágica Refinada"},
-                        t4: {en: "Tier 4: Sage Magic Stone", es: "Nivel 4: Piedra Mágica Sabia", kr: "4단계: 현자 마법석", jp: "ティア4: 賢者の魔法石", br: "Nível 4: Pedra Mágica Sábia"}
-                    },
-                },
                 forces: {
                     title: {en: "Force Skills", es: "Habilidades de Fuerza", kr: "포스 스킬", jp: "フォーススキル", br: "Habilidades de Força"},
                     headers: {
                         h1: {en: "Skill", es: "Habilidad", kr: "스킬", jp: "スキル", br: "Habilidade"},
                         h2: {en: "Rare", es: "Raro", kr: "레어", jp: "レア", br: "Raro"},
-                        h3: {en: "Elite", es: "Élite", kr: "엘리트", jp: "エリート", br: "Elite"},
-                        h4: {en: "Unique", es: "Única", kr: "유니크", jp: "ユニーク", br: "Única"}
+                        h3: {en: "Elite (250 Fragments)", es: "Élite", kr: "엘리트", jp: "エリート", br: "Elite"},
+                        h4: {en: "Unique (750 Fragments)", es: "Única", kr: "유니크", jp: "ユニーク", br: "Única"}
                     },
                     forcename: {
                         ee: {en: "Eroding Energy", es: "Energía Erosiva", kr: "침식 에너지", jp: "エロージングエナジー", br: "Energia Erosiva"},
@@ -473,76 +458,27 @@ export const data = {
                     },
                     tiers: {
                         t1effects: {
-                            hh: {en:["Damage to Bosses +40%","Physical/Magical Attack Power -18%"], es:["Daño a Jefes +40%","Poder de Ataque Físico/Mágico -18%"], kr:["보스에 대한 피해 +40%","물리/마법 공격력 -18%"], jp:["ボスへのダメージ +40%","物理/魔法攻撃力 -18%"], br:["Dano a Chefes +40%","Poder de Ataque Físico/Mágico -18%"]},
-                            ee: {en:["Max MP +50","MP Recovery +10/s after 3s out of combat","HP Decrease -3% after 3s out of combat"], es:["Max MP +50","Recuperación de MP +10/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +50","戦闘から3秒後にMP回復 +10/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +50","戦闘から3秒後にMP回復 +10/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +50","Recuperação de MP +10/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
-                            ia: {en:["Max HP +40,000","HP Recovery +1.2%/s after 3s out of combat"], es:["Max HP +40,000","Recuperación de HP +1.2%/s después de 3s fuera de combate"], kr:["最大HP +40,000","戦闘から3秒後にHP回復 +1.2%/s"], jp:["最大HP +40,000","戦闘から3秒後にHP回復 +1.2%/s"], br:["Max HP +40,000","Recuperação de HP +1.2%/s após 3s fora de combate"]}
+                            hh: {en:["<ul><li>Damage to Bosses +40%</li><li>Physical/Magical Attack Power -18%</li></ul>"], es:["<ul><li>Daño a Jefes +40%</li><li>Poder de Ataque Físico/Mágico -18%</li></ul>"], kr:["<ul><li>보스에 대한 피해 +40%","물리/마법 공격력 -18%"], jp:["ボスへのダメージ +40%","物理/魔法攻撃力 -18%"], br:["Dano a Chefes +40%","Poder de Ataque Físico/Mágico -18%"]},
+                            ee: {en:["<ul><li>Max MP +50</li><li>MP Recovery +10/s after 3s out of combat</li><li>HP Decrease -3% after 3s out of combat</li></ul>"], es:["<ul><li>Max MP +50","Recuperación de MP +10/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +50","戦闘から3秒後にMP回復 +10/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +50","戦闘から3秒後にMP回復 +10/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +50","Recuperação de MP +10/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
+                            ia: {en:["<ul><li>Max HP +40,000</li><li>HP Recovery +1.2%/s after 3s out of combat</li></ul>"], es:["<ul><li>Max HP +40,000</li><li>Recuperación de HP +1.2%/s después de 3s fuera de combate</li>"], kr:[], jp:["<ul><li>最大HP +40,000</li><li>戦闘から3秒後にHP回復 +1.2%/s</li>"], br:["<ul><li>Max HP +40,000</li><li>Recuperação de HP +1.2%/s após 3s fora de combate</li></ul>"]}
                         },
                         t2effects: {
-                            hh: {en:["Damage to Bosses +60%","Physical/Magical Attack Power -20%"], es:["Daño a Jefes +60%","Poder de Ataque Físico/Mágico -20%"], kr:["보스에 대한 피해 +60%","물리/마법 공격력 -20%"], jp:["ボスへのダメージ +60%","物理/魔法攻撃力 -20%"], br:["Dano a Chefes +60%","Poder de Ataque Físico/Mágico -20%"]},
-                            ee: {en:["Max MP +80","MP Recovery +15/s after 3s out of combat","HP Decrease -3% after 3s out of combat"], es:["Max MP +80","Recuperación de MP +15/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +80","戦闘から3秒後にMP回復 +15/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +80","戦闘から3秒後にMP回復 +15/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +80","Recuperação de MP +15/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
-                            ia: {en:["Max HP +70,000","HP Recovery +2%/s after 3s out of combat"], es:["Max HP +70,000","Recuperación de HP +2%/s después de 3s fuera de combate"], kr:["最大HP +70,000","戦闘から3秒後にHP回復 +2%/s"], jp:["最大HP +70,000","戦闘から3秒後にHP回復 +2%/s"], br:["Max HP +70,000","Recuperação de HP +2%/s após 3s fora de combate"]}
+                            hh: {en:["<ul><li>Damage to Bosses +60%</li><li>Physical/Magical Attack Power -20%"], es:["Daño a Jefes +60%","Poder de Ataque Físico/Mágico -20%"], kr:["보스에 대한 피해 +60%","물리/마법 공격력 -20%"], jp:["ボスへのダメージ +60%","物理/魔法攻撃力 -20%"], br:["Dano a Chefes +60%","Poder de Ataque Físico/Mágico -20%"]},
+                            ee: {en:["<ul><li>Max MP +80</li><li>MP Recovery +15/s after 3s out of combat</li><li>HP Decrease -3% after 3s out of combat</li></ul>"], es:["Max MP +80","Recuperación de MP +15/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +80","戦闘から3秒後にMP回復 +15/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +80","戦闘から3秒後にMP回復 +15/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +80","Recuperação de MP +15/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
+                            ia: {en:["<ul><li>Max HP +70,000</li><li>HP Recovery +2%/s after 3s out of combat</li></ul>"], es:["Max HP +70,000","Recuperación de HP +2%/s después de 3s fuera de combate"], kr:["最大HP +70,000","戦闘から3秒後にHP回復 +2%/s"], jp:["最大HP +70,000","戦闘から3秒後にHP回復 +2%/s"], br:["Max HP +70,000","Recuperação de HP +2%/s após 3s fora de combate"]}
                         },
                         t3effects: {
-                            hh: {en:["Damage to Bosses +80%","Physical/Magical Attack Power -24%"], es:["Daño a Jefes +80%","Poder de Ataque Físico/Mágico -24%"], kr:["보스에 대한 피해 +80%","물리/마법 공격력 -24%"], jp:["ボスへのダメージ +80%","物理/魔法攻撃力 -24%"], br:["Dano a Chefes +80%","Poder de Ataque Físico/Mágico -24%"]},
-                            ee: {en:["Max MP +100","MP Recovery +25/s after 3s out of combat","HP Decrease -3% after 3s out of combat"], es:["Max MP +100","Recuperación de MP +25/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +100","戦闘から3秒後にMP回復 +25/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +100","戦闘から3秒後にMP回復 +25/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +100","Recuperação de MP +25/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
-                            ia: {en:["Max HP +100,000","HP Recovery +3%/s after 3s out of combat"], es:["Max HP +100,000","Recuperación de HP +3%/s después de 3s fuera de combate"], kr:["最大HP +100,000","戦闘から3秒後にHP回復 +3%/s"], jp:["最大HP +100,000","戦闘から3秒後にHP回復 +3%/s"], br:["Max HP +100,000","Recuperação de HP +3%/s após 3s fora de combate"]}
+                            hh: {en:["<ul><li>Damage to Bosses +80%</li><li>Physical/Magical Attack Power -24%</li></ul>"], es:["Daño a Jefes +80%","Poder de Ataque Físico/Mágico -24%"], kr:["보스에 대한 피해 +80%","물리/마법 공격력 -24%"], jp:["ボスへのダメージ +80%","物理/魔法攻撃力 -24%"], br:["Dano a Chefes +80%","Poder de Ataque Físico/Mágico -24%"]},
+                            ee: {en:["<ul>Max MP +100</li><li>MP Recovery +25/s after 3s out of combat</li><li>HP Decrease -3% after 3s out of combat</ul>"], es:["Max MP +100","Recuperación de MP +25/s después de 3s fuera de combate","Disminución de HP -3% después de 3s fuera de combate"], kr:["最大MP +100","戦闘から3秒後にMP回復 +25/s","戦闘から3秒後にHP減少 -3%"], jp:["最大MP +100","戦闘から3秒後にMP回復 +25/s","戦闘から3秒後にHP減少 -3%"], br:["Max MP +100","Recuperação de MP +25/s após 3s fora de combate","Diminuição de HP -3% após 3s fora de combate"]},
+                            ia: {en:["<ul><li>Max HP +100,000</li><li>HP Recovery +3%/s after 3s out of combat</li></ul>"], es:["Max HP +100,000","Recuperación de HP +3%/s después de 3s fuera de combate"], kr:["最大HP +100,000","戦闘から3秒後にHP回復 +3%/s"], jp:["最大HP +100,000","戦闘から3秒後にHP回復 +3%/s"], br:["Max HP +100,000","Recuperação de HP +3%/s após 3s fora de combate"]}
                         }
                     }
                 },
             },
         },
         stage3: {
-            title: {
-                en: "Stage 3",
-                es: "Etapa 3",
-                kr: "3단계",
-                jp: "ステージ3",
-                br: "Estágio 3"
-            },
-            stage3_title: {
-                en: "Varnimyr, Rigomor Armor & Master Class",
-                es: "Varnimyr, Armadura Rigomor y Clase Maestra",
-                kr: "바르니미르, 리고모르 장비 및 마스터 클래스",
-                jp: "ヴァルニミル、リゴモア防具とマスタークラス",
-                br: "Varnimyr, Armadura Rigomor e Classe Mestre"
-            },
-            contents: {
-                en: "List of Content",
-                es: "Lista de Contenido",
-                kr: "콘텐츠 목록",
-                jp: "コンテンツ一覧",
-                br: "Lista de Conteúdo"
-            },
-            content_varnimyr: {
-                en: "Varnimyr",
-                es: "Varnimyr",
-                kr: "바르니미르",
-                jp: "ヴァルニミル",
-                br: "Varnimyr"
-            },
-            content_mystic: {
-                en: "Mystic Enhancement",
-                es: "Mejora Mística",
-                kr: "신비한 강화",
-                jp: "神秘の強化",
-                br: "Aprimoramento Místico"
-            },
-            content_rigomor: {
-                en: "Rigomor",
-                es: "Rigomor",
-                kr: "리고모르",
-                jp: "リゴモア",
-                br: "Rigomor"
-            },
             sections: {
                 varnimyr: {
-                    title: {
-                        en: "Varnimyr",
-                        es: "Varnimyr",
-                        kr: "바르니미르",
-                        jp: "ヴァルニミル",
-                        br: "Varnimyr"
-                    },
                     img: {
                         primary: [
                             { src: "/images/varnimyrsdui.png"},
@@ -550,7 +486,7 @@ export const data = {
                     },
                     content: {
                         en: [
-                            "[img:img.primary.0]Varnimyr is a region consisting of 5 Dungeons, and 3 Raid Dungeons (Formerly known as the Rosso raid). The only mandatory task of this region is to clear !Crimson Cradle of Flames! to complete the 5th quest of !Dr. Pho's Varnimyr guide!, which gives you a cube with the !Flame of Judgement! Weapon. To access !Crimson Cradle of Flames! you have to clear the previous 2 dungeons first (Crimson Tower of Flames and Never-Ending Darkness)."
+                            "!Varnimyr!","[img:img.primary.0]Varnimyr is a region consisting of 5 Dungeons, and 3 Raid Dungeons (Formerly known as the Rosso raid). The only mandatory task of this region is to clear !Crimson Cradle of Flames! to complete the 5th quest of !Dr. Pho's Varnimyr guide!, which gives you a cube with the !Flame of Judgement! Weapon. To access !Crimson Cradle of Flames! you have to clear the previous 2 dungeons first (Crimson Tower of Flames and Never-Ending Darkness)."
                         ],
                         es: [],
                         kr: [],
@@ -702,24 +638,7 @@ export const data = {
                     },
                     intro: {
                         en: [
-                            "Let's start with Rigomor, in this region there are a couple of things you can do, first of all is to get the !Amethystine Prophecy! Armor, which should be given to you once you clear !Sea of Ruin! 1 time, on !Dr. Pho's Rigomor Lesson!, 2nd is trying to get Complete Conversion Ring by farming on Abandoned Deep-Sea Tunnel. (It's RNG)","The hard part about the progression of this region is the fact that you'll have to do {{https://elwiki.net/w/Master_Class|Master Class|external}} Advancement Quests. (Quest requirements are refered to in the link provided)"
-                        ],
-                        es: [
-                            ""
-                        ],
-                        kr: [
-                            ""
-                        ],
-                        jp: [
-                            ""
-                        ],
-                        br: [
-                            ""
-                        ]
-                    },
-                    content: {
-                        en: [
-                            "The current task would be to spam quests till you complete your Master Class Rigomor Quests. If you manage to find a party to go through those dungeons, or if you have enough damage by yourself to oneshot enemies, the fastest rigomor dungeon would be Trosh's Nest, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin."
+                            "", "!Rigomor!","In this region there are a couple of things you can do, first of all is to get the !Amethystine Prophecy! Armor, which should be given to you once you clear !Sea of Ruin! 1 time, on !Dr. Pho's Rigomor Lesson!, 2nd is trying to get Complete Conversion Ring by farming on Abandoned Deep-Sea Tunnel. (It's RNG)","The hard part about the progression of this region is the fact that you'll have to do {{https://elwiki.net/w/Master_Class|Master Class|external}} Advancement Quests. (Quest requirements are refered to in the link provided)","The current task would be to spam quests till you complete your Master Class Rigomor Quests. If you manage to find a party to go through those dungeons, or if you have enough damage by yourself to oneshot enemies, the fastest rigomor dungeon would be Trosh's Nest, otherwise your second option would be Abandoned Icerite Plant, and your third option would be Sea of Ruin."
                         ],
                         es: [
                             ""
@@ -745,7 +664,7 @@ export const data = {
                     },
                     intro: {
                         en: [
-                            "Master Road consists of multiple boss spars, divided by normal and hell difficulties; you won't stay long in this region, as you'll only need it to complete Master Class Quests. All enemies are boss type, so use of Head Hunter is recommended. The fastest dungeon of the region would be Shrine of the Two-Headed Serpent, since its adapted for solo play, you'll need to do this 16 times on normal mode, although it's recommended to do 1 hell mode to complete the !Dr. Pho's Master Road Guide! Assignments, but you can do that later since it's harder when you lack gear.","After finishing all quests and advancing to Master Class, you will unlock the !Master Artifact! System and the 1st stage of you !Master Skill!."
+                            "!Master Road!","Master Road consists of multiple boss spars, divided by normal and hell difficulties; you won't stay long in this region, as you'll only need it to complete Master Class Quests. All enemies are boss type, so use of Head Hunter is recommended. The fastest dungeon of the region would be Shrine of the Two-Headed Serpent, since its adapted for solo play, you'll need to do this 16 times on normal mode, although it's recommended to do 1 hell mode to complete the !Dr. Pho's Master Road Guide! Assignments, but you can do that later since it's harder when you lack gear.","After finishing all quests and advancing to Master Class, you will unlock the !Master Artifact! System and the 1st stage of you !Master Skill!."
                         ],
                         es: [
                             ""
@@ -4468,8 +4387,13 @@ export const data = {
                     title: {
                         en: "Monaterra"
                     },
+                    img: {
+                        ico: [
+                            { src: "/images/harcoico.png", inline: true}
+                        ]
+                    },
                     content: {
-                        
+                        en: [ "!Monaterra!","Monaterra is somewhat of a filler region unlocked when completing the Epic Quest <Entering Monaterra> by completing any tirnog dungeon. You only do this region's content for 2 reasons: Clearing any of the first 3 dungeons gives you [pic:img.ico.0]Harconium Pieces, which can be socketed into the Tenebrous Armor to gain more stats. !Dr. Pho's Monaterra Guide! gives you a full set of harconium pieces with +5% Damage to Boss stat. You should still periodically spam one of the 3 dungeons as there is a better stat to socket your tenebrous rather than damage to boss, which is Polarize. The best dungeon to spam (as its the fastest, would be !Palace of Gold Queen Medovine!).","The second (and most important thing about the region, would be to do 19-4 (The Great Steel Wall), as it grants the best up-to-date supporting title, {{https://cobodex.eu/en/title/2250|Attack of Steel Machines|external}}."]   
                     }
                 },
                 harconiumtuning: {
@@ -8447,7 +8371,7 @@ export const data = {
                             np: {
                                 doublejab: {
                                     vid: {
-                                        src: "/images/mechs/2451do.mp4"
+                                        src: "/images/mechs/2451do1.mp4"
                                     },
                                     name: { en: "Double Jab", es: "Golpe Doble", kr: "", jp: "", br: "" },
                                     iframe: true,
@@ -8473,7 +8397,7 @@ export const data = {
                             mechs: {
                                 alliancecombo: {
                                     vid: {
-                                        src: "/images/mechs/2451al.mp4"
+                                        src: "/images/mechs/2451al_a.mp4"
                                     },
                                     name: { en: "Alliance Combo", es: "Combo de Alianza", kr: "", jp: "", br: "" },
                                     iframe: true,
@@ -8496,8 +8420,10 @@ export const data = {
                                     }
                                 },
                                 outwardinwardexplosion: {
-                                    vid: {
-                                        src: "/images/mechs/2451ou.mp4"
+                                    img: {
+                                        primary: [
+                                            { src: "/images/mechs/2451ou.png"}
+                                        ]
                                     },
                                     name: { en: "Outward / Inward Explosion", es: "Explosión Hacia Afuera / Hacia Adentro", kr: "", jp: "", br: "" },
                                     iframe: true,
@@ -8566,7 +8492,7 @@ export const data = {
                                 },
                                 alloutattack: {
                                     vid: {
-                                        src: "/images/mechs/2451al.mp4"
+                                        src: "/images/mechs/2451al_oa.mp4"
                                     },
                                     name: { en: "All-Out Attack", es: "Ataque Total", kr: "", jp: "", br: "" },
                                     forcedat: { en: "Forced at 100x", es: "Forzado a 100x", kr: "", jp: "", br: "" },
@@ -8617,7 +8543,7 @@ export const data = {
                             mechs: {
                                 missiledefense: {
                                     vid: {
-                                        src: "/images/mechs/2452mi.mp4"
+                                        src: "/images/mechs/2452mi_d.mp4"
                                     },
                                     name: { en: "Missile Defense", es: "Defensa de Misiles", kr: "", jp: "", br: "" },
                                     forcedat: { en: "Every minute", es: "Cada minuto", kr: "", jp: "", br: "" },
@@ -8657,8 +8583,10 @@ export const data = {
                                     }
                                 },
                                 missilesiege: {
-                                    vid: {
-                                        src: "/images/mechs/2452mi.mp4"
+                                    img: {
+                                        primary: [
+                                            {src: "/images/mechs/2452mi_s.png"}
+                                        ]
                                     },
                                     name: { en: "Missile Siege", es: "Asedio de Misiles", kr: "", jp: "", br: "" },
                                     forcedat: { en: "Every 30 seconds", es: "Cada 30 segundos", kr: "", jp: "", br: "" },
@@ -8819,8 +8747,10 @@ export const data = {
                             },
                             mechs: {
                                 timedmissiles: {
-                                    vid: {
-                                        src: "/images/mechs/246ti.mp4"
+                                    img: {
+                                        primary: [
+                                            { src: "/images/mechs/246ti.png" }
+                                        ]
                                     },
                                     name: { en: "Timed Missiles", es: "Misiles Cronometrados", kr: "", jp: "", br: "" },
                                     iframe: true,

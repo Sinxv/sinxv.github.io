@@ -1,5 +1,12 @@
 export const guideData = [
     {
+        id: 'socketing',
+        icon: '/images/items/SMSI.png',
+        category: 'system',
+        titleKey: 'stage2.sections.socketing.title',
+        sectionKeys: ['stage2.sections.socketing']
+    },
+    {
         id: 'imprint',
         icon: '/images/imprintico.png',
         category: 'system',

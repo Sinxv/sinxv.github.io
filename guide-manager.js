@@ -161,10 +161,13 @@ function createElement(tag, attributes = {}, children = []) {
     return element;
 }
 
-function getRenderedText(text, container = null) {
+function getRenderedText(text, baseObject = null) {
     const raw = String(text === null || text === undefined ? '' : text);
+    if (window.translationManager?.renderWithBase) {
+        return window.translationManager.renderWithBase(raw, baseObject);
+    }
     if (window.translationManager?.renderRichText) {
-        return window.translationManager.renderRichText(raw, container);
+        return window.translationManager.renderRichText(raw);
     }
     return raw;
 }
@@ -175,13 +178,11 @@ function createFragmentFromHtml(html) {
     return document.importNode(template.content, true);
 }
 
-function renderParagraphElements(value, container = null, baseObject = null) {
+function renderParagraphElements(value, baseObject = null) {
     const resolved = getLocalizedValue(value);
     const lines = Array.isArray(resolved) ? resolved : [resolved];
     return lines.flatMap(line => {
-        const rendered = window.translationManager?.renderWithBase
-            ? window.translationManager.renderWithBase(line, baseObject)
-            : getRenderedText(line, container);
+        const rendered = getRenderedText(line, baseObject);
         if (!rendered) {
             return [];
         }
@@ -200,8 +201,8 @@ function renderGroupTitle(title) {
     return createElement('div', { class: 'guide-group-title' }, [title]);
 }
 
-const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'vid', 'variants','separation']);
-const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'vid', 'ico', 'derivationClass']);
+const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'variants', 'inlineOnly']);
+const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'variants', 'inlineOnly']);
 
 function isLangLeaf(value) {
     if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -244,9 +245,8 @@ function renderMechanicEntry(item) {
         wrapper.appendChild(createElement('div', { class: 'mechforcedat' }, [getLocalizedValue(item.forcedat)]));
     }
 
-    // Main description (non-variant content)
     if (item.description) {
-        renderParagraphElements(item.description).forEach(el => wrapper.appendChild(el));
+        renderParagraphElements(item.description, item).forEach(el => wrapper.appendChild(el));
     }
 
     // Variants section
@@ -256,7 +256,7 @@ function renderMechanicEntry(item) {
     }
 
     if (item.note) {
-        renderParagraphElements(item.note).forEach(el => {
+        renderParagraphElements(item.note, item).forEach(el => {
             el.classList.add('mechnote');
             wrapper.appendChild(el);
         });
@@ -269,19 +269,22 @@ function renderMechanicEntry(item) {
                 wrapper.appendChild(createElement('div', { class: 'ctitle' }, [getLocalizedValue(concept.title)]));
             }
             if (concept.description) {
-                renderParagraphElements(concept.description).forEach(el => wrapper.appendChild(el));
-            }
-            if (concept.variants) {
-                const variantsSection = renderVariantsSection(concept.variants);
-                if (variantsSection) wrapper.appendChild(variantsSection);
+                renderParagraphElements(concept.description, concept).forEach(el => wrapper.appendChild(el));
             }
         });
     }
 
-    if (item.img) {
-        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-        renderGenericValue(mechImgWrapper, 'img', item.img);
-        wrapper.appendChild(mechImgWrapper);
+    if (item.img && !item.inlineOnly) {
+        const hasBlockLayers =
+            (Array.isArray(item.img.primary) && item.img.primary.length) ||
+            (Array.isArray(item.img.secondary) && item.img.secondary.length) ||
+            (Array.isArray(item.img.tertiary) && item.img.tertiary.length);
+
+        if (hasBlockLayers) {
+            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(mechImgWrapper, 'img', item.img);
+            wrapper.appendChild(mechImgWrapper);
+        }
     }
 
     if (item.derivated_mechs) {
@@ -300,13 +303,13 @@ function renderMechanicEntry(item) {
         });
     }
 
-      Object.entries(item).forEach(([key, value]) => {
+    Object.entries(item).forEach(([key, value]) => {
     if (MECH_KNOWN_KEYS.has(key) || key === 'variants' || MECH_STATUS_CONFIG[key] || !value || typeof value !== 'object') {
         return;
     }
 
     if (isLangLeaf(value)) {
-        renderParagraphElements(value).forEach(el => wrapper.appendChild(el));
+        renderParagraphElements(value, item).forEach(el => wrapper.appendChild(el));
     } else if (value.name && !value.description && !value.forcedat) {
         // Simple nested object with just a name - treat as concept
         const derivedWrapper = createElement('div', { class: 'concept' }, []);
@@ -398,14 +401,21 @@ function renderConceptEntry(concept) {
     }
 
     if (concept.description) {
-        renderParagraphElements(concept.description).forEach(el => wrapper.appendChild(el));
+        renderParagraphElements(concept.description, concept).forEach(el => wrapper.appendChild(el));
     }
 
     // Handle img inside concepts
-    if (concept.img) {
-        const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-        renderGenericValue(mechImgWrapper, 'img', concept.img);
-        wrapper.appendChild(mechImgWrapper);
+    if (concept.img && !concept.inlineOnly) {
+        const hasBlockLayers =
+            (Array.isArray(concept.img.primary) && concept.img.primary.length) ||
+            (Array.isArray(concept.img.secondary) && concept.img.secondary.length) ||
+            (Array.isArray(concept.img.tertiary) && concept.img.tertiary.length);
+
+        if (hasBlockLayers) {
+            const conceptImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+            renderGenericValue(conceptImgWrapper, 'img', concept.img);
+            wrapper.appendChild(conceptImgWrapper);
+        }
     }
 
     // Handle vid inside concepts
@@ -426,7 +436,7 @@ function renderConceptEntry(concept) {
         }
 
         if (isLangLeaf(value)) {
-            renderParagraphElements(value).forEach(el => wrapper.appendChild(el));
+            renderParagraphElements(value, concept).forEach(el => wrapper.appendChild(el));
         } else {
             const derivedWrapper = createElement('div', { class: 'concept' }, []);
             derivedWrapper.appendChild(renderConceptEntry(value));
@@ -518,7 +528,7 @@ function renderRaidSection(sectionKey, guideId) {
         }
 
         if (phaseData.description) {
-            renderParagraphElements(phaseData.description).forEach(el => phaseWrapper.appendChild(el));
+            renderParagraphElements(phaseData.description, phaseData).forEach(el => wrapper.appendChild(el));
         }
 
         if (phaseData.np) {
@@ -1073,36 +1083,37 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         { key: 'primary',   containerClass: 'image-layer-primary' },
         { key: 'secondary', containerClass: 'image-layer-secondary' },
         { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
-        { key: 'ico',       containerClass: 'image-layer-ico' },
         { key: 'normal',    containerClass: 'image-layer-normal' },
         { key: 'small',     containerClass: 'image-layer-small' }
+        // NOTE: `ico` intentionally omitted — it's inline-only via [pic:]
     ];
 
     layers.forEach(layer => {
         const layerData = value[layer.key];
         if (!layerData) return;
 
+        const images = Array.isArray(layerData) ? layerData : [layerData];
+        
+        // Skip images flagged inline-only
+        const blockImages = images.filter(img => 
+            !(img && typeof img === 'object' && img.inline === true)
+        );
+        if (blockImages.length === 0) return;
+
         const layerContainer = createElement('div', { 
             class: `image-layer ${layer.containerClass}` 
         }, []);
 
-        const images = Array.isArray(layerData) ? layerData : [layerData];
-
-        images.forEach(imgData => {
+        blockImages.forEach(imgData => {
             const figure = createElement('figure', { class: 'guide-image-figure' }, []);
             
-            let src, altText, captionType, floatSide, floatWidth;
-            
+            let src, altText;
             if (typeof imgData === 'string') {
                 src = imgData;
                 altText = '';
-                captionType = 'default';
             } else if (typeof imgData === 'object') {
                 src = imgData.src;
                 altText = getLocalizedValue(imgData.alt) || '';
-                captionType = imgData.captionType || 'default';
-                floatSide = imgData.float || null;
-                floatWidth = imgData.width || null;
             }
 
             const img = createElement('img', {
@@ -1111,34 +1122,11 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
                 title: altText,
                 loading: 'lazy'
             }, []);
-            
-            // Apply float class to the figure
-            if (floatSide === 'left') {
-                figure.classList.add('image-float-left');
-            } else if (floatSide === 'right') {
-                figure.classList.add('image-float-right');
-            }
-            
-            // Apply custom width
-            if (floatWidth) {
-                figure.style.width = floatWidth;
-                img.style.width = '100%';
-                img.style.height = 'auto';
-            }
-            
             img.addEventListener('click', () => openImageLightbox(src, altText));
             figure.appendChild(img);
 
             if (altText) {
-                const caption = createElement('figcaption', { class: 'guide-image-caption' }, []);
-                
-                if (captionType === 'quote') {
-                    caption.textContent = `"${altText}"`;
-                    caption.classList.add('caption-quote');
-                } else {
-                    caption.textContent = altText;
-                }
-                
+                const caption = createElement('figcaption', { class: 'guide-image-caption' }, [altText]);
                 figure.appendChild(caption);
             }
 
@@ -1148,12 +1136,18 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
         imgWrapper.appendChild(layerContainer);
     });
 
-    container.appendChild(imgWrapper);
+    // Don't append empty wrappers
+    if (imgWrapper.children.length > 0) {
+        container.appendChild(imgWrapper);
+    }
     return;
 }
 
     if (Array.isArray(value) || isLangLeaf(value)) {
-        renderParagraphElements(value).forEach(el => container.appendChild(el));
+        const baseObject = parentKey
+            ? getTranslationObject(`${sectionKey}.${parentKey}`)
+            : getTranslationObject(sectionKey);
+        renderParagraphElements(value, baseObject).forEach(el => container.appendChild(el));
         return;
     }
 

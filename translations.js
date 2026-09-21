@@ -180,16 +180,16 @@ class TranslationManager {
     }
 
     renderImageValue(value) {
-        // Use the guide-manager's image renderer if available
         if (window.renderGenericImage) {
             return window.renderGenericImage(value);
         }
         
-        // Fallback: basic image rendering if guide-manager not loaded
         const wrapper = document.createElement('div');
         wrapper.className = 'guide-image-group';
         
-        const layers = ['primary', 'secondary', 'tertiary', 'ico', 'normal', 'small'];
+        // `ico` and any image with `inline: true` are ONLY rendered via [pic:] tokens.
+        const layers = ['primary', 'secondary', 'tertiary', 'normal', 'small'];
+        
         layers.forEach(layer => {
             const layerData = value[layer];
             if (!layerData) return;
@@ -199,6 +199,11 @@ class TranslationManager {
             
             const images = Array.isArray(layerData) ? layerData : [layerData];
             images.forEach(imgData => {
+                // Skip inline-only images
+                if (imgData && typeof imgData === 'object' && imgData.inline === true) {
+                    return;
+                }
+                
                 const figure = document.createElement('figure');
                 figure.className = 'guide-image-figure';
                 
@@ -217,16 +222,10 @@ class TranslationManager {
                 
                 if (!src) return;
                 
-                // Apply float class
-                if (floatSide === 'left') {
-                    figure.classList.add('image-float-left');
-                } else if (floatSide === 'right') {
-                    figure.classList.add('image-float-right');
-                }
+                if (floatSide === 'left') figure.classList.add('image-float-left');
+                else if (floatSide === 'right') figure.classList.add('image-float-right');
                 
-                if (floatWidth) {
-                    figure.style.width = floatWidth;
-                }
+                if (floatWidth) figure.style.width = floatWidth;
                 
                 const img = document.createElement('img');
                 img.src = src;
@@ -257,7 +256,10 @@ class TranslationManager {
                 layerContainer.appendChild(figure);
             });
             
-            wrapper.appendChild(layerContainer);
+            // Only append if we actually added something
+            if (layerContainer.children.length > 0) {
+                wrapper.appendChild(layerContainer);
+            }
         });
         
         return wrapper;
