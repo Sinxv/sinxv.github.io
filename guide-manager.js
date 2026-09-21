@@ -1071,12 +1071,6 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
     }
 
     if (key === 'img' && typeof value === 'object' && !Array.isArray(value)) {
-        const imgEl = renderGenericImage(value);
-        if (imgEl) container.appendChild(imgEl);
-        return;
-    }
-
-    if (key === 'img' && typeof value === 'object' && !Array.isArray(value)) {
     const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
 
     const layers = [
@@ -2159,22 +2153,28 @@ function renderGenericImage(value) {
         { key: 'primary',   containerClass: 'image-layer-primary' },
         { key: 'secondary', containerClass: 'image-layer-secondary' },
         { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
-        { key: 'ico',       containerClass: 'image-layer-ico' },
         { key: 'normal',    containerClass: 'image-layer-normal' },
         { key: 'small',     containerClass: 'image-layer-small' }
+        // `ico` intentionally omitted — inline-only via [pic:]
     ];
 
     layers.forEach(layer => {
         const layerData = value[layer.key];
         if (!layerData) return;
 
+        const images = Array.isArray(layerData) ? layerData : [layerData];
+        
+        // Skip inline-only images
+        const blockImages = images.filter(img => 
+            !(img && typeof img === 'object' && img.inline === true)
+        );
+        if (blockImages.length === 0) return;
+
         const layerContainer = createElement('div', { 
             class: `image-layer ${layer.containerClass}` 
         }, []);
 
-        const images = Array.isArray(layerData) ? layerData : [layerData];
-
-        images.forEach(imgData => {
+        blockImages.forEach(imgData => {
             const figure = createElement('figure', { class: 'guide-image-figure' }, []);
             
             let src, altText, captionType;
