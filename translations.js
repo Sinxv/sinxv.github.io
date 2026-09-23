@@ -1,6 +1,9 @@
 import { data } from '/EHD.js';
 
 const translations = data.translations;
+const RICH_COLOR_NAMES = new Set([
+    'warn', 'danger', 'info', 'success', 'mute', 'dps', 'heal', 'tank'
+]);
 
 // Enhanced Translation Manager
 class TranslationManager {
@@ -680,6 +683,7 @@ class TranslationManager {
         result = result.replace(/(?<!\!)\!([^!]+?)\!(?!\!)/g, '<strong>$1</strong>');
         result = result.replace(/\^([^\^]+?)\^/g, '<em>$1</em>');
         result = result.replace(/(?<!~)~([^~]+?)~(?!~)/g, '<u>$1</u>');
+        result = this.applyRichColors(result);   // ← add this last
         return result;
     }
     
@@ -938,6 +942,45 @@ class TranslationManager {
         if (window.infoSystem) {
             window.infoSystem.initElements();
         }
+    }
+
+    applyRichColors(text) {
+        if (typeof text !== 'string' || text.indexOf('@@') === -1) {
+            return text;
+        }
+
+        // Tokenize: split on @@name: and @@, then walk a stack.
+        const tokenRegex = /@@([a-zA-Z_][a-zA-Z0-9_]*):|@@/g;
+        const out = [];
+        const stack = []; // each entry: { name, open }
+        let lastIndex = 0;
+        let match;
+
+        while ((match = tokenRegex.exec(text)) !== null) {
+            out.push(text.slice(lastIndex, match.index));
+            lastIndex = tokenRegex.lastIndex;
+
+            if (match[1]) {
+                // Opening @@name:
+                const key = match[1].toLowerCase();
+                const valid = RICH_COLOR_NAMES.has(key);
+                stack.push({ key, valid });
+                if (valid) out.push(`<span class="rich-color rich-color-${key}">`);
+            } else {
+                // Closing @@
+                const top = stack.pop();
+                if (top && top.valid) out.push('</span>');
+            }
+        }
+        out.push(text.slice(lastIndex));
+
+        // Any unclosed opens? Close them to keep the HTML balanced.
+        while (stack.length) {
+            const top = stack.pop();
+            if (top.valid) out.push('</span>');
+        }
+
+        return out.join('');
     }
 }
 

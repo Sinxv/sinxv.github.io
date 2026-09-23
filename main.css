@@ -67,7 +67,16 @@ body.color-darkblue {
     --primary-dark: #3b49df;
 }
 
+.rich-color { font-weight: 600; }
 
+.rich-color-warn    { color: #ffb84d; }
+.rich-color-danger  { color: #ff5c5c; }
+.rich-color-info    { color: #6ec1ff; }
+.rich-color-success { color: #6ee787; }
+.rich-color-mute    { color: #a0a0a0; font-weight: 500; }
+.rich-color-dps     { color: #ff7a4d; }
+.rich-color-heal    { color: #7deda6; }
+.rich-color-tank    { color: #7db2ff; }
 
 /* ============================================================
    2. GLOBAL RESET & BASE TYPOGRAPHY
