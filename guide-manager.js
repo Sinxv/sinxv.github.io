@@ -344,10 +344,10 @@ function renderMechanicEntry(item) {
             subWrapper.appendChild(createElement('div', { class: 'mechforcedat' }, [getLocalizedValue(value.forcedat)]));
         }
         
-        if (item.description) {
+        if (value.description) {
             renderParagraphElements(item.description, null, item).forEach(el => wrapper.appendChild(el));
         }
-        if (item.note) {
+        if (value.note) {
             renderParagraphElements(item.note, null, item).forEach(el => {
                 el.classList.add('mechnote');
                 wrapper.appendChild(el);
