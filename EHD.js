@@ -2,6 +2,9 @@ export const data = {
     translations: {
         // General terms used across all pages
         general: {
+            gp_title: {
+                en: "Game Progression"
+            },
             progression_href: {
                 leveling: {
                     en: "Leveling"
