@@ -12,6 +12,11 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <style>
+            .anchor-return-button {
+                display: none;
+            }
+        </style>
         <div class="container">
             <div class="info" id="g">
                 <div class="banner" id="s3"></div>
@@ -27,22 +32,19 @@
                     <div class="guider">
                         <p data-translate="stage1.contents">List of Content</p>
                         <ul>
-                            <li><a href="#elrianode-armor" data-translate="stage2.content_elrianode_armor"></a></li>
-                            <li><a href="#socketing" data-translate="stage2.content_socketing">Socketing</a></li>
-                            <li><a href="#el-resonance" data-translate="stage2.content_el_resonance">El Resonance</a></li>
-                            <li><a href="#third-class" data-translate="stage2.content_third_class">3rd Class</a></li>
-                            <li><a href="#henir" data-translate="stage2.content_henir">Henir's Time and Space</a></li>
-                            <li><a href="#varnimyr" data-translate="stage3.content_varnimyr">Varnimyr</a></li>
-                            <li><a href="#rigomor" data-translate="stage3.content_rigomor">Rigomor</a></li>
-                            <li><a href="#master_road" data-translate="stage3.content_master_road">Master Road</a></li>
+                            <li><a href="#lev" data-translate="general.progression_href.leveling"></a></li>
+                            <li><a href="#earl" data-translate="general.progression_href.earlygame"></a></li>
+                            <li><a href="#mid" data-translate="general.progression_href.midgame"></a></li>
+                            <li><a href="#late" data-translate="general.progression_href.lategame"></a></li>
+                            <li><a href="#end" data-translate="general.progression_href.endgame"></a></li>
                         </ul>
                     </div>
                     <div class="tginfo">
-                        <h2 id="first-dungeon" data-translate="stage1.sections.first_dungeon.title"></h2>
+                        <h2 id="lev" data-translate="stage1.sections.first_dungeon.title"></h2>
                         <div class="guidetext" data-multiline="stage1.sections.first_dungeon.content"></div>
                         <div class="guidetext" data-multiline="stage1.sections.choose_path.content"></div>
                         
-                        <h2 id="elrianode-armor" data-translate="stage2.sections.elrianode_armor.title"></h2>
+                        <h2 id="earl" data-translate="stage2.sections.elrianode_armor.title"></h2>
                         <div class="guidetext" data-multiline="stage2.sections.elrianode_armor.content"></div>
                         <div class="guideref-disclaimer">
                             <div class="guideref-inner">
@@ -117,7 +119,6 @@
                             </div>
                         </div>
 
-                        <h2 id="pruinaum" data-translate="stage4.sections.pruinaum.title">New Region: Pruinaum</h2>
                         <div class="guidetext" data-multiline="stage4.sections.pruinaum.content"></div>
                         <div class="guidetext" data-multiline="stage4.sections.vos.content"></div>
                         <div class="guidetext" data-multiline="stage4.sections.pruiout.content"></div>
@@ -136,7 +137,7 @@
                             </div>
                         </div>
 
-                        <h2 id="tirnog" data-translate="stage4.sections.tirnog.title"></h2>
+                        <h2 id="mid" data-translate="stage4.sections.tirnog.title"></h2>
                         <div class="guidetext" data-multiline="stage4.sections.tirnog.content"></div>
                         <div class="guideref-disclaimer">
                             <div class="guideref-inner">
@@ -179,16 +180,74 @@
                                 </div>
                             </div>
                         </div>
-                        <h2 id="serpentium" data-translate="stage6.sections.serpentium.title"></h2>
+                        <h2 id="late" data-translate="stage6.sections.serpentium.title"></h2>
                         <div class="guidetext" data-multiline="stage6.sections.serpentium.content"></div>
+                        <div class="guideref-disclaimer">
+                            <div class="guideref-inner">
+                                <div class="guideref-icon">
+                                    <img src="/images/disclaimer.png">
+                                </div>
+                                <div class="guideref-info">
+                                    <span class="guide-disclaimer-header" data-translate="general.guidedisclaimer.title"></span>
+                                    <div class="guide-open-a" data-guide-id="circhips" data-translate="general.guidedisclaimer.lategame.link1"></div>
+                                    <div class="guide-open-a" data-guide-id="reforge" data-translate="general.guidedisclaimer.lategame.link3"></div>
+                                    <div class="guide-open-a" data-guide-id="st" data-translate="general.guidedisclaimer.lategame.link4"></div>
+                                    <div class="guide-open-a" data-guide-id="oh" data-translate="general.guidedisclaimer.lategame.link5"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="guidetext" data-multiline="stage6.sections.atmaram.content"></div>
                         <div class="guidetext" data-multiline="stage6.sections.md.content"></div>
+                        <div class="guideref-disclaimer">
+                            <div class="guideref-inner">
+                                <div class="guideref-icon">
+                                    <img src="/images/disclaimer.png">
+                                </div>
+                                <div class="guideref-info">
+                                    <span class="guide-disclaimer-header" data-translate="general.guidedisclaimer.title"></span>
+                                    <div class="guide-open-a" data-guide-id="artifact" data-translate="general.guidedisclaimer.lategame.link2"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="guidetext" data-multiline="stage6.sections.apo.content"></div>
+                        <div class="guideref-disclaimer">
+                            <div class="guideref-inner">
+                                <div class="guideref-icon">
+                                    <img src="/images/disclaimer.png">
+                                </div>
+                                <div class="guideref-info">
+                                    <span class="guide-disclaimer-header" data-translate="general.guidedisclaimer.title"></span>
+                                    <div class="guide-open-a" data-guide-id="cop" data-translate="general.guidedisclaimer.lategame.link6"></div>
+                                    <div class="guide-open-a" data-guide-id="nrr" data-translate="general.guidedisclaimer.lategame.link7"></div>
+                                    <div class="guide-open-a" data-guide-id="qth" data-translate="general.guidedisclaimer.lategame.link8"></div>
+                                    <div class="guide-open-a" data-guide-id="wt_fl" data-translate="general.guidedisclaimer.lategame.link9"></div>
+                                    <div class="guide-open-a" data-guide-id="wt_fa" data-translate="general.guidedisclaimer.lategame.link10"></div>
+                                    <div class="guide-open-a" data-guide-id="weapon_advancement" data-translate="general.guidedisclaimer.lategame.link11"></div>
+                                    <div class="guide-open-a" data-guide-id="statchange" data-translate="general.guidedisclaimer.lategame.link12"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="guidetext" data-multiline="stage6.sections.neb.content"></div>
-
-                        <h2 id="he" data-translate="stage8.sections.he.title"></h2>
+                        <h2 id="end" data-translate="stage8.sections.he.title"></h2>
                         <div class="guidetext" data-multiline="stage8.sections.he.content"></div>
                         <div class="guidetext" data-multiline="stage8.sections.neb.content"></div>
+                        <div class="guideref-disclaimer">
+                            <div class="guideref-inner">
+                                <div class="guideref-icon">
+                                    <img src="/images/disclaimer.png">
+                                </div>
+                                <div class="guideref-info">
+                                    <span class="guide-disclaimer-header" data-translate="general.guidedisclaimer.title"></span>
+                                    <div class="guide-open-a" data-guide-id="tts" data-translate="general.guidedisclaimer.endgame.link1"></div>
+                                    <div class="guide-open-a" data-guide-id="bs" data-translate="general.guidedisclaimer.endgame.link2"></div>
+                                    <div class="guide-open-a" data-guide-id="pz" data-translate="general.guidedisclaimer.endgame.link3"></div>
+                                    <div class="guide-open-a" data-guide-id="ou_a" data-translate="general.guidedisclaimer.endgame.link4"></div>
+                                    <div class="guide-open-a" data-guide-id="ou_o" data-translate="general.guidedisclaimer.endgame.link5"></div>
+                                    <div class="guide-open-a" data-guide-id="cartridge" data-translate="general.guidedisclaimer.endgame.link6"></div>
+                                    <div class="guide-open-a" data-guide-id="statchange" data-translate="general.guidedisclaimer.endgame.link7"></div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
             <footer class="lower">

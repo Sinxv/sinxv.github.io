@@ -2,6 +2,26 @@ export const data = {
     translations: {
         // General terms used across all pages
         general: {
+            progression_href: {
+                leveling: {
+                    en: "Leveling"
+                },
+                earlygame: {
+                    en: "Earlygame"
+                },
+                midgame: {
+                    en: "Midgame"
+                },
+                lategame: {
+                    en: "Lategame"
+                },
+                endgame: {
+                    en: "Endgame"
+                }
+            },
+            progression_subhref: {
+
+            },
             guide_sections: {
                 system: {
                     en: "System Explanation",
@@ -138,6 +158,70 @@ export const data = {
                     },
                     link9: {
                         en: "Harconium Tuning System"
+                    },
+                },
+                lategame: {
+                    link1: {
+                        en: "Circuits and Chips"
+                    },
+                    link2: {
+                        en: "Master Artifact"
+                    },
+                    link3: {
+                        en: "Reforge"
+                    },
+                    link4: {
+                        en: "Serpentium Tower"
+                    },
+                    link5: {
+                        en: "Orchestra Hall"
+                    },
+                    link6: {
+                        en: "Cornerstone of Prophecy"
+                    },
+                    link7: {
+                        en: "Nightmare: Reset Room"
+                    },
+                    link8: {
+                        en: "Queen's Throne Hall"
+                    },
+                    link9: {
+                        en: "Wilting Tower: Flight"
+                    },
+                    link10: {
+                        en: "Wilting Tower: Fall"
+                    },
+                    link11: {
+                        en: "Weapon Advancement System"
+                    },
+                    link12: {
+                        en: "Stat Change"
+                    },
+                },
+                endgame: {
+                    link1: {
+                        en: "T-Tree Solution"
+                    },
+                    link2: {
+                        en: "Bioweapon Shelter"
+                    },
+                    link3: {
+                        en: "Progressive Zone"
+                    },
+                    link4: {
+                        en: "Operation Undertow: Alpha"
+                    },
+                    link5: {
+                        en: "Operation Undertow: Omega"
+                    },
+                    link6: {
+                        en: "Cartridge System"
+                    },
+                    link7: {
+                        en: "Stat Change"
+                    },
+                    link8: {
+                        en: "Reforge"
                     },
                 },
                 lower: {
@@ -318,7 +402,7 @@ export const data = {
             content_elrianode_armor: { en: "Earlygame", es: "", kr: "", jp: "", br: "" },
             sections: {
                 elrianode_armor: {
-                    title: { en: "Post lv. 99 / Earlygame", es: "Armadura de Elrianode", kr: "엘리아노드 갑옷", jp: "エルリアノードアーマー", br: "Armadura Elrianode"},
+                    title: { en: "Earlygame", es: "Juego Temprano", kr: "", jp: "", br: ""},
                     img: {
                         primary: [
                             { src:"/images/elrianodesdui.png"}
@@ -3271,13 +3355,12 @@ export const data = {
                 },
                 intro: { en: ["After succesfully getting Master Class (even if below stage 4), your next goal lays here:"], es: ["Después de obtener con éxito la Clase Maestra (incluso si estás por debajo de la etapa 4), tu próximo objetivo se encuentra aquí:"], kr: ["마스터 클래스를 성공적으로 획득한 후(4단계 이하인 경우에도) 다음 목표는 여기 있습니다:"], jp: ["マスタークラスを無事に取得した後（ステージ4以下でも）、次の目標はここにあります:"], br: ["Após conseguir com sucesso a Classe Mestre (mesmo que abaixo do estágio 4), seu próximo objetivo está aqui:"] },
                 pruinaum: {
-                    title: { en: "Pruinaum / Pruinaum Outskirts", es: "Pruinaum", kr: "프루이나움", jp: "プルイナウム", br: "Pruinaum" },
                     img: {
                         primary: [
                             { src: "/images/pruinaumsdui.png"}
                         ]
                     },
-                    content: { en: ["[img:img.primary.0]Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game (Formerly known as the Berthe raid), and useful rewards that can increase your power by quite a bit; you won't really do too much here, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress, no need for you to stay on the region until you get those.","While working on those 3 objectives you will also get Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when received, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of !Dr. Pho's Pruinaum Guide! by Clearing Savage White-Ghost Castle and Altar of Invocation to get the !Vestige of Soul! weapon."],
+                    content: { en: ["!Pruinaum!","[img:img.primary.0]Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game (Formerly known as the Berthe raid), and useful rewards that can increase your power by quite a bit; you won't really do too much here, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress, no need for you to stay on the region until you get those.","While working on those 3 objectives you will also get Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when received, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of !Dr. Pho's Pruinaum Guide! by Clearing Savage White-Ghost Castle and Altar of Invocation to get the !Vestige of Soul! weapon."],
                         es: [],
                         kr: [],
                         jp: [],
@@ -3381,7 +3464,7 @@ export const data = {
                     }
                 },
                 pruiout: {
-                    content: { en: ["Pruinaum Outskirts unlocks after completing the Epic Quest <Entering Pruinaum Outskirts> by clearing any Pruinaum dungeon. It's a small filler region that offers new daily quests: Completing Plegas' Gaze / Plegas' Reflection (limited to 1 time per day) gives a material called Artifact Spirit Stone Fragment that serves to further upgrade the Master Artifact by wedging a special socket into it. Plegas' Reflection also serves as an EXP farming dungeon, a better alternative to Trosh's Nest if you have enough power. Theres 2 mandatory tasks in this region: Clear Plegas' Gaze and Plegas' Reflection to clear Quests 1 and 2 of Dr. Pho's Pruinaum Outskirts guide, rewarding you wedges and free stones to socket into your Master Artifact, the stats are near perfect. It's still recommended to do these daily to perfect the socket values."] }
+                    content: { en: ["!Pruinaum Outskirts!","Pruinaum Outskirts unlocks after completing the Epic Quest <Entering Pruinaum Outskirts> by clearing any Pruinaum dungeon. It's a small filler region that offers new daily quests: Completing Plegas' Gaze / Plegas' Reflection (limited to 1 time per day) gives a material called Artifact Spirit Stone Fragment that serves to further upgrade the Master Artifact by wedging a special socket into it. Plegas' Reflection also serves as an EXP farming dungeon, a better alternative to Trosh's Nest if you have enough power. Theres 2 mandatory tasks in this region: Clear Plegas' Gaze and Plegas' Reflection to clear Quests 1 and 2 of Dr. Pho's Pruinaum Outskirts guide, rewarding you wedges and free stones to socket into your Master Artifact, the stats are near perfect. It's still recommended to do these daily to perfect the socket values."] }
                 },
                 weaponadvancement: {
                     title: { en: "Weapon Advancement" },
@@ -4740,7 +4823,11 @@ export const data = {
                 },
                 neb: {
                     img: {
-                        ico: []
+                        ico: [
+                            { src: "/images/faceguard.webp", inline: true},
+                            { src: "/images/methane.png", inline: true},
+                            { src: "/images/metholone.png", inline: true}
+                        ]
                     },
                     content: {
                         en: ["!Nebulon!","Nebulon is unlocked after completing the Epic Quest <Entering Nebulon> by clearing any Atma'ram dungeon. During this point in the progression you will likely not be able to do anything else than !Methane Loading Dock!, since it requires !1,200,000 CP! and !Exascale! (Cannot enter with Tenebrous or lower tiers). This dungeon is a replacement for Magma's Breath as an EXP dungeon that can drop a new face bottom accessory: [pic:img.ico.0]{{https://cobodex.eu/en/item/30871|Elite Glitter's Faceguard|external}}, which serves as a direct replacement for Baryon's Fur, the dungeon also counts towards Nebulon's reforge material weekly quest, so it's the way to go to get the dedicated materials [pic:img.ico.1]Methane and [pic:img.ico.2]Metholone for the endgame Nebulon Suit Armor obtainable via Nebulon Raid. Alongside this dungeon theres also !Methane Mining Site! which is a one entry per day dungeon. It gives a high fixed amount of EXP on clear, while also giving a chance to get dock's accessory. Since you can enter to this dungeon with Tenebrous, its a good alternative to farm for those who don't have EXP gear or those who still cannot enter with Exascale."]
@@ -7479,7 +7566,7 @@ export const data = {
                         ]
                     },
                     content: {
-                        en: ["!Nebulon Raid!","Nebulon Raid is a major raid that requires !5,700,000 CP! to enter. It consists of 5 dungeons: !T-Tree Solution!, !Bioweapon Shelter!, !Progressive Zone!, !Operation Undertow: Alpha! and !Operation Undertow: Omega!.","!Raid Rewards!","Clearing nebulon raid dungeons for the first time in a week rewards with [pic:img.ico.0]Black Fragments, those can be traded for [pic:img.ico.1]Glitterain Cores and [pic:img.ico.2]Nebulon Suit Protos}}.","!Accessories!: Clearing Progressive Zone can drop [pic:img.ico.3]{{https://cobodex.eu/en/item/30873|Tainted Spikehorn|external}} at fixed chances, and Clearing Operation Undertow: Omega can drop [pic:img.ico.4]{{https://cobodex.eu/en/item/30872|Glitter's Insignia|external}}, however, the pity for both accs are now different instead of being a shared cube selection like in previous raids. These 2 accs serve as replacements for Serpentium Raid accessory set.","!Armor!: Nebulon Raid features a new armor, the Nebulon Suit Armor. This armor is crafted by combining a Glitterain Core and a Nebulon Suit Proto via NPC Feta. Glitterain Cores and Protos can be crafted with black fragments, as mentioned before, but they can also be obtained via Auction in the Dark Elf Black Market.","Nebulon Suit Armor carries over the systems of the Exascale Armor, Circuits and Chips, has 5 sockets instead of 4 due to it being legendary quality, and feature a new system, called cartridges. (Refer to the Cartridges guide for info)"]
+                        en: ["!Nebulon Raid!","Nebulon Raid is a major raid that requires !5,700,000 CP! to enter. It consists of 5 dungeons: !T-Tree Solution!, !Bioweapon Shelter!, !Progressive Zone!, !Operation Undertow: Alpha! and !Operation Undertow: Omega!.","!Raid Rewards!","Clearing nebulon raid dungeons for the first time in a week rewards with [pic:img.ico.0]Black Fragments, those can be traded for [pic:img.ico.1]Glitterain Cores and [pic:img.ico.2]Nebulon Suit Protos.","!Accessories!: Clearing Progressive Zone can drop [pic:img.ico.3]{{https://cobodex.eu/en/item/30873|Tainted Spikehorn|external}} at fixed chances, and Clearing Operation Undertow: Omega can drop [pic:img.ico.4]{{https://cobodex.eu/en/item/30872|Glitter's Insignia|external}}, however, the pity for both accs are now different instead of being a shared cube selection like in previous raids. These 2 accs serve as replacements for Serpentium Raid accessory set.","!Armor!: Nebulon Raid features a new armor, the Nebulon Suit Armor. This armor is crafted by combining a Glitterain Core and a Nebulon Suit Proto via NPC Feta. Glitterain Cores and Protos can be crafted with black fragments, as mentioned before, but they can also be obtained via Auction in the Dark Elf Black Market.","Nebulon Suit Armor carries over the systems of the Exascale Armor, Circuits and Chips, has 5 sockets instead of 4 due to it being legendary quality, and feature a new system, called cartridges. (Refer to the Cartridges guide for info)"]
                     }
                 },
                 tts: {
