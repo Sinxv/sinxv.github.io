@@ -304,7 +304,7 @@ export const data = {
             update_content: {
                 en: [
                     "Added Nebulon Raid to the guides section.",
-                    "Started migrating every guide to the guide section and game progression expanded to tirnog.",
+                    "Finished migrating all guides (though im still missing some) and relatively finished progression all the way to endgame.",
                     "Progression now has a section called 'guides relevant to this section' that serve as a quick way to open a guide without going to the guide section.",
                     "Re-fixed the settings pop-up to actually take up the proper amount of space and added a region filter so that concepts fall back to a supported language to make some concepts easier to understand for servers with custom terms for things.",
                     "Another round of fixing various typos and outdated information, reworking the phrasing of some parts."
