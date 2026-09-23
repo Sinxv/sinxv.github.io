@@ -344,13 +344,13 @@ function renderMechanicEntry(item) {
             subWrapper.appendChild(createElement('div', { class: 'mechforcedat' }, [getLocalizedValue(value.forcedat)]));
         }
         
-        if (item.description) {
-            renderParagraphElements(item.description, null, item).forEach(el => wrapper.appendChild(el));
+        if (value.description) {
+            renderParagraphElements(value.description, value).forEach(el => subWrapper.appendChild(el));
         }
-        if (item.note) {
-            renderParagraphElements(item.note, null, item).forEach(el => {
+        if (value.note) {
+            renderParagraphElements(value.note, value).forEach(el => {
                 el.classList.add('mechnote');
-                wrapper.appendChild(el);
+                subWrapper.appendChild(el);
             });
         }
         
@@ -528,7 +528,7 @@ function renderRaidSection(sectionKey, guideId) {
         }
 
         if (phaseData.description) {
-            renderParagraphElements(phaseData.description, phaseData).forEach(el => wrapper.appendChild(el));
+            renderParagraphElements(phaseData.description, phaseData).forEach(el => phaseWrapper.appendChild(el));
         }
 
         if (phaseData.np) {

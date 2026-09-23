@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateNavigationLabels() {
         const labels = getNavLabels();
         const desktopHome = navDesktop.querySelector('a[href="/index.html"] li');
-        const desktopProgression = navDesktop.querySelector('a[href="/prog.html"] li');
+        const desktopProgression = navDesktop.querySelector('a[href="/prog/s1.html"] li');
         const desktopGuides = navDesktop.querySelector('a[href="/guides.html"] li');
         if (desktopHome) desktopHome.textContent = labels.home;
         if (desktopProgression) desktopProgression.textContent = labels.progression;
         if (desktopGuides) desktopGuides.textContent = labels.guides;
 
-        const mobileHome = navMobile.querySelector('a[href="/main/index.html"] li');
-        const mobileProgression = navMobile.querySelector('a[href="/main/prog.html"] li');
-        const mobileGuides = navMobile.querySelector('a[href="/main/guides.html"] li');
+        const mobileHome = navMobile.querySelector('a[href="/index.html"] li');
+        const mobileProgression = navMobile.querySelector('a[href="/prog/s1.html"] li');
+        const mobileGuides = navMobile.querySelector('a[href="/guides.html"] li');
         if (mobileHome) mobileHome.textContent = labels.home;
         if (mobileProgression) mobileProgression.textContent = labels.progression;
         if (mobileGuides) mobileGuides.textContent = labels.guides;

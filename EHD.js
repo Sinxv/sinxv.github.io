@@ -73,6 +73,11 @@ export const data = {
                 title: {
                     en: "Guides relevant to the following section:" 
                 },
+                elrianode: {
+                    link1: {
+                        en: "Socketing"
+                    }
+                },
                 varnimyr: {
                     link1: {
                         en: "Crimson Tower of Howling Flames"
@@ -3272,7 +3277,7 @@ export const data = {
                             { src: "/images/pruinaumsdui.png"}
                         ]
                     },
-                    content: { en: ["[img:img.primary.0]Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game (Formerly known as the Berthe raid), and useful rewards that can increase your power by quite a bit; you won't really do too much here, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress, no need for you to stay on the region until you get those.","While working on those 3 objectives you will also get Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when recieved, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of !Dr. Pho's Pruinaum Guide! by Clearing Savage White-Ghost Castle and Altar of Invocation to get the !Vestige of Soul! weapon."],
+                    content: { en: ["[img:img.primary.0]Pruinaum is the next major region after Rigomor, house to the 2nd raid in the game (Formerly known as the Berthe raid), and useful rewards that can increase your power by quite a bit; you won't really do too much here, you'll only need to do 3 things: Sanctuary of the Soul 1 time per day until you get Baryon's Ornament Fur, Capital-Bound Train 1 time per day until you get Engine Cooling System and Berthe raid 1 time per week for Accessories and Crystals planned for future usage. Although you can work on those objectives while you progress, no need for you to stay on the region until you get those.","While working on those 3 objectives you will also get Imprint Stones, which are new materials that allow you to socket imprints into your weapons. All weapons come imprinted when received, but their stats are not perfect so you want to get Imprint Stones to perfect the values sooner or later.","The only mandatory task of this region is to get the 7th Reward of !Dr. Pho's Pruinaum Guide! by Clearing Savage White-Ghost Castle and Altar of Invocation to get the !Vestige of Soul! weapon."],
                         es: [],
                         kr: [],
                         jp: [],
@@ -4383,6 +4388,14 @@ export const data = {
                     }
                 },
                 // -- ABYSS RAID END
+                doc: {
+                    img: {
+
+                    },
+                    content: {
+                        en: ["!Henir's Time and Space - Devil of Chaos!","Devil of Chaos is a new instance of Henir dungeon, where instead of fighting bosses from Bethma - Elrianode, you have to survive mechanics from Abyss, and the later Serpentium and Doom Aporia Raids, this serves as a good introduction to practice some of the mechs for later raids, the entry requirement is !the same as Abyss, 270,000 CP!.","On Devil of Chaos, losing will only repeat the stage instead of repeating the whole thing like regular Henir used to do. Clearing each stage has a change to upgrade a reward cube by 1 or 2 qualities at fixed chances (qualities are: Normal, Rare, Elite, Unique, Legendary). After clearing Stage 10, you will be able to choose between 4 reward types based on region content, you can choose between useful materials from Abyss to Doom Aporia. (CP Requirements per region and the rewards per quality are listed on {{https://elwiki.net/w/Henir%27s_Time_and_Space_-_Devil_of_Chaos|this link|external}})"]
+                    }
+                },
                 monaterra: {
                     title: {
                         en: "Monaterra"
@@ -4680,6 +4693,59 @@ export const data = {
             title: { en: "Stage 6", es: "Etapa 6", kr: "6단계", jp: "ステージ6", br: "Estágio 6" },
             stage6_title: { en: "Serpentium", es: "Serpentium", kr: "서펜티움", jp: "", br: "" },
             sections: {
+                serpentium: {
+                    img: {
+                        ico: [
+                            { src: "/images/exikel.png", inline: true},
+                            { src: "/images/zetrium.png", inline: true},
+                            { src: "/images/glowing.webp", inline: true},
+                            { src: "/images/antenna.webp", inline: true},
+                            { src: "/images/maestro.webp", inline: true},
+                        ]
+                    },
+                    title: {
+                        en: "Lategame"
+                    },
+                    content: {
+                        en: ["!Serpentium!","Serpentium is the next major region, unlocked upon completing the Epic Quest <Entering Serpentium> by clearing any monaterra dungeon. Note though, from here onwards, !Dr. Pho no longer helps you!. Here in serpentium lies the next armor tier in progression: The Exascale Armor.","Exascale consists of 2 different systems: Circuits, and Chips. Chips is like Harconium with extra steps, while circuits are a new system entirely. (Refer to the Circuits and Chips Guide for details)","Circuits are obtained by clearing any of the first 3 serpentium dungeons, of which !Madame Corae's Garden! drops the most, while also dropping a good alternative accessory for the Bottom slot called [pic:img.ico.2]{{https://cobodex.eu/en/item/30684|Glowing Flower|external}}. With enough damage this is also the fastest dungeon, so you should do it at least 15x a week to get the dedicated reforge materials for the Exascale Armor, them being [pic:img.ico.0]Exikel and [pic:img.ico.1]Zetrium.","Contrary to Circuits, Chips cannot be obtained by normal dungeons, they're !exclusive to raids! from serpentium or newer regions.","!Serpentium Raid!","This raid requires !530,000 CP! to enter. Its a 'somewhat filler' raid that consists of 2 dungeons, them being !Serpentium Tower! and !Orchestra Hall!. The fact that the raid is called a 'filler' doesn't mean its easy, though.","!Raid Rewards!","Serpentium Raid rewards with the previously mentioned chips, and 2 new accessories, [pic:img.ico.3]{{https://cobodex.eu/en/item/30685|Antenna Earring|external}} and [pic:img.ico.4]{{https://cobodex.eu/en/item/30686|Maestro Halo|external}}, which serve as official replacements for the Berthe Raid accessory set. Additionally, Players can receive a cube upon filling a pity gauge, this cube allows players to recieve any of the 2 raid accessories of their choose.","^Clearing a raid dungeon for the first time in a week increases the pity gauge by 6.25% (12.5% per full run, 8 weeks to pity).^","This raid also lets you obtain {{https://cobodex.eu/en/title/2320|Concerto|external}}, which is the 2nd best !awakening title! in the game as of now. As always, there's no need to rush the obtainment of the title, as the difference is only 5% from the previous awakening title."]
+                    }
+                },
+                atmaram: {
+                    img: {
+                        ico: [
+                            { src: ""}
+                        ]
+                    },
+                    content: {
+                        en: ["!Atma'ram!","Atma'ram is unlocked after completing the Epic Quest <Entering Atma'ram> by clearing any serpentium dungeon, it consists of 3 dungeons, each having a different purpose: !Magma's Breath! is the direct replacement of Plegas' Reflection. !Aqua Whistle! is the successor of Heroic Dungeon, but with a lot of RNG, and the 3rd dungeon is a giant boss dungeon, similar to Plegas' Labyrinth / The Great Steel Wall, called !Spirit Lord's Temple!. This dungeon gives 5 accessories, them using the Top, Face (Bottom), Face (Middle), Necklace and Arm accessory slots. Those accessories serve as the official replacement of the master road accessory set.","Atma set is divided by 6 types and 4 qualities (Note: Accessories are guaranteed to drop on run, but the quality and type are RNG, and its limited to 10 rewards per week), except for Mandala (Top Piece), the types are: Flow, Grove, Wind, Flame, Darkness, Earth, and the qualities are Normal, Rare, Elite and Unique. but honestly only Flow, Grove and Wind are worth using. Each type has a different set effect, for flow: the set effect is 10% (normal) / 20% Attack Power for 60s upon using 3 consumables (unique), 20% / 60% CDR upon using consumable (15s CD). For grove: 20% / 30% Critical Damage, Critical -6%. for wind: 20% EXP Gain / 50% EXP Gain.","Flow and Grove are for DPS, while Wind for EXP farm.","Atma accessories also have special additional effect stats, similar to those in weapons/armor, the amount of additional effects range from 0 (normal) to 3 (unique). (Refer to this link to see all the possible effects.)"]
+                    }
+                },
+                md: {
+                    img: {
+                        ico: [
+
+                        ]
+                    },
+                    content: {
+                        en: ["!Mirror Del!","Mirror Del is unlocked after completing the Epic Quest <Entering Mirror Del> by clearing any Atma'ram dungeon.","This region is some sort of mini rogue-lite, giving you 3 random shuffled dungeons (remix versions of older content) each week, Upon unlocking the region, players will unlock the Epic Quest <Resonating Artifact>, completing it will advance the Master Artifact to Stage 5, unlocking a 4th line on Hidden Power that allows you to unlock both traits for one unique skill of your liking.","When clearing mirror del dungeons you will recieve buffs that stay until you clear the 3rd stage (dungeon). Upon clearing the 3rd stage, all buffs vanish and you recieve a Mirror Del Artifact, which are a upgraded version of the normal Artifact pieces. (Refer to the Master Artifact Guide for more info)","Once <Memory Restoration> reaches 4/5, the 3rd stage will change to be a brand new dungeon. These have higher HP versus normal stage 3 dungeons. Mirror Del Artifact Ring are exclusive to the special stage 3 dungeons."]
+                    },
+                },
+                apo: {
+                    img: {
+                        ico: []
+                    },
+                    content: {
+                        en: ["!Doom Aporia Raid!","Doom Aporia is unlocked after completing the Epic Quest <Entering Doom Aporia> by clearing any serpentium dungeon. This raid requires !1,300,000 CP! to enter and is a major raid composed of 5 dungeons, !Cornerstore of Prophecy!, !Nightmare: Reset Room!, !Queen's Throne Hall!, !Wilting Tower: Flight!, and !Wilting Tower: Fall!.","!Raid Rewards!","Clearing Doom Aporia Raid dungeons for the first time in a week will drop 3 Heart Fragments (Except Wilting Tower: Flight), T-Type Circuits and Chips.","!Accessories:! First 3 dungeons can drop Raid Accessories at a fixed chance. Repeated clear can also drop accessories, but its highly unlikely. These accessories are: {{https://cobodex.eu/en/item/30687|Book of Fate|external}}, {{https://cobodex.eu/en/item/30689|Type-Q Queen's Medal|external}} and {{https://cobodex.eu/en/item/30688|Shackles of Soul|external}}, which serve as an official replacement for Abyss Raid accessory set.","Additionally, This raid also has a pity gauge, Weekly clear will increase gauge by 1.65%, up to 8.25% per Full run.","!Weapon!: Alongside the Accessory pity gauge, there's also a pity bar dedicated to weapon, the max level of this bar is 15, each level up will increase the chance of dropping the new weapon: !Undead Dragon's Will!, when clearing Wilting Tower: Fall. (Weapon drop rate at each level listed on this link)","Same as the previous two weapons, Undead Dragon's Will has stages. (Refer to the Weapon Advancement System Guide for info)"]
+                    }
+                },
+                neb: {
+                    img: {
+                        ico: []
+                    },
+                    content: {
+                        en: ["!Nebulon!","Nebulon is unlocked after completing the Epic Quest <Entering Nebulon> by clearing any Atma'ram dungeon. During this point in the progression you will likely not be able to do anything else than !Methane Loading Dock!, since it requires !1,200,000 CP! and !Exascale! (Cannot enter with Tenebrous or lower tiers). This dungeon is a replacement for Magma's Breath as an EXP dungeon that can drop a new face bottom accessory: [pic:img.ico.0]{{https://cobodex.eu/en/item/30871|Elite Glitter's Faceguard|external}}, which serves as a direct replacement for Baryon's Fur, the dungeon also counts towards Nebulon's reforge material weekly quest, so it's the way to go to get the dedicated materials [pic:img.ico.1]Methane and [pic:img.ico.2]Metholone for the endgame Nebulon Suit Armor obtainable via Nebulon Raid. Alongside this dungeon theres also !Methane Mining Site! which is a one entry per day dungeon. It gives a high fixed amount of EXP on clear, while also giving a chance to get dock's accessory. Since you can enter to this dungeon with Tenebrous, its a good alternative to farm for those who don't have EXP gear or those who still cannot enter with Exascale."]
+                    }
+                },
                 st: {
                     titlekey: {
                         en: "Serpentium Tower",
@@ -6042,7 +6108,7 @@ export const data = {
                     },
                     shape: {
                         content: {
-                            en: ["Exascale / Metholon armors have 1 Circuit Board per piece (totaling 4), when all the Circuit Boards are active and are all of the same color, the armor set effect is enabled.","The recommended stats for each circuit board depends on the armor piece and the color that you want to build.","If you build red, the recommended stats are:","Continuous Damage (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Damage to Boss (Shoes).","If you build blue, the recommended stats are:","Skill Cooldown Reset Chance (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Damage to Boss (Shoes).","For green, the recommended stats are:","Skill Cooldown Reset Chance (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Buff - Party's Action Speed (Shoes).","The recommended stats are not mandatory, but they're usually the stats that will give you the most damage output increase, except for a few classes that might be an exception.","","There are 2 stages to building your Circuit Board: the 'Bare-bones' setup and the 'advanced' setup. the bare-bones setup is formed by several L and I low value circuits, while the advanced setup is formed by several T circuits and 3 L circuits acting as corners, the advanced setup have a higher maximum possible stat since they can include 'Replicator' circuits, which basically grab the summary of the stats provided by the adjacent circuits, and divides it by two (example: adjacent circuit's values are 1% 0.8% and 0.9%, the summary is 2.7%, divided by two, means the replicator circuit will give 1.3% stat).","Note: Be wary of where you put your replicator circuits, since if you putting 2 replicators adjacently or in a spot where they only recieve 2 stats will just end in a loss of stats.","Both setups are shown in the images below. Replicator circuit locations are highlighted in the advanced setup image."]
+                            en: ["Exascale / Metholon armors have 1 Circuit Board per piece (totaling 4), when all the Circuit Boards are active and are all of the same color, the armor set effect is enabled.","The recommended stats for each circuit board depends on the armor piece and the color that you want to build.","If you build red, the recommended stats are:","Continuous Damage (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Damage to Boss (Shoes).","If you build blue, the recommended stats are:","Skill Cooldown Reset Chance (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Damage to Boss (Shoes).","For green, the recommended stats are:","Skill Cooldown Reset Chance (Top), Polarize (Bottom), Active, Tenacity, Strength, Bravery Skill Damage (Gloves), Buff - Party's Action Speed (Shoes).","The recommended stats are not mandatory, but they're usually the stats that will give you the most damage output increase, except for a few classes that might be an exception.","","There are 2 stages to building your Circuit Board: the 'Bare-bones' setup and the 'advanced' setup. the bare-bones setup is formed by several L and I low value circuits, while the advanced setup is formed by several T circuits and 3 L circuits acting as corners, the advanced setup have a higher maximum possible stat since they can include 'Replicator' circuits, which basically grab the summary of the stats provided by the adjacent circuits, and divides it by two (example: adjacent circuit's values are 1% 0.8% and 0.9%, the summary is 2.7%, divided by two, means the replicator circuit will give 1.3% stat).","Note: Be wary of where you put your replicator circuits, since if you putting 2 replicators adjacently or in a spot where they only receive 2 stats will just end in a loss of stats.","Both setups are shown in the images below. Replicator circuit locations are highlighted in the advanced setup image."]
                         },
                        title: {
                             en: "Circuit Board"
@@ -6244,7 +6310,7 @@ export const data = {
                                         groggy: true,
                                         forcedat: { en: "Forced at 140 or 80 bars"},
                                         description: { en: ["Gas will start to erupt from all trapdoors and holes except the ones in the middle (total of 6). Players need to find the safe gas looking at their debuffs: when on safe gas, players get cloud debuff, other gases give a skull debuff. Players outside the safe zone receive lethal damage."]},
-                                        note: { en: ["If 3 players are in the safe zone, the remaining players can stand and not recieve damage as long as they stay outside of Echidna's path"]}
+                                        note: { en: ["If 3 players are in the safe zone, the remaining players can stand and not receive damage as long as they stay outside of Echidna's path"]}
                                     },
                                     laserguidance: {
                                         img: {
@@ -6258,7 +6324,7 @@ export const data = {
                                         unavoidable: true,
                                         groggy: true,
                                         forcedat: { en: "Forced at 140 or 80 bars"},
-                                        description: { en: ["5 players position themselves to cover the 5 trapdoors located in the floor (only one player per trapdoor). The remaining player needs to stay off the trapdoors, since if more than one player gets eaten by Echidna at the same time, it will trigger a wipe. Echidna will come out from a trapdoor that can be identified by the lights behind it, if they're turned on, means Echidna will come out from there. Will eat the player standing in it, stunning the player and continuously dealing them damage. Another player needs to throw any type of orb to make Echidna free the player that was getting eaten, After being freed, the player recieves a colored buff between Green, Blue or Red, and a brand of the same color will be shown on top of their head. Echidna will once again hide inside the trapdoors and choose another trapdoor to come out from.","This process will be repeated 3 times, each time giving the player freed a different brand (Brands cannot be repeated), afterwards, 2 cubes 1 colored Green and one colored Blue will appear on top of the 2 trapdoors Echidna didn't come out from.","Players with brands gets targeted by a laser and will then position in a way that allows the laser to destroy the cube matching the color of their brand. Failing to do so results in a wipe."]},
+                                        description: { en: ["5 players position themselves to cover the 5 trapdoors located in the floor (only one player per trapdoor). The remaining player needs to stay off the trapdoors, since if more than one player gets eaten by Echidna at the same time, it will trigger a wipe. Echidna will come out from a trapdoor that can be identified by the lights behind it, if they're turned on, means Echidna will come out from there. Will eat the player standing in it, stunning the player and continuously dealing them damage. Another player needs to throw any type of orb to make Echidna free the player that was getting eaten, After being freed, the player receives a colored buff between Green, Blue or Red, and a brand of the same color will be shown on top of their head. Echidna will once again hide inside the trapdoors and choose another trapdoor to come out from.","This process will be repeated 3 times, each time giving the player freed a different brand (Brands cannot be repeated), afterwards, 2 cubes 1 colored Green and one colored Blue will appear on top of the 2 trapdoors Echidna didn't come out from.","Players with brands gets targeted by a laser and will then position in a way that allows the laser to destroy the cube matching the color of their brand. Failing to do so results in a wipe."]},
                                         note: { en: ["-If Echidna comes out from a trapdoor and there is no player or if Echidna grabs an already branded player, it will immediately hide and one of the 3 brands will essentially become unobtainable, since it gets skipped.","- If players already have blue and green brand, everyone can get off the trapdoors, since there’s no need to get the red brand. Different from the others, the red brand is not related to any cube, it's laser just deals damage to anyone that touches it, in case of getting it, make sure to make it point to a position where no one can get damaged."],}
                                     }
                                 }
@@ -6346,7 +6412,7 @@ export const data = {
                                         name: { en: "Death Zone", es: "Zona de Muerte", kr: "데스 존", jp: "デスゾーン", br: "Zona da Morte" },
                                         iframe: true,
                                         groggy: true,
-                                        description: { en: ["Barkat hides and at the same time, the edges of the map are filled with shadows. Players need to group at the center of the map, otherwise they will recieve Fear Debuff stacks from the shadows. At the same time, the remaining part of the arena will be filled with inminent Specter's Hands and/or Frost Lasers. All players receive a buff that looks like a hand, and has a color with it (red/purple) if the buff is purple, you’re immune to Frost Lasers, else, if the buff is red, you’re immune to Specter’s Hands, based on the color, move to avoid the Frost Laser or Specter's Hand."]},
+                                        description: { en: ["Barkat hides and at the same time, the edges of the map are filled with shadows. Players need to group at the center of the map, otherwise they will receive Fear Debuff stacks from the shadows. At the same time, the remaining part of the arena will be filled with inminent Specter's Hands and/or Frost Lasers. All players receive a buff that looks like a hand, and has a color with it (red/purple) if the buff is purple, you’re immune to Frost Lasers, else, if the buff is red, you’re immune to Specter’s Hands, based on the color, move to avoid the Frost Laser or Specter's Hand."]},
                                         note: { en: ["- Specter's Hands will not increase Fear debuff stacks during this mechanic.","- This is repeated 3 times, and each time players can be given a different buff.","- All players have share the same buff during this mechanic."] }
                                     },
                                     eyeoffear: {
@@ -6513,7 +6579,7 @@ export const data = {
                                 },
                                 banishmentp2: {
                                     name: { en: "Banishment Debuff"},
-                                    description: { en: ["The debuff recieves a change:","At 10 stacks, players will instead be imprisoned in one of the 3 imprisonment rooms of the upper floor and must be rescued within 55s. Failure results in imprisoned player’s death, and Specter Swarm healing 5% of its total HP."]}
+                                    description: { en: ["The debuff receives a change:","At 10 stacks, players will instead be imprisoned in one of the 3 imprisonment rooms of the upper floor and must be rescued within 55s. Failure results in imprisoned player’s death, and Specter Swarm healing 5% of its total HP."]}
                                 },
                             },
                             phasenum: { en: "Phase 2", es: "Fase 2", kr: "2단계", jp: "フェーズ2", br: "Fase 2" },
@@ -7289,7 +7355,7 @@ export const data = {
                                     variants: {
                                         solo: {
                                             name: {en: "Solo Mode Variation:"},
-                                            description: {en: ["An Elsword Knight Emperor (1st path) will appear somewhere in the arena. the player must recieve the freezing interaction and freeze itself in front of the NPC to protec it. if done correctly, the player will be freed after the attack is over."]}
+                                            description: {en: ["An Elsword Knight Emperor (1st path) will appear somewhere in the arena. the player must receive the freezing interaction and freeze itself in front of the NPC to protec it. if done correctly, the player will be freed after the attack is over."]}
                                         }
                                     }
                                 },
@@ -7391,6 +7457,31 @@ export const data = {
             content_oua: { en: "Operation Undertow: Alpha", es: "Operación Resaca: Alfa", region_na: { en: "Operation Undertow: Alpha", es: "Operation Undertow: Alpha", br: "Operation Undertow: Alpha"} },
             content_ouo: { en: "Operation Undertow: Omega", es: "Operación Resaca: Omega", region_na: { en: "Operation Undertow: Omega", es: "Operation Undertow: Omega", br: "Operation Undertow: Omega"} },
             sections: {
+                he: {
+                    img: {
+                        ico: []
+                    },
+                    title: {
+                        en: "Endgame"
+                    },
+                    content: {
+                        en: ["!Henir's Time and Space - High Entropy!","High Entropy is a new instance of Henir dungeon, that requires !5,000,000 CP! to enter. It goes back to how base Henir used to work: no resurrections, dying means you have to do all stages, and instead of Bethma - Elrianode bosses, you fight Abyss - Aporia Raid bosses with remixed mechanics. It has 5 stages and each stage rewards you with Fragments, up to 40 per week.","!Rewards!","You can trade High Entropy fragments for things such as Max Value L/T Type Circuits, or new Force Skills: {{https://cobodex.eu/en/item/43958|Eternal Dimension|external}} (which is a replacement for Eroding Energy), {{https://cobodex.eu/en/item/43959|Time Dilation|external}} and {{https://cobodex.eu/en/item/43960|Liminal Space|external}}."]
+                    }
+                },
+                neb: {
+                    img: {
+                        ico: [
+                            { src: "/images/blackfrag.webp", inline: true},
+                            { src: "/images/glitterain.webp", inline: true},
+                            { src: "/images/nebuproto.webp", inline: true},
+                            { src: "/images/taintedspikehorn.webp", inline: true},
+                            { src: "/images/glitterinsignia.webp", inline: true},
+                        ]
+                    },
+                    content: {
+                        en: ["!Nebulon Raid!","Nebulon Raid is a major raid that requires !5,700,000 CP! to enter. It consists of 5 dungeons: !T-Tree Solution!, !Bioweapon Shelter!, !Progressive Zone!, !Operation Undertow: Alpha! and !Operation Undertow: Omega!.","!Raid Rewards!","Clearing nebulon raid dungeons for the first time in a week rewards with [pic:img.ico.0]Black Fragments, those can be traded for [pic:img.ico.1]Glitterain Cores and [pic:img.ico.2]Nebulon Suit Protos}}.","!Accessories!: Clearing Progressive Zone can drop [pic:img.ico.3]{{https://cobodex.eu/en/item/30873|Tainted Spikehorn|external}} at fixed chances, and Clearing Operation Undertow: Omega can drop [pic:img.ico.4]{{https://cobodex.eu/en/item/30872|Glitter's Insignia|external}}, however, the pity for both accs are now different instead of being a shared cube selection like in previous raids. These 2 accs serve as replacements for Serpentium Raid accessory set.","!Armor!: Nebulon Raid features a new armor, the Nebulon Suit Armor. This armor is crafted by combining a Glitterain Core and a Nebulon Suit Proto via NPC Feta. Glitterain Cores and Protos can be crafted with black fragments, as mentioned before, but they can also be obtained via Auction in the Dark Elf Black Market.","Nebulon Suit Armor carries over the systems of the Exascale Armor, Circuits and Chips, has 5 sockets instead of 4 due to it being legendary quality, and feature a new system, called cartridges. (Refer to the Cartridges guide for info)"]
+                    }
+                },
                 tts: {
                     titlekey: {
                         en: "T-Tree Solution",
@@ -8687,13 +8778,13 @@ export const data = {
                     content: {
                         phase1: {
                             phasenum: { en: "Phase 1", es: "Fase 1", kr: "1단계", jp: "フェーズ1", br: "Fase 1" },
-                            phasebname: { en: "Grandmaster Marcus", es: "Gran Maestro Marcus", kr: "", jp: "", br: "" },
+                            phasebname: { en: "Marcus of the Final Hour", es: "Marcus de la Hora Final", kr: "", jp: "", br: "" },
                             concepts: {
                                 parrying: {
                                     name: { en: "Parrying", es: "Parry", kr: "", jp: "", br: "" },
                                     description: {
-                                        en: ["On the middle top of the screen there's a green diamond shaped icon activable by prompting the Dungeon Function Key (F1). Using it will start a 6s cooldown until it can be used again.", "During several patterns, Marcus will indicate whenever his attacks can be parried by flashing of a certain color. When to parry differs depending on the color Marcus flashes.", "Blue flash: Use Parry Function should be used immediately.", "Red flash (Only possible after its HP goes down to 339x): Wait until Marcus is fully covered in red before using Parry Function.", "Yellow flash (Only possible after its HP goes down to 279x): Wait until Marcus' flash pulses 3 times before using Parry Function.", "A green forcefield appears for a short moment to signal the parry was successful, and Marcus will be staggered temporarily.", "To properly know when to Parry each attack, check this video: https://www.youtube.com/watch?v=Dn_QQUmuhO0"],
-                                        es: ["En la parte superior central de la pantalla hay un icono verde en forma de diamante activable mediante la Tecla de Función de Mazmorra (F1). Usarlo iniciará un enfriamiento de 6s hasta que pueda usarse de nuevo.", "Durante varios patrones, Marcus indicará cuándo sus ataques pueden ser desviados (parry) parpadeando de un color determinado. Cuándo hacer el parry difiere dependiendo del color que Marcus parpadee.", "Parpadeo azul: La Función de Parry debe usarse inmediatamente.", "Parpadeo rojo (Solo posible después de que su HP baje a 339x): Espera hasta que Marcus esté completamente cubierto de rojo antes de usar la Función de Parry.", "Parpadeo amarillo (Solo posible después de que su HP baje a 279x): Espera hasta que el parpadeo de Marcus pulse 3 veces antes de usar la Función de Parry.", "Un campo de fuerza verde aparece por un breve momento para indicar que el parry fue exitoso, y Marcus quedará aturdido temporalmente.", "Para saber correctamente cuándo hacer Parry a cada ataque, mira este video: https://www.youtube.com/watch?v=Dn_QQUmuhO0"],
+                                        en: ["On the middle top of the screen there's a green diamond shaped icon activable by prompting the Dungeon Function Key (F1). Using it will start a 6s cooldown until it can be used again.", "During several patterns, Marcus will indicate whenever his attacks can be parried by flashing of a certain color. When to parry differs depending on the color Marcus flashes.", "Blue flash: Use Parry Function should be used immediately.", "Red flash (Only possible after its HP goes down to 339x): Wait until Marcus is fully covered in red before using Parry Function.", "Yellow flash (Only possible after its HP goes down to 279x): Wait until Marcus' flash pulses 3 times before using Parry Function.", "A green forcefield appears for a short moment to signal the parry was successful, and Marcus will be staggered temporarily.", "To properly know when to Parry each attack, {{https://www.youtube.com/watch?v=Dn_QQUmuhO0|check this video|external}}."],
+                                        es: ["En la parte superior central de la pantalla hay un icono verde en forma de diamante activable mediante la Tecla de Función de Mazmorra (F1). Usarlo iniciará un enfriamiento de 6s hasta que pueda usarse de nuevo.", "Durante varios patrones, Marcus indicará cuándo sus ataques pueden ser desviados (parry) parpadeando de un color determinado. Cuándo hacer el parry difiere dependiendo del color que Marcus parpadee.", "Parpadeo azul: La Función de Parry debe usarse inmediatamente.", "Parpadeo rojo (Solo posible después de que su HP baje a 339x): Espera hasta que Marcus esté completamente cubierto de rojo antes de usar la Función de Parry.", "Parpadeo amarillo (Solo posible después de que su HP baje a 279x): Espera hasta que el parpadeo de Marcus pulse 3 veces antes de usar la Función de Parry.", "Un campo de fuerza verde aparece por un breve momento para indicar que el parry fue exitoso, y Marcus quedará aturdido temporalmente.", "Para saber correctamente cuándo hacer Parry a cada ataque, {{https://www.youtube.com/watch?v=Dn_QQUmuhO0|mira este video|external}}."],
                                         kr: "", jp: "", br: ""
                                     }
                                 }
