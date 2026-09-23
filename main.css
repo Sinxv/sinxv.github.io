@@ -2248,6 +2248,11 @@ body.guide-modal-open {
     }
 }
 
+.mechname {
+    font-size: xx-large;
+    width: fit-content;
+}
+
 .sub-mech {
     margin: 12px 0 12px 16px;
     padding: 12px 16px;
@@ -3197,10 +3202,6 @@ h2, h3,
 @media only screen and (min-width: 1280px) {
     .mechgif, .mechname, .mechforcedat, .mechfollowup {
         display: inline-block;
-    }
-    .mechname {
-        font-size: xx-large;
-        width: fit-content;
     }
     .mechforcedat, .mechfollowup {
         color: var(--primary-light);

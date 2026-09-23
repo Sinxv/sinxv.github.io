@@ -7935,6 +7935,7 @@ export const data = {
                                     },
                                     orangebluederivation: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2431debuff2.webp", 
@@ -7959,6 +7960,7 @@ export const data = {
                                     },
                                     reddarkbluederivation: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2431debuff1.webp", 
@@ -7983,6 +7985,7 @@ export const data = {
                                     },
                                     greenderivation: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2431debuff3.webp", 
@@ -8370,6 +8373,7 @@ export const data = {
                                     },
                                     henirserosion: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2442debuff1.webp", 
@@ -8629,6 +8633,7 @@ export const data = {
                                     },
                                     shield: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2451buff1.webp", 
@@ -8738,6 +8743,7 @@ export const data = {
                                     },
                                     missiledefense: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { src: "/images/mechs/2452debuff1_1.webp", alt: { en: "", es: "" }, captionType: "quote" },
                                                 { src: "/images/mechs/2452debuff1_2.webp" },
@@ -8902,6 +8908,7 @@ export const data = {
                                     },
                                     targetspecified: {
                                          ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2461debuff1.webp", 
@@ -8977,6 +8984,7 @@ export const data = {
                                     },
                                     parryrestriction: {
                                         ico: {
+                                            icoBlock: true,
                                             ico: [
                                                 { 
                                                     src: "/images/mechs/2461debuff2.webp", 

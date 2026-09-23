@@ -201,7 +201,11 @@ function renderGroupTitle(title) {
     return createElement('div', { class: 'guide-group-title' }, [title]);
 }
 
-const MECH_KNOWN_KEYS = new Set(['name', 'forcedat', 'description', 'note', 'concepts', 'derivated_mechs', 'alt', 'img', 'variants', 'inlineOnly']);
+const MECH_KNOWN_KEYS = new Set([
+    'name', 'forcedat', 'description', 'note', 'concepts',
+    'derivated_mechs', 'alt', 'img', 'vid', 'ico',
+    'variants', 'inlineOnly', 'derivationClass', 'separation'
+]);
 const CONCEPT_KNOWN_KEYS = new Set(['name', 'title', 'description', 'img', 'variants', 'inlineOnly']);
 
 function isLangLeaf(value) {
@@ -356,9 +360,17 @@ function renderMechanicEntry(item) {
         
         // Add img if present
         if (value.img) {
-            const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
-            renderGenericValue(mechImgWrapper, 'img', value.img);
-            subWrapper.appendChild(mechImgWrapper);
+            const hasBlockLayers =
+                (Array.isArray(value.img.primary) && value.img.primary.length) ||
+                (Array.isArray(value.img.secondary) && value.img.secondary.length) ||
+                (Array.isArray(value.img.tertiary) && value.img.tertiary.length) ||
+                (value.img.icoBlock === true && Array.isArray(value.img.ico) && value.img.ico.length);
+
+            if (hasBlockLayers) {
+                const mechImgWrapper = createElement('div', { class: 'mech-image-wrapper' }, []);
+                renderGenericValue(mechImgWrapper, 'img', value.img);
+                subWrapper.appendChild(mechImgWrapper);
+            }
         }
         
         // Add vid if present
@@ -1071,71 +1083,76 @@ function renderGenericValue(container, key, value, sectionKey, parentKey) {
     }
 
     if (key === 'img' && typeof value === 'object' && !Array.isArray(value)) {
-    const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
+        const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
 
-    const layers = [
-        { key: 'primary',   containerClass: 'image-layer-primary' },
-        { key: 'secondary', containerClass: 'image-layer-secondary' },
-        { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
-        { key: 'normal',    containerClass: 'image-layer-normal' },
-        { key: 'small',     containerClass: 'image-layer-small' }
-        // NOTE: `ico` intentionally omitted — it's inline-only via [pic:]
-    ];
+        const layers = [
+            { key: 'primary',   containerClass: 'image-layer-primary' },
+            { key: 'secondary', containerClass: 'image-layer-secondary' },
+            { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
+            { key: 'normal',    containerClass: 'image-layer-normal' },
+            { key: 'small',     containerClass: 'image-layer-small' }
+        ];
 
-    layers.forEach(layer => {
-        const layerData = value[layer.key];
-        if (!layerData) return;
+        // Opt-in: include ico as a block layer
+        if (value.icoBlock === true) {
+            layers.push({ key: 'ico', containerClass: 'image-layer-ico' });
+        }
 
-        const images = Array.isArray(layerData) ? layerData : [layerData];
-        
-        // Skip images flagged inline-only
-        const blockImages = images.filter(img => 
-            !(img && typeof img === 'object' && img.inline === true)
-        );
-        if (blockImages.length === 0) return;
+        layers.forEach(layer => {
+            const layerData = value[layer.key];
+            if (!layerData) return;
 
-        const layerContainer = createElement('div', { 
-            class: `image-layer ${layer.containerClass}` 
-        }, []);
+            const images = Array.isArray(layerData) ? layerData : [layerData];
 
-        blockImages.forEach(imgData => {
-            const figure = createElement('figure', { class: 'guide-image-figure' }, []);
-            
-            let src, altText;
-            if (typeof imgData === 'string') {
-                src = imgData;
-                altText = '';
-            } else if (typeof imgData === 'object') {
-                src = imgData.src;
-                altText = getLocalizedValue(imgData.alt) || '';
-            }
+            const isIcoBlock = value.icoBlock === true && layer.key === 'ico';
+            const blockImages = isIcoBlock
+                ? images
+                : images.filter(img => !(img && typeof img === 'object' && img.inline === true));
 
-            const img = createElement('img', {
-                src: src,
-                alt: altText,
-                title: altText,
-                loading: 'lazy'
+            if (blockImages.length === 0) return;
+
+            const layerContainer = createElement('div', { 
+                class: `image-layer ${layer.containerClass}` 
             }, []);
-            img.addEventListener('click', () => openImageLightbox(src, altText));
-            figure.appendChild(img);
 
-            if (altText) {
-                const caption = createElement('figcaption', { class: 'guide-image-caption' }, [altText]);
-                figure.appendChild(caption);
-            }
+            blockImages.forEach(imgData => {
+                const figure = createElement('figure', { class: 'guide-image-figure' }, []);
 
-            layerContainer.appendChild(figure);
+                let src, altText;
+                if (typeof imgData === 'string') {
+                    src = imgData;
+                    altText = '';
+                } else if (typeof imgData === 'object') {
+                    src = imgData.src;
+                    altText = getLocalizedValue(imgData.alt) || '';
+                }
+                if (!src) return;
+
+                const img = createElement('img', {
+                    src: src,
+                    alt: altText,
+                    title: altText,
+                    loading: 'lazy'
+                }, []);
+                img.addEventListener('click', () => openImageLightbox(src, altText));
+                figure.appendChild(img);
+
+                if (altText) {
+                    const caption = createElement('figcaption', { class: 'guide-image-caption' }, [altText]);
+                    figure.appendChild(caption);
+                }
+
+                layerContainer.appendChild(figure);
+            });
+
+            imgWrapper.appendChild(layerContainer);
         });
 
-        imgWrapper.appendChild(layerContainer);
-    });
-
-    // Don't append empty wrappers
-    if (imgWrapper.children.length > 0) {
-        container.appendChild(imgWrapper);
+        if (imgWrapper.children.length > 0) {
+            container.appendChild(imgWrapper);
+        }
+        return;
     }
-    return;
-}
 
     if (Array.isArray(value) || isLangLeaf(value)) {
         const baseObject = parentKey
@@ -2146,7 +2163,7 @@ function handleGuideLinkClick(event) {
 
 function renderGenericImage(value) {
     if (!value || typeof value !== 'object') return null;
-    
+
     const imgWrapper = createElement('div', { class: 'guide-image-group' }, []);
 
     const layers = [
@@ -2155,19 +2172,23 @@ function renderGenericImage(value) {
         { key: 'tertiary',  containerClass: 'image-layer-tertiary' },
         { key: 'normal',    containerClass: 'image-layer-normal' },
         { key: 'small',     containerClass: 'image-layer-small' }
-        // `ico` intentionally omitted — inline-only via [pic:]
     ];
+
+    if (value.icoBlock === true) {
+        layers.push({ key: 'ico', containerClass: 'image-layer-ico' });
+    }
 
     layers.forEach(layer => {
         const layerData = value[layer.key];
         if (!layerData) return;
 
         const images = Array.isArray(layerData) ? layerData : [layerData];
-        
-        // Skip inline-only images
-        const blockImages = images.filter(img => 
-            !(img && typeof img === 'object' && img.inline === true)
-        );
+
+        const isIcoBlock = value.icoBlock === true && layer.key === 'ico';
+        const blockImages = isIcoBlock
+            ? images
+            : images.filter(img => !(img && typeof img === 'object' && img.inline === true));
+
         if (blockImages.length === 0) return;
 
         const layerContainer = createElement('div', { 
@@ -2176,9 +2197,8 @@ function renderGenericImage(value) {
 
         blockImages.forEach(imgData => {
             const figure = createElement('figure', { class: 'guide-image-figure' }, []);
-            
+
             let src, altText, captionType;
-            
             if (typeof imgData === 'string') {
                 src = imgData;
                 altText = '';
@@ -2188,7 +2208,6 @@ function renderGenericImage(value) {
                 altText = getLocalizedValue(imgData.alt) || '';
                 captionType = imgData.captionType || 'default';
             }
-
             if (!src) return;
 
             const img = createElement('img', {
@@ -2203,14 +2222,12 @@ function renderGenericImage(value) {
 
             if (altText) {
                 const caption = createElement('figcaption', { class: 'guide-image-caption' }, []);
-                
                 if (captionType === 'quote') {
                     caption.textContent = `"${altText}"`;
                     caption.classList.add('caption-quote');
                 } else {
                     caption.textContent = altText;
                 }
-                
                 figure.appendChild(caption);
             }
 
