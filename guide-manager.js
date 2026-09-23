@@ -345,10 +345,10 @@ function renderMechanicEntry(item) {
         }
         
         if (value.description) {
-            renderParagraphElements(item.description, null, item).forEach(el => wrapper.appendChild(el));
+            renderParagraphElements(value.description, null, value).forEach(el => wrapper.appendChild(el));
         }
         if (value.note) {
-            renderParagraphElements(item.note, null, item).forEach(el => {
+            renderParagraphElements(value.note, null, value).forEach(el => {
                 el.classList.add('mechnote');
                 wrapper.appendChild(el);
             });
