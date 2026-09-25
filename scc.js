@@ -87,6 +87,7 @@ function totalTier(total, lineCount) {
     // Total tiers scale with line count
     // can both hit "max" without the weapon being inherently higher tier.
     const perLine = total / lineCount;
+    if (perLine >= 8.5) return 'trueadam';
     if (perLine >= 7.5) return 'max';
     if (perLine >= 6)   return 'high';
     if (perLine >= 4)   return 'mid';
@@ -382,7 +383,7 @@ export function renderStatChangeCalculator(container) {
 
         const tierLabel = document.createElement('div');
         tierLabel.className = 'scc-total-tier';
-        tierLabel.textContent = ({ low: 'Weak', mid: 'Decent', high: 'Strong', max: 'Excellent' })[tier];
+        tierLabel.textContent = ({ low: 'Weak', mid: 'Decent', high: 'Strong', max: 'Excellent', trueadam: 'Maximum'})[tier];
         wrap.appendChild(tierLabel);
 
         return wrap;

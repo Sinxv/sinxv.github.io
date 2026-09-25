@@ -3390,6 +3390,20 @@ h2, h3 {
     background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 184, 77, 0.08));
 }
 
+.scc-total-trueadam .scc-total-value {
+    color: #ff5050;
+    text-shadow:
+        0 0 14px rgba(255, 80, 80, 0.6),
+        0 0 28px rgba(255, 60, 60, 0.35),
+        0 0 44px rgba(255, 40, 40, 0.2);
+    transform: scale(1.12);
+    animation: scc-total-adampulse 2.2s ease-in-out infinite;
+}
+
+.scc-total-trueadam {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 77, 77, 0.08));
+}
+
 /* ---------- "Calculator only" mode ---------- */
 
 .scc-hide-info ~ .guidetext,
@@ -3453,6 +3467,21 @@ h2, h3 {
             0 0 20px rgba(255, 140, 80, 0.85),
             0 0 40px rgba(255, 100, 60, 0.55),
             0 0 60px rgba(255, 80, 40, 0.3);
+    }
+}
+
+@keyframes scc-total-adampulse {
+    0%, 100% {
+        text-shadow:
+            0 0 14px rgba(255, 80, 80, 0.6),
+            0 0 28px rgba(255, 60, 60, 0.35),
+            0 0 44px rgba(255, 40, 40, 0.2);
+    }
+    50% {
+        text-shadow:
+            0 0 20px rgba(255, 80, 80, 0.85),
+            0 0 40px rgba(255, 60, 60, 0.55),
+            0 0 60px rgba(255, 40, 40, 0.3);
     }
 }
 
