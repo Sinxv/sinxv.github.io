@@ -63,6 +63,22 @@ export const guideData = [
         sectionKeys: ['stage5.sections.harconiumtuning']
     },
     {
+        id: 'stat-change',
+        titleKey: 'system.stat_change.title',
+        category: 'system',
+        availableLanguages: ['en'],
+        sectionKeys: ['system.stat_change.sections'],
+        // calculator injected by the guide-manager hook below
+        calculatorType: 'stat-change'
+    },
+    {
+        id: 'cartridge',
+        icon: '/images/cartridgeico.webp',
+        category: 'system',
+        titleKey: 'stage8.sections.cartridge.title',
+        sectionKeys: ['stage8.sections.cartridge']
+    },
+    {
         id: 'ctohf',
         icon: '/images/ctohfico.png',
         category: 'raid',

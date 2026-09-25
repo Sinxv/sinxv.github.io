@@ -1152,58 +1152,141 @@ h3 {
    11. STAT TABLES
    ============================================================ */
 
-#gridtable {
+#gridtable,
+.stat-table {
     width: 100%;
+    table-layout: auto;
     border-collapse: collapse;
-    background: #444456;
+    background: #353540;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     margin: 30px 0;
     border: 1px solid var(--border-color);
+    font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+    font-size: 14px;
 }
 
-#gridtable th {
-    background: linear-gradient(135deg, #555566, #444456);
+/* ---- Header row (regular column headers) ---- */
+#gridtable th,
+.stat-table th {
+    background: linear-gradient(135deg, #3f3f52, #343440);
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700;
     padding: 16px 20px;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 2px solid var(--primary-color);
-}
-
-#gridtable td {
-    padding: 14px 20px;
-    border-bottom: 1px solid #555566;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
     vertical-align: middle;
 }
 
-#gridtable tr:last-child td {
+/* ---- Table title row (spanning header with collapse arrow) ---- */
+#gridtable .table-title-collapser,
+.stat-table .table-title-collapser {
+    background: linear-gradient(135deg, #3f3f52, #343440);
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 16px 20px;
+    border-bottom: 2px solid var(--primary-color);
+    text-align: left;
+}
+
+#gridtable .table-title-collapser::after,
+.stat-table .table-title-collapser::after {
+    color: var(--primary-color);
+}
+
+/* ---- Body cells ---- */
+#gridtable td,
+.stat-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    vertical-align: middle;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* ---- Row dividers ---- */
+#gridtable tr:last-child td,
+.stat-table tr:last-child td {
     border-bottom: none;
 }
 
-#gridtable tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.03);
+/* ---- Zebra striping (very subtle) ---- */
+#gridtable tr:nth-child(even),
+.stat-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
 }
 
-#gridtable tr:hover {
-    background: rgba(var(--primary-color-rgb, 255, 255, 255), 0.1);
+/* ---- Hover ---- */
+#gridtable tr:hover,
+.stat-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
 }
 
-#gridtable tr:hover td {
+#gridtable tr:hover td,
+.stat-table tr:hover td {
     color: var(--text-color);
 }
 
-#gridtable tr.good-stat td:first-child {
+/* ---- Rowspan cells (Category column, etc.) ---- */
+#gridtable td[rowspan],
+.stat-table td[rowspan] {
+    vertical-align: top;
+    padding-top: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+/* ---- Column widths ---- */
+#gridtable td:first-child,
+#gridtable th:first-child,
+.stat-table td:first-child,
+.stat-table th:first-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
+#gridtable td:nth-child(2),
+#gridtable th:nth-child(2),
+.stat-table td:nth-child(2),
+.stat-table th:nth-child(2) {
+    white-space: normal;
+    word-break: keep-all;
+    min-width: 180px;
+}
+
+/* ---- Multi-line cell content ---- */
+#gridtable td > div,
+.stat-table td > div {
+    margin-bottom: 4px;
+}
+
+#gridtable td > div:last-child,
+.stat-table td > div:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- Legacy inset spans (older guides wrap content in span) ---- */
+#gridtable span,
+.stat-table span {
+    margin-left: 0;
+}
+
+/* ---- Status row accents ---- */
+#gridtable tr.good-stat td:first-child,
+.stat-table tr.good-stat td:first-child {
     position: relative;
 }
 
-#gridtable tr.good-stat td:first-child::before {
+#gridtable tr.good-stat td:first-child::before,
+.stat-table tr.good-stat td:first-child::before {
     content: '';
     position: absolute;
     left: 0;
@@ -1212,15 +1295,14 @@ h3 {
     width: 4px;
     background: var(--success-color);
 }
-#gridtable span{
-    margin-left: 10px;
-}
 
-#gridtable tr.niche-stat td:first-child {
+#gridtable tr.niche-stat td:first-child,
+.stat-table tr.niche-stat td:first-child {
     position: relative;
 }
 
-#gridtable tr.niche-stat td:first-child::before {
+#gridtable tr.niche-stat td:first-child::before,
+.stat-table tr.niche-stat td:first-child::before {
     content: '';
     position: absolute;
     left: 0;
@@ -1229,8 +1311,6 @@ h3 {
     width: 4px;
     background: #ffcc66;
 }
-
-
 
 /* ============================================================
    12. GAME PROGRESSION CARDS
@@ -1428,20 +1508,41 @@ body.light-mode h3 {
     color: var(--text-color);
 }
 
-body.light-mode #gridtable {
-    background: #f0f0f8;
-    border-color: var(--border-color);
+body.light-mode #gridtable,
+body.light-mode .stat-table {
+    background: #ffffff;
+    border-color: #d0d0d8;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-body.light-mode #gridtable th {
-    background: #e0e0e8;
-    color: var(--text-color);
-    border-bottom-color: var(--text-color);
+body.light-mode #gridtable th,
+body.light-mode .stat-table th,
+body.light-mode #gridtable .table-title-collapser,
+body.light-mode .stat-table .table-title-collapser {
+    background: #f0f0f5;
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
 }
 
-body.light-mode #gridtable td {
-    color: var(--text-color);
-    border-bottom-color: var(--border-color);
+body.light-mode #gridtable td,
+body.light-mode .stat-table td {
+    color: #333340;
+    border-bottom-color: #e4e4ec;
+}
+
+body.light-mode #gridtable tr:nth-child(even),
+body.light-mode .stat-table tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+body.light-mode #gridtable tr:hover,
+body.light-mode .stat-table tr:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode #gridtable tr:hover td,
+body.light-mode .stat-table tr:hover td {
+    color: #000000;
 }
 
 body.light-mode .lower {
@@ -2262,6 +2363,39 @@ body.guide-modal-open {
     width: fit-content;
 }
 
+.rich-tip {
+    border-bottom: 1px dotted currentColor;
+    cursor: help;
+    outline: none;
+}
+
+.rich-tip:focus-visible {
+    outline: 2px solid var(--primary-color, #8b5cf6);
+    outline-offset: 2px;
+}
+
+.rich-tip-tooltip {
+    position: fixed;
+    z-index: 99999;
+    max-width: 320px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: rgba(20, 20, 25, 0.96);
+    color: #f0f0f0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.rich-tip-tooltip.is-visible {
+    opacity: 1;
+}
+
 .sub-mech {
     margin: 12px 0 12px 16px;
     padding: 12px 16px;
@@ -2929,7 +3063,371 @@ h2, h3 {
 }
 
 /* ============================================================
-   18. ANIMATIONS
+   18.3 Stat Change Calc
+   ============================================================ */
+
+.scc-root {
+    background: #353540;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+}
+
+.scc-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scc-mode-toggle {
+    display: flex;
+    gap: 6px;
+}
+
+.scc-mode-btn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.scc-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+}
+
+.scc-mode-btn.is-active {
+    background: var(--primary-color);
+    color: #1a1a1a;
+    border-color: var(--primary-color);
+}
+
+.scc-enh {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scc-enh-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.scc-enh-select {
+    background: #2a2a35;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.scc-enh-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ---------- Lines ---------- */
+
+.scc-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.scc-line {
+    display: grid;
+    grid-template-columns: 70px minmax(180px, 1fr) minmax(180px, 1.4fr) 90px 32px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.scc-line-chance {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 11px;
+    color: #8a8a95;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    padding-left: 2px;
+    margin-top: -6px;
+}
+
+.scc-line-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.scc-line-select {
+    width: 100%;
+    background: #2a2a35;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.scc-line-select option:disabled {
+    color: #666;
+}
+
+.scc-line-value {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.scc-line-empty {
+    color: #555;
+    text-align: center;
+    font-size: 20px;
+}
+
+.scc-line-input {
+    background: #2a2a35;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font: inherit;
+    font-size: 12px;
+    width: 100%;
+}
+
+.scc-line-slider {
+    width: 100%;
+    accent-color: var(--primary-color);
+}
+
+/* ---------- Score badge ---------- */
+
+.scc-line-score {
+    text-align: center;
+}
+
+.scc-score {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    min-width: 56px;
+    text-align: center;
+}
+
+/* Tiers — "drama" increases with tier */
+.scc-score-low {
+    background: rgba(255, 255, 255, 0.05);
+    color: #9a9aa0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scc-score-mid {
+    background: rgba(110, 193, 255, 0.12);
+    color: #8ecfff;
+    border: 1px solid rgba(110, 193, 255, 0.3);
+    box-shadow: 0 0 8px rgba(110, 193, 255, 0.15);
+}
+
+.scc-score-high {
+    background: rgba(255, 184, 77, 0.15);
+    color: #ffc46b;
+    border: 1px solid rgba(255, 184, 77, 0.4);
+    box-shadow: 0 0 12px rgba(255, 184, 77, 0.25);
+    transform: scale(1.02);
+}
+
+.scc-score-max {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 184, 77, 0.2));
+    color: #ff9c5c;
+    border: 1px solid rgba(255, 140, 80, 0.55);
+    box-shadow: 0 0 18px rgba(255, 140, 80, 0.45);
+    transform: scale(1.06);
+    text-shadow: 0 0 6px rgba(255, 140, 80, 0.6);
+    animation: scc-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scc-pulse {
+    0%, 100% { box-shadow: 0 0 18px rgba(255, 140, 80, 0.45); }
+    50%      { box-shadow: 0 0 26px rgba(255, 140, 80, 0.7); }
+}
+
+.scc-line-remove {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1;
+    transition: all 0.15s ease;
+}
+
+.scc-line-remove:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff8080;
+    border-color: #ff8080;
+}
+
+.scc-line-remove:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* ---------- Footer ---------- */
+
+.scc-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.scc-total-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.scc-total-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.scc-total-value {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1;
+    transition: all 0.25s ease;
+}
+
+.scc-total-tier {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.9;
+    font-weight: 700;
+}
+
+/* Low — plain */
+.scc-total-low .scc-total-value {
+    color: var(--text-secondary);
+}
+
+/* Mid — soft glow */
+.scc-total-mid .scc-total-value {
+    color: #8ecfff;
+    text-shadow: 0 0 10px rgba(110, 193, 255, 0.35);
+}
+
+.scc-total-mid {
+    background: rgba(110, 193, 255, 0.05);
+}
+
+/* High — warm glow, slight scale */
+.scc-total-high .scc-total-value {
+    color: #ffc46b;
+    text-shadow: 0 0 14px rgba(255, 184, 77, 0.45), 0 0 30px rgba(255, 184, 77, 0.2);
+    transform: scale(1.06);
+}
+
+.scc-total-high {
+    background: rgba(255, 184, 77, 0.07);
+}
+
+/* Max — orange-red, strong glow, pulse */
+.scc-total-max .scc-total-value {
+    color: #ff8c50;
+    text-shadow:
+        0 0 14px rgba(255, 140, 80, 0.6),
+        0 0 28px rgba(255, 100, 60, 0.35),
+        0 0 44px rgba(255, 80, 40, 0.2);
+    transform: scale(1.12);
+    animation: scc-total-pulse 2.2s ease-in-out infinite;
+}
+
+.scc-total-max {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 184, 77, 0.08));
+}
+
+/* ---------- "Calculator only" mode ---------- */
+
+.scc-hide-info ~ .guidetext,
+.scc-hide-info ~ .guide-generic-section,
+.scc-hide-info ~ .guide-raid-section,
+.scc-hide-info ~ .guide-status-warnings,
+.guide-calc-toggle.is-hidden ~ * {
+    /* (see note below — you'll likely toggle a body class instead) */
+}
+
+.guide-calc-toggle {
+    display: block;
+    margin: 30px auto 0;
+    padding: 10px 24px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.guide-calc-toggle:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* When in calculator-only mode, hide everything in .guide-content
+   except the calculator host and the toggle. */
+.guide-content.scc-only-mode > *:not(.guide-calculator-host):not(.guide-calc-toggle) {
+    display: none;
+}
+
+/* ============================================================
+   19. ANIMATIONS
    ============================================================ */
 
 @keyframes fadeIn {
@@ -2940,6 +3438,21 @@ h2, h3 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes scc-total-pulse {
+    0%, 100% {
+        text-shadow:
+            0 0 14px rgba(255, 140, 80, 0.6),
+            0 0 28px rgba(255, 100, 60, 0.35),
+            0 0 44px rgba(255, 80, 40, 0.2);
+    }
+    50% {
+        text-shadow:
+            0 0 20px rgba(255, 140, 80, 0.85),
+            0 0 40px rgba(255, 100, 60, 0.55),
+            0 0 60px rgba(255, 80, 40, 0.3);
     }
 }
 

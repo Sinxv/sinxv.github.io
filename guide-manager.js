@@ -1,6 +1,7 @@
 import { data } from '/EHD.js';
 import { initConceptTriggers, initTableNotes } from '/data.js';
 import { guideData } from '/guide-data.js';
+import { renderStatChangeCalculator } from '/scc.js';
 
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
@@ -187,7 +188,7 @@ function renderParagraphElements(value, baseObject = null) {
             return [];
         }
 
-        const isBlockContent = /<(table|thead|tbody|tfoot|tr|td|th|img|audio|video|figure|figcaption|div|section|article|ul|ol|iframe|h[1-6])\b/i.test(rendered);
+        const isBlockContent = /<(table|thead|tbody|tfoot|tr|td|th|img|audio|video|figure|abbr|figcaption|div|section|article|ul|ol|iframe|h[1-6])\b/i.test(rendered);
         if (isBlockContent) {
             return Array.from(createFragmentFromHtml(rendered).childNodes);
         }
@@ -869,19 +870,19 @@ function renderTableFromSpec(tableSpec) {
     function renderRow(row, includeLabel) {
         const cells = [];
 
-        if (includeLabel) {
-            const labelText = row.labelKey 
-                ? getTranslation(row.labelKey) 
+        const skipLabel = row.labelHidden === true || row[`${labelColKey}Hidden`] === true;
+        if (includeLabel && !skipLabel) {
+            const labelText = row.labelKey
+                ? getTranslation(row.labelKey)
                 : getLocalizedValue(row.label || row[labelColKey]);
-            
-            // Check for custom colspan/rowspan
+
             const labelColspan = row[`${labelColKey}Colspan`] || row.labelColspan || 1;
             const labelRowspan = row[`${labelColKey}Rowspan`] || row.labelRowspan || 1;
-            
+
             const cellAttrs = {};
             if (labelColspan > 1) cellAttrs.colspan = String(labelColspan);
             if (labelRowspan > 1) cellAttrs.rowspan = String(labelRowspan);
-            
+
             cells.push(createElement('td', cellAttrs, [createElement('span', {}, [labelText])]));
         }
 
@@ -903,14 +904,16 @@ function renderTableFromSpec(tableSpec) {
             
             let content = [];
             if (raw !== undefined && raw !== null) {
+                let lines;
                 if (isTranslationPath(raw)) {
-                    content = createCellLines(getMultiline(raw));
+                    lines = getMultiline(raw);
                 } else {
-                    const lines = String(raw).split('\n');
-                    content = lines.length > 1
-                        ? lines.map(line => createElement('div', {}, [line]))
-                        : [String(raw)];
+                    lines = String(raw).split('\n');
                 }
+
+                content = lines.length > 1
+                    ? lines.map(line => createElement('div', { html: getRenderedText(line) }, []))
+                    : [createElement('span', { html: getRenderedText(lines[0] ?? '') }, [])];
             }
             
             const attrs = {};
@@ -1497,17 +1500,35 @@ function createGuideModal(entry) {
     modal.appendChild(closeButton);
 
     const scrollContent = createElement('div', { class: 'guide-modal-scroll' }, []);
-    const content = renderGuideContent(entry);
-    scrollContent.appendChild(content);
-    modal.appendChild(scrollContent);
-    
-    overlay.appendChild(modal);
+        const content = renderGuideContent(entry);
+        scrollContent.appendChild(content);
 
-    overlay.addEventListener('click', (event) => {
-        if (event.target === overlay) {
-            closeGuide();
+        // ---- Calculator injection ----
+        if (entry.calculatorType === 'stat-change') {
+            const calcHost = document.createElement('div');
+            calcHost.className = 'guide-calculator-host';
+            scrollContent.appendChild(calcHost);
+
+            const calc = renderStatChangeCalculator(calcHost);
+
+            const toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'guide-calc-toggle';
+            toggle.textContent = 'Show Calculator Only';
+
+            let hidden = false;
+            toggle.addEventListener('click', () => {
+                hidden = !hidden;
+                content.classList.toggle('scc-only-mode', hidden);
+                toggle.textContent = hidden ? 'Show Full Guide' : 'Show Calculator Only';
+            });
+
+            scrollContent.appendChild(toggle);
         }
-    });
+        // ---- end injection ----
+
+        modal.appendChild(scrollContent);
+        overlay.appendChild(modal);
 
     // Now that the modal is in the DOM, resolve mech references
     resolveMechReferences(scrollContent);
@@ -1886,7 +1907,7 @@ function resolveMechReferences(container) {
             if (!trimmed) return '';
             
             // Skip HTML tags
-            if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
+            if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|abbr|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
                 return match;
             }
             
@@ -1916,7 +1937,7 @@ function processMechTokens(text, mechNames) {
         const trimmed = token.trim();
         if (!trimmed) return '';
         
-        if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
+        if (/^(\/)?(strong|em|b|i|u|br|p|span|div|h[1-6]|ul|ol|li|a|img|audio|video|source|table|tbody|thead|abbr|tfoot|tr|td|th|caption|colgroup|col|iframe|figure|figcaption)\b/i.test(trimmed)) {
             return match;
         }
         

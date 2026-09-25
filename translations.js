@@ -20,6 +20,7 @@ class TranslationManager {
         this._currentBaseObject = null;
         document.documentElement.lang = this.currentLang;
         this.setupGlossaryTooltipHandlers();
+        this.setupRichTipHandlers();
     }
 
     _registerInlineImg(imgData) {
@@ -75,6 +76,75 @@ class TranslationManager {
 
     applyTranslations(context = document) {
         this.translateElements(context);
+    }
+
+    setupRichTipHandlers() {
+        document.addEventListener('mouseover', (event) => {
+            const tip = event.target.closest('.rich-tip');
+            if (tip) this.showRichTip(tip, event);
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            const tip = event.target.closest('.rich-tip');
+            if (tip) this.updateRichTipPosition(event.clientX, event.clientY);
+        });
+
+        document.addEventListener('mouseout', (event) => {
+            const tip = event.target.closest('.rich-tip');
+            if (tip && (!event.relatedTarget || !event.relatedTarget.closest || !event.relatedTarget.closest('.rich-tip'))) {
+                this.hideRichTip();
+            }
+        });
+
+        // Touch / keyboard support
+        document.addEventListener('focusin', (event) => {
+            const tip = event.target.closest('.rich-tip');
+            if (tip) {
+                const rect = tip.getBoundingClientRect();
+                this.showRichTipAt(tip, rect.left + rect.width / 2, rect.bottom);
+            }
+        });
+        document.addEventListener('focusout', (event) => {
+            if (event.target.closest && event.target.closest('.rich-tip')) {
+                this.hideRichTip();
+            }
+        });
+    }
+
+    createRichTip() {
+        if (!this.richTip) {
+            this.richTip = document.createElement('div');
+            this.richTip.className = 'rich-tip-tooltip';
+            document.body.appendChild(this.richTip);
+        }
+        return this.richTip;
+    }
+
+    showRichTip(el, event) {
+        this.showRichTipAt(el, event.clientX, event.clientY);
+    }
+
+    showRichTipAt(el, x, y) {
+        const tooltip = this.createRichTip();
+        const text = el.dataset.tip || '';
+        if (!text) { this.hideRichTip(); return; }
+
+        // Run through mini-markdown so !!bold!!, @@colors@@, etc. work
+        tooltip.innerHTML = this.parseMiniMarkdown(text);
+        this.updateRichTipPosition(x, y);
+        tooltip.classList.add('is-visible');
+    }
+
+    updateRichTipPosition(x, y) {
+        const tooltip = this.createRichTip();
+        tooltip.style.left = `${x + 12}px`;
+        tooltip.style.top = `${y + 12}px`;
+    }
+
+    hideRichTip() {
+        if (this.richTip) {
+            this.richTip.classList.remove('is-visible');
+        }
     }
 
     createBackButton() {
@@ -761,6 +831,12 @@ class TranslationManager {
 
             const id = this._registerInlineImg(layerObject);
             return `<span class="guide-image-inline-placeholder" data-img-id="${id}" style="display:inline-block"></span>`;
+        });
+
+        text = text.replace(/\[tip:([^|\]]+)\|([^\]]+)\]/g, (match, label, tip) => {
+            const safeLabel = this.escapeAttribute(label.trim());
+            const safeTip = this.escapeAttribute(tip.trim());
+            return `<span class="rich-tip" data-tip="${safeTip}" tabindex="0">${label.trim()}</span>`;
         });
 
         text.replace(/<([^>]+)>/g, (match, inner, offset) => {

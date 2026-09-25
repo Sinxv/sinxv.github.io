@@ -247,6 +247,39 @@ export const data = {
                 misc: { en: "Miscellaneous", es: "Misceláneo", kr: "기타", jp: "その他", br: "Diversos" }
             }
         },
+        system: {
+            stat_change: {
+                title: { en: 'Stat Change Calculator' },
+                sections: {
+                    title: { en: 'How It Works' },
+                    intro: {
+                        en: [
+                            "This calculator helps you evaluate the relative strength of a stat change roll on a piece of equipment. Each stat's contribution is measured against a community-derived scoring table.",
+                            "Scores are relative — they're useful for comparing two rolls on the same slot, not as an absolute power metric.",
+                            "Enhancement-scaled lines are evaluated at +12 by default. Adjust your enhancement level below to see how the score changes."
+                        ]
+                    }
+                },
+                calculator: {
+                    mode_label: { en: 'Equipment Type' },
+                    mode_weapon: { en: "Weapon (Undead Dragon's Will)" },
+                    mode_armor: { en: 'Armor (Nebulon Suit Armor)' },
+                    enh_label: { en: 'Enhancement Level' },
+                    line_label: { en: 'Line {n}' },
+                    select_placeholder: { en: '— Select a stat —' },
+                    value_label: { en: 'Value' },
+                    remove_label: { en: 'Remove line' },
+                    total_label: { en: 'Total Score' },
+                    per_line_label: { en: 'Line scores' },
+                    dramatic_low: { en: 'Weak' },
+                    dramatic_mid: { en: 'Decent' },
+                    dramatic_high: { en: 'Strong' },
+                    dramatic_max: { en: 'Excellent' },
+                    toggle_hide_info: { en: 'Show Calculator Only' },
+                    toggle_show_info: { en: 'Show Full Guide' }
+                }
+            }
+        },
         homepage: {
             hero_title: {
                 en: "Welcome to Hedgyhelper!",
@@ -4686,7 +4719,7 @@ export const data = {
                                 ]
                             },
                             {
-                                label: 'Damage received from Bossmonsters n%',
+                                label: 'Damage received from Boss monsters n%',
                                 range: '+5% / +1%',
                                 rows: [
                                     { label: 'HP Increased n%', range: '2% / 6%' },
@@ -7555,7 +7588,7 @@ export const data = {
                         en: "Endgame"
                     },
                     content: {
-                        en: ["!Henir's Time and Space - High Entropy!","High Entropy is a new instance of Henir dungeon, that requires !5,000,000 CP! to enter. It goes back to how base Henir used to work: no resurrections, dying means you have to do all stages, and instead of Bethma - Elrianode bosses, you fight Abyss - Aporia Raid bosses with remixed mechanics. It has 5 stages and each stage rewards you with Fragments, up to 40 per week.","!Rewards!","You can trade High Entropy fragments for things such as Max Value L/T Type Circuits, or new Force Skills: {{https://cobodex.eu/en/item/43958|Eternal Dimension|external}} (which is a replacement for Eroding Energy), {{https://cobodex.eu/en/item/43959|Time Dilation|external}} and {{https://cobodex.eu/en/item/43960|Liminal Space|external}}."]
+                        en: ["!Henir's Time and Space - High Entropy!","High Entropy is a new instance of Henir dungeon, that requires [tip:!5,000,000 CP!|!Min: 4,750,000 CP!] to enter. It goes back to how base Henir used to work: no resurrections, dying means you have to do all stages, and instead of Bethma - Elrianode bosses, you fight Abyss - Aporia Raid bosses with remixed mechanics. It has 5 stages and each stage rewards you with Fragments, up to 40 per week.","!Rewards!","You can trade High Entropy fragments for things such as Max Value L/T Type Circuits, or new Force Skills: {{https://cobodex.eu/en/item/43958|Eternal Dimension|external}} (which is a replacement for Eroding Energy), {{https://cobodex.eu/en/item/43959|Time Dilation|external}} and {{https://cobodex.eu/en/item/43960|Liminal Space|external}}."]
                     }
                 },
                 neb: {
@@ -7569,7 +7602,7 @@ export const data = {
                         ]
                     },
                     content: {
-                        en: ["!Nebulon Raid!","Nebulon Raid is a major raid that requires !5,700,000 CP! to enter. It consists of 5 dungeons: !T-Tree Solution!, !Bioweapon Shelter!, !Progressive Zone!, !Operation Undertow: Alpha! and !Operation Undertow: Omega!.","!Raid Rewards!","Clearing nebulon raid dungeons for the first time in a week rewards with [pic:img.ico.0]Black Fragments, those can be traded for [pic:img.ico.1]Glitterain Cores and [pic:img.ico.2]Nebulon Suit Protos.","!Accessories!: Clearing Progressive Zone can drop [pic:img.ico.3]{{https://cobodex.eu/en/item/30873|Tainted Spikehorn|external}} at fixed chances, and Clearing Operation Undertow: Omega can drop [pic:img.ico.4]{{https://cobodex.eu/en/item/30872|Glitter's Insignia|external}}, however, the pity for both accs are now different instead of being a shared cube selection like in previous raids. These 2 accs serve as replacements for Serpentium Raid accessory set.","!Armor!: Nebulon Raid features a new armor, the Nebulon Suit Armor. This armor is crafted by combining a Glitterain Core and a Nebulon Suit Proto via NPC Feta. Glitterain Cores and Protos can be crafted with black fragments, as mentioned before, but they can also be obtained via Auction in the Dark Elf Black Market.","Nebulon Suit Armor carries over the systems of the Exascale Armor, Circuits and Chips, has 5 sockets instead of 4 due to it being legendary quality, and feature a new system, called cartridges. (Refer to the Cartridges guide for info)"]
+                        en: ["!Nebulon Raid!","Nebulon Raid is a major raid that requires [tip:!6,000,000 CP!|!Min: 5,700,000 CP!] to enter. It consists of 5 dungeons: !T-Tree Solution!, !Bioweapon Shelter!, !Progressive Zone!, !Operation Undertow: Alpha! and !Operation Undertow: Omega!.","!Raid Rewards!","Clearing nebulon raid dungeons for the first time in a week rewards with [pic:img.ico.0]Black Fragments, those can be traded for [pic:img.ico.1]Glitterain Cores and [pic:img.ico.2]Nebulon Suit Protos.","!Accessories!: Clearing Progressive Zone can drop [pic:img.ico.3]{{https://cobodex.eu/en/item/30873|Tainted Spikehorn|external}} at fixed chances, and Clearing Operation Undertow: Omega can drop [pic:img.ico.4]{{https://cobodex.eu/en/item/30872|Glitter's Insignia|external}}, however, the pity for both accs are now different instead of being a shared cube selection like in previous raids. These 2 accs serve as replacements for Serpentium Raid accessory set.","!Armor!: Nebulon Raid features a new armor, the Nebulon Suit Armor. This armor is crafted by combining a Glitterain Core and a Nebulon Suit Proto via NPC Feta. Glitterain Cores and Protos can be crafted with black fragments, as mentioned before, but they can also be obtained via Auction in the Dark Elf Black Market.","Nebulon Suit Armor carries over the systems of the Exascale Armor, Circuits and Chips, has 5 sockets instead of 4 due to it being legendary quality, and feature a new system, called cartridges. (Refer to the Cartridges guide for info)"]
                     }
                 },
                 tts: {
@@ -8671,7 +8704,7 @@ export const data = {
                                     timed: true,
                                     inv: true,
                                     description: {
-                                        en: ["Glitter Commander teleports away. Immediately after, 4 barriers (Zones 1 to 4) appear at set locations. The exact number of each zone is hidden and will only be revealed upon contact. Random players will receive whispers containing scrambled pieces of an Intercepted Radio Signal. Players must type their fragments in chat to piece the full message together and determine the correct action.","@@info:!Scrambled Message Pieces!@@","Zones: zo... ...ne (Zone One) | ...ne tw... (Zone Two) | ...on... ...hre... (Zone Three) | z...e fo... (Zone Four) | Al... ...ne (All zone)","Modifiers: ...+... (+) | ...-... (-) | ...ept... (except)","Units: ze.. u...ts (0) | on... un... (1) | ...wo ...its (2) | th... uni... (3) | ..ou... ...nits (4) | ...ve ...ni... (5)","@@info:!Full Command Phrases!@@","Com.... ...ire at all zo... = Commence fire at all zones.","...vac... to the sa... ...ne = Evacuate to the safe zone..","..men... foc... fi... = Commence focus fire.","Eva... fro... the zo... = Evacuate from the zone.","...cua... ...om the ...afe ...ne = Evacuate from the safe zone","...vac... fr... ...sign... zo... = Evacuate from Designated Zone","Fr... th... des... ne, = From the designated zone","... uat... imm... = Evacuate immediately","Sa.... ...ne has ...ang... = Safe zone has changed","Fr... th... ...ren... ..ne, = From the current zone.","@@info:!Examples & How to React!@@","Example 1 (Exclusion): Com.... ...ire at all zo... ...ept... z...e fo... (Commence fire at all zones except Zone Four) = Zone 4 is the only safe zone.","Example 2 (Unit Allocation): zo... ...ne ... ...wo ...its + ...on... ...hre... ... ..ou... ...nits (Zone One: 2 units / Zone Three: 4 units) = 2 players must enter Zone 1, and 4 players must enter Zone 3.","Example 3 (Mid-way Change): Sa.... ...ne has ...ang... Fr... th... ...ren... ..ne, ... z...e fo... (Safe zone has changed. From the current zone, to Zone Four) = The previous safe zone is no longer valid; all players must move to Zone 4 immediately.","Example 4 (All Out Attack): Com.... ...ire at all zo... (Commence fire at all zones) = All zones will be attacked. Players must stay outside of all 4 barriers.","@@warn:+ and - modifiers apply mathematically: If a message says ^'zone 1 ...+... zone 2'^, then they're refering to ^zone 3^.@@"],
+                                        en: ["Glitter Commander teleports away. Immediately after, 4 barriers (Zones 1 to 4) appear at set locations. The exact number of each zone is hidden and will only be revealed upon contact. Random players will receive whispers containing scrambled pieces of an Intercepted Radio Signal. Players must type their fragments in chat to piece the full message together and determine the correct action.","@@info:!Scrambled Message Pieces!@@","Zones: zo... ...ne (Zone One) @@mute:|@@ ...ne tw... (Zone Two) @@mute:|@@ ...on... ...hre... (Zone Three) @@mute:|@@ z...e fo... (Zone Four) | Al... ...ne (All zone)","Modifiers: ...+... (+) | ...-... (-) @@mute:|@@ ...ept... (except)","Units: ze.. u...ts (0) @@mute:|@@ on... un... (1) @@mute:|@@ ...wo ...its (2) @@mute:|@@ th... uni... (3) @@mute:|@@ ..ou... ...nits (4) @@mute:|@@ ...ve ...ni... (5)","@@info:!Full Command Phrases!@@","Com.... ...ire at all zo... = Commence fire at all zones. @@mute:|@@ ..men... foc... fi... = Commence focus fire.","...vac... to the sa... ...ne = Evacuate to the safe zone..","Eva... fro... the zo... = Evacuate from the zone. @@mute:|@@ ...cua... ...om the ...afe ...ne = Evacuate from the safe zone","...vac... fr... ...sign... zo... = Evacuate from Designated Zone","Fr... th... des... ne, = From the designated zone @@mute:|@@ Fr... th... ...arg... ...ne = From the Target Zone","... uat... imm... = Evacuate immediately","Sa.... ...ne has ...ang... = Safe zone has changed","Fr... th... ...ren... ..ne, = From the current zone.","@@info:!Examples & How to React!@@","Example 1 @@mute:(Exclusion)@@: Com.... ...ire at all zo... ...ept... z...e fo... (Commence fire at all zones except Zone Four) = Zone 4 is the only safe zone.","Example 2 @@mute:(Unit Allocation)@@: zo... ...ne ... ...wo ...its + ...on... ...hre... ... ..ou... ...nits (Zone One: 2 units / Zone Three: 4 units) = 2 players must enter Zone 1, and 4 players must enter Zone 3.","Example 3 @@mute:(Mid-way Change)@@: Sa.... ...ne has ...ang... Fr... th... ...ren... ..ne, ... z...e fo... (Safe zone has changed. From the current zone, to Zone Four) = The previous safe zone is no longer valid; all players must move to Zone 4 immediately.","Example 4 @@mute:(All Out Attack)@@: Com.... ...ire at all zo... (Commence fire at all zones) = All zones will be attacked. Players must stay outside of all 4 barriers.","@@warn:+ and - modifiers apply mathematically: If a message says ^'zone 1 ...+... zone 2'^, then they're refering to ^zone 3^.@@"],
                                         es: ["Glitter Commander se teletransporta. Inmediatamente después, aparecerán 4 barreras (Zonas 1 a 4) en ubicaciones fijas. El número exacto de cada zona está oculto y solo se revelará al entrar en contacto con ella. Jugadores aleatorios recibirán susurros con fragmentos codificados de una Señal de Radio Interceptada. Los jugadores deben escribir sus fragmentos en el chat para armar el mensaje completo y determinar la acción correcta.","@@info:!Fragmentos de Mensajes Codificados!@@","Zonas: zo... ...na (Zona Uno) | ...na do... (Zona Dos) | ...on... ...re... (Zona Tres) | z...a cua... (Zona Cuatro) | To... ...na (Todas las zonas)","Modificadores: ...+... (+) | ...-... (-) | ...ept... (excepto)","Unidades: ce.. u...da... (0) | un... un...da... (1) | ...o ...da... (2) | tr... uni...da... (3) | ..ua... ...da... (4) | ...nc... ...da... (5)","@@info:!Frases de Comando Completas!@@","Com.... ...go en to... zo... = Comenzar fuego en todas las zonas.","...vac... a la zo... se... ...na = Evacuar a la zona segura.","..men... fue... conc... = Comenzar fuego concentrado.","Eva... de... la zo... = Evacuar de la zona.","...cua... ...de la ...ona se... ...na = Evacuar de la zona segura.","...vac... de... ...na des... ...na = Evacuar de la Zona Designada.","De... la zo... des... na, = Desde la zona designada.","... cua... inm... = Evacuar de inmediato.","Zo.... ...gu... ha cam... = La zona segura ha cambiado.","De... la zo... ac... ..na, = Desde la zona actual.","@@info:!Ejemplos y Cómo Reaccionar!@@","Ejemplo 1 (Exclusión): Com.... ...go en to... zo... ...ept... z...a cua... (Comenzar fuego en todas las zonas excepto Zona Cuatro) = La Zona 4 es la única zona segura.","Ejemplo 2 (Asignación de Unidades): zo... ...na ... ...o ...da... + ...on... ...re... ... ..ua... ...da... (Zona Uno: 2 unidades / Zona Tres: 4 unidades) = 2 jugadores deben entrar a la Zona 1, y 4 jugadores deben entrar a la Zona 3.","Ejemplo 3 (Cambio a Mitad del Mecanismo): Zo.... ...gu... ha cam... De... la zo... ac... ..na, ... z...a cua... (La zona segura ha cambiado. Desde la zona actual, a la Zona Cuatro) = La zona segura anterior ya no es válida; todos los jugadores deben moverse a la Zona 4 de inmediato.","Ejemplo 4 (Ataque Total): Com.... ...go en to... zo... (Comenzar fuego en todas las zonas) = Todas las zonas serán atacadas. Los jugadores deben quedarse fuera de las 4 barreras.","@@warn:Los modificadores + y - se aplican matematicamente: Si un mensaje dice ^'zona 1 ...+... zona 2'^, entonces el mensaje se refiere a la ^zona 3^.@@"],
                                         region_na: {
                                             es: ["Glitter Commander se teletransporta. Inmediatamente después, aparecerán 4 barreras (Zonas 1 a 4) en ubicaciones fijas. El número exacto de cada zona está oculto y solo se revelará al entrar en contacto con ella. Jugadores aleatorios recibirán susurros con fragmentos codificados de una Señal de Radio Interceptada. Los jugadores deben escribir sus fragmentos en el chat para armar el mensaje completo y determinar la acción correcta.","@@info:!Fragmentos de Mensajes Codificados (Inglés)!@@","Zonas: zo... ...ne (Zone One) | ...ne tw... (Zone Two) | ...on... ...hre... (Zone Three) | z...e fo... (Zone Four) | Al... ...ne (All zone)","Modificadores: ...+... (+) | ...-... (-) | ...ept... (except)","Unidades: ze.. u...ts (0) | on... un... (1) | ...wo ...its (2) | th... uni... (3) | ..ou... ...nits (4) | ...ve ...ni... (5)","@@info:!Frases de Comando Completas!@@","Com.... ...ire at all zo... = Commence fire at all zones (Comenzar fuego en todas las zonas).","...vac... to the sa... ...ne = Evacuate to the safe zone (Evacuar a la zona segura).","..men... foc... fi... = Commence focus fire (Comenzar fuego concentrado).","Eva... fro... the zo... = Evacuate from the zone (Evacuar de la zona).","...cua... ...om the ...afe ...ne = Evacuate from the safe zone (Evacuar de la zona segura).","...vac... fr... ...sign... zo... = Evacuate from Designated Zone (Evacuar de la Zona Designada).","Fr... th... des... ne, = From the designated zone (Desde la zona designada).","... uat... imm... = Evacuate immediately (Evacuar de inmediato).","Sa.... ...ne has ...ang... = Safe zone has changed (La zona segura ha cambiado).","Fr... th... ...ren... ..ne, = From the current zone (Desde la zona actual).","@@info:!Ejemplos y Cómo Reaccionar!@@","Ejemplo 1 (Exclusión): Com.... ...ire at all zo... ...ept... z...e fo... (Commence fire at all zones except Zone Four) = La Zona 4 es la única zona segura.","Ejemplo 2 (Asignación de Unidades): zo... ...ne ... ...wo ...its + ...on... ...hre... ... ..ou... ...nits (Zone One: 2 units / Zone Three: 4 units) = 2 jugadores deben entrar a la Zona 1, y 4 jugadores deben entrar a la Zona 3.","Ejemplo 3 (Cambio a Mitad del Mecanismo): Sa.... ...ne has ...ang... Fr... th... ...ren... ..ne, ... z...e fo... (Safe zone has changed. From the current zone, to Zone Four) = La zona segura anterior ya no es válida; todos los jugadores deben moverse a la Zona 4 de inmediato.","Ejemplo 4 (Ataque Total): Com.... ...ire at all zo... (Commence fire at all zones) = Todas las zonas serán atacadas. Los jugadores deben quedarse fuera de las 4 barreras.","@@warn:Los modificadores + y - se aplican matematicamente: Si un mensaje dice ^'zone 1 ...+... zone 2'^, entonces el mensaje se refiere a la ^zona 3^.@@"]
@@ -9063,6 +9096,98 @@ export const data = {
                                 }
                             }
                         }
+                    }
+                },
+                cartridge: {
+                    title: {
+                        en: "Cartridge System"
+                    },
+                    img: {
+                        primary: [
+                            { src: "/images/cartridge.png", alt: "Cartridge UI in game."}
+                        ]
+                    },
+                    content: {
+                        en: ["Cartridge System is a system introduced alongside Nebulon Suit Armor, it can be accessed through Dungeon List's Nebulon Raid Reward List, on the Cartridge Collection section (for some reason).","Cartridges are dropped after clearing Nebulon Raid dungeons for the first time in a week.","Obtaining any cartridge will automatically add it to the collection, any duplicate will be automatically scrapped and converted to Cartridge Scrap Points.","All cartridges start at level 1 upon obtainment, using a fixed amount of Cartridge Scrap Points and ED increases the level of a cartridge of your choice via NPC T-Tree Almighty.","1 Cartridge can be equipped per armor piece, and they cannot be repeated (cannot use the same cartridge twice).","Characters can only hold up to 50,000 Cartridge Scrap Points at a time.","@@warn:^Cartridges and Cartridge Levels are character-wide, meaning upgrades and unlocks won't work for alt characters, unless you unlock those for them too. Nebulon Suit Armor cannot be shared through bank if at least 1 cartridge is socketed. Cartridges sockets can be removed for free.^@@"]
+                    },
+                    table: {
+                        title: {
+                            en: "Growth Cost"
+                        },
+                        important: true,
+                        columns: [
+                            { key: 'stage',            label: 'Stage' },
+                            { key: 'hyperED',          label: 'ED' },
+                            { key: 'hyperPoints',      label: 'Points' },
+
+                        ],
+                        rows: [
+                            { stage: '1>2',    hyperED: '10,000,000\n20,000,000 (Hyper Cartridge)', hyperPoints: '100\n200 (Hyper Cartridge)'},
+                            { stage: '2>3',    hyperED: '25,000,000\n50,000,000 (Hyper Cartridge)', hyperPoints: '300\n600 (Hyper Cartridge)'},
+                            { stage: '3>4',    hyperED: '65,000,000\n130,000,000 (Hyper Cartridge)', hyperPoints: '5,000\n1,000 (Hyper Cartridge)'},
+                            { stage: '4>5',    hyperED: '200,000,000\n400,000,000 (Hyper Cartridge)', hyperPoints: '700\n1,400 (Hyper Cartridge)'},
+                            { stage: '5>MAX',  hyperED: '450,000,000\n900,000,000 (Hyper Cartridge)', hyperPoints: '1,100\n2,200 (Hyper Cartridge)'}
+                        ]
+                    },
+                    table_2: {
+                        title: {
+                            en: "Stats per Cartridge"
+                        },
+                        important: true,
+                        columns: [
+                            { key: 'category', labelKey: 'Category', cellId: 'col-category'},
+                            { key: 'name',     labelKey: 'Name', cellId: 'col-name'},
+                            { key: 'options',  labelKey: 'Stats', cellId: 'col-options'}
+                        ],
+                        rows: [
+                            // --- Hyper (7 rows) ---
+                            { category: 'Hyper', categoryRowspan: 6,
+                            name: 'Hyper Cartridge [Amplify]',
+                            options: 'Upon using a skill enhanced by the Transcendence Slot buff, restores @@info:[25/40/55/70/85/100] MP@@ per sec. for 5 sec.\n@@mute:(Cooldown: 10 sec.)@@\nUpon using a skill enhanced by the Transcendence Slot buff, does not consume Special Resources for @@info:[1/2/3/4/5/6] sec.@@\n@@mute:(Cooldown: 10 sec.)@@'
+                            },
+                            { categoryHidden: true,
+                            name: 'Hyper Cartridge [Overflow]',
+                            options: ["All Skill Damage Increase when under the effect of Fighter Potion +@@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@\nDamage Reduction Increase when under the effect of Stone Apple/Giant Stone Apple +@@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@\nAction Speed Increase when under the effect of Twister Apple/Twister Andromeda Apple +@@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@"]
+                            },
+                            { categoryHidden: true, name: 'Hyper Cartridge [Tactical]',   
+                                options: 'Normal Monster Damage Increase +@@info:[1.5%/2%/2.5%/3%/4%/5%]@@\nIf no party members are present, defeating a monster increases Boss Damage by @@info:0.5%@@ for 30 sec. (Can stack up to @@info:[3/6/9/12/15/20]@@ times)' },
+                            { categoryHidden: true, name: 'Hyper Cartridge [Accelerate]', 
+                                options: '@@info:30%@@ chance to reduce Special Active Skill Cooldown when using a Special Active Skill by @@info:[1%/1.5%/2%/2.5%/3%/5%]@@ @@mute:(Reactivation Cooldown:@@@@info: [10/9/8/7/5/4] @@@@mute:sec.)@@' },
+                            { categoryHidden: true, name: 'Hyper Cartridge [Mutate]',    
+                                options: 'Polarize @@danger:-10%@@\nHyper Adaptation @@info:+[0.5%/1%/1.5%/2%/3%/4%]@@' },
+                            { categoryHidden: true, name: 'Hyper Cartridge [Supply]',     
+                                options: 'When a Support character uses a Special Active Skill, there is a @@info:50%@@ chance to grant a buff to self that accelerates Special Active Skill Cooldown by @@info:1.2x@@ for 5 sec. @@mute:(Reactivation Cooldown:@@@@info: [40/35/30/25/20/12] @@@@mute:sec.)@@\n Amplify Received Damage Reduced @@danger:(Does Not Stack)@@ buffs granted to allies by Support Characters by @@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@' },
+
+                            // --- Support (3 rows) ---
+                            { category: 'Support', categoryRowspan: 3,
+                            name: 'Support Cartridge Type - I',
+                            options: 'Amplify Physical/Magical Attack Increased @@danger:(Does Not Stack)@@ buffs granted to allies by Support Characters by @@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@'
+                            },
+                            { categoryHidden: true, name: 'Support Cartridge Type - II',  
+                                options: 'Amplify All Skill Damage Increased @@danger:(Does Not Stack)@@ buffs granted to allies by Support Characters by @@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@' },
+                            { categoryHidden: true, name: 'Support Cartridge Type - III', 
+                                options: 'Amplify Action Speed Increased @@danger:(Does Not Stack)@@ buffs granted to allies by Support Characters by @@info:[0.5%/1%/1.5%/2%/2.5%/3%]@@' },
+
+                            // --- Battle (5 rows) ---
+                            { category: 'Battle', categoryRowspan: 5,
+                            name: 'Battle Cartridge Type - I',
+                            options: 'Continuous Damage @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@'
+                            },
+                            { categoryHidden: true, name: 'Battle Cartridge Type - II',  options: 'All Skill Damage @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@' },
+                            { categoryHidden: true, name: 'Battle Cartridge Type - III', options: 'Active, Tenacity, Strength, Bravery Skill Damage Increase @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@' },
+                            { categoryHidden: true, name: 'Battle Cartridge Type - IV',  options: 'Critical Damage Increase @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@' },
+                            { categoryHidden: true, name: 'Battle Cartridge Type - V',   options: 'Damage to Bosses @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@' },
+
+                            // --- Classic (5 rows) ---
+                            { category: 'Classic', categoryRowspan: 5,
+                            name: 'Classic Cartridge Type - I',
+                            options: 'Polarize @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@'
+                            },
+                            { categoryHidden: true, name: 'Classic Cartridge Type - II',  options: 'All Skill Cooldown Decrease @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@ @@mute:(excluding Bond skills)@@' },
+                            { categoryHidden: true, name: 'Classic Cartridge Type - III', options: 'Action Speed @@info:+ (0.5%/1%/1.5%/2%/2.5%/3%)@@' },
+                            { categoryHidden: true, name: 'Classic Cartridge Type - IV',  options: 'EXP @@success:+ (2%/4%/6%/8%/10%/15%)@@' },
+                            { categoryHidden: true, name: 'Classic Cartridge Type - V',   options: 'Item Drop Rate @@success:+ (2%/4%/6%/8%/10%/15%)@@' }
+                        ]
                     }
                 }
             }
