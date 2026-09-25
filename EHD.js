@@ -249,32 +249,63 @@ export const data = {
         },
         system: {
             stat_change: {
-                title: { en: 'Stat Change Calculator' },
                 sections: {
-                    title: { en: 'How It Works' },
-                    intro: {
-                        en: [
-                            "This calculator helps you evaluate the relative strength of a stat change roll on a piece of equipment. Each stat's contribution is measured against a community-derived scoring table.",
-                            "Scores are relative — they're useful for comparing two rolls on the same slot, not as an absolute power metric.",
-                            "Enhancement-scaled lines are evaluated at +12 by default. Adjust your enhancement level below to see how the score changes."
+                    title: { en: 'Stat Change'},
+                    img: {
+                        ico: [
+                            {src: "/images/module.png", inline: true}
                         ]
+                    },
+                    content: {
+                        en: ["!Stat Change! is an effect added as a replacement to the Bonus effects per Enhancement lv. weapons until !Submergence of Abyss!, this system is introduced along !Undead Dragon's Will!. Currently only the forementioned weapon and Nebulon Suit Armor have Stat Change System.","@@warn:Stat Change System can be accessed through NPC Haivan at Camp: Steel Wall or NPC T-Tree Almighty at Camp: Subsector F.@@","Players can consume !20,000,000 ED! to reroll all Stat Change stat options, stat types are unique (cannot appear more than once per roll). When performing Stat Change, using [pic:img.ico.0]Core Data Backup Modules allows you to choose whether or not to keep your current roll, useful for when you already have a good roll."]
+                    },
+                    table: {
+                        title: {
+                            en: "Possible Stats"
+                        },
+                        nerd: true,
+                        columns: [
+                            { key: 'stat',  labelKey: 'Stat' },
+                            { key: 'min',   labelKey: 'Min Value' },
+                            { key: 'max',   labelKey: 'Max Value' }
+                        ],
+                        rows: [
+                            { stat: 'Physical/Magical Attack Power per Weapon Enhancement Level', min: '0.8%', max: '1.5%' },
+                            { stat: 'Physical/Magical Attack Power Level per Weapon Enhancement Level', min: '0.8', max: '1.5' },
+                            { stat: 'Critical Damage per Weapon Enhancement Level', min: '0.8%', max: '1.5%' },
+                            { stat: 'All Skill Damage per Weapon Enhancement Level', min: '0.8%', max: '1.5%' },
+                            { stat: 'Physical/Magical Defense per Weapon Enhancement Level', min: '0.8%', max: '1.5%' },
+                            { stat: 'Additional Continuous Damage for 3 sec (based on % of inflicted damage)', min: '5%', max: '12%' },
+                            { stat: 'Ignore Enemy Physical/Magical Defense', min: '4.5%', max: '8%' },
+                            { stat: 'Physical/Magical Attack Power', min: '6%', max: '13%' },
+                            { stat: 'Polarize', min: '5%', max: '12%' },
+                            { stat: 'Critical Damage', min: '6%', max: '13%' },
+                            { stat: 'Physical/Magical Attack Power Level', min: '6', max: '13' },
+                            { stat: 'Physical/Magical Defense', min: '6%', max: '13%' },
+                            { stat: 'Damage Reduction', min: '8%', max: '15%' },
+                            { stat: 'Increase Damage to Boss', min: '8%', max: '15%' },
+                            { stat: 'Reduced Damage Taken from Boss', min: '8%', max: '15%' },
+                            { stat: 'Tenacity Skill Damage Increase', min: '6%', max: '13%' },
+                            { stat: 'Strength Skill Damage Increase', min: '6%', max: '13%' },
+                            { stat: 'Bravery Skill Damage Increase', min: '6%', max: '13%' },
+                            { stat: 'All Skill Damage Increase', min: '6%', max: '13%' },
+                            { stat: 'Action Speed', min: '8%', max: '15%' }
+                        ]
+                    },
+                    calc: {
+                        title: { en: 'Calculator' },
+                        intro: {
+                            en: [
+                                "This calculator helps you evaluate the relative strength of a stat change roll on a piece of equipment. Each stat's contribution is measured against a community-derived scoring table.",
+                                "Scores are relative: they're useful for comparing two rolls on the same slot, not as an absolute power metric.",
+                                "Enhancement-scaled lines are evaluated at +12 by default. Adjust your enhancement level below to see how the score changes.",
+                                "@@mute:No calculator for Nebulon Suit's Stat Change, deemed not useful since it's behavior is closer to transmute.@@",
+                                "@@mute:Stats that provide no damage (and are not weighted by score for that reason) are excluded from the calculator, if your stat doesn't show on the calculator it means its score weight equals zero.@@" 
+                            ]
+                        }
                     }
                 },
                 calculator: {
-                    mode_label: { en: 'Equipment Type' },
-                    mode_weapon: { en: "Weapon (Undead Dragon's Will)" },
-                    mode_armor: { en: 'Armor (Nebulon Suit Armor)' },
-                    enh_label: { en: 'Enhancement Level' },
-                    line_label: { en: 'Line {n}' },
-                    select_placeholder: { en: '— Select a stat —' },
-                    value_label: { en: 'Value' },
-                    remove_label: { en: 'Remove line' },
-                    total_label: { en: 'Total Score' },
-                    per_line_label: { en: 'Line scores' },
-                    dramatic_low: { en: 'Weak' },
-                    dramatic_mid: { en: 'Decent' },
-                    dramatic_high: { en: 'Strong' },
-                    dramatic_max: { en: 'Excellent' },
                     toggle_hide_info: { en: 'Show Calculator Only' },
                     toggle_show_info: { en: 'Show Full Guide' }
                 }

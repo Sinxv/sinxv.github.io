@@ -64,7 +64,8 @@ export const guideData = [
     },
     {
         id: 'stat-change',
-        titleKey: 'system.stat_change.title',
+        titleKey: 'system.stat_change.sections.title',
+        icon: '/images/module.png',
         category: 'system',
         availableLanguages: ['en'],
         sectionKeys: ['system.stat_change.sections'],
