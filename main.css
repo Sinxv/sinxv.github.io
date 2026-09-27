@@ -3315,6 +3315,21 @@ h2, h3 {
     border-top: 1px solid var(--border-color);
 }
 
+.scc-line-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.scc-line-max {
+    font-size: 10px;
+    color: #8a8a95;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
 .scc-total-wrap {
     display: flex;
     flex-direction: column;
@@ -3816,6 +3831,14 @@ h2, h3,
         display: block;
     }
     
+    .scc-line-score {
+        align-items: flex-end;   /* right-align against the X */
+    }
+
+    .scc-line-max {
+        font-size: 10px;
+    }
+
     .menu-icon {
         display: block;
     }

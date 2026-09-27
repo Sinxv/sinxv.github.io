@@ -120,6 +120,18 @@ export function renderStatChangeCalculator(container) {
     const lineCount = () => MODES[state.mode].lines;
     const opts = () => MODES[state.mode].options;
     const scoreFor = (name, val) => calculateScore(name, val, state.enh, state.mode);
+    
+    function maxScoreFor(statName) {
+        const { max } = statRange(statName);
+        return scoreFor(statName, max).score;
+    }
+
+    function getMaxTotal() {
+        return state.lines.slice(0, lineCount()).reduce((sum, line) => {
+            if (!line) return sum;
+            return sum + maxScoreFor(line.statName);
+        }, 0);
+    }
 
     function usedStats() {
         return new Set(
@@ -195,7 +207,14 @@ export function renderStatChangeCalculator(container) {
             badgeHost.innerHTML = '';
             if (line) {
                 const { score, adjusted } = scoreFor(line.statName, line.value);
+                const maxScore = maxScoreFor(line.statName);
+
                 badgeHost.appendChild(makeScoreBadge(score, adjusted));
+
+                const maxEl = document.createElement('span');
+                maxEl.className = 'scc-line-max';
+                maxEl.textContent = `max ${roundToHalf(maxScore).toFixed(1)}`;
+                badgeHost.appendChild(maxEl);
             }
         });
         // Update total
@@ -328,7 +347,15 @@ export function renderStatChangeCalculator(container) {
         scoreWrap.dataset.index = index;
         if (line) {
             const { score, adjusted } = scoreFor(line.statName, line.value);
-            scoreWrap.appendChild(makeScoreBadge(score, adjusted));
+            const maxScore = maxScoreFor(line.statName);
+
+            const badge = makeScoreBadge(score, adjusted);
+            scoreWrap.appendChild(badge);
+
+            const maxEl = document.createElement('span');
+            maxEl.className = 'scc-line-max';
+            maxEl.textContent = `max ${roundToHalf(maxScore).toFixed(1)}`;
+            scoreWrap.appendChild(maxEl);
         }
         wrap.appendChild(scoreWrap);
 
@@ -367,7 +394,9 @@ export function renderStatChangeCalculator(container) {
 
     function renderTotal() {
         const total = getTotal();
+        const maxTotal = getMaxTotal();
         const tier = totalTier(total, lineCount());
+
         const wrap = document.createElement('div');
         wrap.className = `scc-total-wrap scc-total-${tier}`;
 
@@ -381,9 +410,14 @@ export function renderStatChangeCalculator(container) {
         value.textContent = roundToHalf(total).toFixed(1);
         wrap.appendChild(value);
 
+        const maxLabel = document.createElement('div');
+        maxLabel.className = 'scc-total-max';
+        maxLabel.textContent = `max. ${roundToHalf(maxTotal).toFixed(1)}`;
+        wrap.appendChild(maxLabel);
+
         const tierLabel = document.createElement('div');
         tierLabel.className = 'scc-total-tier';
-        tierLabel.textContent = ({ low: 'Weak', mid: 'Decent', high: 'Strong', max: 'Excellent', trueadam: 'Maximum'})[tier];
+        tierLabel.textContent = ({ low: 'Weak', mid: 'Decent', high: 'Strong', max: 'Excellent' })[tier];
         wrap.appendChild(tierLabel);
 
         return wrap;
