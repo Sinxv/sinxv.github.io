@@ -3,6 +3,7 @@ import { initConceptTriggers, initTableNotes } from '/data.js';
 import { guideData } from '/guide-data.js';
 import { renderStatChangeCalculator } from '/scc.js';
 import { renderParrySimulator } from '/ps.js';
+import { renderRadioSimulator } from '/rs.js';
 
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
@@ -1532,6 +1533,13 @@ function createGuideModal(entry) {
             simHost.className = 'guide-simulator-host';
             content.appendChild(simHost);
             renderParrySimulator(simHost, entry.simulatorOptions || {});
+        }
+
+        if (entry.simulatorType === 'undertow-radio') {
+            const simHost = document.createElement('div');
+            simHost.className = 'guide-simulator-host';
+            content.appendChild(simHost);
+            renderRadioSimulator(simHost, entry.simulatorOptions || {});
         }
         // ---- end injection ----
 

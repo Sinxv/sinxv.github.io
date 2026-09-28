@@ -266,6 +266,107 @@ export const data = {
                         methane_orb:      { en: 'Giant Methane Orb' },
                         parry_discharge:  { en: 'Parry Discharge' }
                     }
+                },
+                radio: {
+                    title: { en: 'Operation Undertow — Alpha Radio Transmission' },
+                    sections: {
+                        title: { en: 'Decode the Transmission' },
+                        intro: { en: [
+                            'Glitter Commander teleports away and leaves 4 numbered zone platforms.',
+                            'Whisper fragments appear in the panel below. Reassemble the message and move to the correct zone before the timer runs out.'
+                        ]}
+                    },
+                    ui: {
+                        whisper_label: { en: 'Whisper' },
+                        timer_label: { en: 'Time Left' },
+                        start: { en: 'Start' },
+                        stop: { en: 'Stop' },
+                        reset: { en: 'Reset' },
+                        success: { en: 'Safe!' },
+                        fail: { en: 'Caught!' },
+                        result_title: { en: 'Result' },
+                        result_correct: { en: 'Correct Answer' },
+                        result_yours: { en: 'Your Position' },
+                        result_zone: { en: 'Zone {n}' },
+                        result_ground: { en: 'Ground' },
+                        result_none: { en: 'Outside all zones' },
+                        result_unit_note: { en: 'Unit allocation: {detail}' },
+                        result_retry: { en: 'New message in 4s…' },
+                        mobile_disabled: { en: 'This simulator is available on desktop only.' }
+                    },
+                    // Message fragments are shown without the parenthetical hints
+                    messages: {
+                        fire_all: {
+                            scramble: { en: 'Com... ...ire at all zo...' },
+                            correct_text: { en: 'Commence fire at all zones' },
+                            explanation: { en: 'All zones are attacked — stand outside every platform.' }
+                        },
+                        fire_all_except: {
+                            scramble: { en: 'Com... ...ire at all zo... ...ept z...e {n}...' },
+                            correct_text: { en: 'Commence fire at all zones except Zone {n}' },
+                            explanation: { en: 'Only Zone {n} is safe.' }
+                        },
+                        focus_fire: {
+                            scramble: { en: '...men... foc... fi...' },
+                            correct_text: { en: 'Commence focus fire' },
+                            explanation: { en: 'Focus fire hits all zones — stand outside every platform.' }
+                        },
+                        evac_to_safe: {
+                            scramble: { en: '...vac... to the sa... ...ne' },
+                            correct_text: { en: 'Evacuate to the safe zone' },
+                            explanation: { en: 'Zone {n} is the current safe zone.' }
+                        },
+                        evac_to_zone: {
+                            scramble: { en: '...vac... to zo... ...ne {n}' },
+                            correct_text: { en: 'Evacuate to Zone {n}' },
+                            explanation: { en: 'Zone {n} is safe.' }
+                        },
+                        evac_from_zone: {
+                            scramble: { en: 'Eva... fro... the zo...' },
+                            correct_text: { en: 'Evacuate from the zone' },
+                            explanation: { en: 'You cannot stand on Zone {n}.' }
+                        },
+                        evac_from_safe: {
+                            scramble: { en: '...cua... ...om the ...afe ...ne' },
+                            correct_text: { en: 'Evacuate from the safe zone' },
+                            explanation: { en: 'You cannot stand on Zone {n}.' }
+                        },
+                        evac_from_designated: {
+                            scramble: { en: '...vac... fr... ...sign... zo...' },
+                            correct_text: { en: 'Evacuate from Designated Zone' },
+                            explanation: { en: 'You cannot stand on Zone {n}.' }
+                        },
+                        from_designated: {
+                            scramble: { en: 'Fr... th... des... ne,' },
+                            correct_text: { en: 'From the designated zone' },
+                            explanation: { en: 'You cannot stand on Zone {n}.' }
+                        },
+                        from_target: {
+                            scramble: { en: 'Fr... th... ...arg... ...ne' },
+                            correct_text: { en: 'From the Target Zone' },
+                            explanation: { en: 'You cannot stand on Zone {n}.' }
+                        },
+                        evac_immediately: {
+                            scramble: { en: '... uat... imm...' },
+                            correct_text: { en: 'Evacuate immediately' },
+                            explanation: { en: 'Leave Zone {n}. Any other zone or the ground is safe.' }
+                        },
+                        safe_changed: {
+                            scramble: { en: 'Sa... ...ne has ...ang...' },
+                            correct_text: { en: 'Safe zone has changed' },
+                            explanation: { en: 'The new safe zone is Zone {n}.' }
+                        },
+                        from_current_to: {
+                            scramble: { en: 'Fr... th... ...ren... ...ne, ... z...e fo...' },
+                            correct_text: { en: 'From the current zone, to Zone {n}' },
+                            explanation: { en: 'Leave your spawn zone and go to Zone {n}.' }
+                        },
+                        unit_allocation: {
+                            scramble: { en: 'zo... ...ne {a} ...wo ...its / ...on... ...hre... ...ou... ...nits' },
+                            correct_text: { en: 'Zone {a}: 2 units / Zone {b}: 4 units' },
+                            explanation: { en: 'Solo practice — no fail on this message. Party assignment: 2 units in Zone {a}, 4 units in Zone {b}.' }
+                        }
+                    }
                 }
             },
             stat_change: {
@@ -9136,12 +9237,10 @@ export const data = {
                                     unavoidable: true,
                                     description: {
                                         en: ["Marcus teleports away as 4 devices spawn evenly distributed across the map. Each device displays either one or two glowing orange squares, which indicate the minimum number of players required to parry simultaneously. After a moderate delay, Marcus teleports to a random device to strike it. Each time Marcus' attack is parried successfully turns 1 of the device's squares green and grants the entire party 1 stack of 'Gravitational Plasticity'. Once Marcus finishes targeting all 4 devices, an instant wipe will be triggered if any of the device's squares remains orange."],
-                                        es: ["Marcus se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga a todo el grupo 1 acumulación de 'Plasticidad Gravitacional'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará una eliminación instantánea si alguno de los cuadrados de los dispositivos permanece naranja."],
-                                        kr: "", jp: "", br: ""
-                                    },
-                                    note: {
-                                        en: ["There is no penalty or limit to how many players can parry a single punch, so players who have already defended their assigned device should immediately rotate to help others secure theirs."],
-                                        es: ["No hay penalización ni límite para cuántos jugadores pueden hacer parry a un solo puñetazo, por lo que los jugadores que ya han defendido su dispositivo asignado deben rotar inmediatamente para ayudar a otros a asegurar el suyo."],
+                                        es: ["Marcus se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga a todo el grupo 1 acumulación de 'Plasticidad Gravitacional'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará un wipe si alguno de los cuadrados de los dispositivos permanece naranja."],
+                                        region_na: {
+                                            es: "Marcus se teletransporta lejos mientras 4 dispositivos aparecen distribuidos uniformemente por el mapa. Cada dispositivo muestra uno o dos cuadrados naranjas brillantes, que indican el número mínimo de jugadores requeridos para hacer parry simultáneamente. Después de un retraso moderado, Marcus se teletransporta a un dispositivo aleatorio para golpearlo. Cada vez que el ataque de Marcus es desviado (parry) exitosamente, 1 de los cuadrados del dispositivo se vuelve verde y otorga al grupo 1 acumulación de 'Gravitational Plasticity'. Una vez que Marcus termina de apuntar a los 4 dispositivos, se activará un wipe si alguno de los cuadrados de los dispositivos permanece naranja."
+                                        },
                                         kr: "", jp: "", br: ""
                                     }
                                 }

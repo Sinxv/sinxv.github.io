@@ -301,5 +301,13 @@ export const guideData = [
         availableLanguages: ['en'],
         sectionKeys: ['system.simulator.undertow.sections'],
         simulatorType: 'undertow-parry'
+    },
+    {
+        id: 'undertow-alpha-radio-sim',
+        titleKey: 'system.simulator.radio.title',
+        category: 'misc',
+        availableLanguages: ['en'],
+        sectionKeys: ['system.simulator.radio.sections'],
+        simulatorType: 'undertow-radio'
     }
 ];
