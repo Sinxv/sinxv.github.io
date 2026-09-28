@@ -4081,3 +4081,405 @@ h2, h3,
     opacity: 0.7;
     margin-left: 1px;
 }
+
+/* ============================================================
+   PARRY SIMULATOR (2D side-scroller)
+   ============================================================ */
+
+.sim-root {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0;
+    font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+}
+
+.sim-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.sim-mech-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.sim-mech-select {
+    background: #2a2a35;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 13px;
+}
+
+.sim-btn {
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sim-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+.sim-btn-primary {
+    background: var(--primary-color);
+    color: #1a1a1a;
+    border-color: var(--primary-color);
+}
+
+.sim-btn-primary:hover {
+    background: var(--primary-light, #fff9c4);
+}
+
+/* Ping slider */
+.sim-ping {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.sim-ping-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.sim-ping input[type="range"] {
+    width: 120px;
+    accent-color: var(--primary-color);
+}
+
+.sim-ping-value {
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 700;
+    min-width: 44px;
+    text-align: right;
+}
+
+/* Arena — side-scroller */
+.sim-arena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    background:
+        linear-gradient(180deg, #1a1a22 0%, #1e1e26 70%, #25252f 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Ground */
+.sim-ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12%;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(255, 255, 255, 0.15) 80%,
+        transparent 100%);
+}
+
+.sim-marcus {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    z-index: 2;
+    transition: left 0.04s linear, top 0.04s linear;
+}
+
+.sim-marcus-img {
+    max-width: 128px;
+    margin-bottom: -8px;   /* pull down if there's transparent padding */
+}
+
+.sim-attacker-flash {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, left 0.06s linear, top 0.06s linear;
+    z-index: 1;
+    filter: blur(24px);
+    will-change: left, top, opacity;
+    mix-blend-mode: screen;
+}
+
+.sim-color-select {
+    background: #2a2a35;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 13px;
+}
+
+.sim-color-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sim-color-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.sim-arena-has-image {
+    background-color: transparent;
+}
+
+.sim-fist {
+    position: absolute;
+    transform: translate(-50%, -120%);
+    pointer-events: none;
+    z-index: 4;
+    filter: drop-shadow(0 0 6px rgba(255, 220, 150, 0.5));
+}
+
+.sim-fist-pop {
+    animation: sim-fist-pop 0.18s ease-out;
+}
+
+@keyframes sim-fist-pop {
+    0%   { transform: translate(-50%, -120%) scale(0.4); opacity: 0; }
+    50%  { transform: translate(-50%, -140%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -120%) scale(1); opacity: 0; }
+}
+
+.sim-attacker-flash.sim-flash-blue   { background: rgba(77, 171, 247, 0.6); }
+.sim-attacker-flash.sim-flash-red    { background: rgba(255, 107, 107, 0.6); }
+.sim-attacker-flash.sim-flash-yellow { background: rgba(255, 224, 102, 0.6); }
+
+.sim-attacker-flash.sim-flash-dim {
+    opacity: 0.45;
+}
+
+.sim-bright-flash {
+    position: absolute;
+    transform: translate(-50%, -80%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: left 0.06s linear, top 0.06s linear;
+    z-index: 2;
+    filter: blur(18px);
+    will-change: left, top, opacity;
+    mix-blend-mode: screen;
+}
+
+.sim-bright-flash.sim-flash-blue   { background: rgba(150, 210, 255, 0.9); }
+.sim-bright-flash.sim-flash-red    { background: rgba(255, 160, 160, 0.95); }
+.sim-bright-flash.sim-flash-yellow { background: rgba(255, 240, 160, 0.95); }
+
+/* Player */
+.sim-player {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    will-change: left, top;
+    z-index: 3;
+}
+
+/* Parry ring */
+.sim-parry-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+    animation: sim-parry-pop 0.18s ease-out;
+}
+
+.sim-hidden { display: none !important; }
+
+@keyframes sim-parry-pop {
+    from { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    to   { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
+}
+
+/* Orb */
+.sim-orb {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #c0ffcf, #3fa85a 70%, #1d5a2a);
+    box-shadow: 0 0 24px rgba(120, 255, 140, 0.55);
+    transition: box-shadow 0.15s ease, background 0.15s ease;
+    z-index: 4;
+}
+
+.sim-orb[data-color="blue"]   { box-shadow: 0 0 28px rgba(77, 171, 247, 0.75); }
+.sim-orb[data-color="red"]    { box-shadow: 0 0 32px rgba(255, 107, 107, 0.85); }
+.sim-orb[data-color="yellow"] { box-shadow: 0 0 36px rgba(255, 224, 102, 0.95); }
+
+.sim-orb-pulse {
+    animation: sim-orb-pulse 0.16s ease-out;
+}
+
+@keyframes sim-orb-pulse {
+    0%   { transform: translate(-50%, -50%) scale(1); }
+    50%  { transform: translate(-50%, -50%) scale(1.25); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.sim-orb-hidden { display: none; }
+
+/* Pulse counter under orb */
+.sim-pulse-counter {
+    position: absolute;
+    top: calc(55% + 36px);
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.sim-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sim-target-marker {
+    position: absolute;
+    bottom: 12%;
+    transform: translate(-50%, 0);
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+    z-index: 3;
+    animation: sim-target-pulse 0.6s ease-in-out infinite;
+}
+
+@keyframes sim-target-pulse {
+    0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
+    50%      { transform: translate(-50%, 0) scale(1.1); opacity: 0.6; }
+}
+
+.sim-pulse-counter {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.sim-dot-on {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #fff;
+}
+
+.sim-dot-target {
+    box-shadow: 0 0 8px rgba(255, 224, 102, 0.8);
+    border-color: rgba(255, 224, 102, 0.9);
+}
+
+@keyframes sim-parry-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+}
+
+/* Prompt bar */
+.sim-prompt {
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-light, #fff9c4);
+    min-height: 22px;
+}
+
+.sim-stats {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+/* Toast */
+.sim-toast {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%) translateY(12px);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 7;
+}
+
+.sim-toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.sim-toast-success {
+    background: rgba(110, 231, 135, 0.2);
+    color: #6ee787;
+    border: 1px solid #6ee787;
+}
+
+.sim-toast-whiff {
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff8080;
+    border: 1px solid #ff8080;
+}
+
+.sim-mobile-disabled {
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}

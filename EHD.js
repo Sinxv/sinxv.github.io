@@ -248,6 +248,26 @@ export const data = {
             }
         },
         system: {
+            simulator: {
+                undertow: {
+                    title: { en: 'Operation Undertow: Omega - Parry Simulator' },
+                    sections: {
+                        title: { en: 'Practice the Parry System' },
+                        intro: {
+                            en: [
+                                'Marcus telegraphs parry windows with colored flashes. The color determines when to parry.',
+                                'Use the arrow keys to move. Press F1 to parry.',
+                                'Pick a mechanic below to drill its timing.'
+                            ]
+                        }
+                    },
+                    mechanics: {
+                        marcus_base:      { en: 'Marcus — Base Parry' },
+                        methane_orb:      { en: 'Giant Methane Orb' },
+                        parry_discharge:  { en: 'Parry Discharge' }
+                    }
+                }
+            },
             stat_change: {
                 sections: {
                     title: { en: 'Stat Change'},

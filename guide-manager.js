@@ -2,6 +2,7 @@ import { data } from '/EHD.js';
 import { initConceptTriggers, initTableNotes } from '/data.js';
 import { guideData } from '/guide-data.js';
 import { renderStatChangeCalculator } from '/scc.js';
+import { renderParrySimulator } from '/ps.js';
 
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
@@ -1525,6 +1526,13 @@ function createGuideModal(entry) {
 
             scrollContent.appendChild(toggle);
         }
+
+        if (entry.simulatorType === 'undertow-parry') {
+            const simHost = document.createElement('div');
+            simHost.className = 'guide-simulator-host';
+            content.appendChild(simHost);
+            renderParrySimulator(simHost, entry.simulatorOptions || {});
+        }
         // ---- end injection ----
 
         modal.appendChild(scrollContent);
@@ -1644,7 +1652,7 @@ function renderGuideStatusWarnings(entry) {
 // ============================================================
 const MECH_STATUS_CONFIG = {
     unavoidable: {
-        icon: 'images/unavoidable.png',
+        icon: '/images/unavoidable.png',
         info: {
             en: 'Resurrection titles and effects do not work during this mechanic.',
             es: 'Los títulos y efectos de resurrección no funcionan durante esta mecánica.',
@@ -1655,7 +1663,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-unavoidable'
     },
     iframe: {
-        icon: 'images/iframe.png',
+        icon: '/images/iframe.png',
         info: {
             en: 'Invincibility frames are bypassed by this mechanic.',
             es: 'Los marcos de invencibilidad son ignorados por esta mecánica.',
@@ -1666,7 +1674,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-iframe'
     },
     groggy: {
-        icon: 'images/groggy.png',
+        icon: '/images/groggy.png',
         info: {
             en: 'The boss enters groggy state after mechanic completion.',
             es: 'El jefe entra en estado groggy después de completar la mecánica.',
@@ -1677,7 +1685,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-groggy'
     },
     heal: {
-        icon: 'images/heal.png',
+        icon: '/images/heal.png',
         info: {
             en: 'Failing to fulfill the mechanic clear condition results in boss healing.',
             es: 'No cumplir la condición de superación de la mecánica resulta en curación del jefe.',
@@ -1688,7 +1696,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-heal'
     },
     timed: {
-        icon: 'images/timed.png',
+        icon: '/images/timed.png',
         info: {
             en: 'This mech has a time limit until mechanic ends in failure if its condition is not fulfilled.',
             es: 'Esta mecánica tiene un límite de tiempo hasta que termina en fracaso si no se cumple su condición.',
@@ -1699,7 +1707,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-timed'
     },
     deathtimed: {
-        icon: 'images/timed.png',
+        icon: '/images/timed.png',
         info: {
             en: 'This mech has a time limit until mechanic ends in death if its condition is not fulfilled.',
             es: 'Esta mecánica tiene un límite de tiempo hasta que termina en muerte si no se cumple su condición.',
@@ -1710,7 +1718,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-deathtimed'
     },
     wipetimed: {
-        icon: 'images/timed.png',
+        icon: '/images/timed.png',
         info: {
             en: 'This mech has a time limit until mechanic ends in party wipe if its condition is not fulfilled.',
             es: 'Esta mecánica tiene un límite de tiempo hasta que termina en eliminación del grupo si no se cumple su condición.',
@@ -1721,7 +1729,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-wipetimed'
     },
     magneticfield: {
-        icon: 'images/magneticfield.png',
+        icon: '/images/magneticfield.png',
         info: {
             en: 'This attack increases magnetic field size.',
             es: 'Este ataque aumenta el tamaño del campo magnético.',
@@ -1732,7 +1740,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-magneticfield'
     },
     superarmor: {
-        icon: 'images/superarmor.png',
+        icon: '/images/superarmor.png',
         info: {
             en: 'Super Armor is bypassed by this mechanic.',
             es: 'La Súper Armadura es ignorada por esta mecánica.',
@@ -1743,7 +1751,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-superarmor'
     },
     hyper: {
-        icon: 'images/hyper.png',
+        icon: '/images/hyper.png',
         info: {
             en: 'Boss enters Hyper Armor state during this mechanic.\n Hyper Armor: Becomes immune to knockback effects and debuffs.',
             es: 'El jefe entra en el estado de Hiper Armadura durante esta mecánica.\n Hiper Armadura: Se vuelve inmune a los efectos de empuje y debuffs.',
@@ -1754,7 +1762,7 @@ const MECH_STATUS_CONFIG = {
         class: 'mech-status-hyper'
     },
     inv: {
-        icon: 'images/inv.png',
+        icon: '/images/inv.png',
         info: {
             en: 'Boss enters Invincibility state during this mechanic.\n Invincibility: Becomes immune to all damage.',
             es: 'El jefe entra en el estado de Invincibilidad durante esta mecánica.\n Invincibilidad: Se vuelve inmune a todo el daño.',

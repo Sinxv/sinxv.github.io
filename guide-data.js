@@ -291,5 +291,15 @@ export const guideData = [
         titleKey: 'stage8.content_ouo',
         raidKeys: ['stage8.sections.ouo'],
         availableLanguages: ['en', 'es'],
-    },
+    }, 
+    {
+        id: 'ouo-parry-sim',
+        titleKey: 'system.simulator.undertow.title',
+        backgroundImage: '/images/undertow-arena.png',
+        showGround: true,
+        category: 'misc',
+        availableLanguages: ['en'],
+        sectionKeys: ['system.simulator.undertow.sections'],
+        simulatorType: 'undertow-parry'
+    }
 ];
