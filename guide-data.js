@@ -302,6 +302,7 @@ export const guideData = [
         sectionKeys: ['system.simulator.undertow.sections'],
         simulatorType: 'undertow-parry'
     },
+    /* DISABLED FOR THE MOMENT
     {
         id: 'undertow-alpha-radio-sim',
         titleKey: 'system.simulator.radio.title',
@@ -309,5 +310,5 @@ export const guideData = [
         availableLanguages: ['en'],
         sectionKeys: ['system.simulator.radio.sections'],
         simulatorType: 'undertow-radio'
-    }
+    }*/
 ];
