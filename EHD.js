@@ -268,7 +268,7 @@ export const data = {
                     }
                 },
                 radio: {
-                    title: { en: 'Operation Undertow — Alpha Radio Transmission' },
+                    title: { en: 'Operation Undertow: Alpha - Radio Transmission Simulator' },
                     sections: {
                         title: { en: 'Decode the Transmission' },
                         intro: { en: [
