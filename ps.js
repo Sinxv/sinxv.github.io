@@ -37,7 +37,8 @@ const TIMING = {
     RED_BRIGHT_MS: 300,
 
     // Yellow count
-    YELLOW_PARRIES_ON_PULSE: 4,
+    YELLOW_PARRIES_ON_PULSE: 5,
+    PUNCH_YELLOW_PARRIES_ON_PULSE: 4,
 
     // Methane orb
     ORB_SPAWN_MS: 1500,
@@ -59,10 +60,10 @@ const TIMING = {
     DISCHARGE_YELLOW_WINDOW_MS: 500, // ← was PULSE_YELLOW_MS
 
     // Physics
-    GRAVITY: 0.0012,
-    JUMP_IMPULSE: -0.35,
+    GRAVITY: 0.050,
+    JUMP_IMPULSE: -0.05,
     GROUND_Y: 0.85,
-    FAST_FALL_MULT: 2.2,
+    FAST_FALL_MULT: 0.2,
 
     // Flash timing
     FLASH_FADE_IN_MS: 200,
@@ -90,16 +91,16 @@ const FALLBACK = {
     'ui.stats_whiff': 'Misses: {n}',
     'ui.prompt_punch_blue': 'Blue — parry on the flash',
     'ui.prompt_punch_red': 'Red — parry on the bright flash',
-    'ui.prompt_punch_yellow': 'Yellow — parry on the 4th pulse',
+    'ui.prompt_punch_yellow': 'Yellow — parry on the 3rd pulse',
     'ui.prompt_stomp_blue': 'Blue — parry when Marcus lands',
     'ui.prompt_stomp_red': 'Red — parry on the bright flash after landing',
-    'ui.prompt_stomp_yellow': 'Yellow — parry on the 4th pulse after landing',
+    'ui.prompt_stomp_yellow': 'Yellow — parry on the 5th pulse after landing',
     'ui.prompt_orb_blue': 'Parry the orb on the 6th blue pulse',
     'ui.prompt_orb_red': 'Parry the orb on the 4th red pulse',
     'ui.prompt_orb_yellow': 'Parry the orb on the 2nd yellow pulse',
     'ui.prompt_discharge_blue': 'Blue flash — parry immediately',
     'ui.prompt_discharge_red': 'Wait for the bright red — parry then',
-    'ui.prompt_discharge_yellow': 'Wait for the 4th pulse',
+    'ui.prompt_discharge_yellow': 'Wait for the 5th pulse',
     'ui.end_dispelled': 'Mechanic cleared!',
     'ui.end_wipe': 'Failed the mechanic.',
     'mechanics.marcus_punch': 'Punch Parry',
@@ -167,15 +168,16 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 // sim.openParryWindow() at the right moment.
 // The "source" controls which visual element glows.
 // ============================================================
-function runColorSequence(sim, color, source = 'marcus', windowMs = null) {
+function runColorSequence(sim, color, source = 'marcus', windowMs = null, yellowPulses = TIMING.YELLOW_PARRIES_ON_PULSE) {
     const seq = {
         color,
         source,
         phase: 'init',
         timer: 0,
-        pulses: 0
+        pulses: 0,
+        windowMs: windowMs ?? TIMING.PARRY_WINDOW_MS,
+        yellowPulses
     };
-    seq.windowMs = windowMs ?? TIMING.PARRY_WINDOW_MS;
     if (color === 'blue') {
         seq.phase = 'init';
     } else if (color === 'red') {
@@ -222,7 +224,7 @@ function tickColorSequence(sim, seq, dt) {
             seq.timer = 0;
             seq.pulses++;
             sim.triggerFlash('yellow', seq.source);
-            if (seq.pulses >= TIMING.YELLOW_PARRIES_ON_PULSE) {
+            if (seq.pulses >= seq.yellowPulses) {
                 sim.openParryWindow(seq.windowMs);
                 seq.phase = 'window';
             }
@@ -297,7 +299,13 @@ const MECHANICS = {
                     if (m.timer >= TIMING.CHARGE_MS) {
                         m.timer = 0;
                         m.phase = 'seq';
-                        m.seq = runColorSequence(sim, sim.selectedColor, 'marcus');
+                        m.seq = runColorSequence(
+                            sim, sim.selectedColor, 'marcus',
+                            null,                                  // use default parry window
+                            sim.selectedColor === 'yellow'         // only override yellow
+                                ? TIMING.PUNCH_YELLOW_PARRIES_ON_PULSE
+                                : undefined
+                        );
                     }
                     break;
 
