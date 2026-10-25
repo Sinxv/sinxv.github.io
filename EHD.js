@@ -412,23 +412,7 @@ export const data = {
                             { stat: 'All Skill Damage Increase', min: '6%', max: '13%' },
                             { stat: 'Action Speed', min: '8%', max: '15%' }
                         ]
-                    },
-                    calc: {
-                        title: { en: 'Calculator' },
-                        intro: {
-                            en: [
-                                "This calculator helps you evaluate the relative strength of a stat change roll on a piece of equipment. Each stat's contribution is measured against a community-derived scoring table.",
-                                "Scores are relative: they're useful for comparing two rolls on the same slot, not as an absolute power metric.",
-                                "Enhancement-scaled lines are evaluated at +12 by default. Adjust your enhancement level below to see how the score changes.",
-                                "@@mute:No calculator for Nebulon Suit's Stat Change, deemed not useful since it's behavior is closer to transmute.@@",
-                                "@@mute:Stats that provide no damage (and are not weighted by score for that reason) are excluded from the calculator, if your stat doesn't show on the calculator it means its score weight equals zero.@@" 
-                            ]
-                        }
                     }
-                },
-                calculator: {
-                    toggle_hide_info: { en: 'Show Calculator Only' },
-                    toggle_show_info: { en: 'Show Full Guide' }
                 }
             }
         },
@@ -475,6 +459,20 @@ export const data = {
                 jp: "初心者からエンドゲームまでのステップバイステップの進行ガイド。すべてのキャラクターレベルとCP閾値で何をすべきかを正確に知っています。",
                 br: "Guia de progressão passo a passo do iniciante ao endgame. Saiba exatamente o que fazer em cada nível de personagem e limite de PC."
             },
+            feature3_title: {
+                en: "Calculators",
+                es: "Calculadoras",
+                kr: "계산기",
+                jp: "計算機",
+                br: "Calculadoras"
+            },
+            feature3_desc: {
+                en: "Tools to optimize processes, and plan your character's growth. Make informed decisions with our easy-to-use calculators.",
+                es: "Herramientas para optimizar procesos y planificar el crecimiento de tu personaje. Toma decisiones informadas con nuestros sencillos de usar calculadoras.",
+                kr: "프로세스를 최적화하고 캐릭터 성장을 계획하는 도구. 사용하기 쉬운 계산기로 정보에 기반한 결정을 내리세요.",
+                jp: "プロセスを最適化し、キャラクターの成長を計画するためのツール。使いやすい計算機で情報に基づいた決定をしましょう。",
+                br: "Ferramentas para otimizar processos e planejar o crescimento do seu personagem. Tome decisões informadas com nossas fáceis de usar calculadoras."
+            },
             update_title: {
                 en: "Latest Update",
                 es: "Última Actualización",
@@ -483,43 +481,27 @@ export const data = {
                 br: "Última Atualização"
             },
             update_date: {
-                en: "September 2026",
-                es: "Septiembre de 2026",
-                kr: "2026년 9월",
-                jp: "2026年9月",
-                br: "Setembro de 2026"
+                en: "October 2026",
+                es: "Octubre de 2026",
+                kr: "2026년 10월",
+                jp: "2026年10月",
+                br: "Outubro de 2026"
             },
             update_content: {
                 en: [
-                    "Added Nebulon Raid to the guides section.",
-                    "Finished migrating all guides (though im still missing some) and relatively finished progression all the way to endgame.",
-                    "Progression now has a section called 'guides relevant to this section' that serve as a quick way to open a guide without going to the guide section.",
-                    "Re-fixed the settings pop-up to actually take up the proper amount of space and added a region filter so that concepts fall back to a supported language to make some concepts easier to understand for servers with custom terms for things.",
-                    "Another round of fixing various typos and outdated information, reworking the phrasing of some parts."
+                    "All guide finished, started doing useful calculators, so i added the Calculator tab."
                 ],
                 es: [
-                    "Guía completa agregada para la raid de Doom Aporia",
-                    "Capacidad de respuesta móvil mejorada en todas las guías",
-                    "Se agregaron opciones de personalización de color (haga clic en el ícono de paleta en la navegación)",
-                    "Errores tipográficos e información desactualizada fijos"
+                    "Todas las guías terminadas, comencé a hacer calculadoras útiles, así que agregué la pestaña Calculadora.",
                 ],
                 kr: [
                     "",
-                    "모든 가이드에서 모바일 반응성 개선",
-                    "색상 사용자 정의 옵션 추가(탐색에서 팔레트 아이콘 클릭)",
-                    "다양한 오타 및 오래된 정보 수정"
                 ],
                 jp: [
                     "",
-                    "すべてのガイド全体でモバイル応答性を改善",
-                    "色のカスタマイズオプションを追加（ナビゲーションのパレットアイコンをクリック）",
-                    "さまざまなタイプミスと古い情報を修正"
                 ],
                 br: [
                     "",
-                    "Responsividade móvel aprimorada em todos os guias",
-                    "Opções de personalização de cor adicionadas (clique no ícone de paleta na navegação)",
-                    "Corrigidos vários erros de digitação e informações desatualizadas"
                 ]
             },
             disclaimer: {

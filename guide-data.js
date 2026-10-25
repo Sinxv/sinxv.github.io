@@ -46,14 +46,16 @@ export const guideData = [
         icon: '/images/erpico.png',
         category: 'system',
         titleKey: 'stage2.sections.el_resonance.title',
-        sectionKeys: ['stage2.sections.el_resonance']
+        sectionKeys: ['stage2.sections.el_resonance'],
+        calculatorType: 'erp'
     },
     {
         id: 'reforge',
         icon: '/images/reforgeico.png',
         category: 'system',
         titleKey: 'stage4.sections.reforge.title',
-        sectionKeys: ['stage4.sections.reforge']
+        sectionKeys: ['stage4.sections.reforge'],
+        calculatorType: 'reforge'
     },
     {
         id: 'harconium',
@@ -69,7 +71,6 @@ export const guideData = [
         category: 'system',
         availableLanguages: ['en'],
         sectionKeys: ['system.stat_change.sections'],
-        // calculator injected by the guide-manager hook below
         calculatorType: 'stat-change'
     },
     {

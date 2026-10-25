@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function getNavLabels() {
         const lang = localStorage.getItem("elhelper-lang") || "en";
         const labels = {
-            en: { home: "Home", progression: "Game Progression", guides: "Guides" },
-            es: { home: "Inicio", progression: "Progresión del Juego", guides: "Guías" }
+            en: { home: "Home", progression: "Game Progression", guides: "Guides", calculators: "Calculators" },
+            es: { home: "Inicio", progression: "Progresión del Juego", guides: "Guías", calculators: "Calculadoras" }
         };
         return labels[lang] || labels.en;
     }
@@ -19,16 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const desktopHome = navDesktop.querySelector('a[href="/index.html"] li');
         const desktopProgression = navDesktop.querySelector('a[href="/prog/s1.html"] li');
         const desktopGuides = navDesktop.querySelector('a[href="/guides.html"] li');
+        const desktopCalculators = navDesktop.querySelector('a[href="/calculators.html"] li');
         if (desktopHome) desktopHome.textContent = labels.home;
         if (desktopProgression) desktopProgression.textContent = labels.progression;
         if (desktopGuides) desktopGuides.textContent = labels.guides;
+        if (desktopCalculators) desktopCalculators.textContent = labels.calculators;
 
-        const mobileHome = navMobile.querySelector('a[href="/index.html"] li');
-        const mobileProgression = navMobile.querySelector('a[href="/prog/s1.html"] li');
-        const mobileGuides = navMobile.querySelector('a[href="/guides.html"] li');
+        const mobileHome = navMobile.querySelector('a[href="/main/index.html"] li');
+        const mobileProgression = navMobile.querySelector('a[href="/main/prog/s1.html"] li');
+        const mobileGuides = navMobile.querySelector('a[href="/main/guides.html"] li');
+        const mobileCalculators = navMobile.querySelector('a[href="/calculators.html"] li');
         if (mobileHome) mobileHome.textContent = labels.home;
         if (mobileProgression) mobileProgression.textContent = labels.progression;
         if (mobileGuides) mobileGuides.textContent = labels.guides;
+        if (mobileCalculators) mobileCalculators.textContent = labels.calculators;
     }
 
     // Desktop nav
@@ -40,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="/index.html"><li>${labels.home}</li></a>
         <a href="/prog/s1.html"><li id="spec">${labels.progression}</li></a>
         <a href="/guides.html"><li>${labels.guides}</li></a>
+        <a href="/calculators.html"><li>${labels.calculators}</li></a>
         <div class="settings-icon" id="settings-icon-desktop"></div>
       </ul>
     `;
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="/main/index.html"><li>${labels.home}</li></a>
         <a href="/main/prog/s1.html"><li id="spec">${labels.progression}</li></a>
         <a href="/main/guides.html"><li>${labels.guides}</li></a>
+        <a href="/calculators.html"><li>${labels.calculators}</li></a>
     </div>
 `;
     document.body.prepend(navMobile);

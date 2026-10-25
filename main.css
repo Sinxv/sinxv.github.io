@@ -1167,7 +1167,6 @@ h3 {
     font-size: 14px;
 }
 
-/* ---- Header row (regular column headers) ---- */
 #gridtable th,
 .stat-table th {
     background: linear-gradient(135deg, #3f3f52, #343440);
@@ -1182,7 +1181,6 @@ h3 {
     vertical-align: middle;
 }
 
-/* ---- Table title row (spanning header with collapse arrow) ---- */
 #gridtable .table-title-collapser,
 .stat-table .table-title-collapser {
     background: linear-gradient(135deg, #3f3f52, #343440);
@@ -1201,7 +1199,6 @@ h3 {
     color: var(--primary-color);
 }
 
-/* ---- Body cells ---- */
 #gridtable td,
 .stat-table td {
     padding: 14px 20px;
@@ -1211,19 +1208,16 @@ h3 {
     transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-/* ---- Row dividers ---- */
 #gridtable tr:last-child td,
 .stat-table tr:last-child td {
     border-bottom: none;
 }
 
-/* ---- Zebra striping (very subtle) ---- */
 #gridtable tr:nth-child(even),
 .stat-table tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.02);
 }
 
-/* ---- Hover ---- */
 #gridtable tr:hover,
 .stat-table tr:hover {
     background: rgba(255, 255, 255, 0.05);
@@ -1234,7 +1228,6 @@ h3 {
     color: var(--text-color);
 }
 
-/* ---- Rowspan cells (Category column, etc.) ---- */
 #gridtable td[rowspan],
 .stat-table td[rowspan] {
     vertical-align: top;
@@ -1244,7 +1237,6 @@ h3 {
     white-space: nowrap;
 }
 
-/* ---- Column widths ---- */
 #gridtable td:first-child,
 #gridtable th:first-child,
 .stat-table td:first-child,
@@ -1262,7 +1254,6 @@ h3 {
     min-width: 180px;
 }
 
-/* ---- Multi-line cell content ---- */
 #gridtable td > div,
 .stat-table td > div {
     margin-bottom: 4px;
@@ -1273,13 +1264,11 @@ h3 {
     margin-bottom: 0;
 }
 
-/* ---- Legacy inset spans (older guides wrap content in span) ---- */
 #gridtable span,
 .stat-table span {
     margin-left: 0;
 }
 
-/* ---- Status row accents ---- */
 #gridtable tr.good-stat td:first-child,
 .stat-table tr.good-stat td:first-child {
     position: relative;
@@ -1315,7 +1304,6 @@ h3 {
 /* ============================================================
    12. GAME PROGRESSION CARDS
    ============================================================ */
-
 .collapsibleprog {
     display: flex;
     align-items: center;
@@ -1365,8 +1353,6 @@ h3 {
 /* ============================================================
    13. FOOTER
    ============================================================ */
-
-/* - PIE DE PÁGINA - */
 .lower {
     margin-top: 50px;
     background: var(--footer-bg);
@@ -1418,8 +1404,6 @@ h3 {
 /* ============================================================
    14. SPECIAL INLINE TEXT COLORS
    ============================================================ */
-
-/* - COLORES ESPECIALES - */
 #HIGHLIGHTEDTEXT {
     color: cyan;
     font-weight: 600;
@@ -1463,8 +1447,6 @@ h3 {
 /* ============================================================
    15. LIGHT MODE OVERRIDES
    ============================================================ */
-
-/* - LIGHT MODE - */
 body.light-mode {
     --bg-color: #f5f5f7;
     --text-color: #333340;
@@ -1559,8 +1541,6 @@ body.light-mode .lower .info {
 /* ============================================================
    16. SETTINGS: COLOR PICKER & TOGGLE SWITCH
    ============================================================ */
-
-/* Color Picker */
 .color-picker {
     display: flex;
     gap: 8px;
@@ -1720,7 +1700,7 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     font-family: 'Raleway', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif !important;
-    overflow: hidden; /* Prevent modal itself from scrolling */
+    overflow: hidden; 
 }
 
 .guide-modal-scroll {
@@ -1730,6 +1710,11 @@ input:checked + .slider:before {
     padding-bottom: 16px;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.calculator-modal-title {
+    margin: 0 0 20px;
+    text-align: center;
 }
 
 .table-title-collapser {
@@ -1807,7 +1792,6 @@ input:checked + .slider:before {
     flex-wrap: wrap;
 }
 
-/* Primary images - large, full width emphasis */
 .image-layer-primary {
     width: 100%;
 }
@@ -1819,7 +1803,6 @@ input:checked + .slider:before {
     object-fit: contain;
 }
 
-/* Secondary images - medium, can fit 2 side by side */
 .image-layer-secondary {
     width: 100%;
 }
@@ -1831,7 +1814,6 @@ input:checked + .slider:before {
     object-fit: contain;
 }
 
-/* Tertiary images - small, inline flex row */
 .image-layer-tertiary {
     width: 100%;
 }
@@ -1844,13 +1826,11 @@ input:checked + .slider:before {
     flex-shrink: 0;
 }
 
-/* When there's only 1 tertiary, let it be a bit bigger */
 .image-layer-tertiary .guide-image:only-child {
     max-width: 50%;
     max-height: 250px;
 }
 
-/* When there are 2 tertiaries */
 .image-layer-tertiary .guide-image:first-child:nth-last-child(2),
 .image-layer-tertiary .guide-image:first-child:nth-last-child(2) ~ .guide-image {
     max-width: calc(50% - 6px);
@@ -1910,8 +1890,6 @@ button.guide-open-button {
     color: var(--primary-color);
 }
 
-
-/* Index card interactions and CTA */
 .guide-card {
     cursor: pointer;
     border-radius: 16px;
@@ -1959,7 +1937,6 @@ button.guide-open-button {
     width: calc(100% - 64px);
 }
 
-/* Hide category badge if present elsewhere */
 .guide-card-badge { display: none !important; }
 
 .guide-open-button:hover,
@@ -2042,7 +2019,6 @@ body.guide-modal-open {
     flex: 1;
 }
 
-/* Yellow warning */
 .guide-status-yellow {
     background: rgba(255, 224, 102, 0.08);
     border: 1px solid var(--disclaimer-color);
@@ -2054,7 +2030,6 @@ body.guide-modal-open {
     overflow-y: hidden;
 }
 
-/* Red warning */
 .guide-status-red {
     background: rgba(255, 102, 102, 0.1);
     border: 1px solid var(--warning-color);
@@ -2106,13 +2081,11 @@ body.guide-modal-open {
     padding-left: 8px;
 }
 
-/* Variant marker styling (the "Difficulty 3 Variation:" text itself) */
 .variant-marker-diff3,
 .variant-marker-solo {
     font-weight: 600;
 }
 
-/* Hidden states */
 .np-hidden .mech,
 .mech-hidden .mech,
 .concepts-hidden .concept {
@@ -2185,7 +2158,6 @@ body.guide-modal-open {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Status-specific icon colors (optional tint overrides) */
 .mech-status-unavoidable img {
     filter: brightness(0) saturate(100%) invert(45%) sepia(98%) saturate(1352%) hue-rotate(330deg) brightness(101%) contrast(101%);
 }
@@ -2284,7 +2256,6 @@ body.guide-modal-open {
 .image-float-right {
     margin: 6px 0;
     max-width: 45%;
-    /* Prevent the image from being larger than half the container */
     width: 45%;
     flex: none !important;
 }
@@ -2301,7 +2272,6 @@ body.guide-modal-open {
     margin-bottom: 10px;
 }
 
-/* Images inside a layer that are floated don't need flex layout */
 .image-layer .guide-image-figure.image-float-left,
 .image-layer .guide-image-figure.image-float-right {
     align-items: flex-start;
@@ -2309,14 +2279,12 @@ body.guide-modal-open {
     max-width: 45%;
 }
 
-/* Caption adjustments for floating images */
 .image-float-left .guide-image-caption,
 .image-float-right .guide-image-caption {
     font-size: 12px;
     line-height: 1.3;
 }
 
-/* Ensure the image itself scales properly */
 .image-float-left .guide-image,
 .image-float-right .guide-image {
     width: 100%;
@@ -2325,7 +2293,6 @@ body.guide-modal-open {
     border-radius: 6px;
 }
 
-/* Clear floats before major headings so the layout doesn't bleed */
 .mech h3,
 .mech h4,
 .mech .mechanic-group-title,
@@ -2335,7 +2302,6 @@ body.guide-modal-open {
     clear: both;
 }
 
-/* Clear floats at the end of every mech entry */
 .mech::after,
 .concept::after,
 .guide-raid-section::after,
@@ -2345,7 +2311,6 @@ body.guide-modal-open {
     clear: both;
 }
 
-/* Mobile: disable float, stack vertically */
 @media (max-width: 768px) {
     .image-float-left,
     .image-float-right,
@@ -2530,12 +2495,10 @@ body.guide-modal-open {
     margin: 0;
 }
 
-/* If you want inline float support here too: */
 .guide-image-placeholder .image-layer {
     justify-content: center;
 }
 
-/* Paragraphs adjacent to inline image placeholders */
 p + .guide-image-placeholder {
     margin-top: 16px;
 }
@@ -2548,7 +2511,6 @@ p + .guide-image-placeholder {
     transform: scale(1.02);
 }
 
-/* Secondary images */
 .image-layer-secondary .guide-image-figure {
     flex: 0 0 calc(50% - 6px);
 }
@@ -2582,7 +2544,6 @@ p + .guide-image-placeholder {
     box-shadow: 0 4px 12px rgba(102, 179, 255, 0.25);
 }
 
-/* Tertiary images */
 .image-layer-tertiary .guide-image-figure {
     flex: 0 0 calc(33.333% - 8px);
     align-items: center;
@@ -2706,7 +2667,6 @@ p + .guide-image-placeholder {
     line-height: 1.4;
 }
 
-/* Lightbox */
 .image-lightbox-overlay {
     position: fixed;
     top: 0;
@@ -2876,10 +2836,6 @@ body.lightbox-open {
 /* ============================================================
    INLINE PICTURES — separate from guide-image-group renderer
    ============================================================ */
-
-
-
-/* Layer sizing for inline pictures */
 .guide-inline-pic-layer-primary .guide-inline-pic-img,
 .guide-inline-pic-img.guide-inline-pic-layer-primary {
     max-height: 400px;
@@ -2911,7 +2867,6 @@ body.lightbox-open {
     max-height: 200px;
 }
 
-/* The figure also respects the layer's max size */
 .guide-inline-pic-layer-primary { max-width: 100%; }
 .guide-inline-pic-layer-secondary { max-width: 60%; }
 .guide-inline-pic-layer-tertiary { max-width: 40%; }
@@ -2919,7 +2874,6 @@ body.lightbox-open {
 .guide-inline-pic-layer-normal { max-width: 50%; }
 .guide-inline-pic-layer-small { max-width: 25%; }
 
-/* Float rules override the max-width */
 .guide-inline-pic-float-left,
 .guide-inline-pic-float-right {
     max-width: 45% !important;
@@ -2958,7 +2912,6 @@ body.lightbox-open {
     opacity: 0.85;
 }
 
-/* Floating variants — these actually wrap text now */
 .guide-inline-pic-float-left {
     float: left;
     margin: 4px 20px 12px 0;
@@ -2980,7 +2933,6 @@ body.lightbox-open {
     float: none;
 }
 
-/* Size cap for section-level images rendered by .guide-image-group */
 .guide-image-group .image-layer-primary img {
     max-width: 100%;
     max-height: 480px;
@@ -3009,19 +2961,17 @@ body.lightbox-open {
     display: inline-block;
     vertical-align: middle;
     max-width: none;
-    max-height: 1.4em;  /* matches line height */
+    max-height: 1.4em;
     width: auto;
     height: auto;
     border-radius: 3px;
     cursor: zoom-in;
 }
 
-/* If you set an explicit width/height in the data, respect it */
 .guide-inline-pic-inline[style*="width"] .guide-inline-pic-img {
     max-height: none;
 }
 
-/* Layer-specific inline sizes (icons stay small) */
 .guide-inline-pic-inline.guide-inline-pic-layer-ico .guide-inline-pic-img {
     max-height: 48px;
     max-width: 48px;
@@ -3032,7 +2982,6 @@ body.lightbox-open {
     max-width: 32px;
 }
 
-/* Clear floats so headings/end-of-section don't collide */
 .guidetext::after,
 .mech::after,
 .concept::after,
@@ -3145,8 +3094,6 @@ h2, h3 {
     border-color: var(--primary-color);
 }
 
-/* ---------- Lines ---------- */
-
 .scc-lines {
     display: flex;
     flex-direction: column;
@@ -3227,8 +3174,6 @@ h2, h3 {
     accent-color: var(--primary-color);
 }
 
-/* ---------- Score badge ---------- */
-
 .scc-line-score {
     text-align: center;
 }
@@ -3245,7 +3190,6 @@ h2, h3 {
     text-align: center;
 }
 
-/* Tiers — "drama" increases with tier */
 .scc-score-low {
     background: rgba(255, 255, 255, 0.05);
     color: #9a9aa0;
@@ -3307,8 +3251,6 @@ h2, h3 {
     cursor: default;
 }
 
-/* ---------- Footer ---------- */
-
 .scc-footer {
     margin-top: 20px;
     padding-top: 16px;
@@ -3364,12 +3306,10 @@ h2, h3 {
     font-weight: 700;
 }
 
-/* Low — plain */
 .scc-total-low .scc-total-value {
     color: var(--text-secondary);
 }
 
-/* Mid — soft glow */
 .scc-total-mid .scc-total-value {
     color: #8ecfff;
     text-shadow: 0 0 10px rgba(110, 193, 255, 0.35);
@@ -3379,7 +3319,6 @@ h2, h3 {
     background: rgba(110, 193, 255, 0.05);
 }
 
-/* High — warm glow, slight scale */
 .scc-total-high .scc-total-value {
     color: #ffc46b;
     text-shadow: 0 0 14px rgba(255, 184, 77, 0.45), 0 0 30px rgba(255, 184, 77, 0.2);
@@ -3390,7 +3329,6 @@ h2, h3 {
     background: rgba(255, 184, 77, 0.07);
 }
 
-/* Max — orange-red, strong glow, pulse */
 .scc-total-max .scc-total-value {
     color: #ff8c50;
     text-shadow:
@@ -3417,42 +3355,6 @@ h2, h3 {
 
 .scc-total-trueadam {
     background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 77, 77, 0.08));
-}
-
-/* ---------- "Calculator only" mode ---------- */
-
-.scc-hide-info ~ .guidetext,
-.scc-hide-info ~ .guide-generic-section,
-.scc-hide-info ~ .guide-raid-section,
-.scc-hide-info ~ .guide-status-warnings,
-.guide-calc-toggle.is-hidden ~ * {
-    /* (see note below — you'll likely toggle a body class instead) */
-}
-
-.guide-calc-toggle {
-    display: block;
-    margin: 30px auto 0;
-    padding: 10px 24px;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    border-radius: 999px;
-    font: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.guide-calc-toggle:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-/* When in calculator-only mode, hide everything in .guide-content
-   except the calculator host and the toggle. */
-.guide-content.scc-only-mode > *:not(.guide-calculator-host):not(.guide-calc-toggle) {
-    display: none;
 }
 
 /* ============================================================
@@ -3555,14 +3457,11 @@ h2, h3 {
     outline-offset: 2px;
 }
 
-/* Scroll suave */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
 }
 
-
-/* Ajustes para navegadores que no soportan backdrop-filter */
 @supports not (backdrop-filter: blur(10px)) {
     .back {
         background: rgba(0, 0, 0, 0.8);
@@ -3620,8 +3519,6 @@ h2, h3,
 /* ============================================================
    22. RESPONSIVE / MEDIA QUERIES
    ============================================================ */
-
-/* - RESPONSIVE - */
 @media only screen and (max-width: 1024px) {
     .trueguide {
         max-width: 97vw;
@@ -3678,7 +3575,7 @@ h2, h3,
 @media only screen and (max-width: 768px) {
     .scc-line {
         display: grid;
-        grid-template-columns: 1fr auto auto;   /* label | score | X */
+        grid-template-columns: 1fr auto auto;
         grid-template-areas:
             "num    score  remove"
             "select select select"
@@ -3733,14 +3630,12 @@ h2, h3,
         align-self: center;
     }
 
-    /* Score badge doesn't need to be huge on mobile */
     .scc-line-score .scc-score {
         font-size: 13px;
         padding: 4px 10px;
         min-width: 48px;
     }
 
-    /* Total sits below as before */
     .scc-footer {
         flex-direction: column;
         align-items: stretch;
@@ -3822,7 +3717,6 @@ h2, h3,
         font-size: 14px;
     }
     
-    /* Mobile Navigation */
     nav#main-nav-desktop {
         display: none;
     }
@@ -3832,7 +3726,7 @@ h2, h3,
     }
     
     .scc-line-score {
-        align-items: flex-end;   /* right-align against the X */
+        align-items: flex-end;
     }
 
     .scc-line-max {
@@ -4074,7 +3968,6 @@ h2, h3,
     border-radius: 2px;
 }
 
-/* External link indicator */
 .guide-hyperlink[target="_blank"]::after {
     content: " ↗";
     font-size: 0.85em;
@@ -4083,7 +3976,7 @@ h2, h3,
 }
 
 /* ============================================================
-   PARRY SIMULATOR (2D side-scroller)
+   PARRY SIMULATOR
    ============================================================ */
 
 .sim-root {
@@ -4147,7 +4040,6 @@ h2, h3,
     background: var(--primary-light, #fff9c4);
 }
 
-/* Ping slider */
 .sim-ping {
     display: flex;
     align-items: center;
@@ -4176,7 +4068,6 @@ h2, h3,
     text-align: right;
 }
 
-/* Arena — side-scroller */
 .sim-arena {
     position: relative;
     width: 100%;
@@ -4188,7 +4079,6 @@ h2, h3,
     overflow: hidden;
 }
 
-/* Ground */
 .sim-ground {
     position: absolute;
     left: 0;
@@ -4212,7 +4102,7 @@ h2, h3,
 
 .sim-marcus-img {
     max-width: 128px;
-    margin-bottom: -8px;   /* pull down if there's transparent padding */
+    margin-bottom: -8px;
 }
 
 .sim-attacker-flash {
@@ -4303,7 +4193,6 @@ h2, h3,
 .sim-bright-flash.sim-flash-red    { background: rgba(255, 160, 160, 0.95); }
 .sim-bright-flash.sim-flash-yellow { background: rgba(255, 240, 160, 0.95); }
 
-/* Player */
 .sim-player {
     position: absolute;
     transform: translate(-50%, -100%);
@@ -4314,7 +4203,6 @@ h2, h3,
     z-index: 3;
 }
 
-/* Parry ring */
 .sim-parry-ring {
     position: absolute;
     left: 50%;
@@ -4333,7 +4221,6 @@ h2, h3,
     to   { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
 }
 
-/* Orb */
 .sim-orb {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -4362,7 +4249,6 @@ h2, h3,
 
 .sim-orb-hidden { display: none; }
 
-/* Pulse counter under orb */
 .sim-pulse-counter {
     position: absolute;
     top: calc(55% + 36px);
@@ -4421,7 +4307,6 @@ h2, h3,
     50%      { opacity: 0.55; }
 }
 
-/* Prompt bar */
 .sim-prompt {
     padding: 10px 14px;
     background: rgba(255, 255, 255, 0.03);
@@ -4439,7 +4324,6 @@ h2, h3,
     letter-spacing: 0.5px;
 }
 
-/* Toast */
 .sim-toast {
     position: absolute;
     left: 50%;
@@ -4485,7 +4369,7 @@ h2, h3,
 }
 
 /* ============================================================
-   RADIO TRANSMISSION SIMULATOR — v3
+   RADIO TRANSMISSION SIMULATOR
    ============================================================ */
 
 .radio-title {
@@ -4554,7 +4438,6 @@ h2, h3,
     background: rgba(255, 255, 255, 0.03);
 }
 
-/* ---- Whisper panel ---- */
 .radio-whisper {
     background: rgba(20, 20, 30, 0.55);
     border: 1px solid var(--border-color);
@@ -4609,7 +4492,6 @@ h2, h3,
     word-spacing: 3px;
 }
 
-/* ---- Arena ---- */
 .radio-arena {
     /* inherits .sim-arena */
 }
@@ -4668,7 +4550,6 @@ h2, h3,
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* Arena state */
 .radio-arena-success {
     box-shadow: inset 0 0 40px rgba(110, 231, 135, 0.35);
 }
@@ -4684,7 +4565,6 @@ h2, h3,
     75%      { transform: translateX(4px); }
 }
 
-/* ---- Result modal ---- */
 .radio-result {
     position: absolute;
     top: 50%;
@@ -4802,4 +4682,709 @@ h2, h3,
     letter-spacing: 0.5px;
     margin-top: 4px;
     opacity: 0.75;
+}
+
+/* ============================================================
+   REFORGE CALCULATOR
+   ============================================================ */
+
+.rc-root {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin: 20px auto;
+    max-width: 820px;
+    color: var(--text-secondary);
+    font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.rc-field,
+.rc-label,
+.rc-option,
+.rc-select-wrap,
+.rc-armor,
+.rc-center {
+    background: transparent;
+}
+
+.rc-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: start;
+}
+
+.rc-armor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.rc-icon-box {
+    width: 92px;
+    height: 92px;
+    border-radius: 12px;
+    border: 2px solid var(--text-secondary);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.rc-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.rc-icon-fallback {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.rc-select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content !important;
+}
+
+.rc-select-wrap::after {
+    padding-left: 10px;
+    font-size: 10px;
+    content: "▼";
+}
+
+.rc-ghost-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-weight: 700;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.rc-ghost-select:hover { color: var(--text-color); }
+.rc-armor-select { font-size: 22px; }
+.rc-mat-select   { font-size: 16px; color: var(--text-secondary); }
+
+.rc-ghost-select option,
+.rc-big-select option {
+    background: #2a2a35;
+    color: #fff;
+}
+
+.rc-ghost-select:focus-visible,
+.rc-big-select:focus-visible,
+.rc-input:focus,
+.rc-tab:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.rc-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rc-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+}
+
+.rc-tabs {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 3px;
+}
+.rc-tab {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+.rc-tab:hover { color: var(--text-color); }
+.rc-tab.active {
+    background: var(--primary-color);
+    color: #1a1a1a;
+}
+
+.rc-piece-settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    margin-top: 14px;
+}
+
+.rc-piece-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.rc-piece-label {
+    padding: 0 8px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.rc-piece-button {
+    min-width: 28px;
+    padding: 4px 7px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rc-piece-button:hover { color: var(--text-color); }
+.rc-piece-button.active {
+    background: var(--primary-color);
+    color: #1a1a1a;
+}
+
+.rc-piece-button:focus-visible,
+.rc-different-levels input:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.rc-different-levels {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.rc-different-levels input {
+    accent-color: var(--primary-color);
+}
+
+.rc-piece-levels:not([hidden]) {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.rc-piece-level {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.rc-piece-level .rc-big-select {
+    min-width: 54px;
+    padding: 4px 6px;
+    border-width: 1px;
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+.rc-range {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+}
+
+.rc-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.rc-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.rc-big-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--primary-color);
+    font: inherit;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+    text-align-last: center;
+    padding: 6px 12px;
+    min-width: 40px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.rc-big-select:hover {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.rc-level-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rc-pct-select {
+    min-width: 64px;
+    padding: 8px 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--primary-color);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.rc-pct-select:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.rc-mats-field {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.rc-material-budget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    max-width: 120px;
+}
+
+.rc-material-budget .rc-label {
+    min-height: 22px;
+    font-size: 9px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.rc-res-remaining {
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.rc-res-remaining .rc-res-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    text-align: left;
+}
+
+.rc-res-subtitle {
+    font-size: 11px;
+    color: #888;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.rc-input {
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text-color);
+    font: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    width: 70px;
+    height: 35px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+.rc-input::-webkit-outer-spin-button,
+.rc-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.rc-input-wide { height: 35px; width: 100px; font-size: 20px; }
+
+.rc-summary {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    font-size: 22px;
+    color: var(--text-secondary);
+}
+.rc-summary b { color: var(--text-color); }
+.rc-pct { color: var(--primary-color); font-weight: 800; margin-left: 8px; }
+
+.rc-results {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.rc-res-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+}
+.rc-res-col + .rc-res-col {
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.rc-res-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rc-res-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 0 8px;
+}
+
+.rc-res-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+}
+.rc-res-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.rc-res-sub .rc-res-label { color: #888; }
+.rc-res-sub .rc-res-val   { color: #aaa; font-size: 22px; }
+.rc-res-or {
+    font-size: 12px;
+    font-style: italic;
+    color: #888;
+    margin: 0 4px;
+}
+
+.rc-attempts {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #8a8a95;
+}
+
+.rc-options {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+.rc-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.rc-res-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); 
+}
+
+@media (max-width: 720px) {
+    .rc-root { padding: 18px 16px; }
+    .rc-top {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 16px;
+    }
+    .rc-armor { align-items: center; }
+    .rc-tabs { order: -1; }
+    .rc-range { flex-wrap: wrap; }
+    .rc-big-select { font-size: 28px; min-width: 90px; }
+    .rc-piece-settings { gap: 8px 12px; }
+    .rc-piece-levels:not([hidden]) { gap: 8px; }
+    .rc-mats-field { width: 100%; justify-content: center; }
+    .rc-material-budget { flex: 1; min-width: 0; }
+    .rc-input-wide { width: 100%; }
+    .rc-results { grid-template-columns: 1fr; gap: 8px; }
+    .rc-res-col + .rc-res-col {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        padding-top: 16px;
+    }
+}
+
+/* ============================================================
+   ERP CALCULATOR
+   ============================================================ */
+
+.erp-root {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin: 20px auto;
+    max-width: 600px;
+    color: var(--text-secondary);
+    font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.erp-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.erp-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+
+.erp-small-pct {
+    background: #20202a;
+    border: 1px solid #45455a;
+    border-radius: 4px;
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px;
+    width: 45px;
+    text-align: center;
+    font-family: inherit;
+}
+
+.erp-res-yellow {
+    color: #fbc02d !important;
+}
+
+.erp-res-subtext {
+    font-size: 11px;
+    color: #777;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.erp-res-split {
+    gap: 10px;
+}
+
+.erp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.erp-row label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #b0b0b0;
+}
+
+.erp-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.erp-input {
+    background: none;
+    border: 1px solid #45455a;
+    border-radius: 4px;
+    padding: 8px 12px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    width: 100px;
+}
+
+.erp-input:focus {
+    outline: 1px solid var(--primary-color);
+    background: #4a4a5e;
+}
+
+.erp-select {
+    width: 180px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.erp-pct-input {
+    width: 60px;
+}
+
+.erp-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.erp-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.erp-big-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.erp-big-row label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #999;
+}
+
+.erp-big-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.erp-big-input {
+    background: rgba(0, 0, 0,0.05);
+    border: 1px solid #45455a;
+    border-radius: 4px;
+    color: #4dabf7; /* Blue ERP level */
+    font-size: 22px;
+    font-weight: 800;
+    padding: 8px;
+    width: 70px;
+    text-align: center;
+    font-family: inherit;
+}
+
+.erp-big-input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+
+.erp-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.erp-checkboxes input[type="checkbox"] {
+    accent-color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+}
+
+.erp-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.erp-res-box {
+    padding: 16px;
+    text-align: center;
+}
+
+.erp-res-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0;
+    background: transparent;
+}
+
+.erp-res-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.erp-res-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
 }

@@ -4,6 +4,8 @@ import { guideData } from '/guide-data.js';
 import { renderStatChangeCalculator } from '/scc.js';
 import { renderParrySimulator } from '/ps.js';
 import { renderRadioSimulator } from '/rs.js';
+import { renderReforgeCalculator } from '/rc.js';
+import { renderERPCalculator } from '/ec.js';
 
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
@@ -1315,6 +1317,20 @@ function renderGuideContent(entry, container = null) {
     return contentWrapper;
 }
 
+function renderCalculatorWidget(entry, container) {
+    switch (entry.calculatorType) {
+        case 'stat-change':
+            return renderStatChangeCalculator(container);
+        case 'erp':
+            return renderERPCalculator(container);
+        case 'reforge':
+            return renderReforgeCalculator(container);
+        default:
+            console.warn(`Unsupported calculator type: ${entry.calculatorType}`);
+            return null;
+    }
+}
+
 // ============================================================
 // VARIANT CONFIG - defines what variants exist and their display properties
 // ============================================================
@@ -1492,41 +1508,30 @@ function setupControlPanelListeners(panel, modal) {
 function createGuideModal(entry) {
     const overlay = createElement('div', { id: GUIDE_OVERLAY_ID, class: 'guide-modal-overlay' }, []);
     const modal = createElement('div', { id: GUIDE_MODAL_ID, class: 'guide-modal' }, []);
-    
+    const calculatorsPage = document.body.dataset.page === 'calculators';
+    if (calculatorsPage) {
+        modal.classList.add('calculator-modal');
+    }
+
     const closeButton = createElement('button', { 
         type: 'button', 
         class: 'guide-modal-close', 
-        'aria-label': 'Close guide' 
+        'aria-label': calculatorsPage ? 'Close calculator' : 'Close guide'
     }, ['×']);
     closeButton.addEventListener('click', closeGuide);
     modal.appendChild(closeButton);
 
     const scrollContent = createElement('div', { class: 'guide-modal-scroll' }, []);
+    if (calculatorsPage) {
+        const titleText = getTranslation(entry.titleKey) || entry.id;
+        scrollContent.appendChild(createElement('h2', { class: 'calculator-modal-title' }, [titleText]));
+
+        const calculatorHost = createElement('div', { class: 'guide-calculator-host' }, []);
+        scrollContent.appendChild(calculatorHost);
+        renderCalculatorWidget(entry, calculatorHost);
+    } else {
         const content = renderGuideContent(entry);
         scrollContent.appendChild(content);
-
-        // ---- Calculator injection ----
-        if (entry.calculatorType === 'stat-change') {
-            const calcHost = document.createElement('div');
-            calcHost.className = 'guide-calculator-host';
-            scrollContent.appendChild(calcHost);
-
-            const calc = renderStatChangeCalculator(calcHost);
-
-            const toggle = document.createElement('button');
-            toggle.type = 'button';
-            toggle.className = 'guide-calc-toggle';
-            toggle.textContent = 'Show Calculator Only';
-
-            let hidden = false;
-            toggle.addEventListener('click', () => {
-                hidden = !hidden;
-                content.classList.toggle('scc-only-mode', hidden);
-                toggle.textContent = hidden ? 'Show Full Guide' : 'Show Calculator Only';
-            });
-
-            scrollContent.appendChild(toggle);
-        }
 
         if (entry.simulatorType === 'undertow-parry') {
             const simHost = document.createElement('div');
@@ -1541,10 +1546,10 @@ function createGuideModal(entry) {
             content.appendChild(simHost);
             renderRadioSimulator(simHost, entry.simulatorOptions || {});
         }
-        // ---- end injection ----
+    }
 
-        modal.appendChild(scrollContent);
-        overlay.appendChild(modal);
+    modal.appendChild(scrollContent);
+    overlay.appendChild(modal);
 
     // Now that the modal is in the DOM, resolve mech references
     resolveMechReferences(scrollContent);
@@ -2143,6 +2148,18 @@ function buildGuideIndex() {
     }
 
     listContainer.innerHTML = '';
+    if (listContainer.dataset.indexMode === 'calculators') {
+        const section = createElement('section', { class: 'guide-section' }, []);
+        section.appendChild(createElement('h2', { class: 'guide-section-title' }, ['Calculators']));
+        const grid = createElement('div', { class: 'guide-section-grid' }, []);
+        guideData
+            .filter(entry => entry.calculatorType)
+            .forEach(entry => grid.appendChild(renderGuideCard(entry)));
+        section.appendChild(grid);
+        listContainer.appendChild(section);
+        return;
+    }
+
     const grouped = {};
 
     // Group entries by category
