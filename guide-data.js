@@ -14,6 +14,12 @@ export const guideData = [
         sectionKeys: ['stage4.sections.imprint']
     },
     {
+        id: 'crit-calculator',
+        titleKey: 'system.crit.title',
+        calculatorType: 'crit',
+        category: 'system',
+    },
+    {
         id: 'mystic_enhancement',
         icon: '/images/mysticico.png',
         category: 'system',

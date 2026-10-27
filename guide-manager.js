@@ -6,6 +6,7 @@ import { renderParrySimulator } from '/ps.js';
 import { renderRadioSimulator } from '/rs.js';
 import { renderReforgeCalculator } from '/rc.js';
 import { renderERPCalculator } from '/ec.js';
+import { renderCritCalculator } from '/cc.js';
 
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
@@ -1325,6 +1326,8 @@ function renderCalculatorWidget(entry, container) {
             return renderERPCalculator(container);
         case 'reforge':
             return renderReforgeCalculator(container);
+        case 'crit':
+            return renderCritCalculator(container);
         default:
             console.warn(`Unsupported calculator type: ${entry.calculatorType}`);
             return null;

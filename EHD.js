@@ -414,7 +414,12 @@ export const data = {
                         ]
                     }
                 }
-            }
+            },
+            crit: {
+                title: {
+                    en: "Req. Crit/Maxi"
+                }
+            },
         },
         homepage: {
             hero_title: {
