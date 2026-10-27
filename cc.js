@@ -255,7 +255,7 @@ export function renderCritCalculator(container) {
 
         // Convert additive stat into normalized N using the table's total-stat breakpoints.
         const breakpoints = mode === 'crit'
-            ? [{ limit: 40, factor: 0.8 }, { limit: 75, factor: 0.6 }, { limit: 105, factor: 0.4 }]
+            ? [{ limit: 40, factor: 0.6 }, { limit: 75, factor: 0.6 }, { limit: 105, factor: 0.4 }]
             : [{ limit: 40, factor: 0.75 }, { limit: 80, factor: 0.5 }, { limit: 120, factor: 0.25 }];
         let remainingAdd = Math.max(0, additiveTotal);
         let previousLimit = 0;
