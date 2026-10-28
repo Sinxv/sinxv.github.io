@@ -238,7 +238,6 @@ export function renderCritCalculator(container) {
             M *= 1.08;
         }
 
-        // Grove is a crit-only stat line: +30% crit DMG, -6% crit chance
         if (els.grove.checked && mode === 'crit') {
             A += -0.06;
         }

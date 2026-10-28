@@ -110,7 +110,7 @@ const DUNGEONS = {
     'dungeon_1': { label: "Trosh's Nest", baseExp: 8373706 },
     'dungeon_2': { label: "Plegas' Reflection", baseExp: 12590253},
     'dungeon_3': { label: "Magma's Breath", baseExp: 22143539},
-    'dungeon_4': { label: "Methane Loading Dock", baseExp: 49885909},
+    'dungeon_4': { label: "Methane Loading Dock", baseExp: 49885911},
 };
 
 const FALLBACK = {
@@ -357,12 +357,13 @@ export function renderERPCalculator(container) {
         
         const baseMult = (1 + MVP + C + M + E + S + GC) * (1 + STAT + GS + GC);
         let expPerRun = B * baseMult;
-        console.log("EXP Calculation:"+expPerRun)
 
         if (els.randMission.checked) {
             expPerRun *= parseFloat(els.rmMultiplier.value);
         }
 
+
+        console.log("EXP Calculation:"+expPerRun)
         // 3. Estimates
         const runsNeeded = totalRequiredExp / expPerRun;
         const totalMinutes = (runsNeeded * clearTimeSecs) / 60;
