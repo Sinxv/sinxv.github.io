@@ -9466,7 +9466,7 @@ export const data = {
                             en: [
                                 "These include the aforementioned skill buffs and other equipment related buffs.",
                                 "{{https://cobodex.eu/en/item/30686|Maestro Halo|external}}: 300s Timer; This is important to take in mind, if Maestro Halo Timer is ending, you need to ensure it won’t end during Green Exascale effect or you will lose damage. This can be done by removing the accessory and reequipping it to deactivate the effect and then reactivate it manually.",
-                                "@@success:Atma of Flow Set Effect@@ (If applicable): 60s Timer; Same case as Maestro Halo. But, If you unequip or swap to an accessory of a different set, a 30s debuff that prevents you from receiving the atma set effect is given. This debuff can be prevented by instead swapping to an accessory of the same set but lower quality.",
+                                "@@success:Atma of Flow Set Effect@@ (If applicable): 60s Timer; Same case as Maestro Halo. If you unequip or swap to a different set, you'll gain a 30s debuff that prevents you from receiving any atma set effect.",
                             ]
                         }
                     }
