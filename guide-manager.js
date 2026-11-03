@@ -11,11 +11,12 @@ import { renderCritCalculator } from '/cc.js';
 const GUIDE_OVERLAY_ID = 'guide-modal-overlay';
 const GUIDE_MODAL_ID = 'guide-modal';
 const BUTTON_LABEL_KEY = 'general.open_guide';
-const CATEGORY_ORDER = ['system', 'raid', 'misc'];
+const CATEGORY_ORDER = ['system', 'raid', 'misc', 'tips'];
 const CATEGORY_LABELS = {
     system: 'System Explanation',
     raid: 'Raid Guides',
-    misc: 'Miscellaneous'
+    misc: 'Miscellaneous',
+    tips: 'Tips & Tricks'
 };
 const RAID_ORDER = ['Rosso','Berthe','Abyss','Serpentium','Doom Aporia','Nebulon']
 

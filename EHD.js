@@ -46,6 +46,13 @@ export const data = {
                     kr: "기타",
                     jp: "その他",
                     br: "Diversos"
+                },
+                tips: {
+                    en: "Tips & Tricks",
+                    es: "Consejos y Trucos",
+                    kr: "팁과 요령",
+                    jp: "ヒントとコツ",
+                    br: "Dicas e Truques"
                 }
             },
             back: {
@@ -66,7 +73,7 @@ export const data = {
                 en: "Developed by sinxaegh.",
             },
             contribuitors: {
-                en: "Info by Frenny, Paradoxicide, Arvisna, Lucario82, kalmias and other anonymous fellows."
+                en: "Info by Frenny, Paradoxicide, Arvisna, Lucario82, kalmias, Ashal, Raybuken, Ritsu, GloomyBun and other anonymous fellows."
             },
             footer_discord: {
                 en: "on discord",
@@ -9329,5 +9336,143 @@ export const data = {
                 }
             }
         },
+        guides: {
+            htd: {
+                title: {
+                    en: 'How to DPS'
+                },
+                intro: {
+                    en: [
+                        "DPSing is about properly managing the resources you're given to maximize your damage output. This guide serves to tell what you can do to do so."
+                    ]
+                },
+                sections: {
+                    gear: {
+                        title: { en: '1. Gear' },
+                        description: {
+                            en: [
+                                "Assuming you've properly followed the guides relevant to your progression stage, we won't be detailing this since it's technically already been covered, except for a few exceptions."
+                            ]
+                        },
+                        accessories: {
+                            title: { en: '1.1 Accessories' },
+                            description: {
+                                en: [
+                                    "There are a couple of non-raid accessories that you must get in order to boost your DPSing, them being:",
+                                    "{{https://cobodex.eu/en/item/30657|Baryon’s Fur|external}} (Later replaced by {{https://cobodex.eu/en/item/30871|Elite Glitter’s Faceguard|external}})","This accessory gives Adaptation and Multiplicative All Skill Damage, which by itself is already a great addition, but since Multiplicative in dungeon is treated as the product of all Multiplicative sources, it gets further boosted during party play (due to Buff – All Skill Damage and other sources).",
+                                    "{{https://cobodex.eu/en/item/30610|Code of Honor|external}} / {{https://cobodex.eu/en/item/30658|Engine Cooling System|external}} (Later replaced by {{https://cobodex.eu/en/item?search=Mandala|Spirit Lord's Mandala|external}})","These accessories give %DMG to enemies with less/more than 50% HP (in the case of mandala its dmg to enemies with less than 100% HP). Since this stat is somewhat pure, the damage increase given is high, the only downside to this is needing to swap between the 2 accessories once the enemy falls below 50% HP, since forgetting about it makes you lose damage.",
+                                    "{{https://cobodex.eu/en/item/30644|Complete Energy Conversion Ring|external}} (Later replaced by {{https://cobodex.eu/en/item/30870|Fragment of the Mirror World|external}})","This accessory gives Attack Power, 1% per debuff, up to 3% (2 per debuff, max 4% for Fragment of the Mirror World). It doesn’t give much attack but it’s still something you eventually want to get since Attack Power is a good stat and will most of the times be the most pure (most pure = highest output increasing stat)."
+                                ]
+                            }
+                        }
+                    },
+                    class: {
+                        title: { en: '2. Class' },
+                        skill_set: {
+                            title: { en: '2.1 Skill Set' },
+                            description: {
+                                en: [
+                                    "Almost if not all characters have buffs and debuff skills on their skill bar, which have different effects such as increasing your stats or decreasing target’s defense, etc. These types of buffs can be seen on your buff list and debuffs can be seen below the Boss HP bar (sadly, as of now, it only works on raid bosses)."
+                                ]
+                            }
+                        },
+                        rotation: {
+                            title: { en: '2.2 Rotation' },
+                            description: {
+                                en: [
+                                    "Each character has a rotation, which means the order on which they press their skills to maximize their damage while properly taking care of their buffing/debuffing skills. Check guides of your character on places like {{https://cobodex.eu|CoboDex|external}} to know how your rotation goes and what skills you should use."
+                                ]
+                            }
+                        },
+                        positioning: {
+                            title: { en: '2.3 Positioning' },
+                            description: {
+                                en: [
+                                    "Each skill has a different hitbox, some are small or track enemies, which means it doesn’t matter much how you position as long as you hit, but large skills can do more or less damage depending on how far you are from the boss. Testing where the skill does more damage is essential to maximizing the output of each skill."
+                                ]
+                            }
+                        },
+                        variations: {
+                            title: { en: '2.4 Variations' },
+                            description: {
+                                en: [
+                                    "As aforementioned, Skill performance can vary depending on the proportions of each boss, so the “Best skill” can be different on some bosses than others, this also applies for Mod Skills, so checking the performance of each skill on different sizes is a key factor."
+                                ]
+                            }
+                        }
+                    },
+                    title_swapping: {
+                        title: { en: '3. Title Swapping' },
+                        description: {
+                            en: [
+                                "The mechanic of title swapping consists of using more than one title during play, using the swap button (which doesn’t come binded to anything at first so you need to bind it yourself in-game).",
+                                "There are different types of titles on the game, them being Main, Skill Affecting, Boost, Resurrection, and Support, each having different tiers depending on the progression stage you’re in.",
+                                "@@warn:Main Titles@@","The ones that provide the most consistent damage output. You should default to if not using the others. These titles (from older to newer) are:","{{https://cobodex.eu/en/title/1420|Pierce the Heavens|external}} > {{https://cobodex.eu/en/title/1820|Survival of the Cold|external}} > {{https://cobodex.eu/en/title/2060|Black and White|external}} > {{https://cobodex.eu/en/title/2210|Natural Flow|external}} > {{https://cobodex.eu/en/title/2350|Dogma|external}}",
+                                "@@warn:Skill Affecting titles@@","Situational titles that are only used only certain conditions. Them being:","{{https://cobodex.eu/en/title/2050|Night Parade of the White-Ghost|external}}: Allows you to use a skill without putting it into cooldown once every 25 seconds.","{{https://cobodex.eu/en/title/1840|The Setting Sun|external}}: Allows you to decrease the cooldown of all your skills by 30% after awakening while having the title on, useful for when all your useful skills are on cooldown.",
+                                "@@warn:Boost titles@@","They provide buffs to increase DPS permanently by increasing your All Damage and All Speed (Movement, Jump and Cast Speed) by awakening with the title on, only stripped after death or after the dungeon ends. They are basically only used at the beginning of the dungeon or if you die mid dungeon. These titles (from older to newer) are:","{{https://cobodex.eu/en/title/1470|Guardian of Elrianode|external}} > {{https://cobodex.eu/en/title/2160|Freed Shadow|external}} > {{https://cobodex.eu/en/title/2320|Concerto|external}} > {{https://cobodex.eu/en/title/2420|Overpower|external}}","@@mute:(Note: Guardian of Elrianode and Freed Shadow have the same dmg increase effect, the benefit of freed shadow is only the resurrection effect.)@@",
+                                "@@warn:Res. titles@@"," These don’t really affect your DPS perse, but they’re still important to it since they can save you of lethal hits (unless the unavoidable death debuff is present), essentially making you able to neglect certain mechanics to dedicate that time to DPS. Relevant ones are: {{https://cobodex.eu/en/title/2050|Night Parade of the White-Ghost|external}} - {{https://cobodex.eu/en/title/1840|The Setting Sun|external}} - {{https://cobodex.eu/en/title/2160|Freed Shadow|external}} - {{https://cobodex.eu/en/title/2320|Concerto|external}} - {{https://cobodex.eu/en/title/2420|Overpower|external}} - {{https://cobodex.eu/en/title/2250|Attack of the Steel Machines|external}}",
+                                "@@warn:Support titles@@ are those that temporarily buffs self/allies or debuffs enemies. These titles (from older to newer) are:","{{https://cobodex.eu/en/title/2110|Festival|external}} / {{https://cobodex.eu/en/title/690|Reaper|external}} / {{https://cobodex.eu/en/title/2200|King of Abyss|external}} > {{https://cobodex.eu/en/title/2250|Attack of the Steel Machines|external}}"
+                            ]
+                        }
+                    },
+                    outsource: {
+                        title: { en: '4. Outsource Buff / Debuffs' },
+                        description: {
+                            en: [
+                                "This refers to buffs and debuffs that are related to accessories, items, etc.",
+                                "- @@success:Wind Orb@@: Consumable with 30s CD that lowers the target’s defense by 50% for 15s.",
+                                "- @@success:Abyssal Incense / Book of Fate@@: Raid Accessory with a debuff that lasts 30s (cannot be reapplied until the debuff ends) and lowers the target’s defense by 30%",
+                                "- @@success:Green Exascale effect@@: Usually the support has this, once activated, it grants the capacity to reset Skill CD for skills in Transcendence Slot 5 times, It provides a great damage boost."
+                            ]
+                        }
+                    },
+                    pet: {
+                        title: { en: '5. Pet' },
+                        description: {
+                            en: [
+                                "Pets also give stats that can further increase DPS: Giving extra Crit/Maxi, Attack Power and Max MP.","The best free to play (from worse to best) Pets are Mellow > Recluse / Annihilator"
+                            ]
+                        },
+                        encouragement: {
+                            title: { en: '5.1 Encouragement' },
+                            description: {
+                                en: [
+                                    "Feeding your pet increases it’s Hunger and Affinity. After reaching 40% Hunger, @@info:Pet Encouragement@@ is activated, which periodically increases your defensive stats and Crit/Maxi, it’s not 100% sustainable though. The values given by encouragement are increased by Affinity%.",
+                                    "Feeding Pet through Growth system gives Pet Growth Points. After reaching 3000 Growth Points, @@info:Special Encouragement@@ is unlocked, this can give 1 out of 3 effects:","- 50% HP/MP Recovery","- 5% Attack Power", "- All Skill Cooldown Reset.","The effect given is random unless you buy the premium item Pet consumable Slot Upgrade, which allows you to set the activation method and the effect it gives, this is also affected by Affinity%.",
+                                    "Encouragement Lasts 24s and has a 180s cooldown, while Special Encouragement lasts 90s and has a 90s CD (CD starts after Encouragement ends), this can be reduced via Growth Points and Pet Skill Gems."
+                                ]
+                            }
+                        }
+                    },
+                    customization: {
+                        title: { en: '6. Customization' },
+                        description: {
+                            en: [
+                                "The Customization system can increase your DPS by a bit, having Skill Cut-ins and Awakening Effects (you can get those via Event dungeons, or buying them off Item Mall) for a total of 5% Specific Tier Skill Damage. Additionally, you can also buy @@info:Ariel’s Pass@@ off Item Mall for the Mark, which gives 3% Hyper Adaptation."
+                            ]
+                        }
+                    },
+                    artifact: {
+                        title: { en: '7. Mirror Del Artifact Activation' },
+                        description: {
+                            en: [
+                                "Activating Artifact Skill at the correct moment can be a good DPS boost too, specially if you have 3 counts and good effects already. The best moment to activate it can depend on the boss. If you do the dungeon fast enough, it’s best to seek for the moment where you are least interrupted by HP thresholds, otherwise, If it’s a dungeon you take long in, it’s best to consume most if not all the activation counts on the phase where you damage the most. It’s still important to keep thresholds and timers in mind, as activating it right before a timed mech happens will likely waste the count."
+                            ]
+                        }
+                    },
+                    timers: {
+                        title: { en: '8. Timers' },
+                        description: {
+                            en: [
+                                "These include the aforementioned skill buffs and other equipment related buffs.",
+                                "{{https://cobodex.eu/en/item/30686|Maestro Halo|external}}: 300s Timer. This is important to take in mind, if Maestro Halo Timer is ending, you need to ensure it won’t end during Green Exascale effect or you will lose damage. This can be done by removing the accessory and reequipping it to deactivate the effect and then reactivate it manually.",
+                                "@@success:Atma of Flow Set Effect@@ (If applicable): 60s Timer. Same case as Maestro Halo, except this time, there’s a 30s debuff that prevents you from receiving the effect, so this can only be used in cases where you are mid mechanic that ends in groggy, so that this debuff ends before the mechanic, in order to reactivate it before Green Exascale effect is used.",
+                                "@@success:Special Encouragement@@ (In the case you have the Pet Consumable Upgrade and you decide to activate it on your own): 90s Timer. Same but quite different from the other 2: since it has a 90s timer that does not align everytime with Green usage, you need to take another approach and instead use it whenever you can benefit more from the cooldown to get the most damage from the effect."
+                            ]
+                        }
+                    }
+                }
+            } 
+        }
     },
 }

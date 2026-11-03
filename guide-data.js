@@ -317,5 +317,15 @@ export const guideData = [
         availableLanguages: ['en'],
         sectionKeys: ['system.simulator.radio.sections'],
         simulatorType: 'undertow-radio'
-    }*/
+    },*/
+    {
+    id: 'how-to-dps',
+    titleKey: 'guides.htd.title',
+    category: 'tips',
+    availableLanguages: ['en'],
+    introKey: 'guides.htd.intro',
+    sectionKeys: [
+        'guides.htd.sections'
+    ]
+}
 ];
