@@ -9439,7 +9439,7 @@ export const data = {
                                 en: [
                                     "Feeding your pet increases it’s Hunger and Affinity. After reaching 40% Hunger, @@info:Pet Encouragement@@ is activated, which periodically increases your defensive stats and Crit/Maxi, it’s not 100% sustainable though. The values given by encouragement are increased by Affinity%.",
                                     "Feeding Pet through Growth system gives Pet Growth Points. After reaching 3000 Growth Points, @@info:Special Encouragement@@ is unlocked, this can give 1 out of 3 effects:","- 50% HP/MP Recovery","- 5% Attack Power", "- All Skill Cooldown Reset.","The effect given is random unless you buy the premium item Pet consumable Slot Upgrade, which allows you to set the activation method and the effect it gives, this is also affected by Affinity%.",
-                                    "Encouragement Lasts 24s (36s with 1000 Patience Growth Points) and has a 180s cooldown (93s with 15% CD Gem and 1000 Cheer Growth Points), while Special Encouragement lasts 45s and has a 90s CD (46s with 15% CDR Gem and 1000 Cheer Growth Points), this can be reduced via Growth Points and Pet Skill Gems."
+                                    "Encouragement Lasts 24s (36s with 1000 Patience Growth Points) and has a 180s cooldown (93s with 15% CD Gem and 1000 Cheer Growth Points), while Special Encouragement lasts 30s (45s with 1000 Patience Growth Points) and has a 90s CD (46s with 15% CDR Gem and 1000 Cheer Growth Points), this can be reduced via Growth Points and Pet Skill Gems."
                                 ]
                             }
                         }
