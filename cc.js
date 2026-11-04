@@ -1,5 +1,7 @@
 import { data } from '/EHD.js';
 
+const CRIT_OVER_CAP_WEIGHT = 0.4;
+
 const UI_TRANSLATIONS = {
     en: {
         'ui.title': 'Required Crit / Maximize', 'ui.mode': 'Stat Type', 'ui.crit': 'Critical',
@@ -9,6 +11,7 @@ const UI_TRANSLATIONS = {
         'ui.type_unnorm': 'Unnormalized (U)', 'ui.type_add': 'Additive (A)',
         'ui.type_mult': 'Multiplicative (M)', 'ui.add_cap': 'In-Dungeon stat cap',
         'ui.result_req': 'Required Socketed Stat', 'ui.result_impossible': 'Impossible to achieve.',
+        'ui.result_socket_limit': 'Socketed Crit stops helping above',
         'ui.result_explanation': 'Already at 100%!', 'ui.add_cap_help': 'What the additive cap means',
         'ui.add_cap_tooltip': 'Additive stats are capped at 100%, assuming that with enough buffs your additive stat reaches 100%, after the DR debuff and multiplicative bonuses, your critical will be limited to this.',
         'ui.value_placeholder': 'Value', 'ui.remove': 'Remove'
@@ -21,6 +24,7 @@ const UI_TRANSLATIONS = {
         'ui.type_unnorm': 'Sin normalizar (U)', 'ui.type_add': 'Aditiva (A)',
         'ui.type_mult': 'Multiplicativa (M)', 'ui.add_cap': 'Límite en mazmorras',
         'ui.result_req': 'Estadística necesaria para socket', 'ui.result_impossible': 'Imposible de alcanzar.',
+        'ui.result_socket_limit': 'El crítico de socket deja de ser útil por encima de',
         'ui.result_explanation': '¡Ya está al 100%!', 'ui.add_cap_help': 'Qué significa el límite aditivo',
         'ui.add_cap_tooltip': 'Las estadísticas aditivas tienen un límite del 100%. Si con suficientes bonificaciones alcanzas el 100% de estadísticas aditivas, después de la penalización DR y las bonificaciones multiplicativas, tu crítico quedará limitado a este valor.',
         'ui.value_placeholder': 'Valor', 'ui.remove': 'Eliminar'
@@ -32,6 +36,7 @@ const UI_TRANSLATIONS = {
         'ui.add_btn': '+ 스탯 추가', 'ui.type_unnorm': '비정규화 (U)', 'ui.type_add': '가산 (A)',
         'ui.type_mult': '곱연산 (M)', 'ui.add_cap': '다른 스탯 적용 후 가산 한도',
         'ui.result_req': '필요 소켓 스탯', 'ui.result_impossible': '달성할 수 없습니다.',
+        'ui.result_socket_limit': '소켓 치명타는 다음 수치부터 효율이 없습니다',
         'ui.result_explanation': '이미 100%입니다!', 'ui.add_cap_help': '가산 한도 설명',
         'ui.add_cap_tooltip': '가산 스탯은 100%로 제한됩니다. 충분한 버프로 가산 스탯이 100%에 도달하더라도, DR 디버프와 곱연산 보너스를 적용한 후 치명타는 이 값으로 제한됩니다.',
         'ui.value_placeholder': '값', 'ui.remove': '삭제'
@@ -43,6 +48,7 @@ const UI_TRANSLATIONS = {
         'ui.add_btn': '+ ステータスを追加', 'ui.type_unnorm': '未正規化 (U)', 'ui.type_add': '加算 (A)',
         'ui.type_mult': '乗算 (M)', 'ui.add_cap': '他のステータス適用後の加算上限',
         'ui.result_req': '必要なソケットステータス', 'ui.result_impossible': '達成できません。',
+        'ui.result_socket_limit': 'ソケットクリティカルが有効なのは次の値まで',
         'ui.result_explanation': 'すでに100%です！', 'ui.add_cap_help': '加算上限について',
         'ui.add_cap_tooltip': '加算ステータスは100%が上限です。十分なバフで加算ステータスが100%に達した場合、DRデバフと乗算ボーナスを適用した後のクリティカルはこの値に制限されます。',
         'ui.value_placeholder': '値', 'ui.remove': '削除'
@@ -55,6 +61,7 @@ const UI_TRANSLATIONS = {
         'ui.type_unnorm': 'Não normalizado (U)', 'ui.type_add': 'Aditivo (A)',
         'ui.type_mult': 'Multiplicativo (M)', 'ui.add_cap': 'Limite aditivo após outros atributos',
         'ui.result_req': 'Atributo necessário no soquete', 'ui.result_impossible': 'Impossível de alcançar.',
+        'ui.result_socket_limit': 'Crítico no soquete deixa de ser útil acima de',
         'ui.result_explanation': 'Já está em 100%!', 'ui.add_cap_help': 'O que significa o limite aditivo',
         'ui.add_cap_tooltip': 'Atributos aditivos têm limite de 100%. Mesmo que você alcance 100% de atributo aditivo com bônus suficientes, após o debuff DR e os bônus multiplicativos, seu crítico ficará limitado a este valor.',
         'ui.value_placeholder': 'Valor', 'ui.remove': 'Remover'
@@ -141,6 +148,10 @@ export function renderCritCalculator(container) {
                 <div class="crit-res-title">${t('ui.result_req')}</div>
                 <div class="crit-res-val" data-ref="resVal">0.00%</div>
                 <div class="crit-res-warn" data-ref="resWarn" style="display:none;">${t('ui.result_impossible')}</div>
+                <div class="crit-res-overcap" data-ref="socketLimit" style="display:none;">
+                    <span>${t('ui.result_socket_limit')}</span>
+                    <span data-ref="socketLimitValue">100.00%</span>
+                </div>
             </div>
             <div class="crit-res-box" data-ref="addCapBox">
                 <div class="crit-res-title">${t('ui.add_cap')} <button type="button" data-ref="addCapHelp" class="rich-tip" aria-label="${t('ui.add_cap_help')}" aria-describedby="crit-add-cap-tooltip" style="width:18px;height:18px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;font-size:12px;line-height:16px;cursor:help;">?</button></div>
@@ -155,7 +166,9 @@ export function renderCritCalculator(container) {
         mode: $('mode'), resRow: $('resRow'), enemyRes: $('enemyRes'), enhLv: $('enhLv'),
         yellowArtifact: $('yellowArtifact'), groveWrap: $('groveWrap'), grove: $('grove'),
         dynamicList: $('dynamicList'), addBtn: $('addBtn'),
-        resVal: $('resVal'), resWarn: $('resWarn'), addCapBox: $('addCapBox'), addCapVal: $('addCapVal'), addCapHelp: $('addCapHelp')
+        socketLimit: $('socketLimit'), socketLimitValue: $('socketLimitValue'),
+        resVal: $('resVal'), resWarn: $('resWarn'),
+        addCapBox: $('addCapBox'), addCapVal: $('addCapVal'), addCapHelp: $('addCapHelp')
     };
 
     const addCapTooltip = document.createElement('div');
@@ -273,6 +286,9 @@ export function renderCritCalculator(container) {
         const multiplicativeBonusPercent = (M - 1) * 100;
         const additiveCap = Math.min(100, 100 - resistancePercent + multiplicativeBonusPercent);
         els.addCapVal.textContent = `${additiveCap.toFixed(2)}%`;
+        const normalizedCritCap = Math.max(0, 100 - Math.max(0, additiveTotal) * CRIT_OVER_CAP_WEIGHT);
+        els.socketLimitValue.textContent = `${normalizedCritCap.toFixed(2)}%`;
+        els.socketLimit.style.display = mode === 'crit' ? 'flex' : 'none';
 
         if (requiredPercent > 100) {
             els.resVal.textContent = requiredPercent.toFixed(2) + '%';
