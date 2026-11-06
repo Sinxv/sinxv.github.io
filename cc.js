@@ -13,7 +13,7 @@ const UI_TRANSLATIONS = {
         'ui.result_req': 'Required Socketed Stat', 'ui.result_impossible': 'Impossible to achieve.',
         'ui.result_socket_limit': 'Socketed Crit stops helping above',
         'ui.result_explanation': 'Already at 100%!', 'ui.add_cap_help': 'What the additive cap means',
-        'ui.add_cap_tooltip': 'Additive stats are capped at 100%, assuming that with enough buffs your additive stat reaches 100%, after the DR debuff and multiplicative bonuses, your critical will be limited to this.',
+        'ui.add_cap_tooltip': 'The in-dungeon stat cap is 100% minus the DR debuff, plus multiplicative and unnormalized bonuses. It can exceed 100% when bonuses offset the debuff.',
         'ui.value_placeholder': 'Value', 'ui.remove': 'Remove'
     },
     es: {
@@ -26,7 +26,7 @@ const UI_TRANSLATIONS = {
         'ui.result_req': 'Estadística necesaria para socket', 'ui.result_impossible': 'Imposible de alcanzar.',
         'ui.result_socket_limit': 'El crítico de socket deja de ser útil por encima de',
         'ui.result_explanation': '¡Ya está al 100%!', 'ui.add_cap_help': 'Qué significa el límite aditivo',
-        'ui.add_cap_tooltip': 'Las estadísticas aditivas tienen un límite del 100%. Si con suficientes bonificaciones alcanzas el 100% de estadísticas aditivas, después de la penalización DR y las bonificaciones multiplicativas, tu crítico quedará limitado a este valor.',
+        'ui.add_cap_tooltip': 'El límite en mazmorras es 100% menos la penalización DR, más las bonificaciones multiplicativas y sin normalizar. Puede superar el 100% cuando las bonificaciones compensan la penalización.',
         'ui.value_placeholder': 'Valor', 'ui.remove': 'Eliminar'
     },
     kr: {
@@ -38,7 +38,7 @@ const UI_TRANSLATIONS = {
         'ui.result_req': '필요 소켓 스탯', 'ui.result_impossible': '달성할 수 없습니다.',
         'ui.result_socket_limit': '소켓 치명타는 다음 수치부터 효율이 없습니다',
         'ui.result_explanation': '이미 100%입니다!', 'ui.add_cap_help': '가산 한도 설명',
-        'ui.add_cap_tooltip': '가산 스탯은 100%로 제한됩니다. 충분한 버프로 가산 스탯이 100%에 도달하더라도, DR 디버프와 곱연산 보너스를 적용한 후 치명타는 이 값으로 제한됩니다.',
+        'ui.add_cap_tooltip': '던전 내 스탯 한도는 100%에서 DR 디버프를 빼고 곱연산 및 비정규화 보너스를 더한 값입니다. 보너스가 디버프를 상쇄하면 100%를 넘을 수 있습니다.',
         'ui.value_placeholder': '값', 'ui.remove': '삭제'
     },
     jp: {
@@ -50,7 +50,7 @@ const UI_TRANSLATIONS = {
         'ui.result_req': '必要なソケットステータス', 'ui.result_impossible': '達成できません。',
         'ui.result_socket_limit': 'ソケットクリティカルが有効なのは次の値まで',
         'ui.result_explanation': 'すでに100%です！', 'ui.add_cap_help': '加算上限について',
-        'ui.add_cap_tooltip': '加算ステータスは100%が上限です。十分なバフで加算ステータスが100%に達した場合、DRデバフと乗算ボーナスを適用した後のクリティカルはこの値に制限されます。',
+        'ui.add_cap_tooltip': 'ダンジョン内のステータス上限は、100%からDRデバフを引き、乗算ボーナスと未正規化ボーナスを加えた値です。ボーナスがデバフを相殺すると100%を超えることがあります。',
         'ui.value_placeholder': '値', 'ui.remove': '削除'
     },
     br: {
@@ -63,7 +63,7 @@ const UI_TRANSLATIONS = {
         'ui.result_req': 'Atributo necessário no soquete', 'ui.result_impossible': 'Impossível de alcançar.',
         'ui.result_socket_limit': 'Crítico no soquete deixa de ser útil acima de',
         'ui.result_explanation': 'Já está em 100%!', 'ui.add_cap_help': 'O que significa o limite aditivo',
-        'ui.add_cap_tooltip': 'Atributos aditivos têm limite de 100%. Mesmo que você alcance 100% de atributo aditivo com bônus suficientes, após o debuff DR e os bônus multiplicativos, seu crítico ficará limitado a este valor.',
+        'ui.add_cap_tooltip': 'O limite de atributo na masmorra é 100% menos o debuff DR, mais os bônus multiplicativos e não normalizados. Ele pode ultrapassar 100% quando os bônus compensam o debuff.',
         'ui.value_placeholder': 'Valor', 'ui.remove': 'Remover'
     }
 };
@@ -267,7 +267,7 @@ export function renderCritCalculator(container) {
 
         // Convert additive stat into normalized N using the table's total-stat breakpoints.
         const breakpoints = mode === 'crit'
-            ? [{ limit: 40, factor: 0.6 }, { limit: 75, factor: 0.6 }, { limit: 105, factor: 0.4 }]
+            ? [{ limit: 40, factor: 0.4 }, { limit: 75, factor: 0.6 }, { limit: 105, factor: 0.4 }]
             : [{ limit: 40, factor: 0.5 }, { limit: 80, factor: 0.5 }, { limit: 120, factor: 0.25 }];
         let remainingAdd = Math.max(0, additiveTotal);
         let previousLimit = 0;
@@ -280,11 +280,12 @@ export function renderCritCalculator(container) {
             if (remainingAdd <= 0) break;
         }
 
-        // Required stat = ((1 + resistance - U) / M) - N.
-        const requiredPercent = ((((1 - U) / M) + R - N) * 100);
+        // Invert the final calculation: (additive stat * M) + U - resistance.
+        const baseRequiredPercent = ((1 + R - U) / M) * 100;
+        const requiredPercent = baseRequiredPercent - (N * 100);
         const resistancePercent = R * 100;
         const multiplicativeBonusPercent = (M - 1) * 100;
-        const additiveCap = Math.min(100, 100 - resistancePercent + multiplicativeBonusPercent);
+        const additiveCap = (100 * M) + (U * 100) - resistancePercent;
         els.addCapVal.textContent = `${additiveCap.toFixed(2)}%`;
         const normalizedCritCap = Math.max(0, 100 - Math.max(0, additiveTotal) * CRIT_OVER_CAP_WEIGHT);
         els.socketLimitValue.textContent = `${normalizedCritCap.toFixed(2)}%`;
